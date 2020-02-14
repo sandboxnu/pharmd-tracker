@@ -4,14 +4,27 @@ import LaunchIcon from '@material-ui/icons/Launch';
 // import { List, Datagrid, TextField, ReferenceField, EditButton } from 'react-admin';
 import { Edit, SimpleForm, Create, Datagrid, TextField, ReferenceField, EditButton, Filter, ReferenceInput, SelectInput, TextInput, List } from 'react-admin';
 
+// export const PostList = props => (
+//     <List filters={<PostFilter />} {...props}>
+//         <Datagrid >
+//         <ReferenceField source="userId" reference="users">
+//             <TextField source="name" />
+//         </ReferenceField>
+//             <TextField source="id" />
+//             <TextField source="title" />
+//             <EditButton />
+//         </Datagrid>
+//     </List>
+// );
+
 export const PostList = props => (
     <List filters={<PostFilter />} {...props}>
         <Datagrid >
-        <ReferenceField source="userId" reference="users">
             <TextField source="name" />
-        </ReferenceField>
             <TextField source="id" />
-            <TextField source="title" />
+            <TextField source="graduationYear" />
+            <TextField source="finalLetter" />
+            <TextField source="finalPercent" />
             <EditButton />
         </Datagrid>
     </List>
