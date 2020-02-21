@@ -1,22 +1,15 @@
 import React from 'react';
 import {
     Datagrid,
-    DateField,
     List,
-    ReferenceField,
-    Responsive,
-    ShowButton,
-    SimpleList,
     TextField,
     EditButton,
-    required
 } from 'react-admin';
 
-import PostReferenceInput from './PostReferenceInput';
 import PostProfilePreviewButton from "./PostProfilePreviewButton";
 
 const StudentList = props => (
-    <List {...props}>
+    <List title="Students" {...props}>
         <Datagrid>
             <TextField source="name" />
             <TextField source="studentId" label = "Northeastern ID"/>

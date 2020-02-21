@@ -1,14 +1,10 @@
 import React from 'react';
-import { styled } from '@material-ui/core';
-import LaunchIcon from '@material-ui/icons/Launch';
-// import { List, Datagrid, TextField, ReferenceField, EditButton } from 'react-admin';
+
 import {
-  Edit,
   SimpleForm,
   Create,
   Datagrid,
   TextField,
-  ReferenceField,
   EditButton,
   Filter,
   ReferenceInput,
@@ -24,7 +20,7 @@ export const StudentList = props => (
         <Datagrid >
             <TextField source="name" />
             <TextField source="studentId" label = "Northeastern ID"/>
-            // <TextField source="status" />
+            <TextField source="status" />
             <TextField source="graduationYear" />
             <TextField source="orgoFinalGrade" />
             <TextField source="orgoFinalLetter" />
