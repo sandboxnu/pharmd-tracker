@@ -1,8 +1,7 @@
 import StudentIcon from '@material-ui/icons/Group';
-
-import StudentList from './StudentList';
+import StudentListMain from './StudenListMain';
 
 export default {
-    list: StudentList,
-    icon: StudentIcon
+	list: StudentListMain,
+	icon: StudentIcon
 };
