@@ -1,8 +1,6 @@
 import React from 'react';
 import { Datagrid, List, TextField, EditButton } from 'react-admin';
 
-import PostProfilePreviewButton from './PostProfilePreviewButton';
-
 const StudentList = props => (
 	<Datagrid rowClick='show' {...props}>
 		<TextField source='name' />
@@ -29,7 +27,6 @@ const StudentList = props => (
 		<TextField source='cdm4FinalGrade' />
 		<TextField source='notes' />
 		<EditButton />
-		<PostProfilePreviewButton id={'id'} />
 	</Datagrid>
 );
 
