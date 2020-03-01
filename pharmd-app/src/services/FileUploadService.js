@@ -4,7 +4,11 @@ import * as XLSX from 'xlsx';
 class FileUploadService {
 
     static parseSpreadsheet (data) {
+        const reader = new FileReader();
+        reader.onload = (event) => {
+            const binary = event.target.result;
 
+        }
     }
 
     static UploadSpreadsheet (data, config) {
