@@ -11,6 +11,11 @@ class StudentsService {
         return axios.get(`${BackendRoutes.BACKEND_URL}${path}`);
     };
 
+    static getStudentById = (studentId) => {
+        const path = this.apiPrefix + studentId;
+        return axios.get(`${BackendRoutes.BACKEND_URL}${path}`);
+    };
+
     // POST Methods
 
     static addNewStudent = (studentData) => {

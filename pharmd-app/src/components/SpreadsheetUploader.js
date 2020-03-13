@@ -3,6 +3,9 @@ import '../styles/globalStyles.css';
 import FileUploadService from '../services/FileUploadService'
 
 class SpreadsheetUploader extends Component {
+    static defaultProps = {
+        uploadedFileData() {}
+    };
 
     constructor(props) {
         super(props);
@@ -28,40 +31,40 @@ class SpreadsheetUploader extends Component {
         })
     }
 
-    uploadFileHandler(event) {
+    async uploadFileHandler(event) {
         event.preventDefault();
-        const data = new FormData();
-        data.append('file', this.state.selectedFile);
-        console.log(data);
-        FileUploadService.UploadSpreadsheet(data, {
-            headers: {
-                'Content-Type': 'multipart/form-data'
-            },
-            onUploadProgress: progressEvent => {
-                this.setState({
-                    uploadProgress: Math.round((parseInt(progressEvent.loaded) * 100) / parseInt(progressEvent.total))
-                });
-                setTimeout(() => this.setState({uploadProgress: 0}), 10000);
-            }
-        }).then(result => {
-            const { fileName, filePath } = result.data;
-            this.setState({
-                uploadedFile: {fileName, filePath},
-                uploadMessage: 'File Uploaded Successfully'
-            })
-
-        })
-            .catch(err => {
-                if (err.response.status === 500) {
-                    this.setState({
-                        uploadMessage: "There's a problem with the server. Please try again."
-                    });
-                } else {
-                    this.setState({
-                        uploadMessage: 'File Upload Failed Successfully'
-                    })
-                }
-            })
+        const spreadsheetData = await FileUploadService.loadSpreadsheet(this.state.selectedFile);
+        console.log(spreadsheetData);
+        this.props.uploadedFileData.apply(this, spreadsheetData);
+        // FileUploadService.UploadSpreadsheet(data, {
+        //     headers: {
+        //         'Content-Type': 'multipart/form-data'
+        //     },
+        //     onUploadProgress: progressEvent => {
+        //         this.setState({
+        //             uploadProgress: Math.round((parseInt(progressEvent.loaded) * 100) / parseInt(progressEvent.total))
+        //         });
+        //         setTimeout(() => this.setState({uploadProgress: 0}), 10000);
+        //     }
+        // }).then(result => {
+        //     const { fileName, filePath } = result.data;
+        //     this.setState({
+        //         uploadedFile: {fileName, filePath},
+        //         uploadMessage: 'File Uploaded Successfully'
+        //     })
+        //
+        // })
+        //     .catch(err => {
+        //         if (err.response.status === 500) {
+        //             this.setState({
+        //                 uploadMessage: "There's a problem with the server. Please try again."
+        //             });
+        //         } else {
+        //             this.setState({
+        //                 uploadMessage: 'File Upload Failed Successfully'
+        //             })
+        //         }
+        //     })
     }
 
     render() {
