@@ -1,0 +1,50 @@
+/* // The Diez web compiler creates shared styles for Sass and CSS. The styles
+// imported here can be found at `build/diez-dashboard-web/static/styles.scss`,
+// relative to the project root. */
+@import "~diez-pharmd-design/static/styles.css";
+
+:root {
+  --color-bg-primary: var(--palette-background);
+  --color-bg-card: var(--palette-card-background);
+  --color-bg-tooltip: var(--palette-tooltip-background);
+  --color-primary: var(--palette-primary-color);
+  --color-secondary: var(--palette-secondary-color);
+  --color-tertiary: var(--palette-tertiary-color);
+
+  --color-text-primary: var(--palette-text-primary);
+  --color-text-secondary: var(--palette-text-secondary);
+  --color-text-tertiary: var(--palette-text-tertiary);
+  --color-text-emphasis-high: var(--palette-text-high-emphasis);
+  --color-text-emphasis-low: var(--palette-text-low-emphasis);
+  --color-text-inverse: var(--palette-text-dark-contrast);
+
+  --color-red: var(--palette-red-color);
+  --color-orange: var(--palette-orange-color);
+  --color-yellow: var(--palette-yellow-color);
+  --color-green: var(--palette-green-color);
+}
+
+/*! purgecss start ignore */
+.theme-dark {
+  --color-bg-primary: var(--palette-text);
+  --color-bg-secondary: #dcd0c0;
+  --color-bg-default: #f4f4f4;
+  --color-bg-inverse: #373737;
+
+  --color-text-primary: #fff;
+  --color-text-secondary: #927e7e;
+  --color-text-default: #373737;
+  --color-text-default-soft: #6a6a6a;
+  --color-text-inverse: #fff;
+  --color-text-inverse-soft: #bbb;
+
+  --font-display: Georgia, Times, "Times New Roman", serif;
+  --font-body: Corbel, "Lucida Grande", "Lucida Sans Unicode", "Lucida Sans", "DejaVu Sans",
+    "Bitstream Vera Sans", "Liberation Sans", Verdana, "Verdana Ref", sans-serif;
+
+  --font-weight-normal: 400;
+  --font-weight-display: 400;
+  --font-weight-btn: 600;
+
+  --rounded-btn: 0;
+}
