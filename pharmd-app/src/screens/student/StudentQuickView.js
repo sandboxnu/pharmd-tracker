@@ -1,15 +1,18 @@
 import React from "react";
 
-import { useEditController, SimpleForm, TextField } from "react-admin";
+import { Edit, useEditController, SimpleForm, TextField } from "react-admin";
 
-const StudentEdit = ({ onCancel, ...props }) => {
+import styled from "styled-components/macro";
+import tw from "tailwind.macro";
+
+const StudentQuickView = props => {
   const controllerProps = useEditController(props);
   if (!controllerProps.record) {
     return null;
   }
 
   return (
-    <div>
+    <Edit title={"QickView"} {...props}>
       <SimpleForm
         basePath={controllerProps.basePath}
         record={controllerProps.record}
@@ -40,8 +43,8 @@ const StudentEdit = ({ onCancel, ...props }) => {
         <TextField source="cdm4FinalGrade" />
         <TextField source="notes" />
       </SimpleForm>
-    </div>
+    </Edit>
   );
 };
 
-export default StudentEdit;
+export default StudentQuickView;

@@ -1,5 +1,6 @@
 import { createMuiTheme } from "@material-ui/core/styles";
 import { Diez, DesignLanguage } from "diez-pharmd-design";
+import { shape } from "prop-types";
 // import resolveConfig from "tailwindcss/resolveConfig";
 // import tailwindConfig from "../tailwind.config.js";
 // const fullConfig = resolveConfig(tailwindConfig);
@@ -16,7 +17,8 @@ function createLigthTheme(ds) {
           enrolled: ds.palette.greenColor.color,
           dropout: ds.palette.redColor.color,
           leave: ds.palette.orangeColor.color,
-          graduated: ds.palette.tertiaryColor.color
+          graduated: ds.palette.tertiaryColor.color,
+          na: ds.palette.textSecondary.color
         },
         primary: {
           main: ds.palette.primaryColor.color,
@@ -69,6 +71,9 @@ function createLigthTheme(ds) {
           lineHeight: ds.typography.fontStyle4.style.lineHeight,
           letterSpacing: ds.typography.fontStyle4.style.letterSpacing
         }
+      },
+      shape: {
+        textLabel: 16
       }
     };
     return createMuiTheme(overridings);

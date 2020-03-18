@@ -1,9 +1,9 @@
-import React from 'react';
-import SpreadsheetUploader  from '../components/SpreadsheetUploader';
+import React from "react";
+import SpreadsheetUploader from "../screens/upload/SpreadsheetUploader";
 
 export default {
-    title: 'Spreadsheet Uploader',
-    component: SpreadsheetUploader,
+  title: "Spreadsheet Uploader",
+  component: SpreadsheetUploader
 };
 
 export const Default = () => <SpreadsheetUploader />;

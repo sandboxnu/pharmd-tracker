@@ -13,33 +13,33 @@ const accentPurple = purple.A200;
 const darkPurple = purple[900];
 
 function createDarkTheme(ds) {
-	if (ds !== undefined) {
-		const overridings = {
-			name: "Dark Theme",
-			palette: {
-				awesomeColors: {
-					primary: primaryGreen,
-					secondary: accentPurple
-				},
-				primary: {
-					light: accentPurple,
-					main: primaryPurple,
-					dark: darkPurple,
-					contrastText: "#fff"
-				},
-				type: "dark",
-				secondary: {
-					light: accentGreen,
-					main: primaryGreen,
-					dark: darkGreen,
-					contrastText: "#fff"
-				}
-			}
-		};
+  if (ds !== undefined) {
+    const overridings = {
+      name: "Dark Theme",
+      palette: {
+        awesomeColors: {
+          primary: primaryGreen,
+          secondary: accentPurple
+        },
+        primary: {
+          light: accentPurple,
+          main: primaryPurple,
+          dark: darkPurple,
+          contrastText: "#fff"
+        },
+        type: "dark",
+        secondary: {
+          light: accentGreen,
+          main: primaryGreen,
+          dark: darkGreen,
+          contrastText: "#fff"
+        }
+      }
+    };
 
-		return createMuiTheme(overridings);
-	}
-	return createMuiTheme({});
+    return createMuiTheme(overridings);
+  }
+  return createMuiTheme({});
 }
 
 // export default createMuiTheme(overridings);
