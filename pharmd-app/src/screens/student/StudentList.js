@@ -7,6 +7,7 @@ import tw from "tailwind.macro";
 import EmphasisField from "../../components/Fields/EmphasisField";
 import TextField from "../../components/Fields/TextField";
 import ChipField from "../../components/Fields/ChipField";
+import CohortField from "../../components/Fields/CohortField";
 
 // Another option for styling
 // const Datagrid = styled(({ ...props }) => (
@@ -43,11 +44,12 @@ const StudentList = ({ selectedRow, ...props }) => {
       classes={{ headerCell: "headerCell", row: "rowCell" }}
       {...props}
     >
-      <EmphasisField source="studentId" label="NEU ID" />
+      <EmphasisField source="neu_id" label="NEU ID" />
       <TextField source="name" />
-      <TextField source="graduationYear" label="Cohort" />
+      <CohortField source="cohort" label="Cohort" />
       <ChipField source="status" />
       <TextField source="gpa" label="GPA" />
+      <TextField source="test_avg" label="Test Avg" />
       {/* <EditButton /> */}
     </Datagrid>
   );

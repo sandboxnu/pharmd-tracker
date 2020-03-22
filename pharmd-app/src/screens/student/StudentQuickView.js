@@ -1,9 +1,21 @@
 import React from "react";
 
-import { Edit, useEditController, SimpleForm, TextField } from "react-admin";
+import {
+  Edit,
+  useEditController,
+  SimpleForm,
+  TextField,
+  ReferenceField,
+  ReferenceArrayField,
+  SingleFieldList,
+  ReferenceManyField,
+  DataGrid
+} from "react-admin";
 
 import styled from "styled-components/macro";
 import tw from "tailwind.macro";
+import AvatarField from "../../components/Fields/AvatarField";
+import CourseListField from "../../components/Fields/CourseListField";
 
 const StudentQuickView = props => {
   const controllerProps = useEditController(props);
@@ -19,8 +31,10 @@ const StudentQuickView = props => {
         resource="students"
         redirect="list"
       >
+        <AvatarField source="avatar" />
         <TextField source="name" />
         <TextField source="studentId" label="Northeastern ID" />
+        <CourseListField source="courses" />
         <TextField source="status" />
         <TextField source="graduationYear" />
         <TextField source="orgoFinalGrade" />

@@ -12,7 +12,7 @@ import selectTheme from "./themes/selected-theme";
 import { ThemeProvider, ThemeConsumer } from "styled-components";
 import DashboardLayout from "./components/Layout/DashboardLayout";
 import studentSideBarReducer from "./redux/reducers/studentSideBarReducer";
-const dataProvider = jsonServerProvider("https://my-json-server.typicode.com/kev1n80/demo");
+const dataProvider = jsonServerProvider("http://localhost:3000");
 
 function themeSwitch(theme) {
   console.log(theme);
@@ -58,6 +58,7 @@ const App = () => {
           >
             <Resource name="students" {...students} />
             <Resource name="upload" {...upload} />
+            <Resource name="courses" />
           </Admin>
         )}
       </ThemeConsumer>

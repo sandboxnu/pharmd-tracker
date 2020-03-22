@@ -5,9 +5,14 @@ import styled from "styled-components/macro";
 import tw from "tailwind.macro";
 import StudentQuickView from "./StudentQuickView";
 import { useSelector } from "react-redux";
-import { StudentFilter } from "./StudentFilter";
-import { SharedFilterConsumer, SharedFilterProvider } from "./FilterContext";
-import { ReferenceInput, SelectInput, TextInput, Filter } from "react-admin";
+import ExpansionPanel from "../../components/Basic/ExpansionPanel";
+import NavItemSecondary from "../../components/Nav/NavItemSecondary";
+import VerticalSplitIcon from "../../assets/icons/verticalSplit.svg";
+import FilterIcon from "../../assets/icons/filter.svg";
+import PersonIcon from "../../assets/icons/person.svg";
+import Icon from "../../components/Basic/Icon";
+import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
+
 const Drawer = styled(DrawerMaterial)`
 
 transition: ${props =>
@@ -27,51 +32,68 @@ transition: ${props =>
 
   .MuiDrawer-paper {
     width: inherit;
+    align-items: flex-end;
     /* ${props => (props.open ? tw`w-28` : tw`w-18`)} */
   }
 `;
 
 const StudentDrawer = ({ isOpenMatch, selected, handleClose, handleOpen, ...props }) => {
   const isOpen = useSelector(state => state.studentSidebarOpen);
-
-  // const {
-  //   filterValues, // dynamically set via the UI by the user
-  //   ...rest
-  // } = { props, ...controllerProps };
+  const isDrawerOpen = isOpen || isOpenMatch;
 
   console.log(isOpen);
 
+  //Avoid route errors
+  const quickview = () => {
+    return isOpenMatch ? (
+      <div>
+        <button onClick={handleClose}>close</button>
+        <StudentQuickView id={selected} onCancel={handleClose} {...props} />
+      </div>
+    ) : (
+      <div>{"No Student selected"}</div>
+    );
+  };
+
   return (
-    <Drawer
-      variant="permanent"
-      open={isOpen || isOpenMatch}
-      anchor="right"
-      onClose={handleClose}
-    >
-      {/* Avoid route errors*/}
-      {isOpen || isOpenMatch ? (
-        isOpenMatch ? (
-          <div>
-            <button onClick={handleClose}>close</button>
-            <StudentQuickView id={selected} onCancel={handleClose} {...props} />
-          </div>
-        ) : (
-          <div>
-            <button onClick={handleClose}>close</button>
-            {/* <Filter filterValues={filterValues} {...props} {...rest}>
-              <TextInput label="Search" source="q" alwaysOn />
-              <ReferenceInput label="User" source="userId" reference="users">
-                <SelectInput optionText="name" />
-              </ReferenceInput>
-            </Filter> */}
-            {/* <StudentFilter /> */}
-          </div>
-        )
-      ) : (
-        <div>
-          <button onClick={handleOpen}>open</button>
-        </div>
-      )}
+    <Drawer variant="permanent" open={isDrawerOpen} anchor="right" onClose={handleClose}>
+      <NavItemSecondary
+        title={isDrawerOpen ? "Close" : "Open"}
+        iconSrc={VerticalSplitIcon}
+        onClick={isDrawerOpen ? handleClose : handleOpen}
+        isOpen={isDrawerOpen}
+        isActive={isDrawerOpen}
+      />
+      <ExpansionPanel
+        SummaryChild={
+          <NavItemSecondary
+            title={"Table Filters"}
+            iconSrc={FilterIcon}
+            onClick={handleOpen}
+            isOpen={true}
+            isActive={false}
+            sidebarIsOpen={isDrawerOpen}
+          />
+        }
+        DetailChild={<p>TODO FILTER</p>}
+        expand={false}
+      />
+      <ExpansionPanel
+        SummaryChild={
+          <>
+            <NavItemSecondary
+              title={"Student Quickview"}
+              iconSrc={PersonIcon}
+              onClick={handleOpen}
+              isOpen={true}
+              isActive={false}
+              sidebarIsOpen={isDrawerOpen}
+            />
+          </>
+        }
+        DetailChild={quickview()}
+        expand={isDrawerOpen}
+      />
     </Drawer>
   );
 };

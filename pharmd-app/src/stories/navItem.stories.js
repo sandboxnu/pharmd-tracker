@@ -2,6 +2,7 @@ import React, { createRef } from "react";
 import TestIcon from "../assets/icons/student.svg";
 import { BrowserRouter as Router } from "react-router-dom";
 import NavItemLink from "../components/Nav/NavItemLink";
+import NavItemSecondary from "../components/Nav/NavItemSecondary";
 export default {
   title: "Nav Item",
   component: NavItemLink
@@ -41,5 +42,19 @@ export const Active = () => {
         ref={ref}
       ></NavItemLink>
     </Router>
+  );
+};
+
+export const Secondary = () => {
+  return (
+    <NavItemSecondary
+      key="Screen"
+      title={"Screen"}
+      iconSrc={TestIcon}
+      onClick={() => {}}
+      isOpen={false}
+      isActive={true}
+      sidebarIsOpen={true}
+    ></NavItemSecondary>
   );
 };
