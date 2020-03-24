@@ -9,6 +9,7 @@
     "@testing-library/user-event": "^7.2.1",
     "axios": "^0.19.2",
     "diez-pharmd-design": "../design-language/build/diez-pharmd-design-web",
+    "jwt-decode": "^2.2.0",
     "prop-types": "^15.7.2",
     "ra-data-json-server": "^3.1.3",
     "react": "^16.12.0",

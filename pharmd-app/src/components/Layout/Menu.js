@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useSelector } from "react-redux";
 import { useMediaQuery } from "@material-ui/core";
-import { getResources } from "react-admin";
+import { getResources, usePermissions } from "react-admin";
 import { withRouter } from "react-router-dom";
 import Divider from "@material-ui/core/Divider";
 import styled from "styled-components/macro";
@@ -19,7 +19,11 @@ const Menu = ({ onMenuClick, logout, ...props }) => {
   const isXSmall = useMediaQuery(theme => theme.breakpoints.down("xs"));
   const location = props.location.pathname;
   const open = useSelector(state => state.admin.ui.sidebarOpen);
-  const resources = useSelector(getResources);
+  const { permissions } = usePermissions();
+  let resources = useSelector(getResources);
+  if (permissions === "user") {
+    resources = resources.filter(val => val.name !== "upload");
+  }
   let flat = resources.reduce((total, val) => total.concat(val.name), []);
 
   const getCurrentIndex = () => {
@@ -56,7 +60,7 @@ const Menu = ({ onMenuClick, logout, ...props }) => {
 
         <NavIndicator index={getCurrentIndex()} />
       </div>
-      {isXSmall && logout}
+      {logout}
     </div>
   );
 };

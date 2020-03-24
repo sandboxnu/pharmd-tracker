@@ -4,7 +4,6 @@ import "./styles/App.css";
 import { Admin, Resource } from "react-admin";
 import students from "./screens/student/index.js";
 import upload from "./screens/upload/index.js";
-import jsonServerProvider from "ra-data-json-server";
 import Dashboard from "./Dashboard";
 import authProvider from "./authProvider";
 
@@ -12,7 +11,8 @@ import selectTheme from "./themes/selected-theme";
 import { ThemeProvider, ThemeConsumer } from "styled-components";
 import DashboardLayout from "./components/Layout/DashboardLayout";
 import studentSideBarReducer from "./redux/reducers/studentSideBarReducer";
-const dataProvider = jsonServerProvider("http://localhost:3000");
+import dataProvider from "./dataProvider";
+import courses from "./screens/courses";
 
 function themeSwitch(theme) {
   console.log(theme);
@@ -57,8 +57,8 @@ const App = () => {
             customReducers={{ studentSidebarOpen: studentSideBarReducer }}
           >
             <Resource name="students" {...students} />
+            <Resource name="courses" {...courses} />
             <Resource name="upload" {...upload} />
-            <Resource name="courses" />
           </Admin>
         )}
       </ThemeConsumer>

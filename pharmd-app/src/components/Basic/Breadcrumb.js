@@ -16,6 +16,7 @@ const CurrentLink = styled.p`
 
 const breadcrumbNameMap = {
   "/students": "Students",
+  "/courses": "Courses",
   "/upload": "Upload"
 };
 

@@ -15,17 +15,14 @@ const CourseListField = ({ record = {}, source }) => {
   return (
     <div>
       {courses.map((course, index) => {
-        console.log("COURSE", course);
         const { data, loading, error } = useGetOne("courses", course.course_id);
         if (loading) {
-          console.log("LOADING");
           return <p>loading</p>;
         }
         if (error) {
           console.log("ERROR", error);
           return <p>ERROR</p>;
         }
-        console.log("LOADED");
         return (
           <div>
             <span>{data.name}</span>

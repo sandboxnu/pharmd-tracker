@@ -49,6 +49,7 @@ const MySidebar = props => {
 };
 
 const DashboardLayout = props => {
+  console.log("Notification", Notification);
   return (
     <Layout
       {...props}
