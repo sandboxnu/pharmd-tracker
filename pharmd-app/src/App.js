@@ -13,6 +13,7 @@ import DashboardLayout from "./components/Layout/DashboardLayout";
 import studentSideBarReducer from "./redux/reducers/studentSideBarReducer";
 import dataProvider from "./dataProvider";
 import courses from "./screens/courses";
+import customRoutes from "./config/customRoutes";
 
 function themeSwitch(theme) {
   console.log(theme);
@@ -55,6 +56,7 @@ const App = () => {
             dashboard={Dashboard}
             theme={theme}
             customReducers={{ studentSidebarOpen: studentSideBarReducer }}
+            customRoutes={customRoutes}
           >
             <Resource name="students" {...students} />
             <Resource name="courses" {...courses} />

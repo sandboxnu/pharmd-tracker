@@ -16,13 +16,12 @@ import styled from "styled-components/macro";
 import tw from "tailwind.macro";
 import AvatarField from "../../components/Fields/AvatarField";
 import CourseListField from "../../components/Fields/CourseListField";
-
 const StudentQuickView = props => {
   const controllerProps = useEditController(props);
   if (!controllerProps.record) {
     return null;
   }
-
+  console.log("CONTROLLER", controllerProps);
   return (
     <Edit title={"QickView"} {...props}>
       <SimpleForm

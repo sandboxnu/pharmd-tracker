@@ -12,6 +12,10 @@ import FilterIcon from "../../assets/icons/filter.svg";
 import PersonIcon from "../../assets/icons/person.svg";
 import Icon from "../../components/Basic/Icon";
 import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
+import { Route, MemoryRouter } from "react-router";
+import { Link as RouterLink } from "react-router-dom";
+
+// const LinkRouter = props => <Link {...props} component={RouterLink} />;
 
 const Drawer = styled(DrawerMaterial)`
 
@@ -49,6 +53,7 @@ const StudentDrawer = ({ isOpenMatch, selected, handleClose, handleOpen, ...prop
       <div>
         <button onClick={handleClose}>close</button>
         <StudentQuickView id={selected} onCancel={handleClose} {...props} />
+        <RouterLink to={`/students/${props.id}/details`}>Student Details</RouterLink>
       </div>
     ) : (
       <div>{"No Student selected"}</div>
