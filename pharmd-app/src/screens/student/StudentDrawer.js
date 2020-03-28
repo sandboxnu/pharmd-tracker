@@ -14,7 +14,8 @@ import Icon from "../../components/Basic/Icon";
 import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
 import { Route, MemoryRouter } from "react-router";
 import { Link as RouterLink } from "react-router-dom";
-
+import { useListController } from "react-admin";
+import StudentDrawerFilter from "./StudentDrawerFilter";
 // const LinkRouter = props => <Link {...props} component={RouterLink} />;
 
 const Drawer = styled(DrawerMaterial)`
@@ -44,8 +45,6 @@ transition: ${props =>
 const StudentDrawer = ({ isOpenMatch, selected, handleClose, handleOpen, ...props }) => {
   const isOpen = useSelector(state => state.studentSidebarOpen);
   const isDrawerOpen = isOpen || isOpenMatch;
-
-  console.log(isOpen);
 
   //Avoid route errors
   const quickview = () => {
@@ -80,7 +79,7 @@ const StudentDrawer = ({ isOpenMatch, selected, handleClose, handleOpen, ...prop
             sidebarIsOpen={isDrawerOpen}
           />
         }
-        DetailChild={<p>TODO FILTER</p>}
+        DetailChild={<StudentDrawerFilter {...useListController(props)} />}
         expand={false}
       />
       <ExpansionPanel

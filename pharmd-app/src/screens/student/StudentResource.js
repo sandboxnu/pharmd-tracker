@@ -9,7 +9,6 @@ import StudentContentGrid from "./StudentContentGrid";
 import StudenttDrawer from "./StudentDrawer";
 import { useDispatch, useSelector } from "react-redux";
 import { setStudentSideBar } from "../../redux/actions";
-import { SharedFilterProvider } from "./FilterContext";
 import { useListController, getListControllerProps } from "ra-core";
 
 const MainContent = styled.div`

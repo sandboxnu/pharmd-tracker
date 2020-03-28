@@ -5,16 +5,15 @@
 
 import React from "react";
 
-import { List as ListRA } from "react-admin";
+import { List as ListRA, useListController } from "react-admin";
 import StudentList from "./StudentList";
 import styled from "styled-components/macro";
 import tw from "tailwind.macro";
 import Paper from "@material-ui/core/Paper";
 import Grid from "@material-ui/core/Grid";
 import { useSelector } from "react-redux";
-import { StudentFilterSetUp } from "./StudentFilter";
-import { SharedFilterProvider } from "./FilterContext";
-
+import { StudentFilter } from "./StudentToolbarFilter";
+import { useFilterState, useListParams } from "ra-core";
 // import Grow from "@material-ui/core/Grow";
 
 const paperStyle = {
@@ -40,23 +39,52 @@ const MainGrid = styled(Grid)`
 `;
 
 const StudentContentGrid = ({ selected, ...props }) => {
+  console.log("PRPS MAIN GRID", props);
+  // console.log("LIST", useListController(props));
   const isOpen = useSelector(state => state.studentSidebarOpen);
   console.log("GRID", props);
   return (
     <MainGrid container spacing={6}>
       <Grid container item xs={12} spacing={6}>
-        <Grid item xs={12} md={isOpen ? 4 : 3}>
+        <Grid
+          item
+          xs={12}
+          md={isOpen ? 4 : 3}
+          style={{
+            transition: "all cubic-bezier(0.4, 0, 0.6, 1) 0.195s"
+          }}
+        >
           <Paper style={paperStyle}>{/* <Chart /> */}</Paper>
         </Grid>
-        <Grid item xs={12} md={isOpen ? 4 : 3}>
+        <Grid
+          item
+          xs={12}
+          md={isOpen ? 4 : 3}
+          style={{
+            transition: "all cubic-bezier(0.4, 0, 0.6, 1) 0.195s"
+          }}
+        >
           <Paper style={paperStyle}></Paper>
         </Grid>
-        <Grid item xs={12} md={isOpen ? 4 : 3}>
+        <Grid
+          item
+          xs={12}
+          md={isOpen ? 4 : 3}
+          style={{
+            transition: "all cubic-bezier(0.4, 0, 0.6, 1) 0.195s"
+          }}
+        >
           <Paper style={paperStyle}></Paper>
         </Grid>
       </Grid>
       <Grid item xs={12}>
-        <List bulkActionButtons={false} {...props} classes={{ content: "content" }}>
+        <List
+          filters={<StudentFilter />}
+          // filter={{ gpa_gte: 2, gpa_lte: 3 }}
+          bulkActionButtons={false}
+          {...props}
+          classes={{ content: "content" }}
+        >
           <StudentList selectedRow={selected} />
         </List>
       </Grid>
