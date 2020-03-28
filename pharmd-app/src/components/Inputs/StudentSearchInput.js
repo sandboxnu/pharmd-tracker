@@ -10,10 +10,6 @@ const SearchBox = styled(SearchInput)`
   input {
     ${tw`bg-background fontStyle-6`}
   }
-
-  root:focus {
-    ${tw`bg-primary`}
-  }
 `;
 
 const StudentSearchInput = props => {
