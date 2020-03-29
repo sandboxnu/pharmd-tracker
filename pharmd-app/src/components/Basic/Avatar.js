@@ -1,11 +1,15 @@
-import React, { useRef } from "react";
+import React from "react";
 import AvatarMaterial from "@material-ui/core/Avatar";
-import styled, { css } from "styled-components/macro";
+import styled from "styled-components/macro";
 import tw from "tailwind.macro";
+// import { styled } from '@material-ui/core/styles';
 
 const AvatarStyled = styled(AvatarMaterial)`
-  width: 48px;
-  height: 48px;
+  ${tw`w-12 h-12`}
+
+  &.MuiAvatar-colorDefault {
+    ${tw``}
+  }
 `;
 
 const Avatar = ({ firstName, lastName, imgUrl }) => {

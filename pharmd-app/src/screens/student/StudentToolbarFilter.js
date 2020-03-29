@@ -16,7 +16,7 @@ export const StudentFilter = props => {
       delete props.filterValues["neu_id_like"];
       props.setFilters(props.filterValues);
     } else {
-      setFilter(isNaN(val) ? "name_like" : "neu_id_like", `^${val}`);
+      setFilter(isNaN(val) ? "name_like" : "neu_id_like", isNaN(val) ? val : `^${val}`);
     }
   };
 
