@@ -62,11 +62,11 @@ const CourseListField = ({ record = {}, source }) => {
         let i = index;
         const { data, loading, error } = useGetOne("courses", course.course_id);
         if (loading) {
-          return <p>loading</p>;
+          return <p key={index}>loading</p>;
         }
         if (error) {
           console.log("ERROR", error);
-          return <p>ERROR</p>;
+          return <p key={index}>ERROR</p>;
         }
         if (index === courses.length - 1) {
           return (

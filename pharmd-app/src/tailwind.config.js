@@ -19,14 +19,19 @@ module.exports = {
     },
     extend: {
       colors: {
-        primary: "var(--color-bg-primary)",
-        secondary: "#5c6ac4",
-        neutral: "#5c6ac4"
+        primary: "var(--color-primary)",
+        secondary: "var(--color-secondary)",
+        tertiary: "var(--color-tertiary)",
+        background: "var(--color-bg-primary)",
+        paper: "var(--color-bg-card)"
       },
       spacing: {
         "18": "4.5rem",
         "28": "7rem",
         "99": "24.75rem"
+      },
+      borderRadius: {
+        xl: "1rem"
       }
     }
   },
