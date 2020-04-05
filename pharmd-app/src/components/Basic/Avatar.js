@@ -4,14 +4,24 @@ import styled, { css } from "styled-components/macro";
 import tw from "tailwind.macro";
 
 const AvatarStyled = styled(AvatarMaterial)`
-  width: 48px;
-  height: 48px;
+  ${tw`w-12 h-12`}
+  &.MuiAvatar-colorDefault {
+    ${tw``}
+  }
 `;
+
+const PictureStyled = styled(AvatarMaterial)`
+  display: block;
+  height: 120px;
+  width: 120px;
+  margin-left: auto;
+  margin-right: auto;
+`
 
 const Avatar = ({ firstName, lastName, imgUrl }) => {
   if (imgUrl) {
     let fullName = firstName + " " + lastName;
-    return <AvatarStyled alt={fullName} src={imgUrl}></AvatarStyled>;
+    return <PictureStyled alt={fullName} src={imgUrl}/>;
   } else if (firstName) {
     let initials = firstName.charAt(0) + `${lastName ? lastName.charAt(0) : ""}`;
     return <AvatarStyled>{initials}</AvatarStyled>;
