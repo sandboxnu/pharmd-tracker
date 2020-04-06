@@ -24,7 +24,6 @@ const DeatilsButton = styled.button`
     border: none;
     background-color: #4573EE;
     margin: 20px 65px 10px 65px;
-    // padding: 15px 50px;
     padding: 13px 15px;
     border-radius: 8px;
     font-size: 1.3em;

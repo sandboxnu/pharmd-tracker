@@ -91,18 +91,4 @@ const CourseListField = ({ record = {}, source }) => {
   );
 };
 
-// {index === (courses.length-1) ?
-//     <Info>
-//       <Circle/>
-//       <Name>{data.name}</Name>
-//       <Grade>{course.grade}</Grade>
-//     </Info>
-//     :
-//     <InfoUnderlined>
-//       <Circle/>
-//       <Name>{data.name}</Name>
-//       <Grade>{course.grade}</Grade>
-//     </InfoUnderlined>
-// }
-
 export default CourseListField;

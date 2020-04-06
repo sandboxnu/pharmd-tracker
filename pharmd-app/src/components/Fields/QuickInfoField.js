@@ -27,7 +27,7 @@ const QuickInfoField = ({record = {}, source}) => {
         <Info>
             <QuickInfo info={data.gpa} label="GPA" />
             <QuickInfo info={data.cohort.current} label="Cohort" />
-            <QuickInfo info={data.test_avg} label="Test Avg" />
+            <QuickInfo info={data.test_avg + '%'} label="Test Avg" />
         </Info>
     );
 };
