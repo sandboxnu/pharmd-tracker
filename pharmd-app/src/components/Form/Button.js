@@ -1,13 +1,13 @@
 import React from "react";
-import styled from "styled-components/dist/styled-components-macro.esm";
+import styled from "styled-components/macro";
 import tw from "tailwind.macro";
-import Pill from '../Fields/ChipField'
+import ChipField from '../Fields/ChipField'
 
-const Button = styled(Pill)`
+const Button = styled(ChipField)`
 `;
 
-const Field = styled.a`
-  ${tw`p-0`}
+const Field = styled.div`
+  ${tw`p-5`}
 `;
 
 const ButtonField = ({record = {}, source}) => {
