@@ -13,3 +13,7 @@
 .pharmd-button:active {
   background-color: #3f88a1;
 }
+
+.text-center {
+  text-align: center;
+}

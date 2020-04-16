@@ -4,6 +4,7 @@ import styled from "styled-components/macro";
 import tw from "tailwind.macro";
 
 import AppBar from "../../components/Nav/AppBar";
+import SpreadsheetUploader from "./components/SpreadsheetUploader";
 
 const MainContent = styled.div`
   ${tw`p-12 pt-2 `}
@@ -15,6 +16,7 @@ const UploadScreen = props => {
     <Fragment>
       <MainContent>
         <AppBar title="Upload" />
+        <SpreadsheetUploader />
       </MainContent>
     </Fragment>
   );

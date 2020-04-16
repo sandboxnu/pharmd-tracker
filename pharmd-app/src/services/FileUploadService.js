@@ -1,18 +1,21 @@
 import axios from "axios";
 import * as XLSX from "xlsx";
+import * as BackendRoutes from "../config/backendRoutes";
 
 class FileUploadService {
+  static apiPrefix = "assessments/";
+
   // Enum holding the types of data to import to database
   static gradeInputTypes = {
-    STUDENT_NAME: "Name",
-    EXAM: "Exam",
-    QUIZ: "Quiz",
-    HOMEWORK: "Homework",
-    ID: "ID",
+    UNUSED: "Unused",
+    STUDENT_NAME: "Student Name",
+    EXAM: "Exam Grade",
+    QUIZ: "Quiz Grade",
+    HOMEWORK: "Homework Grade",
+    ID: "Student ID",
     SIS_USER_ID: "SIS User ID",
     SIS_LOGIN_ID: "SIS Login ID",
-    SECTION: "Section",
-    UNUSED: "Unused"
+    SECTION: "Class Section",
   };
 
   /**
@@ -47,8 +50,10 @@ class FileUploadService {
     return result;
   }
 
-  static UploadSpreadsheet(data, config) {
-    return axios.post("http://localhost:8000/upload", data, config);
+  static UploadSpreadsheetData(data) {
+
+    const path = 'student-assessments/all/';
+    return axios.post(`${BackendRoutes.BACKEND_URL}${path}`, data);
   }
 }
 
