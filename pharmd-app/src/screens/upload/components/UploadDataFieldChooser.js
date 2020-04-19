@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
 import FileUploadService from "../../../services/FileUploadService";
+import Button from '../../../components/Form/Button';
 
 class UploadDataFieldChooser extends Component {
   static propTypes = {
@@ -108,6 +109,7 @@ class UploadDataFieldChooser extends Component {
   render() {
     return (
       <div>
+        <Button color="primary" variant="contained" style={{float: 'right'}} onClick={this.handleConfirm}>Confirm Data</Button>
         <table>
           <thead>
             <tr>
@@ -148,7 +150,6 @@ class UploadDataFieldChooser extends Component {
             })}
           </tbody>
         </table>
-        <button onClick={this.handleConfirm}>Confirm Data</button>
       </div>
     );
   }
