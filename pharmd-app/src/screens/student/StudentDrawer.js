@@ -14,8 +14,24 @@ import Icon from "../../components/Basic/Icon";
 import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
 import { Route, MemoryRouter } from "react-router";
 import { Link as RouterLink } from "react-router-dom";
-
+import { useListController } from "react-admin";
+import StudentDrawerFilter from "./StudentDrawerFilter";
 // const LinkRouter = props => <Link {...props} component={RouterLink} />;
+
+const DeatilsButton = styled.button`
+  cursor: pointer;
+  color: white;
+  border: none;
+  background-color: #4573ee;
+  margin: 20px 65px 10px 65px;
+  padding: 13px 15px;
+  border-radius: 8px;
+  font-size: 1.3em;
+`;
+
+const ButtonSpan = styled.span`
+  width: 100%;
+`;
 
 const Drawer = styled(DrawerMaterial)`
 
@@ -45,16 +61,17 @@ const StudentDrawer = ({ isOpenMatch, selected, handleClose, handleOpen, ...prop
   const isOpen = useSelector(state => state.studentSidebarOpen);
   const isDrawerOpen = isOpen || isOpenMatch;
 
-  console.log(isOpen);
-
   //Avoid route errors
   const quickview = () => {
     return isOpenMatch ? (
-      <div>
-        <button onClick={handleClose}>close</button>
+      <>
         <StudentQuickView id={selected} onCancel={handleClose} {...props} />
-        <RouterLink to={`/students/${props.id}/details`}>Student Details</RouterLink>
-      </div>
+        <ButtonSpan>
+          <RouterLink to={`/students/${props.id}/details`}>
+            <DeatilsButton>More Student Info</DeatilsButton>
+          </RouterLink>
+        </ButtonSpan>
+      </>
     ) : (
       <div>{"No Student selected"}</div>
     );
@@ -80,7 +97,7 @@ const StudentDrawer = ({ isOpenMatch, selected, handleClose, handleOpen, ...prop
             sidebarIsOpen={isDrawerOpen}
           />
         }
-        DetailChild={<p>TODO FILTER</p>}
+        DetailChild={<StudentDrawerFilter {...useListController(props)} />}
         expand={false}
       />
       <ExpansionPanel

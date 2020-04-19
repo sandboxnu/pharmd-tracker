@@ -11,7 +11,7 @@ const Pill = styled(Chip)`
    color: ${props => props.theme.palette.pillColors[props.label]};
    background-color: ${props =>
      props.theme.palette.pillColors[props.label].replace("1)", "0.3)")};
-			
+	
 `;
 
 const Field = styled.a`

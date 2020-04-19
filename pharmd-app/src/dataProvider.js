@@ -17,6 +17,7 @@ export default {
   getList: (resource, params) => {
     const { page, perPage } = params.pagination;
     const { field, order } = params.sort;
+    console.log("PARAMS", params);
     const query = {
       ...fetchUtils.flattenObject(params.filter),
       _sort: field,
