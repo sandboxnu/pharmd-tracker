@@ -15,7 +15,7 @@ function createLigthTheme(ds) {
         pillColors: {
           coop: ds.palette.primaryColor.color,
           enrolled: ds.palette.greenColor.color,
-          dropout: ds.palette.redColor.color,
+          dropback: ds.palette.redColor.color,
           leave: ds.palette.orangeColor.color,
           graduated: ds.palette.tertiaryColor.color,
           na: ds.palette.textSecondary.color
