@@ -3,6 +3,7 @@ import UploadFileChooser from "./UploadFileChooser";
 import UploadDataFieldChooser from "./UploadDataFieldChooser";
 import FileUploadService from "../../../services/FileUploadService";
 import StudentAssessmentService from '../../../services/StudentAssessmentService';
+import Button from '../../../components/Form/Button';
 
 class SpreadsheetUploader extends Component {
 
@@ -80,7 +81,7 @@ class SpreadsheetUploader extends Component {
             <div>
                 {!this.state.uploadedData &&
                 <UploadFileChooser uploadedFileData={this.uploadFile} />}
-                {this.state.uploadedData && <button onClick={this.removeFile}>Remove File</button>}
+                {this.state.uploadedData && <Button color="secondary" variant="contained" onClick={this.removeFile}>Remove File</Button>}
                 {this.state.uploadedData && <UploadDataFieldChooser
                     headers={this.state.uploadedDataHeaders}
                     subHeaders={this.state.uploadedDataSubheaders}
