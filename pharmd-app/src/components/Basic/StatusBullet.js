@@ -23,7 +23,7 @@ const useStyles = makeStyles(theme => ({
     width: theme.spacing(3)
   },
   neutral: {
-    backgroundColor: theme.palette.neutral
+    backgroundColor: theme.palette.neutral.main
   },
   primary: {
     backgroundColor: theme.palette.primary.main
@@ -36,6 +36,9 @@ const useStyles = makeStyles(theme => ({
   },
   danger: {
     backgroundColor: theme.palette.error.main
+  },
+  good: {
+    backgroundColor: theme.palette.good.main
   },
   success: {
     backgroundColor: theme.palette.success.main
@@ -64,7 +67,15 @@ const StatusBullet = props => {
 
 StatusBullet.propTypes = {
   className: PropTypes.string,
-  color: PropTypes.oneOf(["neutral", "primary", "info", "success", "warning", "danger"]),
+  color: PropTypes.oneOf([
+    "neutral",
+    "primary",
+    "info",
+    "good",
+    "success",
+    "warning",
+    "danger"
+  ]),
   size: PropTypes.oneOf(["sm", "md", "lg"])
 };
 

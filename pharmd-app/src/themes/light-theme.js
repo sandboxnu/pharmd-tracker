@@ -41,8 +41,14 @@ function createLigthTheme(ds) {
         info: {
           main: ds.palette.primaryColor.color
         },
+        good: {
+          main: ds.palette.yellowColor.color
+        },
         success: {
           main: ds.palette.greenColor.color
+        },
+        neutral: {
+          main: ds.palette.textSecondary.color
         },
         text: {
           primary: ds.palette.textPrimary.color,

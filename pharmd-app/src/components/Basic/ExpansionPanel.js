@@ -20,6 +20,10 @@ const ExpansionPanelSummary = styled(ExpansionPanelSummaryMaterial)`
   }
 `;
 
+const ExpansionPanelDetails = styled(ExpansionPanelDetailsMaterial)`
+  ${tw`flex-col py-0`}
+`;
+
 const ExpansionPanel = ({ SummaryChild, DetailChild, expand }) => {
   return (
     <ExpansionPanelC
@@ -29,7 +33,7 @@ const ExpansionPanel = ({ SummaryChild, DetailChild, expand }) => {
       elevation={0}
     >
       <ExpansionPanelSummary>{SummaryChild}</ExpansionPanelSummary>
-      <ExpansionPanelDetailsMaterial>{DetailChild}</ExpansionPanelDetailsMaterial>
+      <ExpansionPanelDetails>{DetailChild}</ExpansionPanelDetails>
     </ExpansionPanelC>
   );
 };

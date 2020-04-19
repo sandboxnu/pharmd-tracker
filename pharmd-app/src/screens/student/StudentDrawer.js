@@ -49,11 +49,10 @@ const StudentDrawer = ({ isOpenMatch, selected, handleClose, handleOpen, ...prop
   //Avoid route errors
   const quickview = () => {
     return isOpenMatch ? (
-      <div>
-        <button onClick={handleClose}>close</button>
+      <>
         <StudentQuickView id={selected} onCancel={handleClose} {...props} />
         <RouterLink to={`/students/${props.id}/details`}>Student Details</RouterLink>
-      </div>
+      </>
     ) : (
       <div>{"No Student selected"}</div>
     );
