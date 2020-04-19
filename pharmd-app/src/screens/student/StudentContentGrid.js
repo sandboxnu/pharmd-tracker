@@ -1,6 +1,6 @@
 /**
  *
- * This component determines the main layout of the Student Screen
+ * This component determines the main layout of the StudentDetails Screen
  */
 
 import React from "react";

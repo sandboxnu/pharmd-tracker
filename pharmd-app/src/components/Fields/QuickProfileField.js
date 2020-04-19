@@ -5,6 +5,7 @@ import styled from "styled-components/macro";
 import tw from "tailwind.macro";
 import AvatarField from "./AvatarField";
 import ChipField from "./ChipField";
+import QuickChipField from "./QuickChipField";
 
 const Profile = styled.section`
     display: block;
@@ -30,12 +31,8 @@ const StatusField = styled.span`
     ${tw` w-28 `}
     display: block;
     margin-right: auto;
-    margin-bottom: 30px;
+    margin-bottom: 15px;
 `;
-
-const ChipSmaller = styled(ChipField)`
-  ${tw` w-16 `}
-`
 
 const PictureField = styled(AvatarField)`
     display: block;
@@ -53,7 +50,7 @@ const QuickProfileField = ({record = {}, source}) => {
     }
     return (
         <Profile>
-            <StatusField><ChipSmaller record={data} source="status" /></StatusField>
+            <StatusField><QuickChipField record={data} source="status" /></StatusField>
             <PictureField record={data} source="avatar" />
             <NameField record={data} source="name" />
             <IdField record={data} source="neu_id" label="Northeastern ID" />

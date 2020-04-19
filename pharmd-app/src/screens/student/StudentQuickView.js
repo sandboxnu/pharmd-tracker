@@ -19,6 +19,7 @@ import ScoredListField from "../../components/Fields/ScoredListField/ScoredListF
 import CourseListField from "../../components/Fields/CourseListField";
 import QuickProfileField from "../../components/Fields/QuickProfileField";
 import QuickInfoField from "../../components/Fields/QuickInfoField";
+import NoteListField from "../../components/Fields/NoteListField";
 
 const SimpleShowLayout = styled(SimpleShowLayoutRA)`
   &.MuiCard-root {
@@ -42,11 +43,9 @@ const StudentQuickView = props => {
       >
         <QuickProfileField source="id" />
         <QuickInfoField source="id" />
-        <CourseListField source="courses" />
-        <TextField source="notes" />
-        <CourseListField source="courses" />
+        <CourseListField source="active_courses" />
+        <NoteListField source="courses" />
         {/* <ScoredListField source="active_courses" /> */}
-        <TextField source="status" />
       </SimpleShowLayout>
     </Show>
   );

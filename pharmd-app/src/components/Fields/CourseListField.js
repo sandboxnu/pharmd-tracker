@@ -4,9 +4,11 @@ import tw from "tailwind.macro";
 import InfoIcon from "../Basic/IconInfo";
 import ErrorIcon from "../../assets/icons/errorFilled.svg";
 import { List, Datagrid, SimpleList, TextField, useGetOne } from "react-admin";
+import CourseField from "./CourseField";
 
 const Label = styled.h1`
   ${tw`fontStyle-6 font-medium inline-flex`}
+  font-size: 1.3em;
   color: black;
   font-weight: bold;
 `;
@@ -18,37 +20,6 @@ const Sublabel = styled.h2`
   padding-left: .4em;
 `;
 
-const Info = styled.div`
-  ${tw`fontStyle-6 text-gray-700 font-medium inline-flex`}
-  width: 100%;
-  margin-top: 10px;
-  padding-bottom: 10px;
-  border-bottom: 1px solid #DCDCDC;
-  
-  ${props => props.primary && css`
-    border-bottom: 0px;
-  `}
-`;
-
-const Name = styled.div`
-  position: relative;
-`;
-
-const Grade = styled.div`
-  font-weight: bold;
-  position: relative;
-  margin-left: auto;
-`;
-
-const Circle = styled.span`
-  margin-top: auto;
-  margin-bottom: auto;
-  margin-right: 15px;
-  height: 15px;
-  width: 15px;
-  background-color: red;
-  border-radius: 50%;
-`;
 const CourseListField = ({ record = {}, source }) => {
   let courses = record[source];
 
@@ -70,20 +41,12 @@ const CourseListField = ({ record = {}, source }) => {
         }
         if (index === courses.length - 1) {
           return (
-              <Info primary>
-                <Circle/>
-                <Name>{data.name}</Name>
-                <Grade>{course.grade}</Grade>
-              </Info>
+                <CourseField name={data.name} grade={course.grade} isLine="primary" />
           );
         }
         else {
           return (
-              <Info>
-                <Circle/>
-                <Name>{data.name}</Name>
-                <Grade>{course.grade}</Grade>
-              </Info>
+                <CourseField name={data.name} grade={course.grade} isLine="" />
           );
         }
       })}
