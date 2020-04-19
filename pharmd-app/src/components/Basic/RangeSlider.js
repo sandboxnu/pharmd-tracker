@@ -30,6 +30,7 @@ const RangeSlider = props => {
 
   return (
     <div className={classes.root}>
+      <h4>{`GPA Range: ${value[0]} - ${value[1]}`}</h4>
       <Slider
         value={value}
         onChange={handleChange}
