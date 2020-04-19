@@ -5,8 +5,8 @@ import GeneralService from "./GeneralService";
 
 // This should be kept up-to-date as new service files are added
 export default {
-    CourseService,
-    FileUploadService,
-    StudentsService,
-    GeneralService
-}
+  CourseService,
+  FileUploadService,
+  StudentsService,
+  GeneralService
+};
