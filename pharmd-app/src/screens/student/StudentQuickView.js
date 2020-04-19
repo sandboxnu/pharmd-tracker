@@ -14,10 +14,10 @@ import {
 
 import styled from "styled-components/macro";
 import tw from "tailwind.macro";
-import AvatarField from "../../components/Fields/AvatarField";
 import CourseListField from "../../components/Fields/CourseListField";
 import QuickProfileField from "../../components/Fields/QuickProfileField";
 import QuickInfoField from "../../components/Fields/QuickInfoField";
+import NoteListField from "../../components/Fields/NoteListField";
 
 const StudentQuickView = props => {
   const controllerProps = useEditController(props);
@@ -35,8 +35,8 @@ const StudentQuickView = props => {
       >
         <QuickProfileField source="id" />
         <QuickInfoField source="id" />
-        <CourseListField source="courses" />
-        <TextField source="notes" />
+        <CourseListField source="active_courses" />
+        <NoteListField source="courses" />
       </SimpleForm>
     </Edit>
   );
