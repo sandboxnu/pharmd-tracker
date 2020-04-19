@@ -23,7 +23,9 @@ const useSidebarStyles = makeStyles({
     height: "100%",
     width: "96px",
     marginTop: "0px",
-    position: "fixed"
+    position: "fixed",
+    boxShadow:
+      "rgba(0, 0, 0, 0.05) 0px 1px 2px, rgba(0, 0, 0, 0.07) 0px 2px 13px, rgba(0, 0, 0, 0.03) 0px 3px 10px"
   }
 });
 
@@ -45,7 +47,7 @@ const useLayoutStyles = makeStyles({
 
 const MySidebar = props => {
   const classes = useSidebarStyles();
-  return <Sidebar style={{ width: "96px" }} classes={classes} {...props} />;
+  return <Sidebar style={{ width: "96px", zIndex: "99999" }} classes={classes} {...props} />;
 };
 
 const DashboardLayout = props => {

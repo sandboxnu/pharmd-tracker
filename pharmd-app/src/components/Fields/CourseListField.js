@@ -1,12 +1,23 @@
 import React from "react";
-import styled from "styled-components/macro";
+import styled, { css } from "styled-components/macro";
 import tw from "tailwind.macro";
 import InfoIcon from "../Basic/IconInfo";
 import ErrorIcon from "../../assets/icons/errorFilled.svg";
 import { List, Datagrid, SimpleList, TextField, useGetOne } from "react-admin";
+import CourseField from "./CourseField";
 
-const Field = styled.div`
-  ${tw`fontStyle-6 text-gray-700 font-medium inline-flex`}
+const Label = styled.h1`
+  ${tw`fontStyle-6 font-medium inline-flex`}
+  font-size: 1.3em;
+  color: black;
+  font-weight: bold;
+`;
+
+const Sublabel = styled.h2`
+  ${tw`fontStyle-6 text-sm inline-flex`}
+  color: rgba(192, 192, 192, 100);
+  font-weight: bold;
+  padding-left: .4em;
 `;
 
 const CourseListField = ({ record = {}, source }) => {
@@ -14,22 +25,30 @@ const CourseListField = ({ record = {}, source }) => {
 
   return (
     <div>
+      <div>
+        <Label>Courses</Label>
+        <Sublabel>Spring 2020</Sublabel>
+      </div>
       {courses.map((course, index) => {
+        let i = index;
         const { data, loading, error } = useGetOne("courses", course.course_id);
         if (loading) {
-          return <p>loading</p>;
+          return <p key={index}>loading</p>;
         }
         if (error) {
           console.log("ERROR", error);
-          return <p>ERROR</p>;
+          return <p key={index}>ERROR</p>;
         }
-        return (
-          <div>
-            <span>{data.name}</span>
-
-            <span>{course.grade}</span>
-          </div>
-        );
+        if (index === courses.length - 1) {
+          return (
+                <CourseField name={data.name} grade={course.grade} isLine="primary" />
+          );
+        }
+        else {
+          return (
+                <CourseField name={data.name} grade={course.grade} isLine="" />
+          );
+        }
       })}
     </div>
   );

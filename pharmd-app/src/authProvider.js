@@ -20,7 +20,7 @@ export default {
         localStorage.setItem("token", accessToken);
         localStorage.setItem(
           "permissions",
-          decodedToken.email === "joses@mail.com" ? "admin" : "user"
+          decodedToken.email === "kevin@mail.com" ? "admin" : "user"
         );
       });
   },
