@@ -18,6 +18,21 @@ import { useListController } from "react-admin";
 import StudentDrawerFilter from "./StudentDrawerFilter";
 // const LinkRouter = props => <Link {...props} component={RouterLink} />;
 
+const DeatilsButton = styled.button`
+  cursor: pointer;
+  color: white;
+  border: none;
+  background-color: #4573ee;
+  margin: 20px 65px 10px 65px;
+  padding: 13px 15px;
+  border-radius: 8px;
+  font-size: 1.3em;
+`;
+
+const ButtonSpan = styled.span`
+  width: 100%;
+`;
+
 const Drawer = styled(DrawerMaterial)`
 
 transition: ${props =>
@@ -51,7 +66,11 @@ const StudentDrawer = ({ isOpenMatch, selected, handleClose, handleOpen, ...prop
     return isOpenMatch ? (
       <>
         <StudentQuickView id={selected} onCancel={handleClose} {...props} />
-        <RouterLink to={`/students/${props.id}/details`}>Student Details</RouterLink>
+        <ButtonSpan>
+          <RouterLink to={`/students/${props.id}/details`}>
+            <DeatilsButton>More Student Info</DeatilsButton>
+          </RouterLink>
+        </ButtonSpan>
       </>
     ) : (
       <div>{"No Student selected"}</div>

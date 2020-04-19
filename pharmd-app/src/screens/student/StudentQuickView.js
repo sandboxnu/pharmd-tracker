@@ -16,6 +16,9 @@ import styled from "styled-components/macro";
 import tw from "tailwind.macro";
 import AvatarField from "../../components/Fields/AvatarField";
 import ScoredListField from "../../components/Fields/ScoredListField/ScoredListField";
+import CourseListField from "../../components/Fields/CourseListField";
+import QuickProfileField from "../../components/Fields/QuickProfileField";
+import QuickInfoField from "../../components/Fields/QuickInfoField";
 
 const SimpleShowLayout = styled(SimpleShowLayoutRA)`
   &.MuiCard-root {
@@ -37,10 +40,12 @@ const StudentQuickView = props => {
         resource="students"
         redirect="list"
       >
-        <AvatarField source="avatar" />
-        <TextField source="name" />
-        <TextField source="neu_id" label="Northeastern ID" />
-        <ScoredListField source="active_courses" />
+        <QuickProfileField source="id" />
+        <QuickInfoField source="id" />
+        <CourseListField source="courses" />
+        <TextField source="notes" />
+        <CourseListField source="courses" />
+        {/* <ScoredListField source="active_courses" /> */}
         <TextField source="status" />
       </SimpleShowLayout>
     </Show>
