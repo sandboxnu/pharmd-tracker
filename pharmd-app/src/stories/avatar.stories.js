@@ -2,11 +2,12 @@ import React from "react";
 import { withKnobs, select, text } from "@storybook/addon-knobs";
 import Avatar from "../components/Basic/Avatar";
 import imgProfile from "../assets/images/mountains.jpg";
+import { withDesign } from "storybook-addon-designs";
 
 export default {
   title: "Avatar",
   component: Avatar,
-  decorators: [withKnobs]
+  decorators: [withKnobs, withDesign]
 };
 
 const groupId = "GROUP-ID2";
@@ -23,5 +24,15 @@ export const Default = () => (
     lastName={text(lastName, defaultLastName, groupId)}
   />
 );
+
+Default.story = {
+  parameters: {
+    design: {
+      type: "figma",
+      url:
+        "https://www.figma.com/file/QBWcVYJkF6K8o7WErRPsxd/Student-List-Mockups?node-id=15%3A39"
+    }
+  }
+};
 
 export const Image = () => <Avatar alt={"Jose Saravia"} imgUrl={imgProfile} />;
