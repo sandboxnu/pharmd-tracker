@@ -2,7 +2,11 @@ import React, { Component } from "react";
 import "../../../styles/globalStyles.css";
 import FileUploadService from "../../../services/FileUploadService";
 import Button from '../../../components/Form/Button';
+import FileSelector from '../../../components/Form/FileSelector';
 
+/**
+ * @class UploadFileChooser a component for choosing a file to upload
+ */
 class UploadFileChooser extends Component {
   static defaultProps = {
     uploadedFileData() {}
@@ -41,11 +45,10 @@ class UploadFileChooser extends Component {
   render() {
     return (
       <div>
-        <input
-          type="file"
-
+        <FileSelector
           accept=".xls, .xlsx, .csv"
           onChange={this.chooseFileHandler}
+          color="secondary"
         />
         <br />
 

@@ -1,7 +1,7 @@
 import TestIcon from "../../assets/icons/test.svg";
-import CourseResource from "./CourseResource";
+import CourseScreen from "./CourseResource";
 
 export default {
-  list: CourseResource,
+  list: CourseScreen,
   icon: TestIcon
 };

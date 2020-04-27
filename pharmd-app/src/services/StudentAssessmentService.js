@@ -1,6 +1,10 @@
 import * as BackendRoutes from "../config/backendRoutes"
 import axios from "axios";
 
+/**
+ * @typedef { import('../typeDefs.js').BasicStudentAssessment} BasicStudentAssessment
+ */
+
 class StudentAssessmentService {
     static apiPrefix = 'student-assessments/';
 
@@ -13,11 +17,22 @@ class StudentAssessmentService {
 
     // POST Methods
 
+    /**
+     * Adds a new student assessment to the backend
+     * @param studentID {string}
+     * @param assessment {}
+     * @returns {Promise<AxiosResponse<T>>}
+     */
     static addNewStudentAssessment = (studentID, assessment) => {
         const path = this.apiPrefix + studentID;
-        return axios.post(`${BackendRoutes.BACKEND_URL}${path}`)
+        return axios.post(`${BackendRoutes.BACKEND_URL}${path}`, assessment)
     };
 
+    /**
+     * Given a string that contains a course term, finds it
+     * @param courseName {string}
+     * @returns {string}
+     */
     static findCourseNameTerm = (courseName) => {
         const words = courseName.split(' ');
         let wordIndex = -1;
@@ -40,15 +55,8 @@ class StudentAssessmentService {
 
     /**
      * Makes call to backend to upload these assessments to the DB
-     * @param data array of shape:<br/>
-     *     [{
-     *         NUID: number;
-     *         courseName: string (ex "PHMD5900 36657 Self-Care/Nonprescription Meds SEC 01 Spring 2020 [BOS-2-TR]" )
-     *         examName: string
-     *         percentage: 10
-     *         studentName: string (Last, First)
-     *     }...]
-     * }]
+     * @param assessments {Array<BasicStudentAssessment>}
+     * @param gradeTotals Array
      */
     static addManyStudentAssessments = (assessments, gradeTotals) => {
         const path = this.apiPrefix + 'many/';
@@ -68,7 +76,7 @@ class StudentAssessmentService {
         });
         console.log("Sending exams...");
         const url = `${BackendRoutes.BACKEND_URL}${path}`;
-        console.log(url)
+        console.log(url);
         return axios.post(url, formattedExams)
     };
 }

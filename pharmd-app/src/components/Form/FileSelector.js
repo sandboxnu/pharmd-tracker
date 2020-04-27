@@ -1,17 +1,43 @@
 import React from "react";
-import styled from "styled-components/macro";
-import tw from "tailwind.macro";
+import Button from './Button';
 
-const Field = styled.div`
-${tw`p-0`}
-`;
+class Selector extends React.Component {
+    static defaultProps = {
+        onChange() {}
+    };
 
-const FileSelect = styled.input``;
+    constructor(props) {
+        super(props);
+        this.state = {
+            fileName: 'Upload File'
+        };
+        this.onChooseFile = this.onChooseFile.bind(this);
+    }
 
-const FileSelectorField = ({record = {}, source}) => {
-    return (
-        <Field>
-            <FileSelect/>
-        </Field>
-    )
-};
+    onChooseFile(event) {
+        this.setState({
+            fileName: event.target.files[0].name
+        });
+        this.props.onChange(event)
+    }
+
+    render() {
+        return <Button
+            variant="outlined"
+            color="primary"
+            component="label"
+            {...this.props}
+        >
+            {this.state.fileName}
+            <input
+                type="file"
+                style={{ display: "none" }}
+                onChange={this.onChooseFile}
+                accept={this.props.accept}
+            />
+        </Button>;
+    }
+
+}
+
+export default Selector;

@@ -1,9 +1,14 @@
 import React, {Component} from 'react';
 import UploadFileChooser from "./UploadFileChooser";
 import UploadDataFieldChooser from "./UploadDataFieldChooser";
-import FileUploadService from "../../../services/FileUploadService";
 import StudentAssessmentService from '../../../services/StudentAssessmentService';
 import Button from '../../../components/Form/Button';
+import RadioGroup from '@material-ui/core/RadioGroup';
+import Radio from '@material-ui/core/Radio';
+
+/**
+ * @typedef { import('../../../typeDefs.js').BasicStudentAssessment} BasicStudentAssessment
+ */
 
 class SpreadsheetUploader extends Component {
 
@@ -42,23 +47,15 @@ class SpreadsheetUploader extends Component {
     }
 
     /**
-     *
-     * @param data object of shape:
-     * {
-     *     exams: [{
-     *         NUID: number;
-     *         courseName: string;
-     *         examName: string;
-     *         percentage: number;
-     *         studentName: string
-     *     }],
-     *
-     * }
+     * Tries to upload the given data to the backend
+     * @param data {{
+     *     exams: Array<BasicStudentAssessment>
+     * }}
      */
     confirmData(data) {
         console.log(data);
         const promises = [];
-        promises.push(StudentAssessmentService.addManyStudentAssessments(data.exams));
+        promises.push(StudentAssessmentService.addManyStudentAssessments(data.exams, []));
         Promise.all(promises)
             .then(res => {
                 this.setState({
@@ -82,6 +79,13 @@ class SpreadsheetUploader extends Component {
                 {!this.state.uploadedData &&
                 <UploadFileChooser uploadedFileData={this.uploadFile} />}
                 {this.state.uploadedData && <Button color="secondary" variant="contained" onClick={this.removeFile}>Remove File</Button>}
+                {/*{*/}
+                {/*    this.state.uploadedData &&*/}
+                {/*    <RadioGroup aria-label="Upload Type" name="uploadType" value={this.state.uploadType} onChange={changeUploadType}>*/}
+
+                {/*    </RadioGroup>*/}
+
+                {/*    }*/}
                 {this.state.uploadedData && <UploadDataFieldChooser
                     headers={this.state.uploadedDataHeaders}
                     subHeaders={this.state.uploadedDataSubheaders}

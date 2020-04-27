@@ -2,17 +2,23 @@ import axios from "axios";
 import * as XLSX from "xlsx";
 import * as BackendRoutes from "../config/backendRoutes";
 
+/**
+ * @typedef { import('../typeDefs.js').BasicStudentAssessment} BasicStudentAssessment
+ */
+
 class FileUploadService {
   static apiPrefix = "assessments/";
 
   // Enum holding the types of data to import to database
   static gradeInputTypes = {
     UNUSED: "Unused",
-    STUDENT_NAME: "Student Name",
+    STUDENT_NAME: "Student Name (Full)",
+    STUDENT_LAST_NAME: "Student Last Name",
+    STUDENT_FIRST_NAME:" Student First Name",
     EXAM: "Exam Grade",
     QUIZ: "Quiz Grade",
     HOMEWORK: "Homework Grade",
-    ID: "Student ID",
+    STUDENT_ID: "Student ID",
     SIS_USER_ID: "SIS User ID",
     SIS_LOGIN_ID: "SIS Login ID",
     SECTION: "Class Section",
@@ -28,6 +34,11 @@ class FileUploadService {
 
   static parseInitialLoadData(sheetData) {}
 
+  /**
+   * Loads and begins parsing a spreadsheet
+   * @param data the data representing the spreadsheet
+   * @returns {Promise<unknown>}
+   */
   static async loadSpreadsheet(data) {
     const reader = new FileReader();
     let result = new Promise((resolve, reject) => {
@@ -50,9 +61,13 @@ class FileUploadService {
     return result;
   }
 
-  static UploadSpreadsheetData(data) {
-
-    const path = 'student-assessments/all/';
+  /**
+   * Uploads student assessment data to the DB
+   * @param data {Array<BasicStudentAssessment>}
+   * @returns {Promise<AxiosResponse<T>>}
+   */
+  static UploadStudentAssessmentData(data) {
+    const path = 'student-assessments/many/';
     return axios.post(`${BackendRoutes.BACKEND_URL}${path}`, data);
   }
 }

@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
 import FileUploadService from "../../../services/FileUploadService";
-import Button from '../../../components/Form/Button';
+import { Select, Button } from '../../../components/Form'
 
 class UploadDataFieldChooser extends Component {
   static propTypes = {
@@ -20,9 +20,7 @@ class UploadDataFieldChooser extends Component {
 
   constructor(props) {
     super(props);
-    this.state = {
-      fieldTypes: new Map()
-    };
+    this.fieldTypes = new Map();
     this.handleChange = this.handleChange.bind(this);
     this.handleConfirm = this.handleConfirm.bind(this);
   }
@@ -44,13 +42,13 @@ class UploadDataFieldChooser extends Component {
   //   return stateMap;
   // }
 
-  handleChange(event) {
-    const [field, type] = (event.target.value.split(','));
-    this.setState((prevState, props) => ({
-      fieldTypes: prevState.fieldTypes.set(field, type)
-      })
-    );
-
+  /**
+   * Handles the selecting of an element from a dropdown menu
+   * @param value {Array}
+   */
+  handleChange(value) {
+    const [field, type] = value;
+    this.fieldTypes.set(field, type);
   }
 
   handleConfirm() {
@@ -59,9 +57,9 @@ class UploadDataFieldChooser extends Component {
       exams: []
     };
     let IDField, courseNameField, studentNameField;
-    for (const entry of this.state.fieldTypes.entries()) {
+    for (const entry of this.fieldTypes.entries()) {
       const [field, type] = entry;
-      if (FileUploadService.gradeInputTypes[type] === FileUploadService.gradeInputTypes.ID) {
+      if (FileUploadService.gradeInputTypes[type] === FileUploadService.gradeInputTypes.STUDENT_ID) {
         IDField = field;
       }
       if (FileUploadService.gradeInputTypes[type] === FileUploadService.gradeInputTypes.SECTION) {
@@ -71,7 +69,17 @@ class UploadDataFieldChooser extends Component {
         studentNameField = field;
       }
     }
-    for (const entry of this.state.fieldTypes.entries()) {
+
+    const missing = [];
+    !IDField && missing.push(FileUploadService.gradeInputTypes.STUDENT_ID);
+    !courseNameField && missing.push(FileUploadService.gradeInputTypes.SECTION);
+    !studentNameField && missing.push(FileUploadService.gradeInputTypes.STUDENT_NAME);
+    if (missing.length > 0) {
+      alert(`The following fields are required for upload:\n ${missing.join(',\n ')}`);
+      return;
+    }
+
+    for (const entry of this.fieldTypes.entries()) {
       const [field, type] = entry;
       if (FileUploadService.gradeInputTypes[type] === FileUploadService.gradeInputTypes.SECTION) {
         data.courseName = this.props.studentData[0][field]
@@ -89,41 +97,40 @@ class UploadDataFieldChooser extends Component {
 
       }
     }
+    if (data.exams.length === 0) {
+      alert("You must upload at least one exam's grades");
+      return;
+    }
     this.props.confirmData(data);
   }
 
-  /*
-  Structure of assessment object:
-  - Name
-  - Percentage
-  - CourseID
-  - StudentID
-
-  Structure of homework object
-  - Name
-  - Percentage
-  - CourseID
-  - StudentID
-   */
+  /**
+   * Gets the items for a select menu
+   * @param {string} header
+   * @return Array
+   **/
+  getSelectItems(header) {
+    return Object.keys(FileUploadService.gradeInputTypes).map(inputType => (
+        {
+          value: [header, inputType],
+          displayValue: FileUploadService.gradeInputTypes[inputType]
+        }
+    ))
+  }
 
   render() {
     return (
       <div>
-        <Button color="primary" variant="contained" style={{float: 'right'}} onClick={this.handleConfirm}>Confirm Data</Button>
+        <Button color="primary" variant="contained" style={{position: 'fixed', right: 10, top: '2rem'}} onClick={this.handleConfirm}>Confirm Data</Button>
         <table>
           <thead>
             <tr>
               {this.props.headers.map(header => (
                 <td>
-                  <select id={header} onChange={this.handleChange} key={header}>
-                    {Object.keys(FileUploadService.gradeInputTypes).map((inputType) => {
-                      return (
-                        <option value={[header, inputType]} key={header + inputType}>
-                          {FileUploadService.gradeInputTypes[inputType]}
-                        </option>
-                      );
-                    })}
-                  </select>
+                  <Select id={header} onChange={this.handleChange} key={header} title="Value Type"
+                               selectItems={
+                                 this.getSelectItems(header)
+                               } />
                 </td>
               ))}
             </tr>

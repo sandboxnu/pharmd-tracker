@@ -10,5 +10,6 @@ module.exports = {
       ...config,
       module: { ...config.module, rules: custom.module.rules }
     };
-  }
+  },
+  addons: ['@storybook/addon-actions/register']
 };
