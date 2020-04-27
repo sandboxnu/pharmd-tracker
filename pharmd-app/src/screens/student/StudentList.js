@@ -1,3 +1,15 @@
+/**
+* Description: 
+  This component contains a DataGrid that takes in field components for children. 
+  The componnet manages dispatching the data (resource) to each field and the source (data key). 
+* TODO:
+*       - Figure out if the headeerCell class can be moved to the TableRow component
+* Date: 04-27-2020
+*/
+
+//-------------------------- IMPORTS --------------------------
+
+// Style Imports
 import React from "react";
 import { Datagrid as DatagridRA } from "react-admin";
 import { useDispatch } from "react-redux";
@@ -8,6 +20,8 @@ import EmphasisField from "../../components/Fields/EmphasisField";
 import TextField from "../../components/Fields/TextField";
 import ChipField from "../../components/Fields/ChipField";
 import CohortField from "../../components/Fields/CohortField";
+
+import TableBody from "../../components/Table/TableBody";
 
 // Another option for styling
 // const Datagrid = styled(({ ...props }) => (
@@ -41,7 +55,8 @@ const StudentList = ({ selectedRow, ...props }) => {
   return (
     <Datagrid
       rowClick={studentRowClick}
-      classes={{ headerCell: "headerCell", row: "rowCell" }}
+      body={<TableBody />}
+      classes={{ headerCell: "headerCell" }}
       {...props}
     >
       <EmphasisField source="neu_id" label="NEU ID" />

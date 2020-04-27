@@ -1,95 +1,80 @@
 /**
- *
+ * Description:
  * This component determines the main layout of the StudentDetails Screen
+ * TODO:
+ *      - Add detail cards
+ * Date: 04-23-2020
  */
 
-import React from "react";
+//-------------------------- IMPORTS --------------------------
 
-import { List as ListRA, useListController } from "react-admin";
+// Function Imports
+import React from "react";
+import { useSelector } from "react-redux";
+import PropTypes from "prop-types";
+
+// Component Imports
+import { List as RaList } from "react-admin";
 import StudentList from "./StudentList";
+import MuiPaper from "@material-ui/core/Paper";
+import MuiGrid from "@material-ui/core/Grid";
+import { StudentFilter } from "./StudentToolbarFilter";
+
+// Style Imports
 import styled from "styled-components/macro";
 import tw from "tailwind.macro";
-import Paper from "@material-ui/core/Paper";
-import Grid from "@material-ui/core/Grid";
-import { useSelector } from "react-redux";
-import { StudentFilter } from "./StudentToolbarFilter";
-import { useFilterState, useListParams } from "ra-core";
-// import Grow from "@material-ui/core/Grow";
+import GridCard from "../../components/Basic/GridCard";
 
-const paperStyle = {
-  height: "252px",
-  borderRadius: "16px",
-  boxShadow:
-    "0px 1px 2px rgba(0,0,0,0.05), 0px 2px 13px rgba(0,0,0,0.07), 0px 3px 10px rgba(0,0,0,0.03)"
-};
+//-------------------------- STYLE --------------------------
 
-const List = styled(ListRA)`
-  ${tw`p-4 bg-white`}
-  border-radius: 16px;
-  box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.05), 0px 2px 13px rgba(0, 0, 0, 0.07),
-    0px 3px 10px rgba(0, 0, 0, 0.03);
+const Paper = styled(MuiPaper)`
+  ${tw`rounded-xl h-64 shadow-cardLight`}
+`;
+
+const List = styled(RaList)`
+  ${tw`p-6 rounded-xl bg-white shadow-cardLight`}
 
   .content {
     ${tw`shadow-none`}
   }
 `;
 
-const MainGrid = styled(Grid)`
+const MainGrid = styled(MuiGrid)`
   ${tw`pt-12 `}
 `;
 
+//-------------------------- COMPONENT --------------------------
+
 const StudentContentGrid = ({ selected, ...props }) => {
-  console.log("PRPS MAIN GRID", props);
-  // console.log("LIST", useListController(props));
   const isOpen = useSelector(state => state.studentSidebarOpen);
-  console.log("GRID", props);
+
   return (
     <MainGrid container spacing={6}>
-      <Grid container item xs={12} spacing={6}>
-        <Grid
-          item
-          xs={12}
-          md={isOpen ? 4 : 3}
-          style={{
-            transition: "all cubic-bezier(0.4, 0, 0.6, 1) 0.195s"
-          }}
-        >
-          <Paper style={paperStyle}>{/* <Chart /> */}</Paper>
-        </Grid>
-        <Grid
-          item
-          xs={12}
-          md={isOpen ? 4 : 3}
-          style={{
-            transition: "all cubic-bezier(0.4, 0, 0.6, 1) 0.195s"
-          }}
-        >
-          <Paper style={paperStyle}></Paper>
-        </Grid>
-        <Grid
-          item
-          xs={12}
-          md={isOpen ? 4 : 3}
-          style={{
-            transition: "all cubic-bezier(0.4, 0, 0.6, 1) 0.195s"
-          }}
-        >
-          <Paper style={paperStyle}></Paper>
-        </Grid>
-      </Grid>
-      <Grid item xs={12}>
+      <MuiGrid container item xs={12} spacing={6}>
+        {[...Array(3)].map((e, i) => (
+          <GridCard key={i} isShrunk={isOpen} {...props}>
+            {`GridItem-${i}`}
+          </GridCard>
+        ))}
+      </MuiGrid>
+      <MuiGrid item xs={12}>
         <List
           filters={<StudentFilter />}
-          // filter={{ gpa_gte: 2, gpa_lte: 3 }}
           bulkActionButtons={false}
           {...props}
           classes={{ content: "content" }}
         >
           <StudentList selectedRow={selected} />
         </List>
-      </Grid>
+      </MuiGrid>
     </MainGrid>
   );
+};
+
+StudentContentGrid.defaultProps = {};
+
+StudentContentGrid.propTypes = {
+  selected: PropTypes.any
 };
 
 export default StudentContentGrid;

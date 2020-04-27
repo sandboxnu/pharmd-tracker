@@ -1,43 +1,64 @@
+/**
+ * Description: A basic no logicc search box component
+ * TODO:
+ *        -- Abstract the component: Potentially make this searchbox into a generic text field that takes in an icon.
+ *        -- Use Tailwind classes
+ *        -- Create more generic search fields
+ * Date: 04-24-2020
+ */
+
+//-------------------------- IMPORTS --------------------------
+
+// Function Imports
 import React from "react";
 import PropTypes from "prop-types";
 import clsx from "clsx";
-import { makeStyles } from "@material-ui/styles";
-import { Paper, Input } from "@material-ui/core";
-import SearchIcon from "@material-ui/icons/Search";
 
-const useStyles = makeStyles(theme => ({
-  root: {
-    borderRadius: "4px",
-    alignItems: "center",
-    padding: theme.spacing(1),
-    display: "flex",
-    flexBasis: 420
-  },
-  icon: {
-    marginRight: theme.spacing(1),
-    color: theme.palette.text.secondary
-  },
-  input: {
-    flexGrow: 1,
-    fontSize: "14px",
-    lineHeight: "16px",
-    letterSpacing: "-0.05px"
-  },
-  paper: {}
-}));
+// Component Imports
+import MuiInput from "@material-ui/core/Input";
+import MuiPaper from "@material-ui/core/Paper";
+import MuiSearchIcon from "@material-ui/icons/Search";
+
+// Style Imports
+import styled from "styled-components/macro";
+import tw from "tailwind.macro";
+
+//-------------------------- STYLE --------------------------
+
+const Paper = styled(MuiPaper)`
+  border-radius: 4px;
+  align-items: center;
+  padding: ${props => props.theme.spacing(1) + "px"};
+  display: flex;
+  flex-basis: 420;
+`;
+
+const Input = styled(MuiInput)`
+  flex-grow: 1;
+  font-size: 14px;
+  line-height: 16px;
+  letter-spacing: -0.05px;
+`;
+
+const SearchIcon = styled(MuiSearchIcon)`
+  margin-right: ${props => props.theme.spacing(1) + "px"};
+  color: ${props => props.theme.palette.text.secondary};
+`;
+
+//-------------------------- COMPONENT --------------------------
 
 const SearchInput = props => {
   const { className, onChange, style, ...rest } = props;
 
-  const classes = useStyles();
-
   return (
-    <Paper {...rest} className={clsx(classes.root, className)} style={style}>
-      <SearchIcon className={classes.icon} />
-      <Input {...rest} className={classes.input} disableUnderline onChange={onChange} />
+    <Paper {...rest} className={clsx(className)}>
+      <SearchIcon />
+      <Input {...rest} disableUnderline onChange={onChange} />
     </Paper>
   );
 };
+
+SearchInput.defaultProps = {};
 
 SearchInput.propTypes = {
   className: PropTypes.string,
