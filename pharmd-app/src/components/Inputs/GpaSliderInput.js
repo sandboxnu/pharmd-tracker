@@ -3,6 +3,7 @@ import { useInput } from "react-admin";
 import RangeSlider from "../Basic/RangeSlider";
 
 function valuetext(value) {
+  console.log("VALUES", value);
   return `${value}`;
 }
 
