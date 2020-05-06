@@ -1,7 +1,15 @@
 import React from "react";
 import Button from './Button';
+import PropTypes from "prop-types";
 
 class Selector extends React.Component {
+    static propTypes = {
+        /**
+         * @typedef {Function<File>}
+         */
+        onChange: PropTypes.func
+    };
+
     static defaultProps = {
         onChange() {}
     };
@@ -15,10 +23,11 @@ class Selector extends React.Component {
     }
 
     onChooseFile(event) {
+        const file = event.target.files[0];
         this.setState({
-            fileName: event.target.files[0].name
+            fileName: file.name
         });
-        this.props.onChange(event)
+        this.props.onChange(file)
     }
 
     render() {
