@@ -26,8 +26,11 @@ class UploadFileChooser extends Component {
     this.uploadFileHandler = this.uploadFileHandler.bind(this);
   }
 
-  chooseFileHandler(event) {
-    const file = event.target.files[0];
+  /**
+   *
+   * @param file
+   */
+  chooseFileHandler(file) {
     console.log(file);
     this.setState({
       selectedFile: file,
