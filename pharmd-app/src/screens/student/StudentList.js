@@ -55,7 +55,7 @@ const StudentList = ({ selectedRow, ...props }) => {
   return (
     <Datagrid
       rowClick={studentRowClick}
-      body={<TableBody />}
+      // body={<TableBody />}
       classes={{ headerCell: "headerCell" }}
       {...props}
     >

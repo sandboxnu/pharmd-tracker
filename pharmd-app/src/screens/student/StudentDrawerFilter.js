@@ -3,9 +3,10 @@ import { Filter, NumberInput } from "react-admin";
 import GpaSliderInput from "../../components/Inputs/GpaSliderInput";
 import set from "lodash/set";
 import OriginRadioInput from "../../components/Inputs/OriginRadioInput";
+import StatusCheckboxInput from "../../components/Inputs/StatusCheckboxInput";
 
 export const StudentDrawerFilter = props => {
-  console.log("FILTER DRAWER PROPS", props);
+  console.log("FILTER DRAWER PROPS", props.filterValues);
 
   const setFilter = (key, val) => {
     props.setFilters(set(props.filterValues, key, val));
@@ -37,19 +38,32 @@ export const StudentDrawerFilter = props => {
         deleteFilter("international");
         break;
     }
+    console.log("Origin Filter:", newValue);
+  };
+
+  const statusCheckbox = (event, array) => {
+    setFilter("status", array);
+    console.log("Status Filter:", array);
   };
 
   return (
     <Filter {...props}>
       {/* <NumberInput label="Min GPA" source={"gpa_gte"} alwaysOn /> */}
       {/* <NumberInput label="Max GPA" source={"gpa_lte"} alwaysOn /> */}
+
+      <StatusCheckboxInput
+        label="Status"
+        source={"status"}
+        onChange={statusCheckbox}
+        alwaysOn
+      />
+      <GpaSliderInput label="GPA" source={"gpa_gte"} onChange={searchGpaRange} alwaysOn />
       <OriginRadioInput
         label="Origin"
         source={"international"}
         onChange={originRadio}
         alwaysOn
       />
-      <GpaSliderInput label="GPA" source={"gpa_gte"} onChange={searchGpaRange} alwaysOn />
     </Filter>
   );
 };
