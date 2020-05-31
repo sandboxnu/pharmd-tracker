@@ -4,6 +4,8 @@ import GpaSliderInput from "../../components/Inputs/GpaSliderInput";
 import set from "lodash/set";
 import OriginRadioInput from "../../components/Inputs/OriginRadioInput";
 import StatusCheckboxInput from "../../components/Inputs/StatusCheckboxInput";
+import MultipleSelect from "../../components/Basic/MultiSelect";
+import CohortMultipleSelect from "../../components/Inputs/CohortMultiSelectInput";
 
 export const StudentDrawerFilter = props => {
   console.log("FILTER DRAWER PROPS", props.filterValues);
@@ -46,6 +48,11 @@ export const StudentDrawerFilter = props => {
     console.log("Status Filter:", array);
   };
 
+  const cohortMultiSelect = (event, array) => {
+    setFilter("cohort[current]", array);
+    console.log("Cohort Filter: ", array)
+  };
+
   return (
     <Filter {...props}>
       {/* <NumberInput label="Min GPA" source={"gpa_gte"} alwaysOn /> */}
@@ -55,6 +62,12 @@ export const StudentDrawerFilter = props => {
         label="Status"
         source={"status"}
         onChange={statusCheckbox}
+        alwaysOn
+      />
+      <CohortMultipleSelect
+        label="Cohort"
+        source={"cohort"}
+        onChange={cohortMultiSelect}
         alwaysOn
       />
       <GpaSliderInput label="GPA" source={"gpa_gte"} onChange={searchGpaRange} alwaysOn />
