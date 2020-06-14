@@ -1,6 +1,11 @@
 import React from "react";
 import Slider from "@material-ui/core/Slider";
 import PropTypes from "prop-types";
+import styled from "styled-components/macro";
+
+const Label = styled.div`
+  
+`;
 
 function valuetext(value) {
   return `${value}`;
@@ -22,7 +27,10 @@ const RangeSlider = props => {
 
   return (
     <div className={className}>
-      <h4>{`GPA Range: ${value[0]} - ${value[1]}`}</h4>
+      <span>
+        <h4>{`GPA Range `} <span>{`(${value[0]} - ${value[1]})`}</span></h4>
+      </span>
+
       <Slider
         value={value}
         onChange={handleChange}

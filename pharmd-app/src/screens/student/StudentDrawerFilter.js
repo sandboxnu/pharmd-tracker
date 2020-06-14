@@ -34,13 +34,17 @@ const useStyles = makeStyles((theme) => ({
       fontWeight: '650',
       fontSize: '1.1rem',
       fontFamily: 'Montserrat-SemiBold, Montserrat-Bold, Inter-Medium, Inter-SemiBold, Inter-Regular, Inter-Bold, sans-serif',
+      '& span': {
+        color: blue[700],
+        fontSize: '1rem',
+      }
     },
   },
   // checkbox styling
   checkboxButton: {
-    color: blue[600],
+    color: blue[700],
     '&$checked': {
-      color: blue[600],
+      color: blue[700],
     },
   },
 }));
