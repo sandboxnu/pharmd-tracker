@@ -8,7 +8,7 @@ import RadioButton from "./RadioButton";
 import PropTypes from "prop-types";
 
 const RadioButtonsGroup = props => {
-  const { onChange, label, showLabel, error, children } = props;
+  const { onChange, label, showLabel, error, children, className } = props;
   const [value, setValue] = React.useState("all");
 
   const handleChange = event => {
@@ -18,7 +18,7 @@ const RadioButtonsGroup = props => {
 
   //   var control = {control: <RadioButton />}
   return (
-    <FormControl component="fieldset" error={error}>
+    <FormControl component="fieldset" error={error} className={className}>
       {showLabel && <FormLabel component="legend">{label}</FormLabel>}
       <RadioGroup
         aria-label={label}

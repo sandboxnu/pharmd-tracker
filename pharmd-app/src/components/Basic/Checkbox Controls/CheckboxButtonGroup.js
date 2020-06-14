@@ -6,7 +6,7 @@ import FormLabel from "@material-ui/core/FormLabel";
 import CheckboxButton from "./CheckboxButton";
 
 const CheckboxButtonGroup = props => {
-  const { onChange, label, showLabel, error, children } = props;
+  const { onChange, label, showLabel, error, children, color, className, checkboxClassName } = props;
   const [value, setValue] = React.useState({
     values: []
   });
@@ -30,14 +30,14 @@ const CheckboxButtonGroup = props => {
   };
 
   return (
-    <FormControl component="fieldset" error={error}>
+    <FormControl component="fieldset" error={error} className={className}>
       {showLabel && <FormLabel component="legend">{label}</FormLabel>}
       <FormGroup aria-label={label}>
         {children &&
           children.map((child, index) =>
             cloneElement(child, {
               key: index,
-              control: <CheckboxButton onChange={handleChange} />
+              control: <CheckboxButton onChange={handleChange} color={color} className={checkboxClassName} />
             })
           )}
       </FormGroup>

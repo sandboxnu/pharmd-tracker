@@ -9,7 +9,7 @@ const OriginRadioInput = props => {
   } = useInput(props);
 
   return (
-    <RadioButtonsGroup onChange={props.onChange} label={props.label} error={error}>
+    <RadioButtonsGroup onChange={props.onChange} label={props.label} error={error} className={props.className}>
       <FormControlLabel value="all" label="All" />
       <FormControlLabel value="domestic" label="Domestic" />
       <FormControlLabel value="international" label="International" />

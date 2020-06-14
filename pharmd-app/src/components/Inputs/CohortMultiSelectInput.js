@@ -4,13 +4,13 @@ import CheckboxButtonGroup from "../Basic/Checkbox Controls/CheckboxButtonGroup"
 import FormControlLabel from "@material-ui/core/FormControlLabel";
 import MultipleSelect from "../Basic/MultiSelect";
 
-const StatusCheckboxInput = props => {
+const CohortMultipleSelect = props => {
   const {
     meta: { error }
   } = useInput(props);
 
   return (
-    <MultipleSelect onChange={props.onChange} label={props.label} error={error}>
+    <MultipleSelect onChange={props.onChange} label={props.label} error={error} className={props.className}>
       <FormControlLabel value="15/20" label="15/20" />
       <FormControlLabel value="17/22" label="17/22" />
       <FormControlLabel value="18/23" label="18/23" />
@@ -20,4 +20,4 @@ const StatusCheckboxInput = props => {
   );
 };
 
-export default StatusCheckboxInput;
+export default CohortMultipleSelect;

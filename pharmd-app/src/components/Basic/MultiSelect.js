@@ -49,7 +49,7 @@ function getStyles(name, personName, theme) {
 }
 
 const MultipleSelect = props => {
-  const { onChange, label, showLabel, error, children } = props;
+  const { onChange, label, showLabel, error, children, className } = props;
 
   const classes = useStyles();
   const theme = useTheme();
@@ -64,7 +64,7 @@ const MultipleSelect = props => {
   console.log("Cohort Children: ", {children});
 
   return (
-    <FormControl component="fieldset" error={error}>
+    <FormControl component="fieldset" error={error} className={className}>
       {/*{showLabel && <FormLabel component="legend">{label}</FormLabel>}*/}
       <InputLabel>{label}</InputLabel>
       <Select
@@ -77,20 +77,30 @@ const MultipleSelect = props => {
         renderValue={(selected) => (
           <div className={classes.chips}>
             {selected.map((value) => (
-              <Chip key={value} label={value} className={classes.chip} />
+              <Chip
+                key={value}
+                label={value}
+                className={classes.chip}
+                color="primary"
+                size="small"
+              />
             ))}
           </div>
         )}
         MenuProps={MenuProps}
       >
         {children.map((child, index) => (
-          <MenuItem key={index} value={child.props.value} style={getStyles(name, value, theme)}>
+          <MenuItem
+            key={index}
+            value={child.props.value}
+            style={getStyles(name, value, theme)}
+          >
             {child.props.label}
           </MenuItem>
         ))}
       </Select>
     </FormControl>
   );
-}
+};
 
 export default MultipleSelect;

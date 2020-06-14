@@ -9,7 +9,14 @@ const StatusCheckboxInput = props => {
   } = useInput(props);
 
   return (
-    <CheckboxButtonGroup onChange={props.onChange} label={props.label} error={error}>
+    <CheckboxButtonGroup
+      onChange={props.onChange}
+      label={props.label}
+      color={props.color}
+      error={error}
+      className={props.className}
+      checkboxClassName={props.checkboxClassName}
+    >
       <FormControlLabel value="enrolled" label="Enrolled" />
       <FormControlLabel value="coop" label="Co Op" />
       <FormControlLabel value="graduated" label="Graduated" />
