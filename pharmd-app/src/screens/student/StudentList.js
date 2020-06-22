@@ -21,7 +21,6 @@ import TextField from "../../components/Fields/TextField";
 import ChipField from "../../components/Fields/ChipField";
 import CohortField from "../../components/Fields/CohortField";
 import { STUDENT } from "../../constants/apiObjects";
-import TableBody from "../../components/Table/TableBody";
 
 // Another option for styling
 // const Datagrid = styled(({ ...props }) => (
@@ -55,8 +54,7 @@ const StudentList = ({ selectedRow, ...props }) => {
   return (
     <Datagrid
       rowClick={studentRowClick}
-      // body={<TableBody />}
-      classes={{ headerCell: "headerCell" }}
+      classes={{ headerCell: "headerCell", row: "rowCell" }}
       {...props}
     >
       <EmphasisField source={STUDENT.NEU_ID} label="NEU ID" />
@@ -64,7 +62,7 @@ const StudentList = ({ selectedRow, ...props }) => {
       <CohortField source={STUDENT.COHORT} label="Cohort" />
       <ChipField source={STUDENT.STATUS} />
       <TextField source={STUDENT.GPA} label="GPA" />
-      <TextField source={STUDENT.TEST_AVG} label="Test Avg" />
+      {/* <TextField source={STUDENT.TEST_AVG} label="Test Avg" /> */}
       {/* <EditButton /> */}
     </Datagrid>
   );
