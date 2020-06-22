@@ -1,7 +1,6 @@
 import { stringify } from "query-string";
 import { fetchUtils } from "react-admin";
-
-const apiUrl = "https://student-db-remote.herokuapp.com";
+import  { BACKEND_URL } from "./config/backendRoutes";
 
 // Add authorization token to each request
 const httpClient = (url, options = {}) => {
@@ -48,7 +47,7 @@ export default {
   },
 
   getOne: (resource, params) =>
-    httpClient(`${apiUrl}/${resource}/${params.id}`).then(({ json }) => ({
+    httpClient(`${BACKEND_URL}/${resource}/${params.id}`).then(({ json }) => ({
       data: json
     })),
 
@@ -56,7 +55,7 @@ export default {
     const query = {
       id: params.ids
     };
-    const url = `${apiUrl}/${resource}?${stringify(query)}`;
+    const url = `${BACKEND_URL}/${resource}?${stringify(query)}`;
     return httpClient(url).then(({ json }) => ({ data: json }));
   },
 
@@ -71,7 +70,7 @@ export default {
       _start: (page - 1) * perPage,
       _end: page * perPage
     };
-    const url = `${apiUrl}/${resource}?${stringify(query)}`;
+    const url = `${BACKEND_URL}/${resource}?${stringify(query)}`;
 
     return httpClient(url).then(({ headers, json }) => {
       if (!headers.has("x-total-count")) {
@@ -93,7 +92,7 @@ export default {
   },
 
   update: (resource, params) =>
-    httpClient(`${apiUrl}/${resource}/${params.id}`, {
+    httpClient(`${BACKEND_URL}/${resource}/${params.id}`, {
       method: "PUT",
       body: JSON.stringify(params.data)
     }).then(({ json }) => ({ data: json })),
@@ -102,7 +101,7 @@ export default {
   updateMany: (resource, params) =>
     Promise.all(
       params.ids.map(id =>
-        httpClient(`${apiUrl}/${resource}/${id}`, {
+        httpClient(`${BACKEND_URL}/${resource}/${id}`, {
           method: "PUT",
           body: JSON.stringify(params.data)
         })
@@ -110,7 +109,7 @@ export default {
     ).then(responses => ({ data: responses.map(({ json }) => json.id) })),
 
   create: (resource, params) =>
-    httpClient(`${apiUrl}/${resource}`, {
+    httpClient(`${BACKEND_URL}/${resource}`, {
       method: "POST",
       body: JSON.stringify(params.data)
     }).then(({ json }) => ({
@@ -118,7 +117,7 @@ export default {
     })),
 
   delete: (resource, params) =>
-    httpClient(`${apiUrl}/${resource}/${params.id}`, {
+    httpClient(`${BACKEND_URL}/${resource}/${params.id}`, {
       method: "DELETE"
     }).then(({ json }) => ({ data: json })),
 
@@ -126,7 +125,7 @@ export default {
   deleteMany: (resource, params) =>
     Promise.all(
       params.ids.map(id =>
-        httpClient(`${apiUrl}/${resource}/${id}`, {
+        httpClient(`${BACKEND_URL}/${resource}/${id}`, {
           method: "DELETE"
         })
       )

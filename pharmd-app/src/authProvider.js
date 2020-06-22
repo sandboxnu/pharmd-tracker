@@ -1,9 +1,10 @@
 import decodeJwt from "jwt-decode";
+import  {AUTH_URL } from "./config/backendRoutes";
 
 export default {
   // called when the user attempts to log in
   login: ({ username, password }) => {
-    const request = new Request("https://student-db-remote.herokuapp.com/login", {
+    const request = new Request(AUTH_URL, {
       method: "POST",
       body: JSON.stringify({ email: username, password: password }),
       headers: new Headers({ "Content-Type": "application/json" })
