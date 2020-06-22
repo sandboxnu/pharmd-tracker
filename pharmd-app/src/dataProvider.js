@@ -29,9 +29,7 @@ export default {
     return httpClient(url).then(({ headers, json, status }) => {
       console.log("HAS AUTH", status);
       if (!headers.has("x-total-count")) {
-        throw new Error(
-          "The X-Total-Count header is missing in the HTTP Response. The jsonServer Data Provider expects responses for lists of resources to contain this header with the total number of results to build the pagination. If you are using CORS, did you declare X-Total-Count in the Access-Control-Expose-Headers header?"
-        );
+        return Promise.reject("The X-Total-Count header is missing in the HTTP Response. The jsonServer Data Provider expects responses for lists of resources to contain this header with the total number of results to build the pagination. If you are using CORS, did you declare X-Total-Count in the Access-Control-Expose-Headers header?")
       }
       return {
         data: json,
@@ -74,9 +72,7 @@ export default {
 
     return httpClient(url).then(({ headers, json }) => {
       if (!headers.has("x-total-count")) {
-        throw new Error(
-          "The X-Total-Count header is missing in the HTTP Response. The jsonServer Data Provider expects responses for lists of resources to contain this header with the total number of results to build the pagination. If you are using CORS, did you declare X-Total-Count in the Access-Control-Expose-Headers header?"
-        );
+        return Promise.reject("The X-Total-Count header is missing in the HTTP Response. The jsonServer Data Provider expects responses for lists of resources to contain this header with the total number of results to build the pagination. If you are using CORS, did you declare X-Total-Count in the Access-Control-Expose-Headers header?")
       }
       return {
         data: json,
@@ -115,6 +111,19 @@ export default {
     }).then(({ json }) => ({
       data: { ...params.data, id: json.id }
     })),
+
+  edit: (resource, params) => {
+    console.log("editing...", resource, params)
+    return httpClient(`${BACKEND_URL}/${resource}`, {
+      method: "PUT",
+      body: JSON.stringify(params.data)
+    }).then(({json}) => {
+      console.log(json)
+      return ({
+        data: {...params.data, id: json.id}
+      });
+    });
+  },
 
   delete: (resource, params) =>
     httpClient(`${BACKEND_URL}/${resource}/${params.id}`, {

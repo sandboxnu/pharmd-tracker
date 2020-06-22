@@ -12,16 +12,22 @@ export default {
     return fetch(request)
       .then(response => {
         if (response.status < 200 || response.status >= 300) {
-          throw new Error(response.statusText);
+          return Promise.reject(response.statusText)
         }
         return response.json();
       })
       .then(({ accessToken }) => {
         const decodedToken = decodeJwt(accessToken);
+        console.log("Login info ", decodedToken);
         localStorage.setItem("token", accessToken);
+        localStorage.setItem("userInfo", JSON.stringify({
+          firstName: decodedToken.firstName,
+          lastName: decodedToken.lastName,
+          userID: decodedToken.userID
+        }));
         localStorage.setItem(
-          "permissions",
-          decodedToken.email === "kevin@mail.com" ? "admin" : "user"
+            "permissions",
+            decodedToken.isAdmin ? "admin" : "user"
         );
       });
   },
@@ -29,6 +35,7 @@ export default {
   logout: () => {
     localStorage.removeItem("token");
     localStorage.removeItem("permissions");
+    localStorage.removeItem("userInfo");
     return Promise.resolve();
   },
   // called when the API returns an error
