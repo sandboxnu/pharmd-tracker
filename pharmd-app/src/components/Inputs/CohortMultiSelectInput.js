@@ -10,12 +10,17 @@ const CohortMultipleSelect = props => {
   } = useInput(props);
 
   return (
-    <MultipleSelect onChange={props.onChange} label={props.label} error={error} className={props.className}>
-      <FormControlLabel value="15/20" label="15/20" />
-      <FormControlLabel value="17/22" label="17/22" />
-      <FormControlLabel value="18/23" label="18/23" />
-      <FormControlLabel value="19/24" label="19/24" />
-      <FormControlLabel value="20/25" label="20/25" />
+    <MultipleSelect
+      onChange={props.onChange}
+      label={props.label}
+      error={error}
+      className={props.className}
+    >
+      <FormControlLabel value="15/20" label="Cohort 20" />
+      <FormControlLabel value="17/22" label="Cohort 22" />
+      <FormControlLabel value="18/23" label="Cohort 23" />
+      <FormControlLabel value="19/24" label="Cohort 24" />
+      <FormControlLabel value="20/25" label="Cohort 25" />
     </MultipleSelect>
   );
 };
