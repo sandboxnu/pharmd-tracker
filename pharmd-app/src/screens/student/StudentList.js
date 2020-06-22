@@ -20,7 +20,7 @@ import EmphasisField from "../../components/Fields/EmphasisField";
 import TextField from "../../components/Fields/TextField";
 import ChipField from "../../components/Fields/ChipField";
 import CohortField from "../../components/Fields/CohortField";
-
+import { STUDENT } from "../../constants/apiObjects";
 import TableBody from "../../components/Table/TableBody";
 
 // Another option for styling
@@ -59,12 +59,12 @@ const StudentList = ({ selectedRow, ...props }) => {
       classes={{ headerCell: "headerCell" }}
       {...props}
     >
-      <EmphasisField source="neu_id" label="NEU ID" />
-      <TextField source="name" />
-      <CohortField source="cohort" label="Cohort" />
-      <ChipField source="status" />
-      <TextField source="gpa" label="GPA" />
-      <TextField source="test_avg" label="Test Avg" />
+      <EmphasisField source={STUDENT.NEU_ID} label="NEU ID" />
+      <TextField source={STUDENT.NAME} />
+      <CohortField source={STUDENT.COHORT} label="Cohort" />
+      <ChipField source={STUDENT.STATUS} />
+      <TextField source={STUDENT.GPA} label="GPA" />
+      <TextField source={STUDENT.TEST_AVG} label="Test Avg" />
       {/* <EditButton /> */}
     </Datagrid>
   );
