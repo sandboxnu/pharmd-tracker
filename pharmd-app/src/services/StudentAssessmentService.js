@@ -70,6 +70,7 @@ class StudentAssessmentService {
                 courseTerm,
                 assessmentName: ass.examName,
                 percentage,
+                courseName: ass.courseName,
                 lastName: ass.studentName.split(',')[0].replace(' ', ''),
                 firstName: ass.studentName.split(',')[1].replace(' ', '')
             }

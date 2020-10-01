@@ -3,11 +3,10 @@ import UploadFileChooser from "./UploadFileChooser";
 import UploadDataFieldChooser from "./UploadDataFieldChooser";
 import StudentAssessmentService from '../../../services/StudentAssessmentService';
 import Button from '../../../components/Form/Button';
-import RadioGroup from '@material-ui/core/RadioGroup';
-import Radio from '@material-ui/core/Radio';
 
 /**
  * @typedef { import('../../../typeDefs.js').BasicStudentAssessment} BasicStudentAssessment
+ * @typedef { import('../../../typeDefs.js').FileData} FileData
  */
 
 class SpreadsheetUploader extends Component {
@@ -29,16 +28,19 @@ class SpreadsheetUploader extends Component {
     }
 
 
+    /**
+     * Updates the state with data about the uploaded file
+     * @param {FileData}fileData
+     */
     uploadFile(fileData) {
-        if (fileData.length > 0) {
-            const subHeaders = Object.keys(Object.assign(fileData[0], Object.assign(fileData[1], {})));
+        console.log("File data", fileData)
+        if (fileData.data.length > 0) {
             this.setState({
-                uploadedDataHeaders: Object.keys(fileData[fileData.length - 1]),
-                uploadedDataSubheaders: Object.values(fileData[0]),
-                uploadedData: fileData.slice(1),
+                uploadedDataHeaders: fileData.headers,
+                uploadedDataSubheaders: fileData.subHeaders,
+                uploadedData: fileData.data,
                 uploadComplete: null
             });
-            console.log(fileData);
         }
     };
 
