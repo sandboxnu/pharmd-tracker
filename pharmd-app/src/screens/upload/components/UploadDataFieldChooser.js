@@ -1,7 +1,8 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
 import FileUploadService from "../../../services/FileUploadService";
-import { Select, Button } from '../../../components/Form'
+import { Select } from '../../../components/Form'
+import Button from '@material-ui/core/Button'
 
 class UploadDataFieldChooser extends Component {
   static propTypes = {
@@ -121,7 +122,7 @@ class UploadDataFieldChooser extends Component {
   render() {
     return (
       <div>
-        <Button color="primary" variant="contained" style={{position: 'fixed', right: 10, top: '2rem'}} onClick={this.handleConfirm}>Confirm Data</Button>
+        <Button color="primary" variant="contained" style={{position: 'fixed', right: 10, top: '3rem', zIndex: 10}} onClick={this.handleConfirm}>Confirm Data</Button>
         <table>
           <thead>
             <tr>
