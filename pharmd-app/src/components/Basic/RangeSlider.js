@@ -1,13 +1,11 @@
 import React from "react";
-import { makeStyles } from "@material-ui/core/styles";
 import Slider from "@material-ui/core/Slider";
 import PropTypes from "prop-types";
+import styled from "styled-components/macro";
 
-const useStyles = makeStyles({
-  root: {
-    width: 300
-  }
-});
+const Label = styled.div`
+  
+`;
 
 function valuetext(value) {
   return `${value}`;
@@ -19,8 +17,7 @@ function valuetext(value) {
    onChange after the user lift the mouse press up
 */
 const RangeSlider = props => {
-  const classes = useStyles();
-  const { onChange, setValueText, disabled, max, min, step } = props;
+  const { onChange, setValueText, disabled, max, min, step, className } = props;
   const [value, setValue] = React.useState([min, max]);
 
   const handleChange = (event, newValue) => {
@@ -29,8 +26,11 @@ const RangeSlider = props => {
   };
 
   return (
-    <div className={classes.root}>
-      <h4>{`GPA Range: ${value[0]} - ${value[1]}`}</h4>
+    <div className={className}>
+      <span>
+        <h4>{`GPA Range `} <span>{`(${value[0]} - ${value[1]})`}</span></h4>
+      </span>
+
       <Slider
         value={value}
         onChange={handleChange}

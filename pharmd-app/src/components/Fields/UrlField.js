@@ -3,6 +3,7 @@ import styled from "styled-components/macro";
 import tw from "tailwind.macro";
 import LaunchIcon from "@material-ui/icons/Launch";
 
+// TODO: Be deleted
 const Icon = styled(LaunchIcon)`
   ${tw`w-2 p-1`}
 `;

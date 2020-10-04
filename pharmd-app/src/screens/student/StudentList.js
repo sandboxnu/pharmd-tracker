@@ -1,3 +1,15 @@
+/**
+* Description: 
+  This component contains a DataGrid that takes in field components for children. 
+  The componnet manages dispatching the data (resource) to each field and the source (data key). 
+* TODO:
+*       - Figure out if the headeerCell class can be moved to the TableRow component
+* Date: 04-27-2020
+*/
+
+//-------------------------- IMPORTS --------------------------
+
+// Style Imports
 import React from "react";
 import { Datagrid as DatagridRA } from "react-admin";
 import { useDispatch } from "react-redux";
@@ -8,6 +20,7 @@ import EmphasisField from "../../components/Fields/EmphasisField";
 import TextField from "../../components/Fields/TextField";
 import ChipField from "../../components/Fields/ChipField";
 import CohortField from "../../components/Fields/CohortField";
+import { STUDENT } from "../../constants/apiObjects";
 
 // Another option for styling
 // const Datagrid = styled(({ ...props }) => (
@@ -44,12 +57,12 @@ const StudentList = ({ selectedRow, ...props }) => {
       classes={{ headerCell: "headerCell", row: "rowCell" }}
       {...props}
     >
-      <EmphasisField source="neu_id" label="NEU ID" />
-      <TextField source="name" />
-      <CohortField source="cohort" label="Cohort" />
-      <ChipField source="status" />
-      <TextField source="gpa" label="GPA" />
-      <TextField source="test_avg" label="Test Avg" />
+      <EmphasisField source={STUDENT.NEU_ID} label="NEU ID" />
+      <TextField source={STUDENT.NAME} />
+      <CohortField source={STUDENT.COHORT} label="Cohort" />
+      <ChipField source={STUDENT.STATUS} />
+      <TextField source={STUDENT.GPA} label="GPA" />
+      {/* <TextField source={STUDENT.TEST_AVG} label="Test Avg" /> */}
       {/* <EditButton /> */}
     </Datagrid>
   );
