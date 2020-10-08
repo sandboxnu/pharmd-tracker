@@ -13,9 +13,15 @@ const AvatarContainer = styled.div`
 
 const AvatarIcon = () => {
     const info = JSON.parse(localStorage.getItem("userInfo"));
+    let props = {};
+    if (info) {
+        props = {
+            firstName: info.firstName, lastName: info.lastName
+        }
+    }
 
     return <AvatarContainer>
-        <Avatar firstName={info.firstName} lastName={info.lastName}/>
+        <Avatar {...props} />
     </AvatarContainer>;
 };
 

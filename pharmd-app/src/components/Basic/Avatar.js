@@ -2,6 +2,8 @@ import React from "react";
 import AvatarMaterial from "@material-ui/core/Avatar";
 import styled from "styled-components/macro";
 import tw from "tailwind.macro";
+import Icon from "./Icon";
+import Person from '../../assets/icons/person.svg'
 // import { styled } from '@material-ui/core/styles';
 
 const AvatarStyled = styled(AvatarMaterial)`
@@ -27,7 +29,7 @@ const Avatar = ({ firstName, lastName, imgUrl }) => {
     let initials = firstName.charAt(0) + `${lastName ? lastName.charAt(0) : ""}`;
     return <AvatarStyled>{initials}</AvatarStyled>;
   } else {
-    return <AvatarStyled>?</AvatarStyled>;
+    return <AvatarStyled><Icon src={Person} /></AvatarStyled>;
   }
 };
 

@@ -32,7 +32,7 @@ const Menu = ({onMenuClick, logout, ...props}) => {
             {resources.map((resource, index) => {
                 const isActive = location.includes(resource.name);
                 const linkProps = {
-                    key: resource.name,
+                    key: resource.name || index,
                     to: `/${resource.name}`,
                     title: (resource.options && resource.options.label) || resource.name,
                     iconSrc: resource.icon,
@@ -44,7 +44,7 @@ const Menu = ({onMenuClick, logout, ...props}) => {
                     // const info = JSON.parse(localStorage.getItem("userInfo"));
                     // console.log("INFO", info)
                     // linkProps.to = linkProps.to.concat(`/${info.userID}/show`);
-                    return <Fragment>
+                    return <Fragment key={index}>
                         <NavItemLink {...linkProps} />
                         <Divider variant="middle"/>
                     </Fragment>

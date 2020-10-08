@@ -9,6 +9,7 @@ import AppBar from "../../components/Nav/AppBar";
 const MainContent = styled.div`
     ${tw`p-12 pt-2`}
     flex-grow: 1;
+    flex-direction: row;
 `;
 
 const ProfilePage = props => {

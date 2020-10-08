@@ -1,6 +1,9 @@
 import { stringify } from "query-string";
 import { fetchUtils } from "react-admin";
-import  { BACKEND_URL } from "./config/backendRoutes";
+import  { FAKE_API } from "./config/backendRoutes";
+
+// import real BACKEND_URL to use pharmD backend data
+const BACKEND_URL = FAKE_API;
 
 // Add authorization token to each request
 const httpClient = (url, options = {}) => {
@@ -24,7 +27,7 @@ export default {
       _start: (page - 1) * perPage,
       _end: page * perPage
     };
-    const url = `${apiUrl}/${resource}?${stringify(query)}`;
+    const url = `${BACKEND_URL}/${resource}?${stringify(query)}`;
     console.log("URL", url);
     return httpClient(url).then(({ headers, json, status }) => {
       console.log("HAS AUTH", status);

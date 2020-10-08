@@ -75,9 +75,33 @@ class SpreadsheetUploader extends Component {
             })
     }
 
+    /**
+     * Displays a dialog with help info about the file uploader
+     */
+    showHelp() {
+        const helpInfo = `
+      This tool is used to upload spreadsheet exports from Canvas into the PharmD database
+      
+      To use, choose your file, then match the appropriate columns with the value type it holds.
+      
+      Value Types (* = required):
+      - * Student Name (Full): The student's full name (last, first)
+      - * Student Last Name: The student's surname
+      - * Student First Name: The student's given name
+      - * Exam Grade: A grade for an exam
+      - Homework grade: Self-explanatory
+      - * Student ID: The student's NUID
+      - *Class Section: The course these grades correspond to
+    `;
+        // TODO: replace with modal dialog
+        alert(helpInfo)
+
+    }
+
     render() {
         return (
             <div>
+                <Button color="secondary" variant="contained" onClick={this.showHelp}>Help</Button>
                 {!this.state.uploadedData &&
                 <UploadFileChooser uploadedFileData={this.uploadFile} />}
                 {this.state.uploadedData && <Button color="secondary" variant="contained" onClick={this.removeFile}>Remove File</Button>}

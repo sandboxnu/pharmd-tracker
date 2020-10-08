@@ -1,5 +1,7 @@
 export const BACKEND_URL = process.env.API_URL;
+export const FAKE_API = 'https://student-db-remote.herokuapp.com';
 export const AUTH_URL = process.env.AUTH_URL;
+export const FAKE_AUTH = 'https://student-db-remote.herokuapp.com/login';
 
 export const BACKEND_STUDENTS = BACKEND_URL + 'students/';
 export const BACKEND_STUDENTASSESSMENTS = BACKEND_URL + 'students-assessments/';

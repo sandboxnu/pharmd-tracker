@@ -127,8 +127,8 @@ class UploadDataFieldChooser extends Component {
           <thead>
             <tr>
               {this.props.headers.map((header, index) => (
-                <td>
-                  <Select id={header} onChange={this.handleChange} key={index} title="Value Type"
+                <td key={index} >
+                  <Select id={header} onChange={this.handleChange} title="Value Type"
                                selectItems={
                                  this.getSelectItems(header)
                                } />

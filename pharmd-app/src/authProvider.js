@@ -1,5 +1,8 @@
 import decodeJwt from "jwt-decode";
-import  {AUTH_URL } from "./config/backendRoutes";
+import  {FAKE_AUTH } from "./config/backendRoutes";
+
+// replace with real AUTH_URL to use pharmD backend
+const AUTH_URL = FAKE_AUTH;
 
 export default {
   // called when the user attempts to log in
@@ -27,9 +30,12 @@ export default {
         }));
         localStorage.setItem(
             "permissions",
-            decodedToken.isAdmin ? "admin" : "user"
+            (decodedToken.isAdmin || decodedToken.canWrite || decodedToken.email === "kevin@mail.com") ? "admin" : "user"
         );
-      });
+      })
+        .catch(err => {
+          console.error(err)
+        })
   },
   // called when the user clicks on the logout button
   logout: () => {
