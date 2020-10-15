@@ -3,11 +3,16 @@ import "../../../styles/globalStyles.css";
 import FileUploadService from "../../../services/FileUploadService";
 import Button from '../../../components/Form/Button';
 import FileSelector from '../../../components/Form/FileSelector';
+import PropTypes from 'prop-types';
 
 /**
  * @class UploadFileChooser a component for choosing a file to upload
  */
 class UploadFileChooser extends Component {
+  static propTypes = {
+    uploadedFileData: PropTypes.func
+  };
+
   static defaultProps = {
     uploadedFileData() {}
   };
@@ -27,11 +32,10 @@ class UploadFileChooser extends Component {
   }
 
   /**
-   *
-   * @param file
+   * Executes when a file is chosen by the user
+   * @param {File} file
    */
   chooseFileHandler(file) {
-    console.log(file);
     this.setState({
       selectedFile: file,
       fileName: file.name
@@ -41,7 +45,6 @@ class UploadFileChooser extends Component {
   async uploadFileHandler(event) {
     event.preventDefault();
     const spreadsheetData = await FileUploadService.loadSpreadsheet(this.state.selectedFile);
-    //console.log(spreadsheetData);
     this.props.uploadedFileData(spreadsheetData);
   }
 
@@ -50,7 +53,7 @@ class UploadFileChooser extends Component {
       <div>
         <FileSelector
           accept=".xls, .xlsx, .csv"
-          onChange={this.chooseFileHandler}
+          onChoose={this.chooseFileHandler}
           color="secondary"
         />
         <br />

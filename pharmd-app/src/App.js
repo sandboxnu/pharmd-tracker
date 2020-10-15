@@ -4,6 +4,7 @@ import "./styles/App.css";
 import { Admin, Resource } from "react-admin";
 import students from "./screens/student/index.js";
 import upload from "./screens/upload/index.js";
+import profile from "./screens/profile/index.js";
 import Dashboard from "./Dashboard";
 import authProvider from "./authProvider";
 
@@ -58,6 +59,7 @@ const App = () => {
             customReducers={{ studentSidebarOpen: studentSideBarReducer }}
             customRoutes={customRoutes}
           >
+            <Resource name="users" {...profile} />
             <Resource name="students" {...students} />
             <Resource name="courses" {...courses} />
             <Resource name="upload" {...upload} />

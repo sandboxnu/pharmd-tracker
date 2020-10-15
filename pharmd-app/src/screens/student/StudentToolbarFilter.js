@@ -1,22 +1,51 @@
+/**
+ * Description:
+ * Component manaages table toolbar filters.
+ * Currently we only display a seaarh filter.
+ * TODO:
+ *        - Add more filters if needed: A filter can be added
+ *          as a child of <Filter/> and might require a custom
+ *          onChange and parse filter function to communicate with the api.
+ * Date: 04-24-2020
+ */
+
+//-------------------------- IMPORTS --------------------------
+
+// Function Imports
 import React from "react";
-import { Filter } from "react-admin";
-import { useListParams } from "ra-core";
 import set from "lodash/set";
+
+// Component Imports
+import { Filter } from "react-admin";
 import StudentSearchInput from "../../components/Inputs/StudentSearchInput";
+import { STUDENT } from "../../constants/apiObjects";
+
+//-------------------------- CONSTANTS --------------------------
+
+const STUDENT_NAME_QUERY = `${STUDENT.NAME}_like`;
+const STUDENT_ID_QUERY = `${STUDENT.NEU_ID}_like`;
+
+//-------------------------- COMPONENT --------------------------
 
 export const StudentFilter = props => {
+  console.log("PROPS FILTER", props);
+  // Adds given filter key and value to the redux state filters
   const setFilter = (key, val) => {
     props.setFilters(set(props.filterValues, key, val));
   };
 
+  // Fuunction that manages how a student is searched based on input event
   const searchStudent = event => {
     let val = event.target.value;
     if (val === "") {
-      delete props.filterValues["name_like"];
-      delete props.filterValues["neu_id_like"];
+      delete props.filterValues[STUDENT_NAME_QUERY];
+      delete props.filterValues[STUDENT_ID_QUERY];
       props.setFilters(props.filterValues);
     } else {
-      setFilter(isNaN(val) ? "name_like" : "neu_id_like", isNaN(val) ? val : `^${val}`);
+      setFilter(
+        isNaN(val) ? STUDENT_NAME_QUERY : STUDENT_ID_QUERY,
+        isNaN(val) ? val : `^${val}`
+      );
     }
   };
 
@@ -24,8 +53,8 @@ export const StudentFilter = props => {
     <Filter {...props}>
       <StudentSearchInput
         label="Search Student"
-        source={"name_like"}
-        parse={inputValue => `^${inputValue}`}
+        source={STUDENT_NAME_QUERY}
+        parse={inputValue => `^${inputValue}`} //Regex parameter for start with
         onChange={searchStudent}
         alwaysOn
       />

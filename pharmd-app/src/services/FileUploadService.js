@@ -1,13 +1,16 @@
 import axios from "axios";
 import * as XLSX from "xlsx";
 import * as BackendRoutes from "../config/backendRoutes";
+import {arrayToObject} from "./Utility";
 
 /**
  * @typedef { import('../typeDefs.js').BasicStudentAssessment} BasicStudentAssessment
+ * @typedef { import('../typeDefs.js').FileData} FileData
  */
 
 class FileUploadService {
   static apiPrefix = "assessments/";
+  static EMPTY_CELL_VAL = "N/A";
 
   // Enum holding the types of data to import to database
   static gradeInputTypes = {
@@ -16,11 +19,10 @@ class FileUploadService {
     STUDENT_LAST_NAME: "Student Last Name",
     STUDENT_FIRST_NAME:" Student First Name",
     EXAM: "Exam Grade",
-    QUIZ: "Quiz Grade",
     HOMEWORK: "Homework Grade",
     STUDENT_ID: "Student ID",
-    SIS_USER_ID: "SIS User ID",
-    SIS_LOGIN_ID: "SIS Login ID",
+    // SIS_USER_ID: "SIS User ID",
+    // SIS_LOGIN_ID: "SIS Login ID",
     SECTION: "Class Section",
   };
 
@@ -37,7 +39,7 @@ class FileUploadService {
   /**
    * Loads and begins parsing a spreadsheet
    * @param data the data representing the spreadsheet
-   * @returns {Promise<unknown>}
+   * @returns {Promise<FileData>}
    */
   static async loadSpreadsheet(data) {
     const reader = new FileReader();
@@ -49,9 +51,16 @@ class FileUploadService {
         const firstSheetName = workbook.SheetNames[0];
         const firstSheet = workbook.Sheets[firstSheetName];
         // Convert sheet to an array of arrays
-        const data = XLSX.utils.sheet_to_json(firstSheet, { blankrows: false });
+        let data = XLSX.utils.sheet_to_json(firstSheet, { blankrows: true, defval: FileUploadService.EMPTY_CELL_VAL, header: 1 });
+        const headers = Object.values(data[0]);
+        //const headers = Object.keys(XLSX.utils.sheet_to_json(firstSheet).pop());
+        const subHeaders = Object.values(data[1]);
         if (data) {
-          resolve(data);
+          resolve({
+            data: data.slice(2).map(arr => arrayToObject(arr, headers)),
+            subHeaders,
+            headers: headers
+          });
         } else {
           reject("Couldn't load spreadsheet");
         }

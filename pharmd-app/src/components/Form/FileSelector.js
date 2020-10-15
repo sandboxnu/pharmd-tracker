@@ -7,11 +7,11 @@ class Selector extends React.Component {
         /**
          * @typedef {Function<File>}
          */
-        onChange: PropTypes.func
+        onChoose: PropTypes.func
     };
 
     static defaultProps = {
-        onChange() {}
+        onChoose() {}
     };
 
     constructor(props) {
@@ -27,7 +27,7 @@ class Selector extends React.Component {
         this.setState({
             fileName: file.name
         });
-        this.props.onChange(file)
+        this.props.onChoose(file)
     }
 
     render() {

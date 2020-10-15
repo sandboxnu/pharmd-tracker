@@ -33,6 +33,12 @@ module.exports = {
       borderRadius: {
         xl: "1rem"
       },
+      boxShadow: {
+        cardLight:
+          "0px 1px 2px rgba(0, 0, 0, 0.05), 0px 2px 13px rgba(0, 0, 0, 0.07),0px 3px 10px rgba(0, 0, 0, 0.03)",
+        cardHeavy:
+          "0px 8px 10px rgba(161, 167, 200, 0.2), 0px 16px 40px rgba(240, 244, 255, 0.5)"
+      },
       inset: {
         "1": "0.25rem",
         "2": "0.5rem",

@@ -13,6 +13,15 @@ const StyledFormControl = styled(FormControl)`
  * @class CustomSelect a component for creating an easy select menu
  */
 class CustomSelect extends React.Component {
+    static propTypes = {
+        title: PropTypes.string,
+        onChange: PropTypes.func,
+        selectItems: PropTypes.arrayOf(PropTypes.shape({
+            value: PropTypes.any,
+            displayValue: PropTypes.string
+        }))
+    };
+
     static defaultProps = {
         title: '',
         onChange() {},
@@ -59,15 +68,5 @@ class CustomSelect extends React.Component {
     }
 
 }
-
-CustomSelect.propTypes = {
-    title: PropTypes.string,
-    onChange: PropTypes.func,
-    selectItems: PropTypes.arrayOf(PropTypes.shape({
-        value: PropTypes.any,
-        displayValue: PropTypes.string
-    })),
-};
-
 
 export default CustomSelect;
