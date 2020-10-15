@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import "../../../styles/globalStyles.css";
 import FileUploadService from "../../../services/FileUploadService";
 import Button from '../../../components/Form/Button';
 import FileSelector from '../../../components/Form/FileSelector';
