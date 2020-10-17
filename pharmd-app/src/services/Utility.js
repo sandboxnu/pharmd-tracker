@@ -1,3 +1,5 @@
+import axios from "axios";
+
 /**
  * Creates an object from
  * @param {Array} inputArray
@@ -9,3 +11,5 @@ export function arrayToObject(inputArray, keySourceArray) {
     inputArray.forEach(((value, index) => obj[keySourceArray[index]] = value))
     return obj;
 }
+
+export const doAllRequests = requests => axios.all(requests);

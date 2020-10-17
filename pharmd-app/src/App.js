@@ -6,7 +6,8 @@ import students from "./screens/student/index.js";
 import upload from "./screens/upload/index.js";
 import profile from "./screens/profile/index.js";
 import Dashboard from "./Dashboard";
-import authProvider from "./authProvider";
+
+import { AuthProvider } from './services'
 
 import selectTheme from "./themes/selected-theme";
 import { ThemeProvider, ThemeConsumer } from "styled-components";
@@ -53,7 +54,7 @@ const App = () => {
           <Admin
             layout={DashboardLayout}
             dataProvider={dataProvider}
-            authProvider={authProvider}
+            authProvider={AuthProvider}
             dashboard={Dashboard}
             theme={theme}
             customReducers={{ studentSidebarOpen: studentSideBarReducer }}
