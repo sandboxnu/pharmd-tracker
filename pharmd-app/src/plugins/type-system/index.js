@@ -1,4 +1,5 @@
 const diez = require("diez-pharmd-design");
+
 const ds = new diez.Diez(diez.DesignLanguage).component;
 
 function getTypeScale() {
@@ -16,10 +17,11 @@ const customTypeStyles = {};
 module.exports = function(variants) {
   return function({ addUtilities }) {
     addUtilities(
-      {
-        ...getTypeScale(),
-        ...customTypeStyles
-      },
+    //   {
+    //     ...getTypeScale(),
+    //     ...customTypeStyles
+    //   },
+      getTypeScale(),
       variants
     );
   };

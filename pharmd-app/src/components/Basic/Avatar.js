@@ -1,9 +1,9 @@
 import React from "react";
 import AvatarMaterial from "@material-ui/core/Avatar";
 import styled from "styled-components/macro";
-import tw from "tailwind.macro";
+import tw from "twin.macro";
 import Icon from "./Icon";
-import Person from '../../assets/icons/person.svg'
+import Person from "../../assets/icons/person.svg";
 // import { styled } from '@material-ui/core/styles';
 
 const AvatarStyled = styled(AvatarMaterial)`

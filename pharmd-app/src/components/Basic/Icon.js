@@ -1,7 +1,7 @@
 import React, { useRef } from "react";
 import SvgIcon from "@material-ui/core/SvgIcon";
 import styled, { css } from "styled-components/macro";
-import tw from "tailwind.macro";
+import tw from "twin.macro";
 
 // NEED TO REMOVE FILL PROP FRO PATH FOR EACH ICON - Still trying to find a solution
 

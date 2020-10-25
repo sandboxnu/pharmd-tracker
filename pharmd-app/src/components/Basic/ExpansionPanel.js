@@ -1,6 +1,6 @@
 import React from "react";
 import styled, { css } from "styled-components/macro";
-import tw from "tailwind.macro";
+import tw from "twin.macro";
 import ExpansionPanelMaterial from "@material-ui/core/ExpansionPanel";
 import ExpansionPanelSummaryMaterial from "@material-ui/core/ExpansionPanelSummary";
 import ExpansionPanelDetailsMaterial from "@material-ui/core/ExpansionPanelDetails";

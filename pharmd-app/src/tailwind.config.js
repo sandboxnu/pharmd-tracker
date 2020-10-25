@@ -1,3 +1,6 @@
+// const plugin = require("./plugins/type-system");
+const plugin = require("tailwindcss/plugin");
+
 module.exports = {
   theme: {
     fontSize: {
@@ -48,5 +51,5 @@ module.exports = {
     }
   },
   variants: {},
-  plugins: [require("./plugins/type-system")(["responsive"])]
+  plugins: [plugin(require("./plugins/type-system")(["responsive"]))]
 };
