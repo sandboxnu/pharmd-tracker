@@ -7,13 +7,12 @@ import upload from "./screens/upload/index.js";
 import profile from "./screens/profile/index.js";
 import Dashboard from "./Dashboard";
 
-import { AuthProvider } from './services'
+import { AuthProvider, DataProvider } from './services'
 
 import selectTheme from "./themes/selected-theme";
 import { ThemeProvider, ThemeConsumer } from "styled-components";
 import DashboardLayout from "./components/Layout/DashboardLayout";
 import studentSideBarReducer from "./redux/reducers/studentSideBarReducer";
-import dataProvider from "./dataProvider";
 import courses from "./screens/courses";
 import customRoutes from "./config/customRoutes";
 
@@ -53,7 +52,7 @@ const App = () => {
         {theme => (
           <Admin
             layout={DashboardLayout}
-            dataProvider={dataProvider}
+            dataProvider={DataProvider}
             authProvider={AuthProvider}
             dashboard={Dashboard}
             theme={theme}
