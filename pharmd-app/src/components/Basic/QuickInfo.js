@@ -1,6 +1,7 @@
 import React from "react";
-import styled from "styled-components/macro";
-import tw from "tailwind.macro";
+// import styled from "styled-components/macro";
+// import tw from "tailwind.macro";
+import tw, { styled } from "twin.macro";
 
 const InfoDisplay = styled.div`
     width: calc(100% / 3);
@@ -11,11 +12,10 @@ const InfoDisplay = styled.div`
 `;
 
 const Heading = styled.h2`
-    ${tw`fontStyle-6 text-sm`}
-    color: ${props => props.theme.palette.text.secondary};
+    ${tw` fontStyle-6 text-sm`}
+    
     font-weight: bold;
     text-align: center; 
-    font-size: 15px;
 `;
 
 const Detail = styled.h3`
