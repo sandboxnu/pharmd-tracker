@@ -1,4 +1,6 @@
 // const plugin = require("./plugins/type-system");
+import { theme } from "twin.macro";
+
 const plugin = require("tailwindcss/plugin");
 
 module.exports = {
@@ -51,5 +53,109 @@ module.exports = {
     }
   },
   variants: {},
-  plugins: [plugin(require("./plugins/type-system")(["responsive"]))]
+  plugins: [
+    // plugin(require("./plugins/type-system")(["responsive"]))
+    ({ addUtilities }) => {
+      const newUtilities = {
+        ".fontStyle-12": {
+          letterSpacing: -1.5,
+          fontSize: 96,
+          lineHeight: 112.5,
+          fontFamily: "Montserrat"
+          // color: Color.rgba(51, 51, 51, 1),
+          // font: designFonts.Montserrat.SemiBold
+        },
+        ".fontStyle-11": {
+          letterSpacing: 0,
+          fontSize: 64,
+          lineHeight: 75,
+          fontFamily: "Montserrat"
+          // color: Color.rgba(51, 51, 51, 1),
+          // font: designFonts.Montserrat.Bold
+        },
+        ".fontStyle-10": {
+          letterSpacing: 0,
+          fontSize: 48,
+          lineHeight: 56.25,
+          fontFamily: "Montserrat"
+          // color: Color.rgba(51, 51, 51, 1),
+          // font: designFonts.Montserrat.SemiBold
+        },
+        ".fontStyle-9": {
+          letterSpacing: 0.25,
+          fontSize: 36,
+          lineHeight: 20,
+          fontFamily: "Montserrat"
+          // color: Color.rgba(51, 51, 51, 1),
+          // font: designFonts.Montserrat.Bold
+        },
+        ".fontStyle-8": {
+          letterSpacing: 0.25,
+          fontSize: 32,
+          lineHeight: 20,
+          fontFamily: "Inter"
+          // color: Color.rgba(51, 51, 51, 1),
+          // font: designFonts.Inter.Medium
+        },
+        ".fontStyle-7": {
+          letterSpacing: 0.25,
+          fontSize: 24,
+          lineHeight: 36,
+          fontFamily: "Inter"
+          // color: Color.rgba(51, 51, 51, 1),
+          // font: designFonts.Inter.SemiBold
+        },
+        ".fontStyle-6": {
+          letterSpacing: 0.5,
+          fontSize: 20,
+          lineHeight: "20px",
+          fontFamily: "Inter"
+          // color: Color.rgba(51, 51, 51, 1),
+          // font: designFonts.Inter.Medium
+        },
+        ".fontStyle-5": {
+          letterSpacing: 0.5,
+          fontSize: 18,
+          lineHeight: 20,
+          fontFamily: "Inter"
+          // color: Color.rgba(51, 51, 51, 1),
+          // font: designFonts.Inter.Bold
+        },
+        ".fontStyle-4": {
+          letterSpacing: 0.25,
+          fontSize: 16,
+          lineHeight: 20,
+          fontFamily: "Inter"
+          // color: Color.rgba(51, 51, 51, 1),
+          // font: designFonts.Inter.Regular
+        },
+        ".fontStyle-3": {
+          letterSpacing: 0.315,
+          fontSize: 14,
+          lineHeight: 16.40625,
+          fontFamily: "Inter"
+          // color: Color.rgba(51, 51, 51, 1),
+          // font: designFonts.Inter.SemiBold
+        },
+        ".fontStyle-2": {
+          letterSpacing: 0.4000000059604645,
+          fontSize: 12,
+          lineHeight: 16,
+          // color: Color.rgba(51, 51, 51, 1),
+          // font: designFonts.Inter.Medium
+          fontFamily: "Inter"
+        },
+        ".fontStyle-1": {
+          letterSpacing: 1,
+          fontSize: 10,
+          lineHeight: 16,
+          fontFamily: "Inter"
+          // color: Color.rgba(51, 51, 51, 1),
+          // font: designFonts.Inter.Regular
+        }
+      };
+
+      addUtilities(newUtilities);
+    }
+  ]
 };
