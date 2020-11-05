@@ -19,7 +19,7 @@ import MuiBreadcrumbs from "@material-ui/core/Breadcrumbs";
 
 // Style Imports
 import styled from "styled-components/macro";
-import tw from "tailwind.macro";
+import tw from "twin.macro";
 import { MAP_BREADCRUMB_NAME } from "../../constants/mappers";
 import {
   STUDENT_DETAILS_TITLE,

@@ -13,7 +13,6 @@ const InfoDisplay = styled.div`
 
 const Heading = styled.h2`
     ${tw` fontStyle-6 text-sm`}
-    
     font-weight: bold;
     text-align: center; 
 `;

@@ -1,7 +1,4 @@
-// const plugin = require("./plugins/type-system");
-import { theme } from "twin.macro";
-
-const plugin = require("tailwindcss/plugin");
+const plugin = require("./plugins/type-system");
 
 module.exports = {
   theme: {
@@ -53,8 +50,9 @@ module.exports = {
     }
   },
   variants: {},
+  // plugins: [require("./plugins/type-system")(["responsive"])]
   plugins: [
-    // plugin(require("./plugins/type-system")(["responsive"]))
+    // plugin(["responsive"])
     ({ addUtilities }) => {
       const newUtilities = {
         ".fontStyle-12": {
@@ -108,6 +106,8 @@ module.exports = {
         ".fontStyle-6": {
           letterSpacing: 0.5,
           fontSize: 20,
+          backgroundColor: "#f00000",
+          color: "#333333",
           lineHeight: "20px",
           fontFamily: "Inter"
           // color: Color.rgba(51, 51, 51, 1),
@@ -116,7 +116,8 @@ module.exports = {
         ".fontStyle-5": {
           letterSpacing: 0.5,
           fontSize: 18,
-          lineHeight: 20,
+          lineHeight: "20px",
+          // backgroundColor: "#f00000",
           fontFamily: "Inter"
           // color: Color.rgba(51, 51, 51, 1),
           // font: designFonts.Inter.Bold
@@ -130,9 +131,10 @@ module.exports = {
           // font: designFonts.Inter.Regular
         },
         ".fontStyle-3": {
-          letterSpacing: 0.315,
+          // letterSpacing: 0.315,
           fontSize: 14,
-          lineHeight: 16.40625,
+          // lineHeight: 16.40625,
+          // backgroundColor: "#f00000",
           fontFamily: "Inter"
           // color: Color.rgba(51, 51, 51, 1),
           // font: designFonts.Inter.SemiBold
