@@ -1,11 +1,23 @@
+/**
+ * Description:
+ * TODO:
+ * Date: 04-26-2020
+ */
+
+//-------------------------- IMPORTS --------------------------
+
+// Function Imports
 import React, { cloneElement } from "react";
 
+// Style Imports
+import { styled } from "twin.macro";
+
+// Component Imports
 import TableCell from "@material-ui/core/TableCell";
 import MuiTableRow from "@material-ui/core/TableRow";
 import Checkbox from "@material-ui/core/Checkbox";
 
-import styled from "styled-components/macro";
-import tw from "tailwind.macro";
+//-------------------------- STYLE --------------------------
 
 const TableRowStyled = styled(MuiTableRow)`
   &.MuiTableRow-root {
@@ -17,6 +29,8 @@ const TableRowStyled = styled(MuiTableRow)`
     /* ${tw`h-18 fontStyle-3 text-primary-medium font-semibold tracking-wider`} */
   }
 `;
+
+//-------------------------- COMPONENT --------------------------
 
 const TableRow = ({ record, resource, id, onToggleItem, children, selected, basePath }) => {
   return (
