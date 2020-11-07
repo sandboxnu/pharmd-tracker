@@ -1,7 +1,7 @@
 import React from "react";
 import Slider from "@material-ui/core/Slider";
 import PropTypes from "prop-types";
-import styled from "styled-components/macro";
+import { styled } from "twin.macro";
 
 const Label = styled.div`
   

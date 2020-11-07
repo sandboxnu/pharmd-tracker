@@ -17,8 +17,7 @@ import MuiPaper from "@material-ui/core/Paper";
 import MuiGrid from "@material-ui/core/Grid";
 
 // Style Imports
-import styled from "styled-components/macro";
-import tw from "tailwind.macro";
+import tw, { styled } from "twin.macro";
 
 //-------------------------- STYLE --------------------------
 

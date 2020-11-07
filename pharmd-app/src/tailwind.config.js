@@ -58,102 +58,88 @@ module.exports = {
         ".fontStyle-12": {
           letterSpacing: -1.5,
           fontSize: 96,
-          lineHeight: 112.5,
+          lineHeight: "112.5px",
+          color: "#333333",
           fontFamily: "Montserrat"
-          // color: Color.rgba(51, 51, 51, 1),
-          // font: designFonts.Montserrat.SemiBold
         },
         ".fontStyle-11": {
           letterSpacing: 0,
           fontSize: 64,
-          lineHeight: 75,
+          lineHeight: "75px",
+          color: "#333333",
           fontFamily: "Montserrat"
-          // color: Color.rgba(51, 51, 51, 1),
-          // font: designFonts.Montserrat.Bold
         },
         ".fontStyle-10": {
           letterSpacing: 0,
           fontSize: 48,
-          lineHeight: 56.25,
+          lineHeight: "56.25px",
+          color: "#333333",
           fontFamily: "Montserrat"
-          // color: Color.rgba(51, 51, 51, 1),
-          // font: designFonts.Montserrat.SemiBold
         },
         ".fontStyle-9": {
           letterSpacing: 0.25,
           fontSize: 36,
-          lineHeight: 20,
+          lineHeight: "20px",
+          color: "#333333",
           fontFamily: "Montserrat"
-          // color: Color.rgba(51, 51, 51, 1),
-          // font: designFonts.Montserrat.Bold
         },
         ".fontStyle-8": {
           letterSpacing: 0.25,
           fontSize: 32,
-          lineHeight: 20,
+          lineHeight: "20px",
+          color: "#333333",
           fontFamily: "Inter"
-          // color: Color.rgba(51, 51, 51, 1),
-          // font: designFonts.Inter.Medium
         },
         ".fontStyle-7": {
           letterSpacing: 0.25,
           fontSize: 24,
-          lineHeight: 36,
+          lineHeight: "36px",
+          color: "#333333",
           fontFamily: "Inter"
-          // color: Color.rgba(51, 51, 51, 1),
-          // font: designFonts.Inter.SemiBold
         },
         ".fontStyle-6": {
+          // gone through
           letterSpacing: 0.5,
           fontSize: 20,
-          backgroundColor: "#f00000",
           color: "#333333",
           lineHeight: "20px",
           fontFamily: "Inter"
-          // color: Color.rgba(51, 51, 51, 1),
-          // font: designFonts.Inter.Medium
         },
         ".fontStyle-5": {
+          // gone through
           letterSpacing: 0.5,
           fontSize: 18,
           lineHeight: "20px",
-          // backgroundColor: "#f00000",
           fontFamily: "Inter"
-          // color: Color.rgba(51, 51, 51, 1),
-          // font: designFonts.Inter.Bold
         },
         ".fontStyle-4": {
           letterSpacing: 0.25,
           fontSize: 16,
-          lineHeight: 20,
+          lineHeight: "20px",
+          color: "#333333",
           fontFamily: "Inter"
-          // color: Color.rgba(51, 51, 51, 1),
-          // font: designFonts.Inter.Regular
         },
         ".fontStyle-3": {
-          // letterSpacing: 0.315,
+          letterSpacing: 0.315,
           fontSize: 14,
-          // lineHeight: 16.40625,
+          lineHeight: "16.40625px",
           // backgroundColor: "#f00000",
+          color: "#333333",
           fontFamily: "Inter"
-          // color: Color.rgba(51, 51, 51, 1),
-          // font: designFonts.Inter.SemiBold
         },
         ".fontStyle-2": {
           letterSpacing: 0.4000000059604645,
           fontSize: 12,
-          lineHeight: 16,
-          // color: Color.rgba(51, 51, 51, 1),
-          // font: designFonts.Inter.Medium
+          lineHeight: "16px",
+          color: "#333333",
           fontFamily: "Inter"
         },
         ".fontStyle-1": {
           letterSpacing: 1,
           fontSize: 10,
-          lineHeight: 16,
+          lineHeight: "16px",
+          color: "#333333",
           fontFamily: "Inter"
-          // color: Color.rgba(51, 51, 51, 1),
-          // font: designFonts.Inter.Regular
         }
       };
 

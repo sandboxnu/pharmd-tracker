@@ -1,6 +1,6 @@
 import React from "react";
 import SvgIcon from "@material-ui/core/SvgIcon";
-import styled, { css } from "styled-components/macro";
+import { styled, css } from "twin.macro";
 
 const SVG = styled(SvgIcon)`
     vertical-align: middle;
