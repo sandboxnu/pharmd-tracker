@@ -1,6 +1,5 @@
 import React from "react";
-import styled from "styled-components/macro";
-import tw from "twin.macro";
+import tw, { styled } from "twin.macro";
 import Chip from "@material-ui/core/Chip";
 
 // ${props => props.theme.typography.size4}

@@ -1,7 +1,6 @@
 import React from "react";
 
-import styled from "styled-components/macro";
-import tw from "tailwind.macro";
+import { styled } from "twin.macro";
 import CourseListField from "../../components/Fields/CourseListField";
 import QuickProfileField from "../../components/Fields/QuickProfileField";
 import QuickInfoField from "../../components/Fields/QuickInfoField";

@@ -98,7 +98,6 @@ module.exports = {
           fontFamily: "Inter"
         },
         ".fontStyle-6": {
-          // gone through
           letterSpacing: 0.5,
           fontSize: 20,
           color: "#333333",
@@ -106,7 +105,6 @@ module.exports = {
           fontFamily: "Inter"
         },
         ".fontStyle-5": {
-          // gone through
           letterSpacing: 0.5,
           fontSize: 18,
           lineHeight: "20px",
@@ -123,7 +121,6 @@ module.exports = {
           letterSpacing: 0.315,
           fontSize: 14,
           lineHeight: "16.40625px",
-          // backgroundColor: "#f00000",
           color: "#333333",
           fontFamily: "Inter"
         },

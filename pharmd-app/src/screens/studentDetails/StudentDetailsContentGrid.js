@@ -7,8 +7,7 @@ import React from "react";
 
 import { List as ListRA, useListController } from "react-admin";
 
-import styled from "styled-components/macro";
-import tw from "tailwind.macro";
+import tw, { styled } from "twin.macro";
 import Paper from "@material-ui/core/Paper";
 import Grid from "@material-ui/core/Grid";
 import { useSelector } from "react-redux";

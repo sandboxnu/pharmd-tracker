@@ -21,8 +21,7 @@ import StudentContentGrid from "./StudentContentGrid";
 import StudenttDrawer from "./StudentDrawer";
 
 // Style Imports
-import styled from "styled-components/macro";
-import tw from "tailwind.macro";
+import tw, { styled } from "twin.macro";
 
 //-------------------------- STYLE --------------------------
 
