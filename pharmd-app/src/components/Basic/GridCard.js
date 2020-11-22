@@ -22,7 +22,7 @@ import tw, { styled } from "twin.macro";
 //-------------------------- STYLE --------------------------
 
 const GridItem = styled(MuiGrid)`
-  transition: all cubic-bezier(0.4, 0, 0.6, 1) 0.195s;
+  ${tw`transition-1`}
 `;
 
 const Paper = styled(MuiPaper)`

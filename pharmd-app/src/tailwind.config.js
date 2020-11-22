@@ -14,7 +14,8 @@ module.exports = {
       "4xl": "2.25rem",
       "5xl": "3rem",
       "6xl": "4rem",
-      "7xl": "5rem"
+      "7xl": "5rem",
+      "80%": "80%"
     },
     fontFamily: {
       sans: ["Inter"]
@@ -28,6 +29,7 @@ module.exports = {
         paper: "var(--color-bg-card)"
       },
       spacing: {
+        "96px": "96px",
         "18": "4.5rem",
         "28": "7rem",
         "99": "24.75rem"
@@ -45,7 +47,19 @@ module.exports = {
         "1": "0.25rem",
         "2": "0.5rem",
         "3": "0.75rem",
-        "4": "1rem"
+        "4": "1rem",
+        "12": "3rem",
+        "10px": "10px"
+      },
+      margin: {
+        "25px": "25px",
+        "100px": "100px"
+      },
+      width: {
+        fitContent: "fit-content"
+      },
+      zIndex: {
+        max: 99999
       }
     }
   },
@@ -137,6 +151,15 @@ module.exports = {
           lineHeight: "16px",
           color: "#333333",
           fontFamily: "Inter"
+        },
+        ".transition-1": {
+          transition: "all cubic-bezier(0.4, 0, 0.6, 1) 0.195s"
+        },
+        ".paperStyle": {
+          height: "252px",
+          borderRadius: "16px",
+          boxShadow:
+            "0px 1px 2px rgba(0,0,0,0.05), 0px 2px 13px rgba(0,0,0,0.07), 0px 3px 10px rgba(0,0,0,0.03)"
         }
       };
 

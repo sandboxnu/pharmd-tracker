@@ -75,7 +75,7 @@ const MultipleSelect = props => {
       component="fieldset"
       error={error}
       className={(classes.formControl, className)}
-      style={{ width: "100%" }}
+      tw="w-full"
     >
       {/* {showLabel && <FormLabel component="legend">{label}</FormLabel>} */}
       <InputLabel id="demo-mutiple-chip-label">{label}</InputLabel>

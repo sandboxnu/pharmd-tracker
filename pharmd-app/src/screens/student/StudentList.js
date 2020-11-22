@@ -9,13 +9,14 @@
 
 //-------------------------- IMPORTS --------------------------
 
-// Style Imports
+// Function Imports
 import React from "react";
 // import { Datagrid as DatagridRA } from "react-admin";
 
 import { useDispatch } from "react-redux";
 import { setStudentSideBar } from "../../redux/actions";
 
+// Component Imports
 import Table from "../../components/Table/Table";
 import EmphasisField from "../../components/Fields/EmphasisField";
 import TextField from "../../components/Fields/TextField";

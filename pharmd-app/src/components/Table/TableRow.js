@@ -10,7 +10,7 @@
 import React, { cloneElement } from "react";
 
 // Style Imports
-import { styled } from "twin.macro";
+import tw, { styled } from "twin.macro";
 
 // Component Imports
 import TableCell from "@material-ui/core/TableCell";
@@ -26,7 +26,6 @@ const TableRowStyled = styled(MuiTableRow)`
 
   & .MuiTableCell-head {
     ${tw`h-18 fontStyle-5 tracking-wide text-gray-600`}
-    /* ${tw`h-18 fontStyle-3 text-primary-medium font-semibold tracking-wider`} */
   }
 `;
 

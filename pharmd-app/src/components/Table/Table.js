@@ -28,7 +28,6 @@ import { Datagrid as DatagridRA } from "react-admin";
 
 const Datagrid = styled(DatagridRA)`
   .headerCell {
-    /* background-color: red; */
     ${tw`h-18 fontStyle-5 tracking-wide text-gray-600`}
   }
 

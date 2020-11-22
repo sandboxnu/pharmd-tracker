@@ -91,7 +91,7 @@ const NavItemLink = forwardRef(
       return (
         <Tooltip title={title}>
           {/* DIV ensures hover works */}
-          <div style={{ width: "fit-content" }}>{renderNavItem()}</div>
+          <div tw="w-fitContent">{renderNavItem()}</div>
         </Tooltip>
       );
     }

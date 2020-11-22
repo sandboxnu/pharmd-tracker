@@ -96,7 +96,7 @@ const NavItemSecondary = (
     return (
       <Tooltip title={title} placement={"left"}>
         {/* DIV ensures hover works */}
-        <div style={{ width: "fit-content" }}>{renderNavItem()}</div>
+        <div tw="w-fitContent">{renderNavItem()}</div>
       </Tooltip>
     );
   }
