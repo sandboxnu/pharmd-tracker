@@ -1,11 +1,14 @@
-import React from "react";
-import {useGetOne} from "react-admin";
+import React, {useState} from "react";
+import {useUpdate} from "react-admin";
 import styled from "styled-components/macro";
 import tw from "tailwind.macro";
 import AccessTimeIcon from "@material-ui/icons/AccessTimeOutlined";
 import EditIcon from "@material-ui/icons/EditOutlined";
+import CheckIcon from '@material-ui/icons/CheckOutlined';
 import NoteIcon from "../Basic/NoteIcon";
-import ChipField from "./ChipField";
+import IconButton from "@material-ui/core/IconButton";
+import TextField from '@material-ui/core/TextField';
+
 
 const Info = styled.div`
   ${tw`fontStyle-6 text-black font-medium`}
@@ -49,25 +52,83 @@ const Content = styled.div`
   overflow: hidden;
   margin-top: .4em;
   word-break: break-all;
-`
+`;
 
-const NoteField = () => {
+const NoteInput = styled(TextField)`
+    margin: 2px;
+    width: 100%;
+`;
+
+const Loading = styled.p`
+    font-size: 120%;
+    color: gray;
+`;
+
+const NoteField = ({ text, title, lastEdit, created, id }) => {
+    const [editing, setEditing] = useState(false);
+    const [noteText, setNoteText] = useState(text);
+    const [updating, setUpdating] = useState(false);
+    const [errorMessage, setErrorMessage] = useState(false);
+
+    const [update, {loading, error}] = useUpdate('notes', id, noteText)
+    if (error) {
+        setErrorMessage(true);
+    }
+
+
+    function toggleEdit() {
+        if (editing) {
+            // Update note text
+            setUpdating(true);
+
+            // Make call to data provider--update this note
+            update();
+            setTimeout(() => setUpdating(false), 1000)
+            setEditing(false);
+        } else {
+            // Start editing
+            setEditing(true);
+        }
+    }
+
+    function handleChange(event) {
+        setNoteText(event.target.value)
+    }
+
     return (
-        <Info>
-            <Heading>
-                <Title>Note Title</Title>
-                <NoteIcon src={EditIcon} color="black" size="small" isPrimary={"primary"}/>
-            </Heading>
-            <Time>
-                <NoteIcon src={AccessTimeIcon} color="grey" size="inherit" />
-                <Date>Date</Date>
-            </Time>
-            {/* if the length of string is more than 2 lines - ask jose how to check for this*/}
-            <Content><p>1234567890llllllllll123123456dddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd7890llllllllll1231234567890llllllllll123</p></Content>
-        {/*  add a contional where if 3 or more...  */}
-        {/* use QuickChipField for the chip component */}
+        <React.Fragment>
+            <Info>
+                <Heading>
+                    <Title>{title}</Title>
+                    <IconButton onClick={toggleEdit} disabled={updating}>
+                        <NoteIcon src={editing ? CheckIcon : EditIcon} color="black" size="small"
+                                  isPrimary={"primary"}/>
+                    </IconButton>
 
-        </Info>
+                </Heading>
+                <Time>
+                    <NoteIcon src={AccessTimeIcon} color="grey" size="inherit"/>
+                    <Date>Created: {created.toString()}</Date>
+                </Time>
+                {lastEdit && lastEdit.getTime() !== created.getTime() &&
+                    <Time>
+                        <NoteIcon src={AccessTimeIcon} color="grey" size="inherit"/>
+                        <Date>Last edit:: {lastEdit.toString()}</Date>
+                    </Time>
+                }
+
+                {
+                    updating ? <Loading>Updating...</Loading> :
+                    editing ?
+                        <NoteInput multiline defaultValue={noteText} label="Note Text..." onChange={handleChange}/>
+                        : <Content><p>{noteText}</p></Content>
+                }
+
+                {/*  add a contional where if 3 or more...  */}
+                {/* use QuickChipField for the chip component */}
+
+            </Info>
+        </React.Fragment>
     );
 };
 

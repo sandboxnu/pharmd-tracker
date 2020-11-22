@@ -17,7 +17,7 @@ const StudentDetailsSide = ({source}) => {
         <Details>
             <QuickProfileField source="id" record={source} />
             <QuickInfoField source="id" record={source} />
-            <NoteListField source="courses" record={source} />
+            <NoteListField source="notes" record={source} />
         </Details>
     );
 };

@@ -44,7 +44,7 @@ const StudentQuickView = props => {
         <QuickProfileField source="id" />
         <QuickInfoField source="id" />
         <CourseListField source="active_courses" />
-        <NoteListField source="courses" />
+        <NoteListField source="notes" />
         {/* <ScoredListField source="active_courses" /> */}
       </SimpleShowLayout>
     </Show>
