@@ -20,6 +20,7 @@ const GpaSliderInput = props => {
       max={4}
       min={0}
       step={0.25}
+      className={props.className}
     />
   );
 };

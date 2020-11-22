@@ -1,33 +1,46 @@
+/**
+ * Description:
+ * TODO:\Creates the main students screen
+ * FIXME: Some Boolean logic error doesn't allow the quickview
+ *        sidebar to open when a table is clicked for the first time
+ * Date: 04-23-2020$
+ */
+
+//-------------------------- IMPORTS --------------------------
+
+// Function Imports
 import React, { useCallback, Fragment } from "react";
 import { Route, useHistory } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { setStudentSideBar } from "../../redux/actions";
+import { STUDENT_QUICKVIEW, STUDENTS_MAIN } from "../../constants/routes";
 
-import styled from "styled-components/macro";
-import tw from "tailwind.macro";
-
+// Component Imports
 import AppBar from "../../components/Nav/AppBar";
 import StudentContentGrid from "./StudentContentGrid";
 import StudenttDrawer from "./StudentDrawer";
-import { useDispatch, useSelector } from "react-redux";
-import { setStudentSideBar } from "../../redux/actions";
-import { useListController, getListControllerProps } from "ra-core";
+
+// Style Imports
+import styled from "styled-components/macro";
+import tw from "tailwind.macro";
+
+//-------------------------- STYLE --------------------------
 
 const MainContent = styled.div`
   ${tw`p-12 pt-2 `}
   flex-grow: 1;
 `;
 
-const StudentScreen = props => {
-  // console.log("RESOURCE", props);
-  // console.log("CONTROLLER", props, useListController(props));
-  const history = useHistory();
-  // const { ...rest } = { ...props, ...useListController(props) };
-  // const controllerProps = getListControllerProps(rest);
-  // console.log("REST", rest, controllerProps);
+//-------------------------- COMPONENT --------------------------
 
+const StudentScreen = props => {
+  // Route history is used by the componnet to decide
+  // if it shouuld show the sidebar
+  const history = useHistory();
   const dispatch = useDispatch();
 
   const handleClose = useCallback(() => {
-    history.push("/students");
+    history.push(STUDENTS_MAIN);
     dispatch(setStudentSideBar({ isOpen: false }));
   }, [history]);
 
@@ -36,12 +49,10 @@ const StudentScreen = props => {
   }, []);
 
   return (
-    <Route path="/students/:id">
+    <Route path={STUDENT_QUICKVIEW}>
       {({ match }) => {
         // Double negative
-
         const isMatch = !!(match && match.params && match.params.id !== "create");
-        // isMatch && dispatch(setStudentSideBar({ isOpen: isMatch }));
 
         return (
           <Fragment>
@@ -68,41 +79,3 @@ const StudentScreen = props => {
 };
 
 export default StudentScreen;
-
-// import React, { useCallback, Fragment } from "react";
-// import { Route, useHistory } from "react-router-dom";
-// import StudentList from "./StudentList";
-// import { List, SimpleForm } from "react-admin";
-// import Drawer from "@material-ui/core/Drawer";
-// import StudentEdit from "./StudentEdit";
-
-// const StudentListMain = props => {
-//   const history = useHistory();
-
-//   const handleClose = useCallback(() => {
-//     history.push("/students");
-//   }, [history]);
-
-//   return (
-//     <Route path="/students/:id">
-//       {({ match }) => {
-//         // Double negative
-//         const isMatch = !!(match && match.params && match.params.id !== "create");
-
-//         return (
-//           <Fragment>
-//             <List {...props}>
-//               <StudentList selectedRow={isMatch && parseInt(match.params.id, 10)} />
-//             </List>
-//             <Drawer varient="persistent" open={isMatch} anchor="right" onClose={handleClose}>
-//               {/* Avoid route errors*/}
-//               {isMatch ? (
-//                 <StudentEdit id={match.params.id} onCancel={handleClose} {...props} />
-//               ) : null}
-//             </Drawer>
-//           </Fragment>
-//         );
-//       }}
-//     </Route>
-//   );
-// };

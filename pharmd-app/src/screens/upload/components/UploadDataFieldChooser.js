@@ -1,7 +1,8 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
 import FileUploadService from "../../../services/FileUploadService";
-import { Select, Button } from '../../../components/Form'
+import { Select } from '../../../components/Form'
+import Button from '@material-ui/core/Button'
 
 class UploadDataFieldChooser extends Component {
   static propTypes = {
@@ -121,13 +122,13 @@ class UploadDataFieldChooser extends Component {
   render() {
     return (
       <div>
-        <Button color="primary" variant="contained" style={{position: 'fixed', right: 10, top: '2rem'}} onClick={this.handleConfirm}>Confirm Data</Button>
+        <Button color="primary" variant="contained" style={{position: 'fixed', right: 10, top: '3rem', zIndex: 10}} onClick={this.handleConfirm}>Confirm Data</Button>
         <table>
           <thead>
             <tr>
-              {this.props.headers.map(header => (
-                <td>
-                  <Select id={header} onChange={this.handleChange} key={header} title="Value Type"
+              {this.props.headers.map((header, index) => (
+                <td key={index} >
+                  <Select id={header} onChange={this.handleChange} title="Value Type"
                                selectItems={
                                  this.getSelectItems(header)
                                } />
@@ -135,15 +136,19 @@ class UploadDataFieldChooser extends Component {
               ))}
             </tr>
             <tr>
-              {this.props.headers.map(header => (
-                  <th key={header}>{!header.includes("EMPTY") && header}</th>
+              {this.props.headers.map((header, index) => (
+                  <th key={index}>
+                    {header === FileUploadService.EMPTY_CELL_VAL ?  this.props.subHeaders[index] : header}
+                  </th>
               ))}
             </tr>
-            {/*<tr>*/}
-            {/*  {this.props.subHeaders.map((subHeader, index) => (*/}
-            {/*      <th style={{fontSize: '80%'}} key={index}>{subHeader}</th>*/}
-            {/*  ))}*/}
-            {/*</tr>*/}
+            <tr>
+              {this.props.subHeaders.map((subHeader, index) => (
+                  <th style={{fontSize: '80%'}} key={index}>
+                    {this.props.headers[index] === FileUploadService.EMPTY_CELL_VAL || subHeader === FileUploadService.EMPTY_CELL_VAL ? "" : subHeader}
+                  </th>
+              ))}
+            </tr>
           </thead>
           <tbody>
             {this.props.studentData.map((student, index) => {

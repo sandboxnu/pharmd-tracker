@@ -3,11 +3,10 @@ import UploadFileChooser from "./UploadFileChooser";
 import UploadDataFieldChooser from "./UploadDataFieldChooser";
 import StudentAssessmentService from '../../../services/StudentAssessmentService';
 import Button from '../../../components/Form/Button';
-import RadioGroup from '@material-ui/core/RadioGroup';
-import Radio from '@material-ui/core/Radio';
 
 /**
  * @typedef { import('../../../typeDefs.js').BasicStudentAssessment} BasicStudentAssessment
+ * @typedef { import('../../../typeDefs.js').FileData} FileData
  */
 
 class SpreadsheetUploader extends Component {
@@ -29,16 +28,19 @@ class SpreadsheetUploader extends Component {
     }
 
 
+    /**
+     * Updates the state with data about the uploaded file
+     * @param {FileData}fileData
+     */
     uploadFile(fileData) {
-        if (fileData.length > 0) {
-            const subHeaders = Object.keys(Object.assign(fileData[0], Object.assign(fileData[1], {})));
+        console.log("File data", fileData)
+        if (fileData.data.length > 0) {
             this.setState({
-                uploadedDataHeaders: Object.keys(fileData[fileData.length - 1]),
-                uploadedDataSubheaders: Object.values(fileData[0]),
-                uploadedData: fileData.slice(1),
+                uploadedDataHeaders: fileData.headers,
+                uploadedDataSubheaders: fileData.subHeaders,
+                uploadedData: fileData.data,
                 uploadComplete: null
             });
-            console.log(fileData);
         }
     };
 
@@ -73,9 +75,33 @@ class SpreadsheetUploader extends Component {
             })
     }
 
+    /**
+     * Displays a dialog with help info about the file uploader
+     */
+    showHelp() {
+        const helpInfo = `
+      This tool is used to upload spreadsheet exports from Canvas into the PharmD database
+      
+      To use, choose your file, then match the appropriate columns with the value type it holds.
+      
+      Value Types (* = required):
+      - * Student Name (Full): The student's full name (last, first)
+      - * Student Last Name: The student's surname
+      - * Student First Name: The student's given name
+      - * Exam Grade: A grade for an exam
+      - Homework grade: Self-explanatory
+      - * Student ID: The student's NUID
+      - *Class Section: The course these grades correspond to
+    `;
+        // TODO: replace with modal dialog
+        alert(helpInfo)
+
+    }
+
     render() {
         return (
             <div>
+                <Button color="secondary" variant="contained" onClick={this.showHelp}>Help</Button>
                 {!this.state.uploadedData &&
                 <UploadFileChooser uploadedFileData={this.uploadFile} />}
                 {this.state.uploadedData && <Button color="secondary" variant="contained" onClick={this.removeFile}>Remove File</Button>}
