@@ -26,8 +26,7 @@ import tw, { styled } from "twin.macro";
 //-------------------------- STYLE --------------------------
 
 const MainContent = styled.div`
-  ${tw`p-12 pt-2 `}
-  flex-grow: 1;
+  ${tw`p-12 pt-2 flex-grow`}
 `;
 
 //-------------------------- COMPONENT --------------------------
