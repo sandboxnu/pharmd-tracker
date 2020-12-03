@@ -2,6 +2,9 @@ const plugin = require("./plugins/type-system");
 
 module.exports = {
   theme: {
+    fontFamily: {
+      sans: ["Inter"]
+    },
     fontSize: {
       xs: ".75rem",
       sm: ".875rem",
@@ -17,22 +20,9 @@ module.exports = {
       "7xl": "5rem",
       "80%": "80%"
     },
-    fontFamily: {
-      sans: ["Inter"]
-    },
     extend: {
-      colors: {
-        primary: "var(--color-primary)",
-        secondary: "var(--color-secondary)",
-        tertiary: "var(--color-tertiary)",
-        background: "var(--color-bg-primary)",
-        paper: "var(--color-bg-card)"
-      },
-      spacing: {
-        "96px": "96px",
-        "18": "4.5rem",
-        "28": "7rem",
-        "99": "24.75rem"
+      backgroundColor: {
+        primary: "var(--color-primary)"
       },
       borderRadius: {
         xl: "1rem"
@@ -43,6 +33,17 @@ module.exports = {
         cardHeavy:
           "0px 8px 10px rgba(161, 167, 200, 0.2), 0px 16px 40px rgba(240, 244, 255, 0.5)"
       },
+      colors: {
+        primary: "var(--color-primary)",
+        secondary: "var(--color-secondary)",
+        tertiary: "var(--color-tertiary)",
+        background: "var(--color-bg-primary)",
+        paper: "var(--color-bg-card)"
+      },
+      height: {
+        "60px": "60px",
+        "250px": "250px"
+      },
       inset: {
         "1": "0.25rem",
         "2": "0.5rem",
@@ -51,11 +52,27 @@ module.exports = {
         "12": "3rem",
         "10px": "10px"
       },
+      lineHeight: {
+        "60px": "60px"
+      },
       margin: {
         "25px": "25px",
         "100px": "100px"
       },
+      padding: {
+        "16px": "16px"
+      },
+      spacing: {
+        "96px": "96px",
+        "18": "4.5rem",
+        "28": "7rem",
+        "99": "24.75rem"
+      },
+      textColor: {
+        inverse: "var(--color-text-inverse)"
+      },
       width: {
+        "60px": "60px",
         fitContent: "fit-content"
       },
       zIndex: {

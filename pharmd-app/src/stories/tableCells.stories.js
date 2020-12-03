@@ -5,6 +5,7 @@ import TextField from "../components/Fields/TextField";
 import CohortField from "../components/Fields/CohortField";
 import { withKnobs, select, text } from "@storybook/addon-knobs";
 import { withDesign } from "storybook-addon-designs";
+import tw from "twin.macro";
 
 export default {
   title: "Table Cells",
@@ -12,7 +13,7 @@ export default {
   decorators: [
     withKnobs,
     withDesign,
-    storyFn => <div style={{ padding: "16px" }}>{storyFn()}</div>
+    storyFn => <div tw="p-16px">{storyFn()}</div>
   ]
 };
 
