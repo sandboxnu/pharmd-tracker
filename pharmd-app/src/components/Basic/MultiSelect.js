@@ -9,6 +9,7 @@ import ListItemText from "@material-ui/core/ListItemText";
 import Select from "@material-ui/core/Select";
 import Checkbox from "@material-ui/core/Checkbox";
 import Chip from "@material-ui/core/Chip";
+import tw, {css} from "twin.macro";
 
 const useStyles = makeStyles(theme => ({
   formControl: {
@@ -38,15 +39,6 @@ const MenuProps = {
     }
   }
 };
-
-function getStyles(name, personName, theme) {
-  return {
-    fontWeight:
-      personName.indexOf(name) === -1
-        ? theme.typography.fontWeightRegular
-        : theme.typography.fontWeightMedium
-  };
-}
 
 const MultipleSelect = props => {
   const { onChange, label, showLabel, error, children, className } = props;
@@ -94,7 +86,7 @@ const MultipleSelect = props => {
               {selected.map(value => (
                 <Chip
                   key={value}
-                  label={"Cohort " + value.substring(3)}
+                  label={`Cohort ${value.substring(3)}`}
                   className={classes.chip}
                   color="primary"
                   size="small"
@@ -107,7 +99,11 @@ const MultipleSelect = props => {
         MenuProps={MenuProps}
       >
         {children.map((child, index) => (
-          <MenuItem key={index} value={child.props.value} style={getStyles(name, value, theme)}>
+          <MenuItem
+            key={index}
+            value={child.props.value}
+            css={[value.indexOf(child.props.value) !== -1 && tw`font-bold`]}
+          >
             {child.props.label}
           </MenuItem>
         ))}
