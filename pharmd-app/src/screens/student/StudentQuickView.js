@@ -34,7 +34,7 @@ const StudentQuickView = props => {
   }
   console.log("CONTROLLER", controllerProps);
   return (
-    <Show title={"QickView"} component={"div"} {...props}>
+    <Show title={"QuickView"} component={"div"} {...props}>
       <SimpleShowLayout
         basePath={controllerProps.basePath}
         record={controllerProps.record}
@@ -43,8 +43,8 @@ const StudentQuickView = props => {
       >
         <QuickProfileField source="id" />
         <QuickInfoField source="id" />
-        <CourseListField source="active_courses" />
-        <NoteListField source="courses" />
+        {/*<CourseListField source="active_courses" />*/}
+        {/*<NoteListField source="courses" />*/}
         {/* <ScoredListField source="active_courses" /> */}
       </SimpleShowLayout>
     </Show>

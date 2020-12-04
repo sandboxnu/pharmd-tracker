@@ -21,7 +21,7 @@ const Field = styled.a`
 // record[source]
 
 const QuickChipField = ({ record = {}, source }) => {
-    let textLabel = record[source] ? record[source] : "na";
+    let textLabel = record[source] ? record[source] : "NA";
     return (
         <Field>
             <Pill label={textLabel} size={"small"} />

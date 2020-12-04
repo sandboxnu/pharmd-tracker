@@ -44,7 +44,7 @@ export default (httpClient, BACKEND_URL) => ({
     },
 
     getOne: (resource, params) =>
-        httpClient(`${BACKEND_URL}/${resource}/${params.id}`).then(({ json }) => ({
+        httpClient(`${BACKEND_URL}${resource}/${params.id}`).then(({ json }) => ({
             data: json
         })),
 
@@ -52,7 +52,7 @@ export default (httpClient, BACKEND_URL) => ({
         const query = {
             id: params.ids
         };
-        const url = `${BACKEND_URL}/${resource}?${stringify(query)}`;
+        const url = `${BACKEND_URL}${resource}?${stringify(query)}`;
         return httpClient(url).then(({ json }) => ({ data: json }));
     },
 
@@ -67,7 +67,7 @@ export default (httpClient, BACKEND_URL) => ({
             _start: (page - 1) * perPage,
             _end: page * perPage
         };
-        const url = `${BACKEND_URL}/${resource}?${stringify(query)}`;
+        const url = `${BACKEND_URL}${resource}?${stringify(query)}`;
 
         return httpClient(url).then(({ headers, json }) => {
             if (!headers.has("x-total-count")) {

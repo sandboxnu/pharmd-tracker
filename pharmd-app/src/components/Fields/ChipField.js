@@ -9,7 +9,8 @@ const Pill = styled(Chip)`
    ${tw`rounded-lg capitalize w-28 fontStyle-4 font-bold tracking-wider`}
 	
    color: ${props => props.theme.palette.pillColors[props.label]};
-   // background-color: ${props => props.theme.palette.pillColors[props.label].replace("1)", "0.3)")};
+   background-color: ${props =>
+    props.theme.palette.pillColors[props.label].replace("1)", "0.3)")};
 	
 `;
 

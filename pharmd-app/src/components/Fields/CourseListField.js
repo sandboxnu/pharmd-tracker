@@ -31,7 +31,7 @@ const CourseListField = ({ record = {}, source }) => {
       </div>
       {courses.map((course, index) => {
         let i = index;
-        const { data, loading, error } = useGetOne("courses", course.course_id);
+        const { data, loading, error } = useGetOne("courses", course.id);
         if (loading) {
           return <p key={index}>loading</p>;
         }
@@ -41,12 +41,12 @@ const CourseListField = ({ record = {}, source }) => {
         }
         if (index === courses.length - 1) {
           return (
-                <CourseField name={data.name} grade={course.grade} isLine="primary" />
+                <CourseField name={data.name} grade={course.percentage} isLine="primary" />
           );
         }
         else {
           return (
-                <CourseField name={data.name} grade={course.grade} isLine="" />
+                <CourseField name={data.name} grade={course.percentage} isLine="" />
           );
         }
       })}

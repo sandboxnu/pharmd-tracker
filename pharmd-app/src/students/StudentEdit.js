@@ -16,10 +16,11 @@ const StudentEdit = ({ onCancel, ...props }) => {
         resource="students"
         redirect="list"
       >
-        <TextField source="name" />
-        <TextField source="studentId" label="Northeastern ID" />
+        <TextField source="firstName" />
+        <TextField source="lastName" />
+        <TextField source="id" label="Northeastern ID" />
         <TextField source="status" />
-        <TextField source="graduationYear" />
+        <TextField source="gradDate" />
         <TextField source="orgoFinalGrade" />
         <TextField source="orgoFinalLetter" />
         <TextField source="orgo2FinalGrade" />

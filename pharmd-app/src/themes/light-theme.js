@@ -13,12 +13,12 @@ function createLigthTheme(ds) {
       name: "Light Theme",
       palette: {
         pillColors: {
-          coop: ds.palette.primaryColor.color,
-          enrolled: ds.palette.greenColor.color,
-          dropback: ds.palette.redColor.color,
-          leave: ds.palette.orangeColor.color,
-          graduated: ds.palette.tertiaryColor.color,
-          na: ds.palette.textSecondary.color
+          COOP: ds.palette.primaryColor.color,
+          ENROLLED: ds.palette.greenColor.color,
+          DROP_BACK: ds.palette.redColor.color,
+          LEAVE: ds.palette.orangeColor.color,
+          GRADUATED: ds.palette.tertiaryColor.color,
+          NA: ds.palette.textSecondary.color
         },
         primary: {
           main: ds.palette.primaryColor.color,
