@@ -41,10 +41,10 @@ const StudentDetailsList = props => {
         >
             <TempField source="Organic Chem" isEmphasis="primary" label="Name" />
             <TempField source="Orgo" label="Course" />
-            <TempGradeField source="93% A" label="Score" color="Enrolled" />
-            <TempGradeField source="90% A" label="Raw Score" color="Enrolled" />
+            <TempGradeField source="93% A" label="Score" color="ENROLLED" />
+            <TempGradeField source="90% A" label="Raw Score" color="ENROLLED" />
             {/* use the section id to get the section object for the class average */}
-            <TempGradeField source="56%" label="Class Avg" color="Dropback" />
+            <TempGradeField source="56%" label="Class Avg" color="DROP_BACK" />
             {/* <EditButton /> */}
         </Datagrid>
     );

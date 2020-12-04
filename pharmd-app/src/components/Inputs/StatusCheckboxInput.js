@@ -17,11 +17,11 @@ const StatusCheckboxInput = props => {
       className={props.className}
       checkboxClassName={props.checkboxClassName}
     >
-      <FormControlLabel value="enrolled" label="Enrolled" />
-      <FormControlLabel value="coop" label="Co Op" />
-      <FormControlLabel value="graduated" label="Graduated" />
-      <FormControlLabel value="leave" label="Leave" />
-      <FormControlLabel value="dropback" label="Drop Back" />
+      <FormControlLabel value="ENROLLED" label="Enrolled" />
+      <FormControlLabel value="COOP" label="Co-op" />
+      <FormControlLabel value="GRADUATED" label="Graduated" />
+      <FormControlLabel value="LEAVE" label="Leave" />
+      <FormControlLabel value="DROP_BACK" label="Drop Back" />
     </CheckboxButtonGroup>
   );
 };
