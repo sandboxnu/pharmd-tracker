@@ -81,13 +81,13 @@ export const StudentDrawerFilter = props => {
   const originRadio = (event, newValue) => {
     switch (newValue) {
       case "domestic":
-        setFilter("international", false);
+        setFilter("hasVisa", false);
         break;
       case "international":
-        setFilter("international", true);
+        setFilter("hasVisa", true);
         break;
       default:
-        deleteFilter("international");
+        deleteFilter("hasVisa");
         break;
     }
     console.log("Origin Filter:", newValue);
@@ -133,7 +133,7 @@ export const StudentDrawerFilter = props => {
       />
       <OriginRadioInput
         label="Origin"
-        source={"international"}
+        source={"hasVisa"}
         onChange={originRadio}
         className={classes.formControl}
         alwaysOn
