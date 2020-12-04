@@ -57,11 +57,16 @@ const StudentList = ({ selectedRow, ...props }) => {
       classes={{ headerCell: "headerCell", row: "rowCell" }}
       {...props}
     >
-      <EmphasisField source={STUDENT.NEU_ID} label="NEU ID" />
-      <TextField source={STUDENT.NAME} />
-      <CohortField source={STUDENT.COHORT} label="Cohort" />
+      <EmphasisField source={STUDENT.NEU_ID} label="NUID" />
+      <TextField source={STUDENT.FIRST_NAME} label="First Name" />
+      <TextField source={STUDENT.LAST_NAME} label="Last Name" />
+      <TextField source={STUDENT.COHORT} label="Cohort" />
       <ChipField source={STUDENT.STATUS} />
       <TextField source={STUDENT.GPA} label="GPA" />
+
+      {/*<TextField source={STUDENT.NAME} />*/}
+      {/*<CohortField source={STUDENT.COHORT} label="Cohort" />*/}
+      {/*<TextField source={STUDENT.GPA} label="GPA" />*/}
       {/* <TextField source={STUDENT.TEST_AVG} label="Test Avg" /> */}
       {/* <EditButton /> */}
     </Datagrid>
