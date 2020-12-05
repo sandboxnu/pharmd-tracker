@@ -101,8 +101,8 @@ export const StudentDrawerFilter = props => {
   };
 
   const cohortMultiSelect = (event, array) => {
-    setFilter("cohort[current]", array);
-    console.log("Cohort Filter: ", array)
+    setFilter("gradDate", array);
+    console.log("Cohort Filter: ", array);
   };
 
   return (
@@ -128,7 +128,7 @@ export const StudentDrawerFilter = props => {
       />
       <CohortMultipleSelect
         label="Cohort"
-        source={"cohort"}
+        source={"gradDate"}
         onChange={cohortMultiSelect}
         className={classes.formControl}
         alwaysOn
