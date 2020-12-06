@@ -10,7 +10,6 @@ export const STUDENT = {
 };
 
 export const COURSE = {
-  // ID: "id",
   SUBJECT: "subject",
   NUMBER: "number",
   NAME: "name"
