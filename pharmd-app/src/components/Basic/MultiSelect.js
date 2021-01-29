@@ -51,16 +51,13 @@ const MultipleSelect = props => {
     value.filter(val => val !== valueToDelete);
     setValue(value);
     onChange(value);
-    console.log("Cohort Value: ", value);
   };
 
   const handleChange = event => {
     setValue(event.target.value);
     onChange(event, event.target.value);
-    console.log("Cohort Value: ", event.target.value);
   };
 
-  console.log("Cohort Children: ", { children });
 
   return (
     <FormControl
@@ -80,7 +77,6 @@ const MultipleSelect = props => {
         input={<Input id="select-multiple-chip" />}
         variant="outlined"
         renderValue={selected => {
-          console.log("SELECTED", selected);
           return (
             <li className={classes.chips}>
               {selected.map(value => (
