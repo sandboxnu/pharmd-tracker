@@ -51,7 +51,11 @@ const StudentScreen = props => {
       {({ match }) => {
         // Double negative
         const isMatch = !!(match && match.params && match.params.id !== "create");
-
+        if (match) {
+          console.log(`MATCH PARAMS: ${match.params.id} and is Match is ${isMatch}`);
+        } else {
+          console.log(`Match is null and isMatch is ${isMatch}`);
+        }
         return (
           <Fragment>
             <MainContent>

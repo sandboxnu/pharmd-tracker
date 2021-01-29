@@ -2,18 +2,18 @@ import React, { useState, useEffect } from "react";
 
 import DrawerMaterial from "@material-ui/core/Drawer";
 import tw, { styled } from "twin.macro";
-import StudentQuickView from "./StudentQuickView";
 import { useSelector } from "react-redux";
+import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
+import { Route, MemoryRouter } from "react-router";
+import { Link as RouterLink } from "react-router-dom";
+import { useListController } from "react-admin";
+import StudentQuickView from "./StudentQuickView";
 import ExpansionPanel from "../../components/Basic/ExpansionPanel";
 import NavItemSecondary from "../../components/Nav/NavItemSecondary";
 import VerticalSplitIcon from "../../assets/icons/verticalSplit.svg";
 import FilterIcon from "../../assets/icons/filter.svg";
 import PersonIcon from "../../assets/icons/person.svg";
 import Icon from "../../components/Basic/Icon";
-import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
-import { Route, MemoryRouter } from "react-router";
-import { Link as RouterLink } from "react-router-dom";
-import { useListController } from "react-admin";
 import StudentDrawerFilter from "./StudentDrawerFilter";
 // const LinkRouter = props => <Link {...props} component={RouterLink} />;
 
@@ -60,7 +60,7 @@ const StudentDrawer = ({ isOpenMatch, selected, handleClose, handleOpen, ...prop
   const isOpen = useSelector(state => state.studentSidebarOpen);
   const isDrawerOpen = isOpen || isOpenMatch;
 
-  //Avoid route errors
+  // Avoid route errors
   const quickview = () => {
     return isOpenMatch ? (
       <>
@@ -72,10 +72,51 @@ const StudentDrawer = ({ isOpenMatch, selected, handleClose, handleOpen, ...prop
         </ButtonSpan>
       </>
     ) : (
-      <div>{"No Student selected"}</div>
+      <div>No Student selected</div>
     );
   };
 
+  if (isDrawerOpen) {
+    return (
+      <Drawer variant="permanent" open={isDrawerOpen} anchor="right" onClose={handleClose}>
+        <NavItemSecondary
+          title={isDrawerOpen ? "Close" : "Open"}
+          iconSrc={VerticalSplitIcon}
+          onClick={isDrawerOpen ? handleClose : handleOpen}
+          isOpen={isDrawerOpen}
+          isActive={isDrawerOpen}
+        />
+        <ExpansionPanel
+          SummaryChild={(
+            <NavItemSecondary
+              title="Table Filters"
+              iconSrc={FilterIcon}
+              onClick={handleOpen}
+              isOpen
+              isActive={false}
+              sidebarIsOpen={isDrawerOpen}
+            />
+          )}
+          DetailChild={<StudentDrawerFilter {...useListController(props)} />}
+          expanded={isDrawerOpen}
+        />
+        <ExpansionPanel
+          SummaryChild={(
+            <NavItemSecondary
+              title="Student Quickview"
+              iconSrc={PersonIcon}
+              onClick={handleOpen}
+              isOpen
+              isActive={false}
+              sidebarIsOpen={isDrawerOpen}
+            />
+          )}
+          DetailChild={quickview()}
+          expanded={isDrawerOpen}
+        />
+      </Drawer>
+    );
+  }
   return (
     <Drawer variant="permanent" open={isDrawerOpen} anchor="right" onClose={handleClose}>
       <NavItemSecondary
@@ -86,34 +127,32 @@ const StudentDrawer = ({ isOpenMatch, selected, handleClose, handleOpen, ...prop
         isActive={isDrawerOpen}
       />
       <ExpansionPanel
-        SummaryChild={
+        SummaryChild={(
           <NavItemSecondary
-            title={"Table Filters"}
+            title="Table Filters"
             iconSrc={FilterIcon}
             onClick={handleOpen}
-            isOpen={true}
+            isOpen
             isActive={false}
             sidebarIsOpen={isDrawerOpen}
           />
-        }
+        )}
         DetailChild={<StudentDrawerFilter {...useListController(props)} />}
-        expand={false}
+        expanded={false}
       />
       <ExpansionPanel
-        SummaryChild={
-          <>
-            <NavItemSecondary
-              title={"Student Quickview"}
-              iconSrc={PersonIcon}
-              onClick={handleOpen}
-              isOpen={true}
-              isActive={false}
-              sidebarIsOpen={isDrawerOpen}
-            />
-          </>
-        }
+        SummaryChild={(
+          <NavItemSecondary
+            title="Student Quickview"
+            iconSrc={PersonIcon}
+            onClick={handleOpen}
+            isOpen
+            isActive={false}
+            sidebarIsOpen={isDrawerOpen}
+          />
+        )}
         DetailChild={quickview()}
-        expand={isDrawerOpen}
+        expanded={false}
       />
     </Drawer>
   );
