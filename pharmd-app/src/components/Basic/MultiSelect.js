@@ -9,7 +9,7 @@ import ListItemText from "@material-ui/core/ListItemText";
 import Select from "@material-ui/core/Select";
 import Checkbox from "@material-ui/core/Checkbox";
 import Chip from "@material-ui/core/Chip";
-import tw, {css} from "twin.macro";
+import tw, { css } from "twin.macro";
 
 const useStyles = makeStyles(theme => ({
   formControl: {
@@ -51,16 +51,12 @@ const MultipleSelect = props => {
     value.filter(val => val !== valueToDelete);
     setValue(value);
     onChange(value);
-    console.log("Cohort Value: ", value);
   };
 
   const handleChange = event => {
     setValue(event.target.value);
     onChange(event, event.target.value);
-    console.log("Cohort Value: ", event.target.value);
   };
-
-  console.log("Cohort Children: ", { children });
 
   return (
     <FormControl
@@ -80,7 +76,6 @@ const MultipleSelect = props => {
         input={<Input id="select-multiple-chip" />}
         variant="outlined"
         renderValue={selected => {
-          console.log("SELECTED", selected);
           return (
             <li className={classes.chips}>
               {selected.map(value => (
