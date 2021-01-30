@@ -37,8 +37,8 @@ module.exports = {
         primary: "var(--color-primary)",
         secondary: "var(--color-secondary)",
         tertiary: "var(--color-tertiary)",
-        background: "var(--color-bg-primary)",
-        paper: "var(--color-bg-card)"
+        background: "var(--color-background)",
+        paper: "var(--color-white)"
       },
       height: {
         "60px": "60px",
