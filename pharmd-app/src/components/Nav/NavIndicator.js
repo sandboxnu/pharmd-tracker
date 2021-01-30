@@ -1,6 +1,19 @@
+/**
+ * Description:
+ *
+ * TODO:
+ * Date:
+ */
+
+//-------------------------- IMPORTS --------------------------
+
+// Function Imports
 import React, { useState, useEffect } from "react";
-import styled from "styled-components/macro";
-import tw from "tailwind.macro";
+
+// Style Imports
+import tw, { styled } from "twin.macro";
+
+//-------------------------- STYLE --------------------------
 
 const Indicator = styled.div`
   ${tw`w-1 h-24 absolute rounded-l`}
@@ -12,6 +25,8 @@ const Indicator = styled.div`
   bottom: 0%;
   transition: top 0.3s ease-in-out;
 `;
+
+//-------------------------- COMPONENT --------------------------
 
 const NavIndicator = ({ index = 0, prevIndex }) => {
   const h = 96;

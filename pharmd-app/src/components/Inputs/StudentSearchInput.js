@@ -14,12 +14,11 @@ import React from "react";
 import { useInput } from "react-admin";
 import PropTypes from "prop-types";
 
+// Style Imports
+import tw, { styled } from "twin.macro";
+
 // Component Imports
 import SearchInput from "./SearchInput";
-
-// Style Imports
-import styled from "styled-components/macro";
-import tw from "tailwind.macro";
 
 //-------------------------- STYLE --------------------------
 

@@ -2,8 +2,7 @@ import ProfileEdit from "./ProfileEdit";
 import ProfileCreate from "./ProfileCreate";
 import ProfileShow from "./ProfileShow";
 import React from "react";
-import styled from "styled-components/macro";
-import tw from "tailwind.macro";
+import tw, { styled } from "twin.macro";
 import Avatar from "../../components/Basic/Avatar";
 import ProfileManage from "./ProfileManage";
 

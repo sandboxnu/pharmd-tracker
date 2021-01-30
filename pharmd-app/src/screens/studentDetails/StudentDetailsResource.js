@@ -1,7 +1,6 @@
 import React, { useCallback, Fragment } from "react";
 
-import styled from "styled-components/macro";
-import tw from "tailwind.macro";
+import tw, { styled } from "twin.macro";
 import Paper from "@material-ui/core/Paper";
 
 import AppBar from "../../components/Nav/AppBar";

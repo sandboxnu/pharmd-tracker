@@ -1,6 +1,5 @@
 import React from "react";
-import styled, { css } from "styled-components/macro";
-import tw from "tailwind.macro";
+import tw, { styled } from "twin.macro";
 import InfoIcon from "../Basic/IconInfo";
 import ErrorIcon from "../../assets/icons/errorFilled.svg";
 import { List, Datagrid, SimpleList, TextField, useGetOne } from "react-admin";

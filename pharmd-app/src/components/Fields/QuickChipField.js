@@ -1,12 +1,11 @@
 import React from "react";
-import styled from "styled-components/macro";
-import tw from "tailwind.macro";
+import tw, { styled } from "twin.macro";
 import Chip from "@material-ui/core/Chip";
 
 // ${props => props.theme.typography.size4}
 const Pill = styled(Chip)`
 	
-   ${tw`rounded-lg capitalize w-26 fontStyle-4 font-bold tracking-wider`}
+   ${tw`rounded-lg capitalize w-24 fontStyle-4 font-bold tracking-wider`}
    font-size: .9em;
    color: ${props => props.theme.palette.pillColors[props.label]};
    background-color: ${props =>

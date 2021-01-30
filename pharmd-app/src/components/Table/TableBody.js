@@ -6,15 +6,21 @@
 
 //-------------------------- IMPORTS --------------------------
 
+// Function Imports
 import React from "react";
 
+// Style Imports
+import { styled } from "twin.macro";
+
+// Component Imports
 import { DatagridBody as RaDatagridBody } from "react-admin";
 import TableRow from "./TableRow";
 
-import styled from "styled-components/macro";
-import tw from "tailwind.macro";
+//-------------------------- STYLE --------------------------
 
 const DatagridBody = styled(RaDatagridBody)``;
+
+//-------------------------- COMPONENT --------------------------
 
 const TableBody = props => {
   return <DatagridBody {...props} row={<TableRow />} />;
