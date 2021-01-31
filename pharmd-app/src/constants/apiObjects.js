@@ -8,3 +8,10 @@ export const STUDENT = {
   GPA: "gpa",
   TEST_AVG: "test_avg"
 };
+
+export const NOTE = {
+  ID: "id",
+  TITLE: "title",
+  BODY: "body",
+  TAGS: "tags",
+};

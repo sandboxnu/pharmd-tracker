@@ -85,4 +85,9 @@ export default (httpClient, BACKEND_URL) => ({
             };
         });
     },
+    getNotes: (resource, params) => {
+        return httpClient(`${BACKEND_URL}/${resource}/${params.id}/notes`).then(({ json }) => ({
+            data: json
+        }))
+    }
 })

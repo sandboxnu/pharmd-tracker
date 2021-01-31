@@ -1,7 +1,7 @@
 import React from "react";
-import styled, { css } from "styled-components/macro";
+import styled from "styled-components/macro";
 import tw from "tailwind.macro";
-import { useGetOne } from "react-admin";
+import { useQuery, Loading, Error } from "react-admin";
 import NoteField from "./NoteField";
 
 const Label = styled.h1`
@@ -17,15 +17,25 @@ const Notes = styled.div`
 
 
 const NoteListField = ({ record = {}, source }) => {
-    let notes = record[source];
+  const { data, loading, error } = useQuery({
+    type: 'getNotes',
+    resource: 'students',
+    payload: { id: record[source] }
+  });
 
-    return (
-        <Notes>
-            <Label>Recent Notes</Label>
-            <NoteField />
-            <NoteField />
-        </Notes>
-    );
+  if (loading) return <Loading />;
+  if (error) return <Error />;
+  if (!data) return null;
+
+  return (
+    <Notes>
+      <Label>Recent Notes</Label>
+      {data.map((note) => {
+        return <NoteField source='id' record={note}/>
+      })
+      }
+    </Notes>
+  );
 };
 
 export default NoteListField;
