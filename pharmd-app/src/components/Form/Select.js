@@ -1,8 +1,7 @@
 import React from "react";
 import { Select, InputLabel, MenuItem, FormControl } from '@material-ui/core';
 import PropTypes from 'prop-types';
-import styled from "styled-components/macro";
-import tw from "tailwind.macro";
+import tw, { styled } from "twin.macro";
 
 const StyledFormControl = styled(FormControl)`
     ${tw`m-4`};

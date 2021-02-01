@@ -1,7 +1,6 @@
 import React from "react";
 import {useGetOne} from "react-admin";
-import styled from "styled-components/macro";
-import tw from "tailwind.macro";
+import tw, { styled } from "twin.macro";
 import AccessTimeIcon from "@material-ui/icons/AccessTimeOutlined";
 import EditIcon from "@material-ui/icons/EditOutlined";
 import NoteIcon from "../Basic/NoteIcon";

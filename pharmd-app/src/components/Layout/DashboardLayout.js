@@ -1,7 +1,19 @@
+/**
+ * Description:
+ * TODO:
+ * Date: 04-26-2020
+ */
+
+//-------------------------- IMPORTS --------------------------
+
+// Function Imports
 // in src/MyLayout.js
 import React, { useEffect, useRef } from "react";
 import PropTypes from "prop-types";
 import { useSelector, useDispatch } from "react-redux";
+
+// Style Imports
+import tw, { theme, css } from "twin.macro";
 import { makeStyles } from "@material-ui/core/styles";
 // import { ThemeProvider } from "@material-ui/styles";
 import {
@@ -47,7 +59,7 @@ const useLayoutStyles = makeStyles({
 
 const MySidebar = props => {
   const classes = useSidebarStyles();
-  return <Sidebar style={{ width: "96px", zIndex: "99999" }} classes={classes} {...props} />;
+  return <Sidebar tw="w-96px z-max" classes={classes} {...props} />;
 };
 
 const DashboardLayout = props => {

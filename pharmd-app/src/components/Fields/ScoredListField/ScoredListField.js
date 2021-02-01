@@ -1,6 +1,4 @@
 import React from "react";
-import styled from "styled-components/macro";
-import tw from "tailwind.macro";
 import { useGetOne } from "react-admin";
 
 import ScoredListItem from "./ScoredListItem";

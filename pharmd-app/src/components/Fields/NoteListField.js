@@ -1,6 +1,5 @@
 import React from "react";
-import styled, { css } from "styled-components/macro";
-import tw from "tailwind.macro";
+import tw, { styled } from "twin.macro";
 import { useGetOne } from "react-admin";
 import NoteField from "./NoteField";
 

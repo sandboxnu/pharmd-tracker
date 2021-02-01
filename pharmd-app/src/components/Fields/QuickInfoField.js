@@ -1,6 +1,6 @@
 import React from "react";
 import { useGetOne, Loading } from "react-admin";
-import styled from "styled-components/macro";
+import { styled } from "twin.macro";
 
 import QuickInfo from "../Basic/QuickInfo";
 

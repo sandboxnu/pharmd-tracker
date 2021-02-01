@@ -7,10 +7,8 @@ import createLigthTheme from "../src/themes/light-theme";
 import createDarkTheme from "../src/themes/dark-theme";
 
 import "../src/styles/App.css";
-import { Diez, DesignLanguage } from "diez-pharmd-design";
 
-var ds = new Diez(DesignLanguage).component;
-const themes = [createLigthTheme(ds), createDarkTheme(ds)];
+const themes = [createLigthTheme(), createDarkTheme()];
 addDecorator(withThemesProvider(themes, ThemeProvider));
 
 configure(require.context("../src/stories", true, /\.stories\.js$/), module);
