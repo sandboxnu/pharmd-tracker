@@ -2,11 +2,9 @@ import React from "react";
 import { Filter as FilterRA, NumberInput } from "react-admin";
 import GpaSliderInput from "../../components/Inputs/GpaSliderInput";
 import set from "lodash/set";
-import OriginRadioInput from "../../components/Inputs/OriginRadioInput";
 import StatusCheckboxInput from "../../components/Inputs/StatusCheckboxInput";
-import MultipleSelect from "../../components/Basic/MultiSelect";
 import CohortMultipleSelect from "../../components/Inputs/CohortMultiSelectInput";
-import CheckboxButton from "../../components/Basic/Checkbox Controls/CheckboxButton";
+import OriginCheckboxInput from "../../components/Inputs/OriginCheckboxInput";
 import { blue } from '@material-ui/core/colors';
 import { makeStyles, withStyles } from '@material-ui/core/styles'
 import { styled } from "twin.macro";
@@ -78,7 +76,7 @@ export const StudentDrawerFilter = props => {
     }
   };
 
-  const originRadio = (event, newValue) => {
+  const addOriginFilter = (newValue) => {
     switch (newValue) {
       case "domestic":
         setFilter("international", false);
@@ -93,6 +91,12 @@ export const StudentDrawerFilter = props => {
     console.log("Origin Filter:", newValue);
   };
 
+  const originCheckbox = (event, array) => {
+    array.length === 1 ?
+      addOriginFilter(array[0])
+      : deleteFilter("international");
+  };
+
   const statusCheckbox = (event, array) => {
     setFilter("status", array);
     console.log("Status Filter:", array);
@@ -100,7 +104,6 @@ export const StudentDrawerFilter = props => {
 
   const cohortMultiSelect = (event, array) => {
     setFilter("cohort[current]", array);
-    console.log("Cohort Filter: ", array)
   };
 
   return (
@@ -131,11 +134,13 @@ export const StudentDrawerFilter = props => {
         className={classes.formControl}
         alwaysOn
       />
-      <OriginRadioInput
+      <OriginCheckboxInput
         label="Origin"
         source={"international"}
-        onChange={originRadio}
+        onChange={originCheckbox}
+        color="primary"
         className={classes.formControl}
+        checkboxClassName={classes.checkboxButton}
         alwaysOn
       />
     </Filter>

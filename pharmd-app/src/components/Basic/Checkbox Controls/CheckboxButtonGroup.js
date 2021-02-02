@@ -2,7 +2,7 @@
  * Description:
  * This Component creates a group of checkbox buttons.
  * There is one checkbox created for each children.
- * This function also accepts an onChange function that will be exected every time
+ * This function also accepts an onChange function that will be executed every time
  * a check box is unchecked.
  * TODO:
  * Date: 04-23-2020
@@ -27,6 +27,9 @@ const CheckboxButtonGroup = props => {
     values: []
   });
 
+  // If the checkbox was checked and the value is not in our array of filter values then add the value to the array
+  // If the checkbox was unchecked and the value is in our array of filter values then remove the value from the array
+  // Finally, update the filter values and call the onChange function with the new list
   const handleChange = event => {
     const eventVal = event.target.value;
     let newVal = value.values;
