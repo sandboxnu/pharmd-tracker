@@ -18,9 +18,20 @@ const Notes = styled.div`
 
 const NoteListField = ({ record = {}, source }) => {
   const { data, loading, error } = useQuery({
-    type: 'getNotes',
-    resource: 'students',
-    payload: { id: record[source] }
+    type: 'getManyReference',
+    resource: 'notes',
+    payload: { 
+      target: 'student', 
+      id: record[source],
+      pagination: {
+        page: 1,
+        perPage: 10, // TODO: how many per page?
+      },
+      sort: {
+        field: '', // TODO: Backend doesn't currently handle sorting for notes
+        order: '',
+      }
+     }
   });
 
   if (loading) return <Loading />;
