@@ -43,12 +43,6 @@ const StudentList = ({ selectedRow, ...props }) => {
       <TextField source={STUDENT.COHORT} label="Cohort" />
       <ChipField source={STUDENT.STATUS} />
       <TextField source={STUDENT.GPA} label="GPA" />
-
-      {/*<TextField source={STUDENT.NAME} />*/}
-      {/*<CohortField source={STUDENT.COHORT} label="Cohort" />*/}
-      {/*<TextField source={STUDENT.GPA} label="GPA" />*/}
-      {/* <TextField source={STUDENT.TEST_AVG} label="Test Avg" /> */}
-      {/* <EditButton /> */}
     </Table>
   );
 };

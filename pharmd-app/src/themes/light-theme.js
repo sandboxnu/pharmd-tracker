@@ -11,12 +11,12 @@ function createLigthTheme() {
     name: "Light Theme",
     palette: {
       pillColors: {
-        coop: getValue("--primary"),
-        enrolled: getValue("--green-2"),
-        dropback: getValue("--red"),
-        leave: getValue("--orange"),
-        graduated: getValue("--tertiary"),
-        na: getValue("--gray-3")
+        ["COOP"]: getValue("--primary"),
+        ["ENROLLED"]: getValue("--green-2"),
+        ["DROPBACK"]: getValue("--red"),
+        ["LEAVE"]: getValue("--orange"),
+        ["GRADUATED"]: getValue("--tertiary"),
+        ["NA"]: getValue("--gray-3")
       },
       primary: {
         main: getValue("--primary"),
@@ -47,7 +47,6 @@ function createLigthTheme() {
       },
       neutral: {
         main: getValue("--gray-3")
->>>>>>> develop
       },
       text: {
         primary: getValue("--gray-1"),
