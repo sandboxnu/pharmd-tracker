@@ -1,8 +1,7 @@
 import React from "react";
 import {Show, SimpleForm, SimpleShowLayout, TextField, useEditController, List, useGetOne, Query, Loading, Error} from "react-admin";
 
-import styled from "styled-components/macro";
-import tw from "tailwind.macro";
+import tw, { styled } from "twin.macro";
 import AvatarField from "./AvatarField";
 import ChipField from "./ChipField";
 import QuickChipField from "./QuickChipField";

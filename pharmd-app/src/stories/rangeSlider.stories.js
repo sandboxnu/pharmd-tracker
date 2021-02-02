@@ -3,6 +3,7 @@ import { withKnobs, select, text } from "@storybook/addon-knobs";
 import Avatar from "../components/Basic/Avatar";
 import imgProfile from "../assets/images/mountains.jpg";
 import RangeSlider from "../components/Basic/RangeSlider";
+import tw from "twin.macro";
 
 export default {
   title: "RangeSlider",
@@ -18,7 +19,7 @@ export default {
 // const defaultLastName = "";
 
 export const Default = () => (
-  <div style={{ marginLeft: "25px", marginTop: "100px" }}>
+  <div tw="ml-25px mt-100px">
     <RangeSlider
       onChange={(event, newVal) => console.log("NEW VALUE", newVal)}
       setValueText={value => `${value}`}

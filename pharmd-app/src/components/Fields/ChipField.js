@@ -1,6 +1,5 @@
 import React from "react";
-import styled from "styled-components/macro";
-import tw from "tailwind.macro";
+import tw, { styled } from "twin.macro";
 import Chip from "@material-ui/core/Chip";
 
 // ${props => props.theme.typography.size4}
@@ -21,7 +20,7 @@ const Field = styled.a`
 // record[source]
 
 const ChipField = ({ record = {}, source }) => {
-  let textLabel = record[source] ? record[source] : "na";
+  let textLabel = record[source] ? record[source] : "NA";
   return (
     <Field>
       <Pill label={textLabel} />

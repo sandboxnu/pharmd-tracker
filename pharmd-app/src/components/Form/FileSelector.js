@@ -40,7 +40,7 @@ class Selector extends React.Component {
             {this.state.fileName}
             <input
                 type="file"
-                style={{ display: "none" }}
+                tw="hidden"
                 onChange={this.onChooseFile}
                 accept={this.props.accept}
             />

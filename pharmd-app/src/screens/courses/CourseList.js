@@ -10,8 +10,7 @@ import EmphasisField from "../../components/Fields/EmphasisField";
 import TextField from "../../components/Fields/TextField";
 
 // Style Imports
-import styled from "styled-components/macro";
-import tw from "tailwind.macro";
+import tw, { styled } from "twin.macro";
 
 //-------------------------- STYLE --------------------------
 

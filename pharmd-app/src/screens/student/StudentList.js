@@ -9,40 +9,21 @@
 
 //-------------------------- IMPORTS --------------------------
 
-// Style Imports
+// Function Imports
 import React from "react";
-import { Datagrid as DatagridRA } from "react-admin";
+// import { Datagrid as DatagridRA } from "react-admin";
+
 import { useDispatch } from "react-redux";
 import { setStudentSideBar } from "../../redux/actions";
-import styled from "styled-components/macro";
-import tw from "tailwind.macro";
+
+// Component Imports
+import Table from "../../components/Table/Table";
 import EmphasisField from "../../components/Fields/EmphasisField";
 import TextField from "../../components/Fields/TextField";
 import ChipField from "../../components/Fields/ChipField";
 import CohortField from "../../components/Fields/CohortField";
 import { STUDENT } from "../../constants/apiObjects";
 
-// Another option for styling
-// const Datagrid = styled(({ ...props }) => (
-//   <DatagridRA {...props} classes={{ headerCell: "headerCell" }} />
-// ))`
-//   .headerCell {
-//     background-color: red;
-//   }
-// `;
-
-const Datagrid = styled(DatagridRA)`
-  .headerCell {
-    /* background-color: red; */
-    ${tw`h-18 fontStyle-5 tracking-wide text-gray-600`}
-  }
-
-  .rowCell {
-    ${tw`h-16`}
-  }
-`;
-
-// const Datagrid = styled(DatagridRA)``;
 const StudentList = ({ selectedRow, ...props }) => {
   const dispatch = useDispatch();
 
@@ -52,9 +33,8 @@ const StudentList = ({ selectedRow, ...props }) => {
   };
 
   return (
-    <Datagrid
+    <Table
       rowClick={studentRowClick}
-      classes={{ headerCell: "headerCell", row: "rowCell" }}
       {...props}
     >
       <EmphasisField source={STUDENT.NEU_ID} label="NUID" />
@@ -63,13 +43,7 @@ const StudentList = ({ selectedRow, ...props }) => {
       <TextField source={STUDENT.COHORT} label="Cohort" />
       <ChipField source={STUDENT.STATUS} />
       <TextField source={STUDENT.GPA} label="GPA" />
-
-      {/*<TextField source={STUDENT.NAME} />*/}
-      {/*<CohortField source={STUDENT.COHORT} label="Cohort" />*/}
-      {/*<TextField source={STUDENT.GPA} label="GPA" />*/}
-      {/* <TextField source={STUDENT.TEST_AVG} label="Test Avg" /> */}
-      {/* <EditButton /> */}
-    </Datagrid>
+    </Table>
   );
 };
 export default StudentList;

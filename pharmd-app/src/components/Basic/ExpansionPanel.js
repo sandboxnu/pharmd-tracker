@@ -1,6 +1,5 @@
 import React from "react";
-import styled, { css } from "styled-components/macro";
-import tw from "tailwind.macro";
+import tw, { styled } from "twin.macro";
 import ExpansionPanelMaterial from "@material-ui/core/ExpansionPanel";
 import ExpansionPanelSummaryMaterial from "@material-ui/core/ExpansionPanelSummary";
 import ExpansionPanelDetailsMaterial from "@material-ui/core/ExpansionPanelDetails";
@@ -27,7 +26,7 @@ const ExpansionPanelDetails = styled(ExpansionPanelDetailsMaterial)`
 const ExpansionPanel = ({ SummaryChild, DetailChild, expand }) => {
   return (
     <ExpansionPanelC
-      style={{ width: "100%" }}
+      tw="w-full"
       defaultExpanded={expand}
       square={true}
       elevation={0}
