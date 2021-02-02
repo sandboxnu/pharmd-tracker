@@ -14,4 +14,10 @@ export const NOTE = {
   TITLE: "title",
   BODY: "body",
   TAGS: "tags",
+}
+
+export const COURSE = {
+  SUBJECT: "subject",
+  NUMBER: "number",
+  NAME: "name"
 };
