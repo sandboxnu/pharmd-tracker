@@ -4,7 +4,6 @@ import {Show, SimpleForm, SimpleShowLayout, TextField, useEditController, List, 
 import tw, { styled } from "twin.macro";
 import AvatarField from "./AvatarField";
 import ChipField from "./ChipField";
-import QuickChipField from "./QuickChipField";
 
 const Profile = styled.section`
     display: block;
@@ -49,7 +48,7 @@ const QuickProfileField = ({record = {}, source}) => {
     }
     return (
         <Profile>
-            <StatusField><QuickChipField record={data} source="status" /></StatusField>
+            <StatusField><ChipField record={data} source="status" pillSize="small" /></StatusField>
             <PictureField record={data} source="avatar" />
             <NameField record={data} source="name" />
             <IdField record={data} source="neu_id" label="Northeastern ID" />
