@@ -4,11 +4,6 @@ import UploadDataFieldChooser from "./UploadDataFieldChooser";
 import StudentAssessmentService from '../../../services/StudentAssessmentService';
 import Button from '../../../components/Form/Button';
 
-/**
- * @typedef { import('../../../typeDefs.js').BasicStudentAssessment} BasicStudentAssessment
- * @typedef { import('../../../typeDefs.js').FileData} FileData
- */
-
 class SpreadsheetUploader extends Component {
 
     DEFAULT_STATE = {
@@ -27,13 +22,7 @@ class SpreadsheetUploader extends Component {
         this.confirmData = this.confirmData.bind(this);
     }
 
-
-    /**
-     * Updates the state with data about the uploaded file
-     * @param {FileData}fileData
-     */
     uploadFile(fileData) {
-        console.log("File data", fileData)
         if (fileData.data.length > 0) {
             this.setState({
                 uploadedDataHeaders: fileData.headers,
@@ -48,14 +37,7 @@ class SpreadsheetUploader extends Component {
         this.setState(this.DEFAULT_STATE)
     }
 
-    /**
-     * Tries to upload the given data to the backend
-     * @param data {{
-     *     exams: Array<BasicStudentAssessment>
-     * }}
-     */
     confirmData(data) {
-        console.log(data);
         const promises = [];
         promises.push(StudentAssessmentService.addManyStudentAssessments(data.exams, []));
         Promise.all(promises)
@@ -64,20 +46,15 @@ class SpreadsheetUploader extends Component {
                     ...this.DEFAULT_STATE,
                     uploadComplete: 'Upload complete!'
                 });
-                console.log("Upload complete");
             })
             .catch(err => {
                 this.setState({
                     ...this.DEFAULT_STATE,
                     uploadComplete: 'Upload failed--please try again'
                 });
-                console.error(err);
             })
     }
 
-    /**
-     * Displays a dialog with help info about the file uploader
-     */
     showHelp() {
         const helpInfo = `
       This tool is used to upload spreadsheet exports from Canvas into the PharmD database
@@ -105,13 +82,6 @@ class SpreadsheetUploader extends Component {
                 {!this.state.uploadedData &&
                 <UploadFileChooser uploadedFileData={this.uploadFile} />}
                 {this.state.uploadedData && <Button color="secondary" variant="contained" onClick={this.removeFile}>Remove File</Button>}
-                {/*{*/}
-                {/*    this.state.uploadedData &&*/}
-                {/*    <RadioGroup aria-label="Upload Type" name="uploadType" value={this.state.uploadType} onChange={changeUploadType}>*/}
-
-                {/*    </RadioGroup>*/}
-
-                {/*    }*/}
                 {this.state.uploadedData && <UploadDataFieldChooser
                     headers={this.state.uploadedDataHeaders}
                     subHeaders={this.state.uploadedDataSubheaders}

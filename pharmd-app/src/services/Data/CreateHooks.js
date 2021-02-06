@@ -7,11 +7,11 @@
  * @return {{create: (function(*, *): *)}}
  */
 export default (httpClient, BACKEND_URL) => ({
-    create: (resource, params) =>
-        httpClient(`${BACKEND_URL}/${resource}`, {
-            method: "POST",
-            body: JSON.stringify(params.data)
-        }).then(({ json }) => ({
-            data: { ...params.data, id: json.id }
-        })),
-})
+  create: (resource, params) =>
+    httpClient(`${BACKEND_URL}/${resource}`, {
+      method: "POST",
+      body: JSON.stringify(params.data)
+    }).then(({ json }) => ({
+      data: { ...params.data, id: json.id }
+    }))
+});

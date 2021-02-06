@@ -1,8 +1,6 @@
-import React, { useRef } from "react";
+import React from "react";
 import SvgIcon from "@material-ui/core/SvgIcon";
 import tw, { styled, css } from "twin.macro";
-
-// NEED TO REMOVE FILL PROP FRO PATH FOR EACH ICON - Still trying to find a solution
 
 const SVG = styled(SvgIcon)`
 
@@ -36,17 +34,14 @@ transition: color 0.5s ease;
 `;
 
 const Icon = ({ src, color = "inherit", size = "default", accessibleTitle, htmlColor }) => {
-  // Conditional logic to determine props to pass down
-
-  var inputProps = {
+  const inputProps = {
     component: src,
-    titleAccess: accessibleTitle ? accessibleTitle : undefined,
-    htmlColor: htmlColor ? htmlColor : undefined,
+    titleAccess: accessibleTitle || undefined,
+    htmlColor: htmlColor || undefined,
     color: htmlColor ? undefined : color
   };
 
-  // spread declaration to add props
-  return <SVG component={src} fontSize={size} {...inputProps}></SVG>;
+  return <SVG component={src} fontSize={size} {...inputProps} />;
 };
 
 export default Icon;

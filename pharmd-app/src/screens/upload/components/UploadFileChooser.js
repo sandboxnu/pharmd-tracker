@@ -4,9 +4,6 @@ import Button from '../../../components/Form/Button';
 import FileSelector from '../../../components/Form/FileSelector';
 import PropTypes from 'prop-types';
 
-/**
- * @class UploadFileChooser a component for choosing a file to upload
- */
 class UploadFileChooser extends Component {
   static propTypes = {
     uploadedFileData: PropTypes.func
@@ -30,10 +27,6 @@ class UploadFileChooser extends Component {
     this.uploadFileHandler = this.uploadFileHandler.bind(this);
   }
 
-  /**
-   * Executes when a file is chosen by the user
-   * @param {File} file
-   */
   chooseFileHandler(file) {
     this.setState({
       selectedFile: file,

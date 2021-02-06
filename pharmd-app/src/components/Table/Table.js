@@ -1,30 +1,6 @@
-/**
- * Description:
- * TODO:
- * Date: 04-26-2020
- */
-
-//-------------------------- IMPORTS --------------------------
-
-// Function Imports
 import React from "react";
-
-// Style Imports
 import tw, { styled } from "twin.macro";
-
-// Component Imports
 import { Datagrid as DatagridRA } from "react-admin";
-
-//-------------------------- STYLE --------------------------
-
-// Another option for styling
-// const Datagrid = styled(({ ...props }) => (
-//   <DatagridRA {...props} classes={{ headerCell: "headerCell" }} />
-// ))`
-//   .headerCell {
-//     background-color: red;
-//   }
-// `;
 
 const Datagrid = styled(DatagridRA)`
   .headerCell {
@@ -35,8 +11,6 @@ const Datagrid = styled(DatagridRA)`
     ${tw`h-16`}
   }
 `;
-
-//-------------------------- COMPONENT --------------------------
 
 const Table = props => {
   return <Datagrid {...props} classes={{ headerCell: "headerCell", row: "rowCell" }} />;

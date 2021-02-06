@@ -3,7 +3,6 @@ import tw, { styled } from "twin.macro";
 import ExpansionPanelMaterial from "@material-ui/core/ExpansionPanel";
 import ExpansionPanelSummaryMaterial from "@material-ui/core/ExpansionPanelSummary";
 import ExpansionPanelDetailsMaterial from "@material-ui/core/ExpansionPanelDetails";
-import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
 
 const ExpansionPanelC = styled(ExpansionPanelMaterial)`
   ::before {
@@ -25,12 +24,7 @@ const ExpansionPanelDetails = styled(ExpansionPanelDetailsMaterial)`
 
 const ExpansionPanel = ({ SummaryChild, DetailChild, expand }) => {
   return (
-    <ExpansionPanelC
-      tw="w-full"
-      defaultExpanded={expand}
-      square={true}
-      elevation={0}
-    >
+    <ExpansionPanelC tw="w-full" defaultExpanded={expand} square elevation={0}>
       <ExpansionPanelSummary>{SummaryChild}</ExpansionPanelSummary>
       <ExpansionPanelDetails>{DetailChild}</ExpansionPanelDetails>
     </ExpansionPanelC>

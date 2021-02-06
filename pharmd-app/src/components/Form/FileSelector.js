@@ -4,9 +4,6 @@ import PropTypes from "prop-types";
 
 class Selector extends React.Component {
     static propTypes = {
-        /**
-         * @typedef {Function<File>}
-         */
         onChoose: PropTypes.func
     };
 

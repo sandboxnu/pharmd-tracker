@@ -7,16 +7,9 @@
 * Date: 04-27-2020
 */
 
-//-------------------------- IMPORTS --------------------------
-
-// Function Imports
 import React from "react";
-// import { Datagrid as DatagridRA } from "react-admin";
-
 import { useDispatch } from "react-redux";
 import { setStudentSideBar } from "../../redux/actions";
-
-// Component Imports
 import Table from "../../components/Table/Table";
 import EmphasisField from "../../components/Fields/EmphasisField";
 import TextField from "../../components/Fields/TextField";
@@ -33,17 +26,12 @@ const StudentList = ({ selectedRow, ...props }) => {
   };
 
   return (
-    <Table
-      rowClick={studentRowClick}
-      {...props}
-    >
+    <Table rowClick={studentRowClick} {...props}>
       <EmphasisField source={STUDENT.NEU_ID} label="NEU ID" />
       <TextField source={STUDENT.NAME} />
       <CohortField source={STUDENT.COHORT} label="Cohort" />
       <ChipField source={STUDENT.STATUS} />
       <TextField source={STUDENT.GPA} label="GPA" />
-      {/* <TextField source={STUDENT.TEST_AVG} label="Test Avg" /> */}
-      {/* <EditButton /> */}
     </Table>
   );
 };

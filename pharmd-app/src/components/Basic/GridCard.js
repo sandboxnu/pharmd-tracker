@@ -6,20 +6,11 @@
  * Date: 04-23-2020
  */
 
-//-------------------------- IMPORTS --------------------------
-
-// Function Imports
 import React from "react";
 import PropTypes from "prop-types";
-
-// Component Imports
 import MuiPaper from "@material-ui/core/Paper";
 import MuiGrid from "@material-ui/core/Grid";
-
-// Style Imports
 import tw, { styled } from "twin.macro";
-
-//-------------------------- STYLE --------------------------
 
 const GridItem = styled(MuiGrid)`
   ${tw`transition-1`}
@@ -28,8 +19,6 @@ const GridItem = styled(MuiGrid)`
 const Paper = styled(MuiPaper)`
   ${tw`rounded-xl h-64 w-64 shadow-cardLight`}
 `;
-
-//-------------------------- COMPONENT --------------------------
 
 const GridCard = (xs, mdFull, mdShrink, isShrunk, { ...props }) => (
   <GridItem item xs={xs} md={isShrunk ? mdShrink : mdFull}>

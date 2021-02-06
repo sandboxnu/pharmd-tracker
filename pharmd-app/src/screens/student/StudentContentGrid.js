@@ -6,29 +6,15 @@
  * Date: 04-23-2020
  */
 
-//-------------------------- IMPORTS --------------------------
-
-// Function Imports
 import React from "react";
 import { useSelector } from "react-redux";
 import PropTypes from "prop-types";
-
-// Component Imports
 import { List as RaList } from "react-admin";
-import StudentList from "./StudentList";
-import MuiPaper from "@material-ui/core/Paper";
 import MuiGrid from "@material-ui/core/Grid";
-import { StudentFilter } from "./StudentToolbarFilter";
-
-// Style Imports
 import tw, { styled } from "twin.macro";
+import { StudentFilter } from "./StudentToolbarFilter";
+import StudentList from "./StudentList";
 import GridCard from "../../components/Basic/GridCard";
-
-//-------------------------- STYLE --------------------------
-
-const Paper = styled(MuiPaper)`
-  ${tw`rounded-xl h-64 shadow-cardLight`}
-`;
 
 const List = styled(RaList)`
   ${tw`p-6 rounded-xl bg-white shadow-cardLight`}
@@ -41,8 +27,6 @@ const List = styled(RaList)`
 const MainGrid = styled(MuiGrid)`
   ${tw`pt-12 `}
 `;
-
-//-------------------------- COMPONENT --------------------------
 
 const StudentContentGrid = ({ selected, ...props }) => {
   const isOpen = useSelector(state => state.studentSidebarOpen);
