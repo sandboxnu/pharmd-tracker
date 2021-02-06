@@ -56,9 +56,32 @@ transition: ${props =>
   }
 `;
 
+/**
+ *
+ * @param isOpenMatch the boolean representing if the user selected a student
+ * @param selected
+ * @param handleClose
+ * @param handleOpen
+ * @param props
+ * @returns {*}
+ * @constructor
+ */
 const StudentDrawer = ({ isOpenMatch, selected, handleClose, handleOpen, ...props }) => {
   const isOpen = useSelector(state => state.studentSidebarOpen);
+  // the drawer should be open if the drawer was manually opened or the user clicked on a student in the table
   const isDrawerOpen = isOpen || isOpenMatch;
+  const [filtersQuickViewExpanded, setFiltersQuickViewExpanded] = useState(false);
+  const [studentQuickViewExpanded, setStudentQuickViewExpanded] = useState(false);
+
+  const changeFiltersExpansionPanel = () => {
+    isOpen ? setFiltersQuickViewExpanded(!filtersQuickViewExpanded) :
+      setFiltersQuickViewExpanded(true);
+  };
+
+  const changeStudentExpansionPanel = () => {
+    isOpen ? setStudentQuickViewExpanded(!studentQuickViewExpanded) :
+      setStudentQuickViewExpanded(true);
+  };
 
   //Avoid route errors
   const quickview = () => {
@@ -97,7 +120,9 @@ const StudentDrawer = ({ isOpenMatch, selected, handleClose, handleOpen, ...prop
           />
         }
         DetailChild={<StudentDrawerFilter {...useListController(props)} />}
-        expand={false}
+        defaultExpanded={isDrawerOpen}
+        expanded={isDrawerOpen && filtersQuickViewExpanded}
+        onChange={changeFiltersExpansionPanel}
       />
       <ExpansionPanel
         SummaryChild={
@@ -113,7 +138,9 @@ const StudentDrawer = ({ isOpenMatch, selected, handleClose, handleOpen, ...prop
           </>
         }
         DetailChild={quickview()}
-        expand={isDrawerOpen}
+        defaultExpanded={isDrawerOpen}
+        expanded={isDrawerOpen && studentQuickViewExpanded}
+        onChange={changeStudentExpansionPanel}
       />
     </Drawer>
   );
