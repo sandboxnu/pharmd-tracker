@@ -77,6 +77,7 @@ transition: ${props =>
  * Returns a Drawer that contains both filters and student expansion panels.
  * - Expansion panels are open if the drawer is open and the state of the expansion panel is true
  * - Expansion panels are closed if the drawer is closed or the state of the expansion panel is false
+ * - Filter and student preview close when side bar is closed, and open when clicked.
  *
  * @param isOpenMatch the boolean representing if the user selected a student
  * @param selected the ID of the student that has been selected by the user
