@@ -19,10 +19,11 @@ import StudentList from "./StudentList";
 import MuiPaper from "@material-ui/core/Paper";
 import MuiGrid from "@material-ui/core/Grid";
 import { StudentFilter } from "./StudentToolbarFilter";
+import GridCard from "../../components/Basic/GridCard";
 
 // Style Imports
 import tw, { styled } from "twin.macro";
-import GridCard from "../../components/Basic/GridCard";
+
 
 //-------------------------- STYLE --------------------------
 

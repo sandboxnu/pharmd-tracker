@@ -1,36 +1,51 @@
-import React, { useState, useEffect } from "react";
+/**
+ * Description:
+ * This component contains the content within the side panel (filters and student preview)
+ *     and the side panel itself.
+ * TODO:
+ *   - Clicking on a student from the student list no longer opens the side bar and no longer opens the student preview expansion panel within the sidebar.
+ * Date: 02-06-2021
+ */
 
-import DrawerMaterial from "@material-ui/core/Drawer";
-import tw, { styled } from "twin.macro";
-import StudentQuickView from "./StudentQuickView";
+//-------------------------- IMPORTS --------------------------
+
+// Function Imports
+import React, { useState, useEffect } from "react";
+import { useListController } from "react-admin";
 import { useSelector } from "react-redux";
-import ExpansionPanel from "../../components/Basic/ExpansionPanel";
-import NavItemSecondary from "../../components/Nav/NavItemSecondary";
-import VerticalSplitIcon from "../../assets/icons/verticalSplit.svg";
-import FilterIcon from "../../assets/icons/filter.svg";
-import PersonIcon from "../../assets/icons/person.svg";
-import Icon from "../../components/Basic/Icon";
-import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
 import { Route, MemoryRouter } from "react-router";
 import { Link as RouterLink } from "react-router-dom";
-import { useListController } from "react-admin";
-import StudentDrawerFilter from "./StudentDrawerFilter";
-// const LinkRouter = props => <Link {...props} component={RouterLink} />;
 
-const DeatilsButton = styled.button`
-  cursor: pointer;
-  color: white;
-  border: none;
-  background-color: #4573ee;
-  margin: 20px 65px 10px 65px;
-  padding: 13px 15px;
-  border-radius: 8px;
-  font-size: 1.3em;
-`;
+// Component Imports
+import DrawerMaterial from "@material-ui/core/Drawer";
+import ExpansionPanel from "../../components/Basic/ExpansionPanel";
+import FilterIcon from "../../assets/icons/filter.svg";
+import NavItemSecondary from "../../components/Nav/NavItemSecondary";
+import PersonIcon from "../../assets/icons/person.svg";
+import StudentDrawerFilter from "./StudentDrawerFilter";
+import StudentQuickView from "./StudentQuickView";
+import VerticalSplitIcon from "../../assets/icons/verticalSplit.svg";
+
+// Style Imports
+import tw, { styled } from "twin.macro";
+
+//-------------------------- STYLE --------------------------
 
 const ButtonSpan = styled.span`
   width: 100%;
 `;
+
+const DeatilsButton = styled.button`
+  background-color: #4573ee;
+  border: none;
+  border-radius: 8px;
+  color: white;
+  cursor: pointer;
+  font-size: 1.3em;
+  margin: 20px 65px 10px 65px;
+  padding: 13px 15px;
+`;
+
 
 const Drawer = styled(DrawerMaterial)`
 
@@ -56,23 +71,25 @@ transition: ${props =>
   }
 `;
 
+//-------------------------- COMPONENT --------------------------
+
 /**
  * Returns a Drawer that contains both filters and student expansion panels.
  * - Expansion panels are open if the drawer is open and the state of the expansion panel is true
  * - Expansion panels are closed if the drawer is closed or the state of the expansion panel is false
  *
  * @param isOpenMatch the boolean representing if the user selected a student
- * @param selected
+ * @param selected the ID of the student that has been selected by the user
  * @param handleClose
  * @param handleOpen
  * @param props
- * @returns {*}
+ * @returns <Drawer> Component with Expansion Panels
  * @constructor
  */
 const StudentDrawer = ({ isOpenMatch, selected, handleClose, handleOpen, ...props }) => {
   // the state of the sidebar retrieved from redux
   const isOpen = useSelector(state => state.studentSidebarOpen);
-  
+
   // the drawer should be open if the drawer was manually opened or the user clicked on a student in the table
   const isDrawerOpen = isOpen || isOpenMatch;
   const [filtersQuickViewExpanded, setFiltersQuickViewExpanded] = useState(false);
