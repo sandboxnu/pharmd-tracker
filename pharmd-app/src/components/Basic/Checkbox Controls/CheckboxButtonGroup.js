@@ -14,6 +14,7 @@
 import React, { cloneElement } from "react";
 
 // Component Imports
+import FavoriteBorderIcon from '@material-ui/icons/FavoriteBorder';
 import FormGroup from "@material-ui/core/FormGroup";
 import FormControl from "@material-ui/core/FormControl";
 import FormLabel from "@material-ui/core/FormLabel";
@@ -53,11 +54,18 @@ const CheckboxButtonGroup = props => {
       {showLabel && <FormLabel component="legend">{label}</FormLabel>}
       <FormGroup aria-label={label}>
         {children &&
-          children.map((child, index) =>
-            cloneElement(child, {
+          children.map((child, index) => {
+            console.log("Child: ",{...child});
+            return cloneElement(child, {
               key: index,
-              control: <CheckboxButton onChange={handleChange} color={color} className={checkboxClassName} />
-            })
+              control: <CheckboxButton
+                onChange={handleChange}
+                color={color}
+                className={checkboxClassName}
+                // icon={undefined}
+                icon={ child.props.icon ? child.props.icon : undefined }
+              />
+            })}
           )}
       </FormGroup>
     </FormControl>
