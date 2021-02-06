@@ -57,6 +57,9 @@ transition: ${props =>
 `;
 
 /**
+ * Returns a Drawer that contains both filters and student expansion panels.
+ * - Expansion panels are open if the drawer is open and the state of the expansion panel is true
+ * - Expansion panels are closed if the drawer is closed or the state of the expansion panel is false
  *
  * @param isOpenMatch the boolean representing if the user selected a student
  * @param selected
@@ -67,12 +70,15 @@ transition: ${props =>
  * @constructor
  */
 const StudentDrawer = ({ isOpenMatch, selected, handleClose, handleOpen, ...props }) => {
+  // the state of the sidebar retrieved from redux
   const isOpen = useSelector(state => state.studentSidebarOpen);
+  
   // the drawer should be open if the drawer was manually opened or the user clicked on a student in the table
   const isDrawerOpen = isOpen || isOpenMatch;
   const [filtersQuickViewExpanded, setFiltersQuickViewExpanded] = useState(false);
   const [studentQuickViewExpanded, setStudentQuickViewExpanded] = useState(false);
 
+  // onChange functions for when the expansion panel is clicked on:
   const changeFiltersExpansionPanel = () => {
     isOpen ? setFiltersQuickViewExpanded(!filtersQuickViewExpanded) :
       setFiltersQuickViewExpanded(true);
