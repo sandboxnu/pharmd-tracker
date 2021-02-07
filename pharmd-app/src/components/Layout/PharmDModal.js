@@ -1,6 +1,6 @@
 import React from 'react';
 import Modal from '@material-ui/core/Modal';
-import styled from "styled-components/macro";
+import { styled } from "twin.macro";
 import PropTypes from "prop-types";
 
 const ModalFrame = styled(Modal)`
