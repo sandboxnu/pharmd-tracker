@@ -1,7 +1,6 @@
 import React, {useState} from "react";
-import {useUpdate} from "react-admin";
-import styled from "styled-components/macro";
-import tw from "tailwind.macro";
+import { useUpdate } from "react-admin";
+import tw, { styled } from "twin.macro";
 import AccessTimeIcon from "@material-ui/icons/AccessTimeOutlined";
 import EditIcon from "@material-ui/icons/EditOutlined";
 import CheckIcon from '@material-ui/icons/CheckOutlined';

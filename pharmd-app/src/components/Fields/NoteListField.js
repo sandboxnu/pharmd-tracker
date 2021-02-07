@@ -1,8 +1,7 @@
 import React from "react";
 import { useDispatch } from "react-redux";
 import { setNotesModal } from "../../redux/actions";
-import styled from "styled-components/macro";
-import tw from "tailwind.macro";
+import tw, { styled } from "twin.macro";
 import { useGetOne } from "react-admin";
 import NoteField from "./NoteField";
 import IconButton from "@material-ui/core/IconButton";
