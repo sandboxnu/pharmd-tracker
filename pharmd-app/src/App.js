@@ -12,10 +12,10 @@ import { AuthProvider } from './services'
 import selectTheme from "./themes/selected-theme";
 import { ThemeProvider, ThemeConsumer } from "styled-components";
 import DashboardLayout from "./components/Layout/DashboardLayout";
-import studentSideBarReducer from "./redux/reducers/studentSideBarReducer";
 import dataProvider from "./dataProvider";
 import courses from "./screens/courses";
 import customRoutes from "./config/customRoutes";
+import customReducers from './redux/reducers';
 
 function themeSwitch(theme) {
   console.log(theme);
@@ -57,7 +57,7 @@ const App = () => {
             authProvider={AuthProvider}
             dashboard={Dashboard}
             theme={theme}
-            customReducers={{ studentSidebarOpen: studentSideBarReducer }}
+            customReducers={customReducers}
             customRoutes={customRoutes}
           >
             <Resource name="users" {...profile} />

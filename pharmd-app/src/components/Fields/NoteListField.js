@@ -1,5 +1,7 @@
-import React, {useState} from "react";
-import styled, { css } from "styled-components/macro";
+import React from "react";
+import { useDispatch } from "react-redux";
+import { setNotesModal } from "../../redux/actions";
+import styled from "styled-components/macro";
 import tw from "tailwind.macro";
 import { useGetOne } from "react-admin";
 import NoteField from "./NoteField";
@@ -45,13 +47,11 @@ const Heading = styled.div`
 
 const NoteListField = ({ record = {}, source = "notes" }) => {
 
-    const [addingNote, setAddingNote] = useState(false);
+    const dispatch = useDispatch();
 
     function addNote() {
-        setAddingNote(true);
+        dispatch(setNotesModal({ isOpen: true }))
     }
-
-
 
     // Should be an array of note IDs
     let notes = record[source] || [];
@@ -60,8 +60,8 @@ const NoteListField = ({ record = {}, source = "notes" }) => {
         <Notes>
             <Heading>
                 <Label>Recent Notes</Label>
-                <IconButton onClick={addNote} disabled={addingNote}>
-                    <NoteIcon src={AddCircleOutlineOutlinedIcon} color={addingNote ? "gray" : "black"} size="small" isPrimary="primary" />
+                <IconButton onClick={addNote}>
+                    <NoteIcon src={AddCircleOutlineOutlinedIcon} size="small" isPrimary="primary" />
                 </IconButton>
             </Heading>
             { notes.length === 0 ? <NoNotes>No notes to show!</NoNotes> :
