@@ -9,9 +9,13 @@ const CohortMultipleSelect = props => {
     meta: { error }
   } = useInput(props);
 
+  const cohortMultiSelect = (event, array) => {
+    props.setFilter("cohort[current]", array);
+  };
+
   return (
     <MultipleSelect
-      onChange={props.onChange}
+      onChange={cohortMultiSelect}
       label={props.label}
       error={error}
       className={props.className}

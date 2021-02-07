@@ -5,9 +5,11 @@ import React from "react";
 import { useInput } from "react-admin";
 
 // Component Imports
-import CheckboxButtonGroup from "../Basic/Checkbox Controls/CheckboxButtonGroup";
+import CheckboxFilterButtonGroup from "../Basic/Checkbox Controls/CheckboxFilterButtonGroup";
 import FormControlLabel from "@material-ui/core/FormControlLabel";
-import FavoriteBorderIcon from '@material-ui/icons/FavoriteBorder';
+import DirectionsCarOutlinedIcon from '@material-ui/icons/DirectionsCarOutlined';
+import DirectionsCarIcon from '@material-ui/icons/DirectionsCar';
+import FlightOutlinedIcon from '@material-ui/icons/FlightOutlined';
 
 //-------------------------- COMPONENT --------------------------
 
@@ -16,18 +18,39 @@ const OriginCheckboxInput = props => {
     meta: { error }
   } = useInput(props);
 
+  const addOriginFilter = (newValue) => {
+    switch (newValue) {
+      case "domestic":
+        props.setFilter("international", false);
+        break;
+      case "international":
+        props.setFilter("international", true);
+        break;
+      default:
+        props.deleteFilter("international");
+        break;
+    }
+    console.log("Origin Filter:", newValue);
+  };
+
+  const originCheckbox = (event, array) => {
+    array.length === 1 ?
+      addOriginFilter(array[0])
+      : props.deleteFilter("international");
+  };
+
   return (
-    <CheckboxButtonGroup
-      onChange={props.onChange}
+    <CheckboxFilterButtonGroup
+      onChange={originCheckbox}
       label={props.label}
       color={props.color}
       error={error}
       className={props.className}
       checkboxClassName={props.checkboxClassName}
     >
-      <FormControlLabel value="domestic" label="Domestic" icon={ <FavoriteBorderIcon/> } />
-      <FormControlLabel value="international" label="International"  />
-    </CheckboxButtonGroup>
+      <FormControlLabel value="domestic" label="Domestic" icon={ <DirectionsCarOutlinedIcon/> } checkedIcon={ <DirectionsCarIcon/> } />
+      <FormControlLabel value="international" label="International" icon={ <FlightOutlinedIcon/> } />
+    </CheckboxFilterButtonGroup>
   );
 };
 

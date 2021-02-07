@@ -5,7 +5,8 @@ import React from "react";
 import { useInput } from "react-admin";
 
 // Component Imports
-import CheckboxButtonGroup from "../Basic/Checkbox Controls/CheckboxButtonGroup";
+// import CheckboxButtonGroup from "../Basic/Checkbox Controls/CheckboxButtonGroup";
+import CheckboxFilterButtonGroup from "../Basic/Checkbox Controls/CheckboxFilterButtonGroup";
 import FormControlLabel from "@material-ui/core/FormControlLabel";
 
 //-------------------------- COMPONENT --------------------------
@@ -15,9 +16,14 @@ const StatusCheckboxInput = props => {
     meta: { error }
   } = useInput(props);
 
+  const statusCheckbox = (event, array) => {
+    props.setFilter("status", array);
+    console.log("Status Filter:", array);
+  };
+
   return (
-    <CheckboxButtonGroup
-      onChange={props.onChange}
+    <CheckboxFilterButtonGroup
+      onChange={statusCheckbox}
       label={props.label}
       color={props.color}
       error={error}
@@ -29,7 +35,7 @@ const StatusCheckboxInput = props => {
       <FormControlLabel value="graduated" label="Graduated" />
       <FormControlLabel value="leave" label="Leave" />
       <FormControlLabel value="dropback" label="Drop Back" />
-    </CheckboxButtonGroup>
+    </CheckboxFilterButtonGroup>
   );
 };
 
