@@ -1,8 +1,6 @@
-const CopyWebpackPlugin = require("copy-webpack-plugin");
 const HtmlWebPackPlugin = require("html-webpack-plugin");
-const DiezWebpackPlugin = require("diez-webpack-plugin");
-const webpack = require('webpack');
-const dotenv = require('dotenv');
+const webpack = require("webpack");
+const dotenv = require("dotenv");
 
 module.exports = () => {
   const env = dotenv.config().parsed;
@@ -15,7 +13,7 @@ module.exports = () => {
 
   return {
     entry: "./src/index.js",
-    resolve: {symlinks: false},
+    resolve: { symlinks: false },
     module: {
       rules: [
         {
@@ -46,13 +44,9 @@ module.exports = () => {
         template: "./src/index.html",
         filename: "./index.html"
       }),
-      new CopyWebpackPlugin([{from: "public"}, {from: "public/diez", to: "diez"}]),
-      new DiezWebpackPlugin({
-        sdk: "diez-pharmd-design"
-      }),
       new webpack.DefinePlugin(envKeys)
     ],
-    performance: {hints: false},
+    performance: { hints: false },
     target: "web",
     node: {
       fs: "empty"

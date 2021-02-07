@@ -3,6 +3,7 @@ import Icon from "../components/Basic/Icon";
 import InfoIconI from "../components/Basic/IconInfo";
 import IconButtonI from "../components/Basic/IconButton";
 import TestIcon from "../assets/icons/student.svg";
+import tw from "twin.macro";
 
 import { withKnobs, select } from "@storybook/addon-knobs";
 
@@ -46,29 +47,13 @@ export const Default = () => (
 );
 
 export const InfoIcon = () => (
-  <div
-    style={{
-      width: "100%",
-      height: "250px",
-      display: "flex",
-      justifyContent: "center",
-      alignItems: "center"
-    }}
-  >
+  <div tw="h-250px w-full flex justify-center items-center">
     <InfoIconI src={TestIcon} text={"TEST"} />
   </div>
 );
 
 export const IconButton = () => (
-  <div
-    style={{
-      width: "100%",
-      height: "250px",
-      display: "flex",
-      justifyContent: "center",
-      alignItems: "center"
-    }}
-  >
+  <div tw="h-250px w-full flex justify-center items-center">
     <IconButtonI src={TestIcon} text={"TEST"} />
   </div>
 );

@@ -12,8 +12,7 @@ import {
   DataGrid
 } from "react-admin";
 
-import styled from "styled-components/macro";
-import tw from "tailwind.macro";
+import { styled } from "twin.macro";
 import AvatarField from "../../components/Fields/AvatarField";
 import ScoredListField from "../../components/Fields/ScoredListField/ScoredListField";
 import CourseListField from "../../components/Fields/CourseListField";

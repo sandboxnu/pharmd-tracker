@@ -1,7 +1,6 @@
 import React from "react";
 import ToolTipMaterial from "@material-ui/core/Tooltip";
-import styled, { css } from "styled-components/macro";
-import tw from "tailwind.macro";
+import tw, { styled } from "twin.macro";
 import Zoom from "@material-ui/core/Zoom";
 
 /*

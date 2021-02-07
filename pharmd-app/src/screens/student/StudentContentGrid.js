@@ -21,8 +21,7 @@ import MuiGrid from "@material-ui/core/Grid";
 import { StudentFilter } from "./StudentToolbarFilter";
 
 // Style Imports
-import styled from "styled-components/macro";
-import tw from "tailwind.macro";
+import tw, { styled } from "twin.macro";
 import GridCard from "../../components/Basic/GridCard";
 
 //-------------------------- STYLE --------------------------

@@ -21,14 +21,12 @@ import StudentContentGrid from "./StudentContentGrid";
 import StudentDrawer from "./StudentDrawer";
 
 // Style Imports
-import styled from "styled-components/macro";
-import tw from "tailwind.macro";
+import tw, { styled } from "twin.macro";
 
 //-------------------------- STYLE --------------------------
 
 const MainContent = styled.div`
-  ${tw`p-12 pt-2 `}
-  flex-grow: 1;
+  ${tw`p-12 pt-2 flex-grow`}
 `;
 
 //-------------------------- COMPONENT --------------------------

@@ -1,7 +1,6 @@
 import React, { Fragment } from "react";
 
-import styled from "styled-components/macro";
-import tw from "tailwind.macro";
+import tw, { styled } from "twin.macro";
 import PropTypes from 'prop-types';
 
 import AppBar from "../../components/Nav/AppBar";
