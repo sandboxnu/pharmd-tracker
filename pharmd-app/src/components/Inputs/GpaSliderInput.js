@@ -1,22 +1,29 @@
+//-------------------------- IMPORTS --------------------------
+
+// Function Imports
 import React from "react";
 import { useInput } from "react-admin";
+
+// Component Imports
 import RangeSlider from "../Basic/RangeSlider";
+
+//-------------------------- COMPONENT --------------------------
 
 function valuetext(value) {
   return `${value}`;
 }
 
-const GpaSliderInput = props => {
+const GpaSliderInput = ({ className, setFilter, ...props }) => {
   const {
     meta: { error }
   } = useInput(props);
 
   const searchGpaRange = (event, newValue) => {
     if (newValue) {
-      let gpaMin = newValue[0];
-      let gpaMax = newValue[1];
-      props.setFilter("gpa_gte", gpaMin);
-      props.setFilter("gpa_lte", gpaMax);
+      const gpaMin = newValue[0];
+      const gpaMax = newValue[1];
+      setFilter("gpa_gte", gpaMin);
+      setFilter("gpa_lte", gpaMax);
     }
   };
 
@@ -28,7 +35,7 @@ const GpaSliderInput = props => {
       max={4}
       min={0}
       step={0.25}
-      className={props.className}
+      className={className}
     />
   );
 };

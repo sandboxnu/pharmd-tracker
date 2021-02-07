@@ -1,24 +1,30 @@
+//-------------------------- IMPORTS --------------------------
+
+// Function Imports
 import React from "react";
 import { useInput } from "react-admin";
-import CheckboxButtonGroup from "../Basic/Checkbox Controls/CheckboxButtonGroup";
+
+// Component Imports
 import FormControlLabel from "@material-ui/core/FormControlLabel";
 import MultipleSelect from "../Basic/MultiSelect";
 
-const CohortMultipleSelect = props => {
+//-------------------------- COMPONENT --------------------------
+
+const CohortMultipleSelect = ({ className, label, setFilter, ...props }) => {
   const {
     meta: { error }
   } = useInput(props);
 
   const cohortMultiSelect = (event, array) => {
-    props.setFilter("cohort[current]", array);
+    setFilter("cohort[current]", array);
   };
 
   return (
     <MultipleSelect
       onChange={cohortMultiSelect}
-      label={props.label}
+      label={label}
       error={error}
-      className={props.className}
+      className={className}
     >
       <FormControlLabel value="15/20" label="Cohort 20" />
       <FormControlLabel value="17/22" label="Cohort 22" />
