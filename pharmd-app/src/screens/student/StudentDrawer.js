@@ -32,18 +32,10 @@ const ButtonSpan = styled.span`
   width: 100%;
 `;
 
-const DrawerContainer = styled(DrawerMaterial)`
-&::-webkit-scrollbar {
-  width: 0px;  /* Remove scrollbar space */
-  background: transparent;  /* Optional: just make scrollbar invisible */
-}
-/* Optional: show position indicator in red */
-&::-webkit-scrollbar-thumb {
-  background: #FF0000;
-}
-`;
-
-const Drawer = styled(DrawerContainer)`
+const Drawer = styled(DrawerMaterial)`
+  *::-webkit-scrollbar {
+    display:none;
+  }
 
 transition: ${props =>
   props.open
