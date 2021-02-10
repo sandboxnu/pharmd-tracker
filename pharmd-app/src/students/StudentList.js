@@ -3,11 +3,12 @@ import { Datagrid, List, TextField, EditButton } from "react-admin";
 
 const StudentList = props => (
   <Datagrid rowClick="show" {...props}>
-    <TextField source="name" />
-    <TextField source="studentId" label="Northeastern ID" />
+    <TextField source="firstName" />
+    <TextField source="lastName" />
+    <TextField source="id" label="Northeastern ID" />
     <TextField source="status" />
-    <TextField source="graduationYear" />
-    <TextField source="notes" />
+    <TextField source="gradDate" />
+    {/*<TextField source="notes" />*/}
     <EditButton />
   </Datagrid>
 );

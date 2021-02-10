@@ -39,12 +39,13 @@ export const Row = () => (
   <Table>
     <TableBody>
       <TableRow {...props}>
-        <EmphasisField record={props} source="neu_id" label="NEU ID" />
-        <TextField source="name" />
-        {/* <CohortField source="cohort" label="Cohort" /> */}
-        <ChipField record={{ status: "enrolled" }} source="status" />
+        <EmphasisField record={props} source="id" label="NUID" />
+        <TextField source="firstName" />
+        <TextField source="lastName" />
+         <CohortField source="gradDate" label="Cohort" />
+        <ChipField record={{ status: "ENROLLED" }} source="status" />
         <TextField source="gpa" label="GPA" />
-        <TextField source="test_avg" label="Test Avg" />
+        {/*<TextField source="test_avg" label="Test Avg" />*/}
       </TableRow>
     </TableBody>
   </Table>

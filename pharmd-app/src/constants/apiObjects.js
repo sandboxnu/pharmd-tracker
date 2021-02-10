@@ -1,8 +1,23 @@
 export const STUDENT = {
-  NEU_ID: "neu_id",
+  NEU_ID: "id",
   NAME: "name",
-  COHORT: "cohort",
+  FIRST_NAME: "firstName",
+  LAST_NAME: "lastName",
+  COHORT: "gradDate",
   STATUS: "status",
   GPA: "gpa",
   TEST_AVG: "test_avg"
+};
+
+export const NOTE = {
+  ID: "id",
+  TITLE: "title",
+  BODY: "body",
+  TAGS: "tags",
+}
+
+export const COURSE = {
+  SUBJECT: "subject",
+  NUMBER: "number",
+  NAME: "name"
 };
