@@ -1,10 +1,23 @@
+/**
+ * Description:
+ *
+ * TODO:
+ * Date:
+ */
+
+//-------------------------- IMPORTS --------------------------
+
+// Function Imports
 import React, { forwardRef, useCallback } from "react";
 import PropTypes from "prop-types";
+
+// Style Imports
+import tw, { styled } from "twin.macro";
+
+// Component Imports
 import { NavLink } from "react-router-dom";
 import MenuItemMaterial from "@material-ui/core/MenuItem";
 import ListItemIcon from "@material-ui/core/ListItemIcon";
-import styled from "styled-components/macro";
-import tw from "tailwind.macro";
 import Tooltip from "../Basic/Tooltip";
 import Icon from "../Basic/Icon";
 import Box from "@material-ui/core/Box";
@@ -83,7 +96,7 @@ const NavItemSecondary = (
     return (
       <Tooltip title={title} placement={"left"}>
         {/* DIV ensures hover works */}
-        <div style={{ width: "fit-content" }}>{renderNavItem()}</div>
+        <div tw="w-fitContent">{renderNavItem()}</div>
       </Tooltip>
     );
   }

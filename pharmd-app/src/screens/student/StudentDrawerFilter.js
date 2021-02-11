@@ -9,7 +9,7 @@ import CohortMultipleSelect from "../../components/Inputs/CohortMultiSelectInput
 import CheckboxButton from "../../components/Basic/Checkbox Controls/CheckboxButton";
 import { blue } from '@material-ui/core/colors';
 import { makeStyles, withStyles } from '@material-ui/core/styles'
-import styled from "styled-components/macro";
+import { styled } from "twin.macro";
 
 // Use this to style components within a filter
 

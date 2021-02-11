@@ -1,11 +1,9 @@
 import React from "react";
 import {Show, SimpleForm, SimpleShowLayout, TextField, useEditController, List, useGetOne, Query, Loading, Error} from "react-admin";
 
-import styled from "styled-components/macro";
-import tw from "tailwind.macro";
+import tw, { styled } from "twin.macro";
 import AvatarField from "./AvatarField";
 import ChipField from "./ChipField";
-import QuickChipField from "./QuickChipField";
 
 const Profile = styled.section`
     display: block;
@@ -50,7 +48,7 @@ const QuickProfileField = ({record = {}, source}) => {
     }
     return (
         <Profile>
-            <StatusField><QuickChipField record={data} source="status" /></StatusField>
+            <StatusField><ChipField record={data} source="status" pillSize="small" /></StatusField>
             <PictureField record={data} source="avatar" />
             <NameField record={data} source="name" />
             <IdField record={data} source="neu_id" label="Northeastern ID" />

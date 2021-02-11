@@ -14,14 +14,13 @@ import React from "react";
 import PropTypes from "prop-types";
 import clsx from "clsx";
 
+// Style Imports
+import { styled } from "twin.macro";
+
 // Component Imports
 import MuiInput from "@material-ui/core/Input";
 import MuiPaper from "@material-ui/core/Paper";
 import MuiSearchIcon from "@material-ui/icons/Search";
-
-// Style Imports
-import styled from "styled-components/macro";
-import tw from "tailwind.macro";
 
 //-------------------------- STYLE --------------------------
 

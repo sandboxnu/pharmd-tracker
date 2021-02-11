@@ -1,7 +1,5 @@
 import React from "react";
-import styled from "styled-components/macro";
-import tw from "tailwind.macro";
-import {css} from "styled-components/macro";
+import tw, { styled, css } from "twin.macro";
 
 const Info = styled.div`
   ${tw`fontStyle-6 text-black font-medium inline-flex`}

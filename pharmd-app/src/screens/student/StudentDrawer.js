@@ -1,8 +1,7 @@
 import React, { useState, useEffect } from "react";
 
 import DrawerMaterial from "@material-ui/core/Drawer";
-import styled from "styled-components/macro";
-import tw from "tailwind.macro";
+import tw, { styled } from "twin.macro";
 import StudentQuickView from "./StudentQuickView";
 import { useSelector } from "react-redux";
 import ExpansionPanel from "../../components/Basic/ExpansionPanel";
@@ -33,7 +32,10 @@ const ButtonSpan = styled.span`
   width: 100%;
 `;
 
-const Drawer = styled(DrawerMaterial)`
+const Drawer = styled(DrawerMaterial)` 
+  *::-webkit-scrollbar {
+    display:none;
+  }
 
 transition: ${props =>
   props.open
