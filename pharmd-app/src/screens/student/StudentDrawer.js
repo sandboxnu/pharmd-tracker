@@ -32,7 +32,10 @@ const ButtonSpan = styled.span`
   width: 100%;
 `;
 
-const Drawer = styled(DrawerMaterial)`
+const Drawer = styled(DrawerMaterial)` 
+  *::-webkit-scrollbar {
+    display:none;
+  }
 
 transition: ${props =>
   props.open
