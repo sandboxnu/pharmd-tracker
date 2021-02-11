@@ -9,6 +9,14 @@ export const STUDENT = {
   TEST_AVG: "test_avg"
 };
 
+export const STUDENT_STATUS = {
+  ENROLLED: 'ENROLLED',
+  LEAVE: 'LEAVE',
+  DROP_BACK: "DROP_BACK",
+  COOP: 'COOP',
+  GRADUATED: 'GRADUATED'
+};
+
 export const NOTE = {
   ID: "id",
   TITLE: "title",
