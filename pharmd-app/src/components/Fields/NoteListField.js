@@ -1,7 +1,6 @@
 import React from "react";
 import { useQuery, Loading, Error } from "react-admin";
 import tw, { styled } from "twin.macro";
-import { useGetOne } from "react-admin";
 import NoteField from "./NoteField";
 
 const Label = styled.h1`
