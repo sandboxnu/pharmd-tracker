@@ -34,7 +34,7 @@ const Title = styled.h3`
   height: auto;
 `;
 
-const Date = styled.h4`
+const DateLabel = styled.h4`
   font-weight: normal;
   font-size: .85em;
   margin: 0px 0px 0px .5em;
@@ -52,6 +52,7 @@ const Content = styled.div`
 const NoteField = ({ record, source }) => {
   const title = record[NOTE.TITLE];
   const body = record[NOTE.BODY];
+  const date = new Date(record[NOTE.DATE]).toLocaleString();
 
   return (
     <Info>
@@ -61,7 +62,7 @@ const NoteField = ({ record, source }) => {
       </Heading>
       <Time>
         <NoteIcon src={AccessTimeIcon} color="grey" size="inherit" />
-        <Date>Date</Date>
+        <DateLabel>{date}</DateLabel>
       </Time>
       {/* if the length of string is more than 2 lines - ask jose how to check for this*/}
       <Content><p>{body}</p></Content>

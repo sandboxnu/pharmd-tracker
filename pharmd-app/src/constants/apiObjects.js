@@ -22,6 +22,7 @@ export const NOTE = {
   TITLE: "title",
   BODY: "body",
   TAGS: "tags",
+  DATE: "date",
 }
 
 export const COURSE = {
