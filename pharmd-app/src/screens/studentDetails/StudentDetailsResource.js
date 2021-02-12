@@ -25,11 +25,6 @@ const SideContent = styled(Paper)`
 `;
 
 const StudentDetailsScreen = props => {
-  console.log("PROPS", props.match.params.id);
-  //   const controllerProps = useShowController(props);
-  //   if (!controllerProps.record) {
-  //     return null;
-  //   }
   const {data, loading, error} = useGetOne('students', props.match.params.id);
   if (loading) {
       return <Loading/>;
@@ -40,8 +35,8 @@ const StudentDetailsScreen = props => {
   return (
     <Fragment>
       <MainContent>
-        <AppBar title={`Student Details ${props.match.params.id}`} />
-        <StudentDetailsContentGrid source={data} />
+        <AppBar title={`${data.lastName}, ${data.firstName}`} />
+        <StudentDetailsContentGrid record={data} />
       </MainContent>
 
       <SideContent>

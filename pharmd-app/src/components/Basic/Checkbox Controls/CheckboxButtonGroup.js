@@ -34,14 +34,11 @@ const CheckboxButtonGroup = props => {
     if (event.target.checked) {
       if (index < 0) {
         newVal.push(eventVal);
-        console.log("Status Value added: ", eventVal);
       }
     } else if (index >= 0) {
       newVal.splice(index, 1);
-      console.log("Status Value removed: ", eventVal, " at index ", index);
     }
     setValue({ values: newVal });
-    console.log("Status Value: ", newVal);
     onChange(event, newVal);
   };
 
