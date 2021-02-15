@@ -8,8 +8,13 @@
  *          onChange and parse filter function to communicate with the api.
  * Date: 04-24-2020
  */
+// -------------------------- IMPORTS --------------------------
+
+// Function Imports
 import React from "react";
 import set from "lodash/set";
+
+// Component Imports
 import { Filter } from "react-admin";
 import StudentSearchInput from "../../components/Inputs/StudentSearchInput";
 import { STUDENT } from "../../constants/apiObjects";
@@ -17,6 +22,7 @@ import { STUDENT } from "../../constants/apiObjects";
 const STUDENT_NAME_QUERY = `${STUDENT.NAME}_like`;
 const STUDENT_ID_QUERY = `${STUDENT.NEU_ID}_like`;
 
+// -------------------------- COMPONENT --------------------------
 export const StudentFilter = props => {
   const setFilter = (key, val) => {
     props.setFilters(set(props.filterValues, key, val));

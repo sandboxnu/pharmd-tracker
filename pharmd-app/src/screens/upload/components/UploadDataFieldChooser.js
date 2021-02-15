@@ -4,6 +4,7 @@ import FileUploadService from "../../../services/FileUploadService";
 import { Select } from '../../../components/Form'
 import Button from '@material-ui/core/Button'
 
+// Style Imports
 import tw, { styled } from "twin.macro";
 
 class UploadDataFieldChooser extends Component {
@@ -28,6 +29,10 @@ class UploadDataFieldChooser extends Component {
     this.handleConfirm = this.handleConfirm.bind(this);
   }
 
+  /**
+   * Handles the selecting of an element from a dropdown menu
+   * @param value {Array}
+   */
   handleChange(value) {
     const [field, type] = value;
     this.fieldTypes.set(field, type);
@@ -86,6 +91,11 @@ class UploadDataFieldChooser extends Component {
     this.props.confirmData(data);
   }
 
+  /**
+   * Gets the items for a select menu
+   * @param {string} header
+   * @return Array
+   **/
   getSelectItems(header) {
     return Object.keys(FileUploadService.gradeInputTypes).map(inputType => (
         {

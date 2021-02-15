@@ -32,6 +32,7 @@ const CourseListField = ({ record = {}, source }) => {
           return <p key={index}>loading</p>;
         }
         if (error) {
+          console.log("ERROR", error);
           return <p key={index}>ERROR</p>;
         }
         if (index === courses.length - 1) {

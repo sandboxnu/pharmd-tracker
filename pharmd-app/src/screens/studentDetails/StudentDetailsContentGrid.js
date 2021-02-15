@@ -1,3 +1,6 @@
+/**
+ * This component determines the main layout of the StudentDetails Screen
+ */
 import React from "react";
 import { List as ListRA } from "react-admin";
 import tw, { styled } from "twin.macro";

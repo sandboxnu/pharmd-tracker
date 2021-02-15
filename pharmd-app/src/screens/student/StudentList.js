@@ -7,9 +7,14 @@
 * Date: 04-27-2020
 */
 
+// -------------------------- IMPORTS --------------------------
+
+// Function Imports
 import React from "react";
 import { useDispatch } from "react-redux";
 import { setStudentSideBar } from "../../redux/actions";
+
+// Component Imports
 import Table from "../../components/Table/Table";
 import EmphasisField from "../../components/Fields/EmphasisField";
 import TextField from "../../components/Fields/TextField";

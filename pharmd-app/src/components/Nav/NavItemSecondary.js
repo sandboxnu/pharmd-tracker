@@ -1,6 +1,13 @@
+// -------------------------- IMPORTS --------------------------
+
+// Function Imports
 import React, { useCallback } from "react";
 import PropTypes from "prop-types";
+
+// Style Imports
 import tw, { styled } from "twin.macro";
+
+// Component Imports
 import MenuItemMaterial from "@material-ui/core/MenuItem";
 import ListItemIcon from "@material-ui/core/ListItemIcon";
 import Tooltip from "../Basic/Tooltip";

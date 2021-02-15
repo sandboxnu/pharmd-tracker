@@ -22,6 +22,10 @@ class SpreadsheetUploader extends Component {
         this.confirmData = this.confirmData.bind(this);
     }
 
+    /**
+     * Updates the state with data about the uploaded file
+     * @param {FileData}fileData
+     */
     uploadFile(fileData) {
         if (fileData.data.length > 0) {
             this.setState({
@@ -37,6 +41,12 @@ class SpreadsheetUploader extends Component {
         this.setState(this.DEFAULT_STATE)
     }
 
+    /**
+     * Tries to upload the given data to the backend
+     * @param data {{
+     *     exams: Array<BasicStudentAssessment>
+     * }}
+     */
     confirmData(data) {
         const promises = [];
         promises.push(StudentAssessmentService.addManyStudentAssessments(data.exams, []));
@@ -55,6 +65,9 @@ class SpreadsheetUploader extends Component {
             })
     }
 
+    /**
+     * Displays a dialog with help info about the file uploader
+     */
     showHelp() {
         const helpInfo = `
       This tool is used to upload spreadsheet exports from Canvas into the PharmD database

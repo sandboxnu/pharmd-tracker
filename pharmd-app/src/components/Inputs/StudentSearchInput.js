@@ -6,12 +6,20 @@
  *      -- Use Basic TextField Instead
  * Date: 04-24-2020
  */
+// -------------------------- IMPORTS --------------------------
+
+// Function Imports
 import React from "react";
 import { useInput } from "react-admin";
 import PropTypes from "prop-types";
+
+// Style Imports
 import tw, { styled } from "twin.macro";
+
+// Component Imports
 import SearchInput from "./SearchInput";
 
+// -------------------------- STYLE --------------------------
 const SearchBox = styled(SearchInput)`
   ${tw`rounded-xl shadow-none p-2 bg-background`}
   input {
@@ -19,6 +27,7 @@ const SearchBox = styled(SearchInput)`
   }
 `;
 
+// -------------------------- COMPONENT --------------------------
 const StudentSearchInput = props => {
   const {
     input: { name, onChange },

@@ -1,8 +1,16 @@
+// -------------------------- IMPORTS --------------------------
+
+// Function Imports
 import React, { cloneElement } from "react";
+
+// Style Imports
 import tw, { styled } from "twin.macro";
+
+// Component Imports
 import TableCell from "@material-ui/core/TableCell";
 import MuiTableRow from "@material-ui/core/TableRow";
 
+// -------------------------- STYLE --------------------------
 const TableRowStyled = styled(MuiTableRow)`
   &.MuiTableRow-root {
     ${tw`h-16`}
@@ -13,6 +21,7 @@ const TableRowStyled = styled(MuiTableRow)`
   }
 `;
 
+// -------------------------- COMPONENT --------------------------
 const TableRow = ({ record, resource, id, children, selected, basePath }) => {
   return (
     <TableRowStyled key={id} hover selected={selected}>

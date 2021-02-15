@@ -1,9 +1,21 @@
+/**
+ * Description:
+ * Component creates breadcrumbs linking to different routes
+ */
+
+// -------------------------- IMPORTS --------------------------
+
+// Function Imports
 import React from "react";
 import { Route } from "react-router";
 import PropTypes from "prop-types";
+
+// Component Imports
 import { Link as RouterLink } from "react-router-dom";
 import MuiLink from "@material-ui/core/Link";
 import MuiBreadcrumbs from "@material-ui/core/Breadcrumbs";
+
+// Style Imports
 import tw, { styled } from "twin.macro";
 import { MAP_BREADCRUMB_NAME } from "../../constants/mappers";
 import {
@@ -13,6 +25,8 @@ import {
 } from "../../constants/text";
 import { STUDENTS_MAIN, HOME_MAIN } from "../../constants/routes";
 
+// -------------------------- STYLE --------------------------
+
 const Link = styled(MuiLink)`
   ${tw`fontStyle-3 m-0 text-gray-600`}
 `;
@@ -20,6 +34,8 @@ const Link = styled(MuiLink)`
 const CurrentLink = styled.p`
   ${tw`fontStyle-3 m-0 text-gray-500`}
 `;
+
+// -------------------------- FUNCTIONS --------------------------
 
 const getName = (to, value) => {
   if (!isNaN(value) && to.includes(`${STUDENTS_MAIN}/${value}`)) {
@@ -32,12 +48,14 @@ const getName = (to, value) => {
     return STUDENT_DETAILS_TITLE;
   }
 
+  // Check if route predefined
   const val = MAP_BREADCRUMB_NAME[to];
   return val || value;
 };
 
 export const BreadcrumbLink = props => <Link {...props} component={RouterLink} />;
 
+// location Param added just for storybook testing
 function RouterBreadcrumb(locTest) {
   return (
     <Route>

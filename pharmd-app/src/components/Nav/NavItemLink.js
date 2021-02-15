@@ -1,6 +1,13 @@
+// -------------------------- IMPORTS --------------------------
+
+// Function Imports
 import React, { forwardRef, useCallback } from "react";
 import PropTypes from "prop-types";
+
+// Style Imports
 import tw, { styled } from "twin.macro";
+
+// Component Imports
 import { NavLink } from "react-router-dom";
 import MenuItemMaterial from "@material-ui/core/MenuItem";
 import ListItemIcon from "@material-ui/core/ListItemIcon";
@@ -10,6 +17,7 @@ import Icon from "../Basic/Icon";
 const NavLinkRef = forwardRef((props, ref) => <NavLink innerRef={ref} {...props} />);
 const activeClassname = `NavItemLink-Active${btoa(Math.random())}`;
 
+// -------------------------- STYLE --------------------------
 const Item = styled(({ className, ...props }) => (
   <MenuItemMaterial {...props} classes={{ root: className }} />
 ))`
@@ -30,8 +38,10 @@ const IconItem = styled(ListItemIcon)`
   ${tw`flex justify-center`}
 `;
 
+// -------------------------- COMPONENT --------------------------
 const NavItemLink = forwardRef(
   ({ className, title, iconSrc, onClick, sidebarIsOpen, isActive, ...props }, ref) => {
+    // Navigate to Route
     const handleMenuTap = useCallback(
       e => {
         onClick && onClick(e);

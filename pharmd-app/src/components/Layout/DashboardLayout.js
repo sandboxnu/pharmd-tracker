@@ -1,4 +1,9 @@
+// -------------------------- IMPORTS --------------------------
+
+// Function Imports
 import React from "react";
+
+// Style Imports
 import tw from "twin.macro";
 import { makeStyles } from "@material-ui/core/styles";
 import { Notification, Sidebar, Layout } from "react-admin";

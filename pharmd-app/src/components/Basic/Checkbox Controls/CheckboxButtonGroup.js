@@ -1,9 +1,23 @@
+/**
+ * Description:
+ * This Component creates a group of checkbox buttons.
+ * There is one checkbox created for each children.
+ * This function also accepts an onChange function that will be exected every time
+ * a check box is unchecked.
+ */
+
+// -------------------------- IMPORTS --------------------------
+
+// Function Imports
 import React, { cloneElement } from "react";
+
+// Component Imports
 import FormGroup from "@material-ui/core/FormGroup";
 import FormControl from "@material-ui/core/FormControl";
 import FormLabel from "@material-ui/core/FormLabel";
 import CheckboxButton from "./CheckboxButton";
 
+// -------------------------- COMPONENT --------------------------
 const CheckboxButtonGroup = props => {
   const {
     onChange,
