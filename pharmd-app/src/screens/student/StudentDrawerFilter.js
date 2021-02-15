@@ -109,7 +109,6 @@ export const StudentDrawerFilter = ({ setFilters, filterValues, ...props }) => {
         source="international"
         color="primary"
         className={classes.formControl}
-        checkboxClassName={classes.checkboxButton}
         setFilter={setFilter}
         deleteFilter={deleteFilter}
         alwaysOn

@@ -8,41 +8,52 @@
  * Date: 04-23-2020
  */
 
-//-------------------------- IMPORTS --------------------------
+// -------------------------- IMPORTS --------------------------
 
 // Function Imports
 import React, { cloneElement } from "react";
 
 // Component Imports
-import FavoriteBorderIcon from '@material-ui/icons/FavoriteBorder';
 import FormGroup from "@material-ui/core/FormGroup";
 import FormControl from "@material-ui/core/FormControl";
 import FormLabel from "@material-ui/core/FormLabel";
 import CheckboxButton from "./CheckboxButton";
 
-//-------------------------- COMPONENT --------------------------
+// -------------------------- COMPONENT --------------------------
 
 const CheckboxButtonGroup = props => {
-  const { onChange, label, showLabel, error, children, color, className, checkboxClassName } = props;
+  const {
+    checkboxClassName,
+    children,
+    className,
+    color,
+    error,
+    label,
+    onChange,
+    showLabel,
+    formGroupClassName
+  } = props;
 
   return (
     <FormControl component="fieldset" error={error} className={className}>
       {showLabel && <FormLabel component="legend">{label}</FormLabel>}
-      <FormGroup aria-label={label}>
+      <FormGroup aria-label={label} className={formGroupClassName}>
         {children &&
           children.map((child, index) => {
             return cloneElement(child, {
               key: index,
-              control: <CheckboxButton
-                onChange={onChange}
-                color={color}
-                className={checkboxClassName}
-                // icon={undefined}
-                icon={ child.props.icon ? child.props.icon : undefined }
-                checkedIcon={ child.props.checkedIcon ? child.props.checkedIcon : undefined }
-              />
-            })}
-          )}
+              control: (
+                <CheckboxButton
+                  onChange={onChange}
+                  color={color}
+                  className={checkboxClassName}
+                  icon={child.props.icon ? child.props.icon : undefined}
+                  checkedIcon={child.props.checkedIcon || undefined}
+                  labelPlacement={child.props.checkedIcon || undefined}
+                />
+              )
+            });
+          })}
       </FormGroup>
     </FormControl>
   );
