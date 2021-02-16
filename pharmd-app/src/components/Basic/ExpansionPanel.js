@@ -23,13 +23,15 @@ const ExpansionPanelDetails = styled(ExpansionPanelDetailsMaterial)`
   ${tw`flex-col py-0`}
 `;
 
-const ExpansionPanel = ({ SummaryChild, DetailChild, expand }) => {
+const ExpansionPanel = ({ SummaryChild, DetailChild, defaultExpanded, expanded, onChange }) => {
   return (
     <ExpansionPanelC
       tw="w-full"
-      defaultExpanded={expand}
+      defaultExpanded={defaultExpanded}
       square={true}
       elevation={0}
+      expanded={expanded}
+      onChange={onChange}
     >
       <ExpansionPanelSummary>{SummaryChild}</ExpansionPanelSummary>
       <ExpansionPanelDetails>{DetailChild}</ExpansionPanelDetails>
