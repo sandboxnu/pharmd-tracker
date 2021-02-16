@@ -24,7 +24,6 @@ import GridCard from "../../components/Basic/GridCard";
 // Style Imports
 import tw, { styled } from "twin.macro";
 
-
 //-------------------------- STYLE --------------------------
 
 const Paper = styled(MuiPaper)`
@@ -64,7 +63,11 @@ const StudentContentGrid = ({ selected, ...props }) => {
           {...props}
           classes={{ content: "content" }}
         >
-          <StudentList selectedRow={selected} />
+          <StudentList
+            selectedRow={selected}
+            setStudentQuickViewExpanded={props.setStudentQuickViewExpanded}
+            studentQuickViewExpanded={props.studentQuickViewExpanded}
+          />
         </List>
       </MuiGrid>
     </MainGrid>

@@ -94,7 +94,6 @@ const StudentDrawer = ({ isOpenMatch, selected, handleClose, handleOpen, ...prop
   // the drawer should be open if the drawer was manually opened or the user clicked on a student in the table
   const isDrawerOpen = isOpen || isOpenMatch;
   const [filtersQuickViewExpanded, setFiltersQuickViewExpanded] = useState(false);
-  const [studentQuickViewExpanded, setStudentQuickViewExpanded] = useState(false);
 
   // onChange functions for when the expansion panel is clicked on:
   const changeFiltersExpansionPanel = () => {
@@ -103,8 +102,8 @@ const StudentDrawer = ({ isOpenMatch, selected, handleClose, handleOpen, ...prop
   };
 
   const changeStudentExpansionPanel = () => {
-    isOpen ? setStudentQuickViewExpanded(!studentQuickViewExpanded) :
-      setStudentQuickViewExpanded(true);
+    isOpen ? props.setStudentQuickViewExpanded(!props.studentQuickViewExpanded) :
+      props.setStudentQuickViewExpanded(true);
   };
 
   //Avoid route errors
@@ -138,7 +137,7 @@ const StudentDrawer = ({ isOpenMatch, selected, handleClose, handleOpen, ...prop
             title={"Table Filters"}
             iconSrc={FilterIcon}
             onClick={handleOpen}
-            isOpen={true}
+            // isOpen={true}
             isActive={false}
             sidebarIsOpen={isDrawerOpen}
           />
@@ -155,15 +154,15 @@ const StudentDrawer = ({ isOpenMatch, selected, handleClose, handleOpen, ...prop
               title={"Student Quickview"}
               iconSrc={PersonIcon}
               onClick={handleOpen}
-              isOpen={true}
-              isActive={false}
+              // isOpen={true}
+              // isActive={false}
               sidebarIsOpen={isDrawerOpen}
             />
           </>
         }
         DetailChild={quickview()}
         defaultExpanded={isDrawerOpen}
-        expanded={isDrawerOpen && studentQuickViewExpanded}
+        expanded={isDrawerOpen && props.studentQuickViewExpanded}
         onChange={changeStudentExpansionPanel}
       />
     </Drawer>

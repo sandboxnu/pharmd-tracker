@@ -29,6 +29,8 @@ const StudentList = ({ selectedRow, ...props }) => {
 
   const studentRowClick = (id, basePath, record) => {
     dispatch(setStudentSideBar({ isOpen: true }));
+    props.setStudentQuickViewExpanded(true);
+    console.log(props);
     return record.editable ? "edit" : "show";
   };
 
