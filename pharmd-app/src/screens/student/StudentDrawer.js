@@ -137,7 +137,7 @@ const StudentDrawer = ({ isOpenMatch, selected, handleClose, handleOpen, ...prop
             title={"Table Filters"}
             iconSrc={FilterIcon}
             onClick={handleOpen}
-            // isOpen={true}
+            isOpen={true}
             isActive={false}
             sidebarIsOpen={isDrawerOpen}
           />
@@ -154,8 +154,8 @@ const StudentDrawer = ({ isOpenMatch, selected, handleClose, handleOpen, ...prop
               title={"Student Quickview"}
               iconSrc={PersonIcon}
               onClick={handleOpen}
-              // isOpen={true}
-              // isActive={false}
+              isOpen={true}
+              isActive={false}
               sidebarIsOpen={isDrawerOpen}
             />
           </>
