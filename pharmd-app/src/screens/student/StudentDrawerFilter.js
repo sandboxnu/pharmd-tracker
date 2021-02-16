@@ -2,7 +2,7 @@
 
 // Function Imports
 import React from "react";
-import { Filter as FilterRA, NumberInput } from "react-admin";
+import { Filter as FilterRA } from "react-admin";
 import set from "lodash/set";
 
 // Component Imports
@@ -107,7 +107,6 @@ export const StudentDrawerFilter = ({ setFilters, filterValues, ...props }) => {
       <OriginCheckboxInput
         label="Origin"
         source="international"
-        color="primary"
         className={classes.formControl}
         setFilter={setFilter}
         deleteFilter={deleteFilter}

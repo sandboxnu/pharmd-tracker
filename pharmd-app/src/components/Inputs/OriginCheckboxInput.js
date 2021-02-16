@@ -1,7 +1,7 @@
 //-------------------------- IMPORTS --------------------------
 
 // Function Imports
-import React from "react";
+import React, { useState } from "react";
 import { useInput } from "react-admin";
 
 // Component Imports
@@ -13,40 +13,46 @@ import FlightOutlinedIcon from '@material-ui/icons/FlightOutlined';
 
 // Style Imports
 import { blue } from "@material-ui/core/colors";
-import { makeStyles } from "@material-ui/core/styles";
+import { withStyles } from "@material-ui/core/styles";
 
 //-------------------------- STYLE --------------------------
 
 // Use this to style the form group in the checkboxButtonGroup to make the checkboxes
 //     appear in a row.
-const useStyles = makeStyles({
-  // formGroup styling
+
+// resource: https://github.com/mui-org/material-ui/issues/10820
+// Use styles to make the label change when the checkbox is checked
+const styles = {
   formGroup: {
     flexDirection: "row",
-    // style the
-    "& label": {
-      border: ".2rem solid #F0F4FF",
-      width: "6rem",
-      borderRadius: ".51rem"
+    marginTop: "1rem"
+  },
+  root: {
+    border: ".2rem solid #F0F4FF",
+    width: "7rem",
+    borderRadius: ".51rem"
+  },
+  rootChecked: {
+    border: ".2rem solid",
+    borderColor: blue[700],
+    width: "7rem",
+    borderRadius: ".51rem"
+  },
+  checked: {
+    // use the direct sibling selector to get the label
+    "&, & + $label": {
+      color: "#2B2B90"
     }
   },
-
-  formControlLabel: {
-    backgroundColor: "red",
-    "&$checked": {
-      borderColor: blue[700],
-      color: blue[700]
-    }
+  label: {
+    color: "#828282",
+    fontWeight: 600
   },
-
-  // checkbox styling
-  checkboxButton: {
-    "&$checked": {
-      borderColor: blue[700],
-      color: blue[700]
-    }
+  icon: {
+    width: 60,
+    height: 60
   }
-});
+};
 
 //-------------------------- COMPONENT --------------------------
 
@@ -55,56 +61,84 @@ const OriginCheckboxInput = props => {
     meta: { error }
   } = useInput(props);
 
-  const classes = useStyles();
+  const { className, classes, label, setFilter, deleteFilter } = props;
+
+  const [isInternational, setIsInternational] = useState({});
 
   const addOriginFilter = newValue => {
     switch (newValue) {
       case "domestic":
-        props.setFilter("international", false);
+        setFilter("international", false);
+        setIsInternational({"international": false});
         break;
       case "international":
-        props.setFilter("international", true);
+        setFilter("international", true);
+        setIsInternational({"international": true});
         break;
       default:
-        props.deleteFilter("international");
+        deleteFilter("international");
+        setIsInternational({});
         break;
     }
-    console.log("Origin Filter:", newValue);
+  };
+
+  const removeOriginFilter = () => {
+    deleteFilter("international");
+    setIsInternational({});
   };
 
   const originCheckbox = (event, array) => {
-    array.length === 1 ?
-      addOriginFilter(array[0])
-      : props.deleteFilter("international");
+    array.length === 1 ? addOriginFilter(array[0]) : removeOriginFilter();
   };
 
   return (
     <CheckboxFilterButtonGroup
       onChange={originCheckbox}
-      label={props.label}
-      color={props.color}
+      label={label}
+      color="#2B2B90"
       error={error}
-      className={props.className}
-      checkboxClassName={classes.checkboxButton}
+      className={className}
+      checkboxClassName={classes.checked}
       formGroupClassName={classes.formGroup}
     >
       <FormControlLabel
         value="domestic"
         label="Domestic"
-        icon={ <DirectionsCarOutlinedIcon/> }
-        checkedIcon={ <DirectionsCarIcon/> }
+        icon={<DirectionsCarOutlinedIcon fontSize="large" />}
+        checkedIcon={<DirectionsCarIcon fontSize="large" />}
         labelPlacement="bottom"
-        className={classes.formControlLabel}
+        classes={
+          "international" in isInternational && !isInternational["international"] ?
+            {
+              root: classes.rootChecked,
+              label: classes.label
+            }
+            : {
+                root: classes.root,
+                label: classes.label,
+              }
+        }
       />
       <FormControlLabel
         value="international"
         label="International"
-        icon={ <FlightOutlinedIcon/> }
+        icon={<FlightOutlinedIcon fontSize="large" />}
+        checkedIcon={<FlightOutlinedIcon fontSize="large" />}
         labelPlacement="bottom"
-        className={classes.formControlLabel}
+        classes={
+          "international" in isInternational && isInternational["international"] ?
+            {
+              root: classes.rootChecked,
+              label: classes.label
+            }
+            : {
+              root: classes.root,
+              label: classes.label,
+            }
+        }
       />
     </CheckboxFilterButtonGroup>
   );
 };
 
-export default OriginCheckboxInput;
+export default withStyles(styles)(OriginCheckboxInput);
