@@ -50,10 +50,7 @@ const useStyles = makeStyles(theme => ({
   },
   // checkbox styling
   checkboxButton: {
-    color: blue[700],
-    "&$checked": {
-      color: blue[700]
-    }
+    color: blue[700]
   }
 }));
 
@@ -108,6 +105,7 @@ export const StudentDrawerFilter = ({ setFilters, filterValues, ...props }) => {
         label="Origin"
         source="international"
         className={classes.formControl}
+        checkboxClassName={classes.originCheckboxButton}
         setFilter={setFilter}
         deleteFilter={deleteFilter}
         alwaysOn

@@ -3,7 +3,7 @@ import React from "react";
 import CheckboxButtonGroup from "./CheckboxButtonGroup";
 
 const CheckboxFilterButtonGroup = props => {
-  const { onChange, label, showLabel, error, children, color, className, checkboxClassName, formGroupClassName } = props;
+  const { onChange, label, showLabel, error, checkboxCheckedClass, children, color, className, checkboxClassName, formGroupClassName } = props;
   const [value, setValue] = React.useState({
     values: []
   });
@@ -39,6 +39,7 @@ const CheckboxFilterButtonGroup = props => {
       color={color}
       className={className}
       checkboxClassName={checkboxClassName}
+      checkboxCheckedClass={checkboxCheckedClass}
       formGroupClassName={formGroupClassName}
     />
   )

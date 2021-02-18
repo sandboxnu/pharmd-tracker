@@ -16,10 +16,6 @@ import { blue } from "@material-ui/core/colors";
 import { withStyles } from "@material-ui/core/styles";
 
 //-------------------------- STYLE --------------------------
-
-// Use this to style the form group in the checkboxButtonGroup to make the checkboxes
-//     appear in a row.
-
 // resource: https://github.com/mui-org/material-ui/issues/10820
 // Use styles to make the label change when the checkbox is checked
 const styles = {
@@ -98,7 +94,7 @@ const OriginCheckboxInput = props => {
       color="#2B2B90"
       error={error}
       className={className}
-      checkboxClassName={classes.checked}
+      checkboxCheckedClass={classes.checked}
       formGroupClassName={classes.formGroup}
     >
       <FormControlLabel

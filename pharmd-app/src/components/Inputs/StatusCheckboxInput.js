@@ -8,9 +8,25 @@ import { useInput } from "react-admin";
 import FormControlLabel from "@material-ui/core/FormControlLabel";
 import CheckboxFilterButtonGroup from "../Basic/Checkbox Controls/CheckboxFilterButtonGroup";
 
+// Style Imports
+import { withStyles } from "@material-ui/core/styles";
+import { blue } from "@material-ui/core/colors";
+
+//-------------------------- STYLE --------------------------
+// Use styles to make the label change when the checkbox is checked
+const styles = {
+  checked: {
+    // use the direct sibling selector to get the label
+    "&, & + $label": {
+      fontWeight: 600
+    }
+  },
+  label: {}
+};
+
 //-------------------------- COMPONENT --------------------------
 
-const StatusCheckboxInput = ({ checkboxClassName, className, color, label, setFilter, ...props }) => {
+const StatusCheckboxInput = ({ checkboxClassName, className, classes, color, label, setFilter, ...props }) => {
   const {
     meta: { error }
   } = useInput(props);
@@ -19,6 +35,8 @@ const StatusCheckboxInput = ({ checkboxClassName, className, color, label, setFi
     setFilter("status", array);
   };
 
+
+
   return (
     <CheckboxFilterButtonGroup
       onChange={statusCheckbox}
@@ -26,15 +44,16 @@ const StatusCheckboxInput = ({ checkboxClassName, className, color, label, setFi
       color={color}
       error={error}
       className={className}
+      checkboxCheckedClass={classes.checked}
       checkboxClassName={checkboxClassName}
     >
-      <FormControlLabel value="enrolled" label="Enrolled" />
-      <FormControlLabel value="coop" label="Coop" />
-      <FormControlLabel value="graduated" label="Graduated" />
-      <FormControlLabel value="leave" label="Leave" />
-      <FormControlLabel value="dropback" label="Drop Back" />
+      <FormControlLabel value="enrolled" label="Enrolled" classes={{ label: classes.label }} />
+      <FormControlLabel value="coop" label="Coop" classes={{ label: classes.label }} />
+      <FormControlLabel value="graduated" label="Graduated" classes={{ label: classes.label }} />
+      <FormControlLabel value="leave" label="Leave" classes={{ label: classes.label }} />
+      <FormControlLabel value="dropback" label="Drop Back" classes={{ label: classes.label }} />
     </CheckboxFilterButtonGroup>
   );
 };
 
-export default StatusCheckboxInput;
+export default withStyles(styles)(StatusCheckboxInput);
