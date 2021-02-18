@@ -29,13 +29,13 @@ const GpaSliderInput = ({ className, setFilter, ...props }) => {
 
   return (
     <RangeSlider
-      onChange={searchGpaRange}
-      setValueText={valuetext}
+      className={className}
       disabled={error}
+      onChange={searchGpaRange}
       max={4}
       min={0}
+      setValueText={valuetext}
       step={0.25}
-      className={className}
     />
   );
 };
