@@ -81,7 +81,7 @@ const OriginCheckboxInput = props => {
     meta: { error }
   } = useInput(props);
 
-  const { className, classes, label, setFilter, deleteFilter } = props;
+  const { className, classes, deleteFilter, label, setFilter } = props;
 
   // used to keep track of the international filter to change the style of the
   //     label to have a border when the checkbox is selected.

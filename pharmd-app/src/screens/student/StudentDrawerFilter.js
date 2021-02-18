@@ -68,7 +68,7 @@ const Filter = styled(FilterRA)`
   display: block;
 `;
 
-export const StudentDrawerFilter = ({ setFilters, filterValues, ...props }) => {
+export const StudentDrawerFilter = ({ filterValues, setFilters, ...props }) => {
   const classes = useStyles();
 
   // onChange functions to modify ReactAdmin filter values
@@ -84,39 +84,39 @@ export const StudentDrawerFilter = ({ setFilters, filterValues, ...props }) => {
   return (
     <Filter {...props}>
       <StatusCheckboxInput
-        label="Status"
-        source="status"
-        color="primary"
-        className={classes.formControl}
-        checkboxClassName={classes.checkboxButton}
-        setFilter={setFilter}
-        deleteFilter={deleteFilter}
         alwaysOn
+        checkboxClassName={classes.checkboxButton}
+        className={classes.formControl}
+        color="primary"
+        deleteFilter={deleteFilter}
+        label="Status"
+        setFilter={setFilter}
+        source="status"
       />
       <GpaSliderInput
-        label="GPA"
-        source="gpa_gte"
-        className={classes.rangeSlider}
-        setFilter={setFilter}
-        deleteFilter={deleteFilter}
         alwaysOn
+        className={classes.rangeSlider}
+        deleteFilter={deleteFilter}
+        label="GPA"
+        setFilter={setFilter}
+        source="gpa_gte"
       />
       <CohortMultipleSelect
-        label="Cohort"
-        source="cohort"
-        className={classes.formControl}
-        setFilter={setFilter}
-        deleteFilter={deleteFilter}
         alwaysOn
+        className={classes.formControl}
+        deleteFilter={deleteFilter}
+        label="Cohort"
+        setFilter={setFilter}
+        source="cohort"
       />
       <OriginCheckboxInput
-        label="Origin"
-        source="international"
+        alwaysOn
         className={classes.formControl}
         checkboxClassName={classes.originCheckboxButton}
-        setFilter={setFilter}
         deleteFilter={deleteFilter}
-        alwaysOn
+        label="Origin"
+        setFilter={setFilter}
+        source="international"
       />
     </Filter>
   );
