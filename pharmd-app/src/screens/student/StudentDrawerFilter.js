@@ -1,3 +1,11 @@
+/**
+ * Description:
+ * This Component contains filter components that filter student data.
+ * This Component will be located in a drawer.
+ *
+ * Date: 02-18-2021
+ */
+
 //-------------------------- IMPORTS --------------------------
 
 // Function Imports
@@ -63,7 +71,7 @@ const Filter = styled(FilterRA)`
 export const StudentDrawerFilter = ({ setFilters, filterValues, ...props }) => {
   const classes = useStyles();
 
-  // onChange functions
+  // onChange functions to modify ReactAdmin filter values
   const setFilter = (key, val) => {
     setFilters(set(filterValues, key, val));
   };

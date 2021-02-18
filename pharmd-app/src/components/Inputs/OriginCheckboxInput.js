@@ -1,3 +1,12 @@
+/**
+ * Description:
+ * This Component creates a group of origin filter checkbox buttons.
+ * When you click on an origin checkbox it will filter the table for data with the
+ *     selected origin.
+ *
+ * Date: 02-18-2021
+ */
+
 // -------------------------- IMPORTS --------------------------
 
 // Function Imports
@@ -20,7 +29,7 @@ import CheckboxFilterButtonGroup from "../Basic/Checkbox Controls/CheckboxFilter
 // Use styles to make the label change when the checkbox is checked
 //     and to style components.
 const styles = {
-  // style the formgGroup
+  // style the formGroup
   formGroup: {
     flexDirection: "row",
     marginTop: "1rem"
@@ -96,18 +105,18 @@ const OriginCheckboxInput = props => {
   const removeOriginFilter = () => {
     deleteFilter("international");
   };
-
-  const originCheckbox = (event, array) => {
+  
+  const onChange = (event, array) => {
     // change local checkedLabels
     setCheckedLabels(array);
 
-    // change reactAdmin filter values
+    // change ReactAdmin filter values
     array.length === 1 ? addOriginFilter(array[0]) : removeOriginFilter();
   };
 
   return (
     <CheckboxFilterButtonGroup
-      onChange={originCheckbox}
+      onChange={onChange}
       label={label}
       color="#2B2B90"
       error={error}
@@ -122,6 +131,7 @@ const OriginCheckboxInput = props => {
         checkedIcon={<DirectionsCarIcon fontSize="large" />}
         labelPlacement="bottom"
         classes={
+          // if this label has been checked, change styling
           checkedLabels.indexOf("domestic") > -1
             ? {
                 root: classes.labelRootChecked,
@@ -140,6 +150,7 @@ const OriginCheckboxInput = props => {
         checkedIcon={<FlightOutlinedIcon fontSize="large" />}
         labelPlacement="bottom"
         classes={
+          // if this label has been checked, change styling
           checkedLabels.indexOf("international") > -1
             ? {
                 root: classes.labelRootChecked,

@@ -4,7 +4,7 @@
  * There is one checkbox created for each children.
  * This function also accepts an onChange function that will be executed every time
  * a check box is unchecked.
- * TODO:
+ *
  * Date: 04-23-2020
  */
 
@@ -41,6 +41,8 @@ const CheckboxButtonGroup = props => {
       <FormGroup aria-label={label} className={formGroupClassName}>
         {children &&
           children.map((child, index) => {
+            // the child is expected to be a Material UI - FormControlLabel
+            // this allows for the component to handle create a checkbox group of any size
             return cloneElement(child, {
               key: index,
               control: (

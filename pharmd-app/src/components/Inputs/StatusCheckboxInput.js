@@ -1,3 +1,12 @@
+/**
+ * Description:
+ * This Component creates a group of status filter checkbox buttons.
+ * When you click on an status checkbox it will filter the table for data with the
+ *     selected status.
+ *
+ * Date: 02-18-2021
+ */
+
 //-------------------------- IMPORTS --------------------------
 
 // Function Imports
@@ -10,13 +19,12 @@ import CheckboxFilterButtonGroup from "../Basic/Checkbox Controls/CheckboxFilter
 
 // Style Imports
 import { withStyles } from "@material-ui/core/styles";
-import { blue } from "@material-ui/core/colors";
 
 //-------------------------- STYLE --------------------------
 // Use styles to make the label change when the checkbox is checked
 const styles = {
   checked: {
-    // use the direct sibling selector to get the label
+    // when the checkbox is checked change the fontweight of the label
     "&, & + $label": {
       fontWeight: 600
     }
@@ -31,15 +39,13 @@ const StatusCheckboxInput = ({ checkboxClassName, className, classes, color, lab
     meta: { error }
   } = useInput(props);
 
-  const statusCheckbox = (event, array) => {
+  const onChange = (event, array) => {
     setFilter("status", array);
   };
 
-
-
   return (
     <CheckboxFilterButtonGroup
-      onChange={statusCheckbox}
+      onChange={onChange}
       label={label}
       color={color}
       error={error}
