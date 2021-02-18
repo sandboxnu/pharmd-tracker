@@ -40,16 +40,16 @@ const styles = {
   // unchecked style
   labelRoot: {
     border: ".2rem solid #F0F4FF",
-    width: "7rem",
-    borderRadius: ".51rem"
+    borderRadius: ".51rem",
+    width: "7rem"
   },
 
   // checked style
   labelRootChecked: {
     border: ".2rem solid",
     borderColor: blue[700],
-    width: "7rem",
-    borderRadius: ".51rem"
+    borderRadius: ".51rem",
+    width: "7rem"
   },
 
   // style checkbox component
@@ -63,8 +63,8 @@ const styles = {
 
   // style icon for the checkbox
   icon: {
-    width: 60,
-    height: 60
+    height: 60,
+    width: 60
   },
 
   // style label component
@@ -116,13 +116,13 @@ const OriginCheckboxInput = props => {
 
   return (
     <CheckboxFilterButtonGroup
-      onChange={onChange}
-      label={label}
+      checkboxCheckedClass={classes.checkboxChecked}
+      className={className}
       color="#2B2B90"
       error={error}
-      className={className}
-      checkboxCheckedClass={classes.checkboxChecked}
       formGroupClassName={classes.formGroup}
+      label={label}
+      onChange={onChange}
     >
       <FormControlLabel
         value="domestic"

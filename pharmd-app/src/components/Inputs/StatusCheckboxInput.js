@@ -45,13 +45,13 @@ const StatusCheckboxInput = ({ checkboxClassName, className, classes, color, lab
 
   return (
     <CheckboxFilterButtonGroup
-      onChange={onChange}
-      label={label}
-      color={color}
-      error={error}
-      className={className}
       checkboxCheckedClass={classes.checked}
       checkboxClassName={checkboxClassName}
+      className={className}
+      color={color}
+      error={error}
+      label={label}
+      onChange={onChange}
     >
       <FormControlLabel value="enrolled" label="Enrolled" classes={{ label: classes.label }} />
       <FormControlLabel value="coop" label="Coop" classes={{ label: classes.label }} />

@@ -23,16 +23,16 @@ import CheckboxButton from "./CheckboxButton";
 
 const CheckboxButtonGroup = props => {
   const {
-    checkboxClassName,
     checkboxCheckedClass,
+    checkboxClassName,
     children,
     className,
     color,
     error,
+    formGroupClassName,
     label,
     onChange,
     showLabel,
-    formGroupClassName
   } = props;
 
   return (

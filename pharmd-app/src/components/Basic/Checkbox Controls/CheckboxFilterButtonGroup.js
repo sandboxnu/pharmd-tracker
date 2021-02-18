@@ -17,7 +17,18 @@ import CheckboxButtonGroup from "./CheckboxButtonGroup";
 
 // -------------------------- COMPONENT --------------------------
 const CheckboxFilterButtonGroup = props => {
-  const { onChange, label, showLabel, error, checkboxCheckedClass, children, color, className, checkboxClassName, formGroupClassName } = props;
+  const {
+    checkboxCheckedClass,
+    checkboxClassName,
+    children,
+    className,
+    color,
+    error,
+    formGroupClassName,
+    label,
+    onChange,
+    showLabel,
+  } = props;
 
   const [filters, setFilters] = React.useState([]);
 
@@ -45,16 +56,16 @@ const CheckboxFilterButtonGroup = props => {
 
   return (
     <CheckboxButtonGroup
-      onChange={handleChange}
-      label={label}
-      showLabel={showLabel}
-      error={error}
+      checkboxCheckedClass={checkboxCheckedClass}
+      checkboxClassName={checkboxClassName}
       children={children}
       color={color}
       className={className}
-      checkboxClassName={checkboxClassName}
-      checkboxCheckedClass={checkboxCheckedClass}
+      error={error}
       formGroupClassName={formGroupClassName}
+      label={label}
+      onChange={handleChange}
+      showLabel={showLabel}
     />
   );
 };
