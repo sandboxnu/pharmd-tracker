@@ -4,11 +4,12 @@ import TextField from "../../components/Fields/TextField";
 import Table from "../../components/Table/Table";
 import {STUDENT_COURSE} from "../../constants/apiObjects";
 
-const StudentCourseList = ({resource, basePath}) => {
+const StudentCourseList = ({resource, basePath, record}) => {
     return (
       <ReferenceManyField
         resource={resource}
         basePath={basePath}
+        record={record}
         reference={'studentCourses'}
         target={'student'}
         addLabel={false}
