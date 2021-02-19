@@ -14,7 +14,7 @@ const Menu = ({onMenuClick, logout, ...props}) => {
     const location = props.location.pathname;
     const open = useSelector(state => state.admin.ui.sidebarOpen);
     const {permissions} = usePermissions();
-    let resources = useSelector(getResources);
+    let resources = useSelector(getResources).filter(val => val.name !== "studentCourses");
     if (permissions === "user") {
         resources = resources.filter(val => val.name !== "upload");
     }

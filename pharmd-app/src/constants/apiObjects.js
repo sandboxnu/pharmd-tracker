@@ -14,3 +14,13 @@ export const COURSE = {
   NUMBER: "number",
   NAME: "name"
 };
+
+export const STUDENT_COURSE = {
+  SEMESTER: "semester",
+  YEAR: "year",
+  PERCENTAGE: "percentage",
+  LETTER_GRADE: "letterGrade",
+  COURSE_SUBJECT: "course.subject",
+  COURSE_NUMBER: "course.number",
+  COURSE_NAME: "course.name",
+};

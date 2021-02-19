@@ -8,7 +8,6 @@ import { ThemeProvider as StyledThemeProvider } from "styled-components";
 const ThemeProvider = ({ theme, children }) => {
   const nextTheme = Object.assign({}, theme);
 
-  console.log(nextTheme);
   var d = document.documentElement;
   if (nextTheme.name === "Dark Theme") {
     d.classList.add("theme-dark");
