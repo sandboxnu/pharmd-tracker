@@ -9,7 +9,7 @@
 //-------------------------- IMPORTS --------------------------
 
 // Function Imports
-import React, { useCallback, Fragment } from "react";
+import React, { useCallback, Fragment, useState } from "react";
 import { Route, useHistory } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { setStudentSideBar } from "../../redux/actions";
@@ -46,6 +46,9 @@ const StudentScreen = props => {
     dispatch(setStudentSideBar({ isOpen: true }));
   }, []);
 
+  const [studentQuickViewExpanded, setStudentQuickViewExpanded] = useState(false);
+  const [studentSidebar, setStudentSidebar] = useState(true);
+
   return (
     <Route path={STUDENT_QUICKVIEW}>
       {({ match }) => {
@@ -55,11 +58,13 @@ const StudentScreen = props => {
         return (
           <Fragment>
             <MainContent>
-              <AppBar title="Students" />
+              <AppBar title="Students"/>
               <StudentContentGrid
                 selected={isMatch && parseInt(match.params.id, 10)}
+                studentQuickViewExpanded={studentQuickViewExpanded}
+                setStudentQuickViewExpanded={setStudentQuickViewExpanded}
                 {...props}
-              />
+              />             
             </MainContent>
 
             <StudenttDrawer
@@ -67,6 +72,9 @@ const StudentScreen = props => {
               id={isMatch ? match.params.id : 0}
               handleClose={handleClose}
               handleOpen={handleOpen}
+              studentQuickViewExpanded={studentQuickViewExpanded}
+              setStudentQuickViewExpanded={setStudentQuickViewExpanded}
+
               {...props}
             />
           </Fragment>
