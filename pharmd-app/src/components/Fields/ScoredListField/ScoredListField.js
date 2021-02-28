@@ -6,7 +6,6 @@ import List from "@material-ui/core/List";
 
 const ScoredListField = ({ record = {}, source }) => {
   let courses = record[source];
-  console.log("COURSES", courses);
   return (
     <List>
       {courses.map((course, index) => {

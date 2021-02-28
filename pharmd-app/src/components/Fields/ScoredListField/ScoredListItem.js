@@ -65,7 +65,6 @@ const ScoredListItem = ({
   errorText,
   ...rest
 }) => {
-  console.log("PROPS", rest, ListItem.muiName);
   if (loading) {
     return <ScoredListItemSkeleton variant={variant} {...rest} />;
   }
