@@ -21,7 +21,8 @@ import Table from "../../components/Table/Table";
 import EmphasisField from "../../components/Fields/EmphasisField";
 import TextField from "../../components/Fields/TextField";
 import ChipField from "../../components/Fields/ChipField";
-import CohortField from "../../components/Fields/CohortField";
+// import CohortField from "../../components/Fields/CohortField";
+import GradeField from "../../components/Fields/GradeField";
 import { STUDENT } from "../../constants/apiObjects";
 
 const StudentList = ({ selectedRow, ...props }) => {
@@ -42,7 +43,7 @@ const StudentList = ({ selectedRow, ...props }) => {
       <TextField source={STUDENT.LAST_NAME} label="Last Name" />
       <TextField source={STUDENT.COHORT} label="Cohort" />
       <ChipField source={STUDENT.STATUS} />
-      <TextField source={STUDENT.GPA} label="GPA" />
+      <GradeField source={STUDENT.GPA} label="GPA" />
     </Table>
   );
 };

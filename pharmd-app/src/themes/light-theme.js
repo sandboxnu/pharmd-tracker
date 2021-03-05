@@ -1,4 +1,4 @@
-import { createMuiTheme } from "@material-ui/core/styles";
+import {createMuiTheme} from "@material-ui/core/styles";
 
 // Helper Function used to retrieve css variable values
 const STYLE = getComputedStyle(document.body);
@@ -6,17 +6,30 @@ function getValue(cssVariable) {
   return STYLE.getPropertyValue(cssVariable).trim();
 }
 
-function createLigthTheme() {
-  const overridings = {
+export const FIELD_COLOR_NAMES = {
+  PRIMARY: "PRIMARY",
+  GREEN: "GREEN",
+  RED: "RED",
+  ORANGE: "ORANGE",
+  TERTIARY: "TERTIARY",
+  DEFAULT: "DEFAULT",
+};
+
+export const FIELD_COLOR_VALUES = {
+  [FIELD_COLOR_NAMES.PRIMARY]: getValue("--primary"),
+  [FIELD_COLOR_NAMES.GREEN]: getValue("--green-2"),
+  [FIELD_COLOR_NAMES.RED]: getValue("--red"),
+  [FIELD_COLOR_NAMES.ORANGE]: getValue("--orange"),
+  [FIELD_COLOR_NAMES.TERTIARY]: getValue("--tertiary"),
+  [FIELD_COLOR_NAMES.DEFAULT]: getValue("--gray-3"),
+};
+
+function createLightTheme() {
+  const overrides = {
     name: "Light Theme",
     palette: {
-      pillColors: {
-        ["COOP"]: getValue("--primary"),
-        ["ENROLLED"]: getValue("--green-2"),
-        ["DROPBACK"]: getValue("--red"),
-        ["LEAVE"]: getValue("--orange"),
-        ["GRADUATED"]: getValue("--tertiary"),
-        ["NA"]: getValue("--gray-3")
+      fieldColors: {
+        ...FIELD_COLOR_VALUES,
       },
       primary: {
         main: getValue("--primary"),
@@ -59,7 +72,9 @@ function createLigthTheme() {
       }
     }
   };
-  return createMuiTheme(overridings);
+  const theme = createMuiTheme(overrides);
+  console.log("THEME", theme);
+  return theme;
 }
 
-export default createLigthTheme;
+export default createLightTheme;
