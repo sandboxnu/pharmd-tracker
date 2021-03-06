@@ -8,6 +8,9 @@ const StyledFormControl = styled(FormControl)`
     min-width: 12rem;
 `;
 
+/**
+* @class CustomSelect a component for creating an easy select menu
+*/
 class CustomSelect extends React.Component {
     static propTypes = {
         title: PropTypes.string,

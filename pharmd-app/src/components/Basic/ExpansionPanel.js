@@ -24,7 +24,10 @@ const ExpansionPanelDetails = styled(ExpansionPanelDetailsMaterial)`
 
 const ExpansionPanel = ({ SummaryChild, DetailChild, expand }) => {
   return (
-    <ExpansionPanelC tw="w-full" defaultExpanded={expand} square elevation={0}>
+    <ExpansionPanelC
+        tw="w-full"
+        defaultExpanded={expand}
+        square elevation={0}>
       <ExpansionPanelSummary>{SummaryChild}</ExpansionPanelSummary>
       <ExpansionPanelDetails>{DetailChild}</ExpansionPanelDetails>
     </ExpansionPanelC>

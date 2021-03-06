@@ -1,10 +1,7 @@
 /**
 * Description: 
   This component contains a DataGrid that takes in field components for children. 
-  The componnet manages dispatching the data (resource) to each field and the source (data key). 
-* TODO:
-*       - Figure out if the headeerCell class can be moved to the TableRow component
-* Date: 04-27-2020
+  The componnet manages dispatching the data (resource) to each field and the source (data key).
 */
 
 // -------------------------- IMPORTS --------------------------
