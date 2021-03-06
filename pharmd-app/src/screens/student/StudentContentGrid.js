@@ -56,7 +56,11 @@ const StudentContentGrid = ({ selected, ...props }) => {
           {...props}
           classes={{ content: "content" }}
         >
-          <StudentList selectedRow={selected} />
+          <StudentList
+            selectedRow={selected}
+            setStudentQuickViewExpanded={props.setStudentQuickViewExpanded}
+            studentQuickViewExpanded={props.studentQuickViewExpanded}
+          />
         </List>
       </MuiGrid>
     </MainGrid>

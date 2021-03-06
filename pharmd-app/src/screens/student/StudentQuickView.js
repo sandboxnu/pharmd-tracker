@@ -18,7 +18,7 @@ const StudentQuickView = props => {
     return null;
   }
   return (
-    <Show title="QickView" component="div" {...props}>
+    <Show title={"QuickView"} component={"div"} {...props}>
       <SimpleShowLayout
         basePath={controllerProps.basePath}
         record={controllerProps.record}
