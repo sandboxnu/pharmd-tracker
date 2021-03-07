@@ -1,15 +1,12 @@
 import React from "react";
-import clsx from "clsx";
-import { makeStyles, useTheme } from "@material-ui/core/styles";
+import { makeStyles } from "@material-ui/core/styles";
 import Input from "@material-ui/core/Input";
 import InputLabel from "@material-ui/core/InputLabel";
 import MenuItem from "@material-ui/core/MenuItem";
 import FormControl from "@material-ui/core/FormControl";
-import ListItemText from "@material-ui/core/ListItemText";
 import Select from "@material-ui/core/Select";
-import Checkbox from "@material-ui/core/Checkbox";
 import Chip from "@material-ui/core/Chip";
-import tw, { css } from "twin.macro";
+import tw from "twin.macro";
 
 const useStyles = makeStyles(theme => ({
   formControl: {
@@ -41,10 +38,9 @@ const MenuProps = {
 };
 
 const MultipleSelect = props => {
-  const { onChange, label, showLabel, error, children, className } = props;
+  const { onChange, label, error, children, className } = props;
 
   const classes = useStyles();
-  const theme = useTheme();
   const [value, setValue] = React.useState([]);
 
   const handleDelete = valueToDelete => {
@@ -65,7 +61,6 @@ const MultipleSelect = props => {
       className={(classes.formControl, className)}
       tw="w-full"
     >
-      {/* {showLabel && <FormLabel component="legend">{label}</FormLabel>} */}
       <InputLabel id="demo-mutiple-chip-label">{label}</InputLabel>
       <Select
         labelId="demo-mutiple-chip-label"

@@ -7,7 +7,7 @@
  * Date: 02-06-2021
  */
 
-//-------------------------- IMPORTS --------------------------
+// -------------------------- IMPORTS --------------------------
 
 // Function Imports
 import React, { useState, useEffect } from "react";
@@ -18,18 +18,19 @@ import { Link as RouterLink } from "react-router-dom";
 
 // Component Imports
 import DrawerMaterial from "@material-ui/core/Drawer";
+import tw, { styled } from "twin.macro";
 import ExpansionPanel from "../../components/Basic/ExpansionPanel";
 import FilterIcon from "../../assets/icons/filter.svg";
 import NavItemSecondary from "../../components/Nav/NavItemSecondary";
 import PersonIcon from "../../assets/icons/person.svg";
 import StudentDrawerFilter from "./StudentDrawerFilter";
+
 import StudentQuickView from "./StudentQuickView";
 import VerticalSplitIcon from "../../assets/icons/verticalSplit.svg";
 
 // Style Imports
-import tw, { styled } from "twin.macro";
 
-//-------------------------- STYLE --------------------------
+// -------------------------- STYLE --------------------------
 
 const ButtonSpan = styled.span`
   width: 100%;
@@ -46,22 +47,17 @@ const DeatilsButton = styled.button`
   padding: 13px 15px;
 `;
 
-
-const Drawer = styled(DrawerMaterial)` 
-  *::-webkit-scrollbar {
-    display:none;
-  }
-
-transition: ${props =>
-  props.open
-    ? props.theme.transitions.create("width", {
-        easing: props.theme.transitions.easing.sharp,
-        duration: props.theme.transitions.duration.enteringScreen
-      })
-    : props.theme.transitions.create("width", {
-        easing: props.theme.transitions.easing.sharp,
-        duration: props.theme.transitions.duration.leavingScreen
-      })};
+const Drawer = styled(DrawerMaterial)`
+  transition: ${props =>
+    props.open
+      ? props.theme.transitions.create("width", {
+          easing: props.theme.transitions.easing.sharp,
+          duration: props.theme.transitions.duration.enteringScreen
+        })
+      : props.theme.transitions.create("width", {
+          easing: props.theme.transitions.easing.sharp,
+          duration: props.theme.transitions.duration.leavingScreen
+        })};
 
   &.MuiDrawer-root {
     ${props => (props.open ? tw`w-99` : tw`w-18`)}
@@ -70,11 +66,10 @@ transition: ${props =>
   .MuiDrawer-paper {
     width: inherit;
     align-items: flex-end;
-    /* ${props => (props.open ? tw`w-28` : tw`w-18`)} */
   }
 `;
 
-//-------------------------- COMPONENT --------------------------
+// -------------------------- COMPONENT --------------------------
 
 /**
  * Returns a Drawer that contains both filters and student expansion panels.
@@ -100,16 +95,18 @@ const StudentDrawer = ({ isOpenMatch, selected, handleClose, handleOpen, ...prop
 
   // onChange functions for when the expansion panel is clicked on:
   const changeFiltersExpansionPanel = () => {
-    isOpen ? setFiltersQuickViewExpanded(!filtersQuickViewExpanded) :
-      setFiltersQuickViewExpanded(true);
+    isOpen
+      ? setFiltersQuickViewExpanded(!filtersQuickViewExpanded)
+      : setFiltersQuickViewExpanded(true);
   };
 
   const changeStudentExpansionPanel = () => {
-    isOpen ? props.setStudentQuickViewExpanded(!props.studentQuickViewExpanded) :
-      props.setStudentQuickViewExpanded(true);
+    isOpen
+      ? props.setStudentQuickViewExpanded(!props.studentQuickViewExpanded)
+      : props.setStudentQuickViewExpanded(true);
   };
 
-  //Avoid route errors
+  // Avoid route errors
   const quickview = () => {
     return isOpenMatch ? (
       <>
@@ -121,7 +118,7 @@ const StudentDrawer = ({ isOpenMatch, selected, handleClose, handleOpen, ...prop
         </ButtonSpan>
       </>
     ) : (
-      <div>{"No Student selected"}</div>
+      <div>No Student selected</div>
     );
   };
 
@@ -137,10 +134,10 @@ const StudentDrawer = ({ isOpenMatch, selected, handleClose, handleOpen, ...prop
       <ExpansionPanel
         SummaryChild={
           <NavItemSecondary
-            title={"Table Filters"}
+            title="Table Filters"
             iconSrc={FilterIcon}
             onClick={handleOpen}
-            isOpen={true}
+            isOpen
             isActive={false}
             sidebarIsOpen={isDrawerOpen}
           />
@@ -154,10 +151,10 @@ const StudentDrawer = ({ isOpenMatch, selected, handleClose, handleOpen, ...prop
         SummaryChild={
           <>
             <NavItemSecondary
-              title={"Student Quickview"}
+              title="Student Quickview"
               iconSrc={PersonIcon}
               onClick={handleOpen}
-              isOpen={true}
+              isOpen
               isActive={false}
               sidebarIsOpen={isDrawerOpen}
             />

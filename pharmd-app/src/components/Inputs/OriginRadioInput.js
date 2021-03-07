@@ -1,7 +1,7 @@
 import React from "react";
 import { useInput } from "react-admin";
-import RadioButtonsGroup from "../Basic/Radio Controls/RadioButtonGroup";
 import FormControlLabel from "@material-ui/core/FormControlLabel";
+import RadioButtonsGroup from "../Basic/Radio Controls/RadioButtonGroup";
 
 const OriginRadioInput = props => {
   const {
@@ -9,7 +9,12 @@ const OriginRadioInput = props => {
   } = useInput(props);
 
   return (
-    <RadioButtonsGroup onChange={props.onChange} label={props.label} error={error} className={props.className}>
+    <RadioButtonsGroup
+      onChange={props.onChange}
+      label={props.label}
+      error={error}
+      className={props.className}
+    >
       <FormControlLabel value="all" label="All" />
       <FormControlLabel value="domestic" label="Domestic" />
       <FormControlLabel value="international" label="International" />

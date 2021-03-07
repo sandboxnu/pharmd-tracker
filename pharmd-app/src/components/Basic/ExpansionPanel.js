@@ -3,7 +3,6 @@ import tw, { styled } from "twin.macro";
 import ExpansionPanelMaterial from "@material-ui/core/ExpansionPanel";
 import ExpansionPanelSummaryMaterial from "@material-ui/core/ExpansionPanelSummary";
 import ExpansionPanelDetailsMaterial from "@material-ui/core/ExpansionPanelDetails";
-import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
 
 const ExpansionPanelC = styled(ExpansionPanelMaterial)`
   ::before {

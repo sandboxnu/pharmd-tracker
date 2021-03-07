@@ -8,8 +8,7 @@
  *          onChange and parse filter function to communicate with the api.
  * Date: 04-24-2020
  */
-
-//-------------------------- IMPORTS --------------------------
+// -------------------------- IMPORTS --------------------------
 
 // Function Imports
 import React from "react";
@@ -20,23 +19,18 @@ import { Filter } from "react-admin";
 import StudentSearchInput from "../../components/Inputs/StudentSearchInput";
 import { STUDENT } from "../../constants/apiObjects";
 
-//-------------------------- CONSTANTS --------------------------
-
 const STUDENT_NAME_QUERY = `${STUDENT.NAME}_like`;
 const STUDENT_ID_QUERY = `${STUDENT.NEU_ID}_like`;
 
-//-------------------------- COMPONENT --------------------------
-
+// -------------------------- COMPONENT --------------------------
 export const StudentFilter = props => {
-  console.log("PROPS FILTER", props);
-  // Adds given filter key and value to the redux state filters
   const setFilter = (key, val) => {
     props.setFilters(set(props.filterValues, key, val));
   };
 
   // Fuunction that manages how a student is searched based on input event
   const searchStudent = event => {
-    let val = event.target.value;
+    const val = event.target.value;
     if (val === "") {
       delete props.filterValues[STUDENT_NAME_QUERY];
       delete props.filterValues[STUDENT_ID_QUERY];
@@ -54,7 +48,7 @@ export const StudentFilter = props => {
       <StudentSearchInput
         label="Search Student"
         source={STUDENT_NAME_QUERY}
-        parse={inputValue => `^${inputValue}`} //Regex parameter for start with
+        parse={inputValue => `^${inputValue}`} // Regex parameter for start with
         onChange={searchStudent}
         alwaysOn
       />

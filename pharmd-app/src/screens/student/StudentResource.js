@@ -5,13 +5,13 @@
  *        sidebar to open when a table is clicked for the first time
  * Date: 04-23-2020$
  */
-
-//-------------------------- IMPORTS --------------------------
+// -------------------------- IMPORTS --------------------------
 
 // Function Imports
 import React, { useCallback, Fragment, useState } from "react";
 import { Route, useHistory } from "react-router-dom";
 import { useDispatch } from "react-redux";
+import tw, { styled } from "twin.macro";
 import { setStudentSideBar } from "../../redux/actions";
 import { STUDENT_QUICKVIEW, STUDENTS_MAIN } from "../../constants/routes";
 
@@ -20,20 +20,13 @@ import AppBar from "../../components/Nav/AppBar";
 import StudentContentGrid from "./StudentContentGrid";
 import StudenttDrawer from "./StudentDrawer";
 
-// Style Imports
-import tw, { styled } from "twin.macro";
-
-//-------------------------- STYLE --------------------------
-
+// -------------------------- STYLE --------------------------
 const MainContent = styled.div`
   ${tw`p-12 pt-2 flex-grow`}
 `;
 
-//-------------------------- COMPONENT --------------------------
-
+// -------------------------- COMPONENT --------------------------
 const StudentScreen = props => {
-  // Route history is used by the componnet to decide
-  // if it shouuld show the sidebar
   const history = useHistory();
   const dispatch = useDispatch();
 
@@ -52,11 +45,10 @@ const StudentScreen = props => {
   return (
     <Route path={STUDENT_QUICKVIEW}>
       {({ match }) => {
-        // Double negative
-        const isMatch = !!(match && match.params && match.params.id !== "create");
+        const isMatch = match && match.params && match.params.id !== "create";
 
         return (
-          <Fragment>
+          <>
             <MainContent>
               <AppBar title="Students"/>
               <StudentContentGrid
@@ -64,7 +56,7 @@ const StudentScreen = props => {
                 studentQuickViewExpanded={studentQuickViewExpanded}
                 setStudentQuickViewExpanded={setStudentQuickViewExpanded}
                 {...props}
-              />             
+              />
             </MainContent>
 
             <StudenttDrawer
@@ -74,10 +66,9 @@ const StudentScreen = props => {
               handleOpen={handleOpen}
               studentQuickViewExpanded={studentQuickViewExpanded}
               setStudentQuickViewExpanded={setStudentQuickViewExpanded}
-
               {...props}
             />
-          </Fragment>
+          </>
         );
       }}
     </Route>
