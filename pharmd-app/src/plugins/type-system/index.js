@@ -1,7 +1,6 @@
-// Generate Typescale
 function getTypeScale() {
-  let types = {};
-  // TO DO: Currently we have 12 font styles, yet we might add more in the future
+  const types = {};
+  // TODO: Currently we have 12 font styles, yet we might add more in the future
   // Create a function that retrieves the unique number of Font Style css variables
 
   for (let i = 1; i <= 12; i++) {

@@ -1,13 +1,7 @@
 import React from "react";
-import { withKnobs, select, text } from "@storybook/addon-knobs";
-import ScoredListField from "../components/Fields/ScoredListField/ScoredListField";
-import ScoredListItem from "../components/Fields/ScoredListField/ScoredListItem";
+import { text } from "@storybook/addon-knobs";
 import List from "@material-ui/core/List";
-export default {
-  title: "Scored List",
-  component: ScoredListField,
-  decorators: [withKnobs]
-};
+import ScoredListItem from "../components/Fields/ScoredListField/ScoredListItem";
 
 const groupId = "GROUP-ID1";
 
@@ -20,12 +14,6 @@ export const Loading = () => (
   </List>
 );
 
-export const Error = () => (
-  <List>
-    <ScoredListItem variant="primary" error errorText="No Data" />
-  </List>
-);
-
 export const Primary = () => (
   <List>
     <ScoredListItem
@@ -33,17 +21,6 @@ export const Primary = () => (
       primaryText={text(primaryText, defaultPrimaryText, groupId)}
       value={90}
       divider
-    />
-  </List>
-);
-
-export const Secondary = () => (
-  <List>
-    <ScoredListItem
-      variant="primary"
-      primaryText="Primary Text"
-      secondaryText="Secondary Text"
-      value={90}
     />
   </List>
 );

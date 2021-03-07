@@ -3,11 +3,9 @@
  * This Component creates a transparent app bar used to display the
  * current user location. It also provides the ability to use
  * breadcrumbs to navigate to previus locations
- * TODO:
- * Date: 04-23-2020
  */
 
-//-------------------------- IMPORTS --------------------------
+// -------------------------- IMPORTS --------------------------
 
 // Function Imports
 import React from "react";
@@ -21,8 +19,7 @@ import MuiAppBar from "@material-ui/core/AppBar";
 import MuiToolbar from "@material-ui/core/Toolbar";
 import RouterBreadcrumb from "../Basic/Breadcrumb";
 
-//-------------------------- STYLE --------------------------
-
+// -------------------------- STYLE --------------------------
 const AppBarStyled = styled(MuiAppBar)`
   ${tw`shadow-none h-24`}
 `;
@@ -35,16 +32,14 @@ const Toolbar = styled(MuiToolbar)`
   ${tw`absolute bottom-0`}
 `;
 
-//-------------------------- COMPONENT --------------------------
-
+// -------------------------- COMPONENT --------------------------
 const AppBar = ({ title, location, children, props }) => (
   <AppBarStyled color="transparent" position="relative" {...props}>
-    <Toolbar disableGutters={true}>
+    <Toolbar disableGutters>
       <div>
         <RouterBreadcrumb locTest={location} />
         <Title>{title}</Title>
       </div>
-      {/* Incase if any toolbar action buttons are added to the component */}
       {children}
     </Toolbar>
   </AppBarStyled>

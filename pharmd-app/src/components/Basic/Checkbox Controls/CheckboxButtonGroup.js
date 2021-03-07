@@ -4,11 +4,9 @@
  * There is one checkbox created for each children.
  * This function also accepts an onChange function that will be exected every time
  * a check box is unchecked.
- * TODO:
- * Date: 04-23-2020
  */
 
-//-------------------------- IMPORTS --------------------------
+// -------------------------- IMPORTS --------------------------
 
 // Function Imports
 import React, { cloneElement } from "react";
@@ -19,17 +17,25 @@ import FormControl from "@material-ui/core/FormControl";
 import FormLabel from "@material-ui/core/FormLabel";
 import CheckboxButton from "./CheckboxButton";
 
-//-------------------------- COMPONENT --------------------------
-
+// -------------------------- COMPONENT --------------------------
 const CheckboxButtonGroup = props => {
-  const { onChange, label, showLabel, error, children, color, className, checkboxClassName } = props;
+  const {
+    onChange,
+    label,
+    showLabel,
+    error,
+    children,
+    color,
+    className,
+    checkboxClassName
+  } = props;
   const [value, setValue] = React.useState({
     values: []
   });
 
   const handleChange = event => {
     const eventVal = event.target.value;
-    let newVal = value.values;
+    const newVal = value.values;
     const index = newVal.indexOf(eventVal);
     if (event.target.checked) {
       if (index < 0) {
@@ -50,7 +56,13 @@ const CheckboxButtonGroup = props => {
           children.map((child, index) =>
             cloneElement(child, {
               key: index,
-              control: <CheckboxButton onChange={handleChange} color={color} className={checkboxClassName} />
+              control: (
+                <CheckboxButton
+                  onChange={handleChange}
+                  color={color}
+                  className={checkboxClassName}
+                />
+              )
             })
           )}
       </FormGroup>

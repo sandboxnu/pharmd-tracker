@@ -21,8 +21,6 @@ class FileUploadService {
     EXAM: "Exam Grade",
     HOMEWORK: "Homework Grade",
     STUDENT_ID: "Student ID",
-    // SIS_USER_ID: "SIS User ID",
-    // SIS_LOGIN_ID: "SIS Login ID",
     SECTION: "Class Section",
   };
 
@@ -53,7 +51,6 @@ class FileUploadService {
         // Convert sheet to an array of arrays
         let data = XLSX.utils.sheet_to_json(firstSheet, { blankrows: true, defval: FileUploadService.EMPTY_CELL_VAL, header: 1 });
         const headers = Object.values(data[0]);
-        //const headers = Object.keys(XLSX.utils.sheet_to_json(firstSheet).pop());
         const subHeaders = Object.values(data[1]);
         if (data) {
           resolve({
