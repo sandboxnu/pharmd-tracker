@@ -2,7 +2,6 @@
 
 // Function Imports
 import React from "react";
-
 // Style Imports
 import tw, { styled } from "twin.macro";
 

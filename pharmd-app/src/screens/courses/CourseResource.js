@@ -1,8 +1,7 @@
 // -------------------------- IMPORTS --------------------------
 
 // Function Imports
-import React, { Fragment } from "react";
-
+import React from "react";
 // Component Imports
 import { List as RaList } from "react-admin";
 import styled from "styled-components/macro";

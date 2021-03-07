@@ -11,11 +11,9 @@
 // Function Imports
 import React from "react";
 import PropTypes from "prop-types";
-
 // Component Imports
 import MuiPaper from "@material-ui/core/Paper";
 import MuiGrid from "@material-ui/core/Grid";
-
 // Style Imports
 import tw, { styled } from "twin.macro";
 

@@ -1,5 +1,5 @@
 import React from "react";
-import { withKnobs, text } from "@storybook/addon-knobs";
+import { text, withKnobs } from "@storybook/addon-knobs";
 import { withDesign } from "storybook-addon-designs";
 import Avatar from "../components/Basic/Avatar";
 import imgProfile from "../assets/images/mountains.jpg";

@@ -1,20 +1,8 @@
 import React from "react";
-import {
-  Show,
-  SimpleForm,
-  SimpleShowLayout,
-  TextField,
-  useEditController,
-  List,
-  useGetOne,
-  Query,
-  Loading,
-  Error
-} from "react-admin";
+import { Loading, TextField, useGetOne } from "react-admin";
 
 import tw, { styled } from "twin.macro";
 import AvatarField from "./AvatarField";
-import ChipField from "./ChipField";
 import QuickChipField from "./QuickChipField";
 
 const Profile = styled.section`
@@ -55,13 +43,7 @@ const QuickProfileField = ({ record = {}, source }) => {
     return <Loading />;
   }
   if (error) {
-    return (
-<p>
-Error, id:{id}
-{' '}
-is not found
-</p>
-);
+    return <p>Error, id:{id} is not found</p>;
   }
   return (
     <Profile>

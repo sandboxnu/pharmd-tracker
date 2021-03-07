@@ -5,7 +5,6 @@ import React from "react";
 import { Datagrid as DatagridRA } from "react-admin";
 import tw, { styled } from "twin.macro";
 import { COURSE } from "../../constants/apiObjects";
-
 // Component Imports
 import EmphasisField from "../../components/Fields/EmphasisField";
 import TextField from "../../components/Fields/TextField";

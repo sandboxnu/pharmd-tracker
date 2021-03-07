@@ -8,13 +8,12 @@
 // -------------------------- IMPORTS --------------------------
 
 // Function Imports
-import React, {useCallback, useState} from "react";
-import {Route, useHistory} from "react-router-dom";
-import {useDispatch} from "react-redux";
-import tw, {styled} from "twin.macro";
-import {setStudentSideBar} from "../../redux/actions";
-import {STUDENT_QUICKVIEW, STUDENTS_MAIN} from "../../constants/routes";
-
+import React, { useCallback, useState } from "react";
+import { Route, useHistory } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import tw, { styled } from "twin.macro";
+import { setStudentSideBar } from "../../redux/actions";
+import { STUDENT_QUICKVIEW, STUDENTS_MAIN } from "../../constants/routes";
 // Component Imports
 import AppBar from "../../components/Nav/AppBar";
 import StudentContentGrid from "./StudentContentGrid";

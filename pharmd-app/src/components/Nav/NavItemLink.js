@@ -3,10 +3,8 @@
 // Function Imports
 import React, { forwardRef, useCallback } from "react";
 import PropTypes from "prop-types";
-
 // Style Imports
 import tw, { styled } from "twin.macro";
-
 // Component Imports
 import { NavLink } from "react-router-dom";
 import MenuItemMaterial from "@material-ui/core/MenuItem";

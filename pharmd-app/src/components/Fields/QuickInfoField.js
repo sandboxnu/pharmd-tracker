@@ -1,5 +1,5 @@
 import React from "react";
-import { useGetOne, Loading } from "react-admin";
+import { Loading, useGetOne } from "react-admin";
 import { styled } from "twin.macro";
 
 import QuickInfo from "../Basic/QuickInfo";
@@ -20,19 +20,12 @@ const QuickInfoField = ({ record = {}, source }) => {
     return <Loading />;
   }
   if (error) {
-    return (
-<p>
-Error, id:{id}
-{' '}
-is not found
-</p>
-);
+    return <p>Error, id:{id} {' '} is not found</p>;
   }
   return (
     <Info>
       <QuickInfo info={data.gpa} label="GPA" />
-      <QuickInfo info={data.cohort.current} label="Cohort" />
-      <QuickInfo info={`${data.test_avg}%`} label="Test Avg" />
+      <QuickInfo info={data.gradDate} label="Cohort" />
     </Info>
   );
 };

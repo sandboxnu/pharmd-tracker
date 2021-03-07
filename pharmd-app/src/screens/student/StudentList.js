@@ -11,7 +11,6 @@ import React from "react";
 
 import { useDispatch } from "react-redux";
 import { setStudentSideBar } from "../../redux/actions";
-
 // Component Imports
 import Table from "../../components/Table/Table";
 import EmphasisField from "../../components/Fields/EmphasisField";

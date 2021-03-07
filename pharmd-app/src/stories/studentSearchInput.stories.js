@@ -1,5 +1,5 @@
 import React from "react";
-import { withKnobs, text } from "@storybook/addon-knobs";
+import { text, withKnobs } from "@storybook/addon-knobs";
 
 import { Filter } from "react-admin";
 import StudentSearchInput from "../components/Inputs/StudentSearchInput";

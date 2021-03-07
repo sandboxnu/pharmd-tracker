@@ -1,7 +1,7 @@
 import React from "react";
 import "./styles/App.css";
 import { Admin, Resource } from "react-admin";
-import { ThemeProvider, ThemeConsumer } from "styled-components";
+import { ThemeConsumer, ThemeProvider } from "styled-components";
 import students from "./screens/student/index.js";
 import upload from "./screens/upload/index.js";
 import profile from "./screens/profile/index.js";

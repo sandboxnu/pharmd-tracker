@@ -3,7 +3,6 @@
 // Function Imports
 import React from "react";
 import set from "lodash/set";
-
 // Component Imports
 import { Filter } from "react-admin";
 import StudentSearchInput from "../../components/Inputs/StudentSearchInput";

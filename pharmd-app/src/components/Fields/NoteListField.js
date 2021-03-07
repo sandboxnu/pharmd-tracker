@@ -1,5 +1,5 @@
 import React from "react";
-import { useQuery, Loading, Error } from "react-admin";
+import { Error, Loading, useQuery } from "react-admin";
 import tw, { styled } from "twin.macro";
 import NoteField from "./NoteField";
 

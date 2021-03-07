@@ -1,6 +1,5 @@
 import React from "react";
-import { withKnobs, select, text } from "@storybook/addon-knobs";
-import tw from "twin.macro";
+import { select, text, withKnobs } from "@storybook/addon-knobs";
 import Tooltip from "../components/Basic/Tooltip";
 
 export default {
