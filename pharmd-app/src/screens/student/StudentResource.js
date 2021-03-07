@@ -8,12 +8,12 @@
 // -------------------------- IMPORTS --------------------------
 
 // Function Imports
-import React, { useCallback, Fragment, useState } from "react";
-import { Route, useHistory } from "react-router-dom";
-import { useDispatch } from "react-redux";
-import tw, { styled } from "twin.macro";
-import { setStudentSideBar } from "../../redux/actions";
-import { STUDENT_QUICKVIEW, STUDENTS_MAIN } from "../../constants/routes";
+import React, {useCallback, useState} from "react";
+import {Route, useHistory} from "react-router-dom";
+import {useDispatch} from "react-redux";
+import tw, {styled} from "twin.macro";
+import {setStudentSideBar} from "../../redux/actions";
+import {STUDENT_QUICKVIEW, STUDENTS_MAIN} from "../../constants/routes";
 
 // Component Imports
 import AppBar from "../../components/Nav/AppBar";
@@ -40,7 +40,6 @@ const StudentScreen = props => {
   }, []);
 
   const [studentQuickViewExpanded, setStudentQuickViewExpanded] = useState(false);
-  const [studentSidebar, setStudentSidebar] = useState(true);
 
   return (
     <Route path={STUDENT_QUICKVIEW}>
@@ -50,7 +49,7 @@ const StudentScreen = props => {
         return (
           <>
             <MainContent>
-              <AppBar title="Students"/>
+              <AppBar title="Students" />
               <StudentContentGrid
                 selected={isMatch && parseInt(match.params.id, 10)}
                 studentQuickViewExpanded={studentQuickViewExpanded}

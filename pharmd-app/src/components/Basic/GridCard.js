@@ -20,6 +20,7 @@ import MuiGrid from "@material-ui/core/Grid";
 import tw, { styled } from "twin.macro";
 
 // -------------------------- STYLE --------------------------
+
 const GridItem = styled(MuiGrid)`
   ${tw`transition-1`}
 `;
@@ -29,6 +30,7 @@ const Paper = styled(MuiPaper)`
 `;
 
 // -------------------------- COMPONENT --------------------------
+
 const GridCard = (xs, mdFull, mdShrink, isShrunk, { ...props }) => (
   <GridItem item xs={xs} md={isShrunk ? mdShrink : mdFull}>
     <Paper>{props.children}</Paper>

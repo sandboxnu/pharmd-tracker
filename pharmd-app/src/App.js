@@ -28,9 +28,9 @@ const App = () => {
             customRoutes={customRoutes}
           >
             <Resource name="users" {...profile} />
-            <Resource name="students" {...students}/>
+            <Resource name="students" {...students} />
             <Resource name="courses" {...courses} />
-            <Resource name={"studentCourses"}/>
+            <Resource name="studentCourses" />
             <Resource name="upload" {...upload} />
           </Admin>
         )}

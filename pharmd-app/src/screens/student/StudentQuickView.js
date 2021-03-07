@@ -1,24 +1,10 @@
 import React from "react";
 
-import {
-  Show,
-  useEditController,
-  SimpleShowLayout as SimpleShowLayoutRA,
-  TextField,
-  ReferenceField,
-  ReferenceArrayField,
-  SingleFieldList,
-  ReferenceManyField,
-  DataGrid
-} from "react-admin";
+import { Show, SimpleShowLayout as SimpleShowLayoutRA, useEditController } from "react-admin";
 
 import { styled } from "twin.macro";
-import AvatarField from "../../components/Fields/AvatarField";
-import ScoredListField from "../../components/Fields/ScoredListField/ScoredListField";
-import CourseListField from "../../components/Fields/CourseListField";
 import QuickProfileField from "../../components/Fields/QuickProfileField";
 import QuickInfoField from "../../components/Fields/QuickInfoField";
-import NoteListField from "../../components/Fields/NoteListField";
 
 const SimpleShowLayout = styled(SimpleShowLayoutRA)`
   &.MuiCard-root {
@@ -31,9 +17,8 @@ const StudentQuickView = props => {
   if (!controllerProps.record) {
     return null;
   }
-  console.log("CONTROLLER", controllerProps);
   return (
-    <Show title={"QuickView"} component={"div"} {...props}>
+    <Show title="QuickView" component="div" {...props}>
       <SimpleShowLayout
         basePath={controllerProps.basePath}
         record={controllerProps.record}
@@ -42,9 +27,6 @@ const StudentQuickView = props => {
       >
         <QuickProfileField source="id" />
         <QuickInfoField source="id" />
-        {/*<CourseListField source="active_courses" />*/}
-        {/*<NoteListField source="courses" />*/}
-        {/* <ScoredListField source="active_courses" /> */}
       </SimpleShowLayout>
     </Show>
   );

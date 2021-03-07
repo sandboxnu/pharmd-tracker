@@ -35,7 +35,7 @@ const CurrentLink = styled.p`
   ${tw`fontStyle-3 m-0 text-gray-500`}
 `;
 
-// -------------------------- FUNCTIONS --------------------------
+// -------------------------- FUNCTIONS --------------------------\
 
 const getName = (to, value) => {
   if (!isNaN(value) && to.includes(`${STUDENTS_MAIN}/${value}`)) {

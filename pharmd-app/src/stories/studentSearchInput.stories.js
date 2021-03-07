@@ -19,7 +19,7 @@ export const Default = () => (
   <Filter>
     <StudentSearchInput
       label={text(label, defaultLabel, groupId)}
-      source={"name_like"}
+      source="name_like"
       parse={inputValue => `^${inputValue}`}
       onChange={() => Console.log()}
       alwaysOn

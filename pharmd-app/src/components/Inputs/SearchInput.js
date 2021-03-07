@@ -43,7 +43,7 @@ const SearchIcon = styled(MuiSearchIcon)`
   color: ${props => props.theme.palette.text.secondary};
 `;
 
-//-------------------------- COMPONENT --------------------------
+// -------------------------- COMPONENT --------------------------
 const SearchInput = props => {
   const { className, onChange, style, ...rest } = props;
 

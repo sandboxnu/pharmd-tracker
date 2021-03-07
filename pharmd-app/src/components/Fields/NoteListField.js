@@ -14,23 +14,22 @@ const Notes = styled.div`
   margin-top: 12px;
 `;
 
-
 const NoteListField = ({ record = {}, source }) => {
   const { data, loading, error } = useQuery({
-    type: 'getManyReference',
-    resource: 'notes',
-    payload: { 
-      target: 'student', 
+    type: "getManyReference",
+    resource: "notes",
+    payload: {
+      target: "student",
       id: record[source],
       pagination: {
         page: 1,
-        perPage: 10, // TODO: how many per page?
+        perPage: 10 // TODO: how many per page?
       },
       sort: {
-        field: '', // TODO: Backend doesn't currently handle sorting for notes
-        order: '',
+        field: "", // TODO: Backend doesn't currently handle sorting for notes
+        order: ""
       }
-     }
+    }
   });
 
   if (loading) return <Loading />;
@@ -40,10 +39,9 @@ const NoteListField = ({ record = {}, source }) => {
   return (
     <Notes>
       <Label>Recent Notes</Label>
-      {data.map((note) => {
-        return <NoteField source='id' record={note}/>
-      })
-      }
+      {data.map(note => {
+        return <NoteField source="id" record={note} />;
+      })}
     </Notes>
   );
 };

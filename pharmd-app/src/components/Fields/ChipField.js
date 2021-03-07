@@ -9,7 +9,7 @@ const Pill = styled(Chip)`
 	
    color: ${props => props.theme.palette.pillColors[props.label]};
    background-color: ${props =>
-    props.theme.palette.pillColors[props.label].replace("1)", "0.3)")};
+     props.theme.palette.pillColors[props.label].replace("1)", "0.3)")};
 	
 `;
 
@@ -20,7 +20,7 @@ const Field = styled.a`
 // record[source]
 
 const ChipField = ({ record = {}, source }) => {
-  let textLabel = record[source] ? record[source] : "NA";
+  const textLabel = record[source] ? record[source] : "NA";
   return (
     <Field>
       <Pill label={textLabel} />

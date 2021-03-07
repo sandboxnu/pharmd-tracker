@@ -10,11 +10,11 @@ export const STUDENT = {
 };
 
 export const STUDENT_STATUS = {
-  ENROLLED: 'ENROLLED',
-  LEAVE: 'LEAVE',
+  ENROLLED: "ENROLLED",
+  LEAVE: "LEAVE",
   DROP_BACK: "DROP_BACK",
-  COOP: 'COOP',
-  GRADUATED: 'GRADUATED'
+  COOP: "COOP",
+  GRADUATED: "GRADUATED"
 };
 
 export const NOTE = {
@@ -22,8 +22,8 @@ export const NOTE = {
   TITLE: "title",
   BODY: "body",
   TAGS: "tags",
-  DATE: "date",
-}
+  DATE: "date"
+};
 
 export const COURSE = {
   SUBJECT: "subject",
@@ -38,5 +38,5 @@ export const STUDENT_COURSE = {
   LETTER_GRADE: "letterGrade",
   COURSE_SUBJECT: "course.subject",
   COURSE_NUMBER: "course.number",
-  COURSE_NAME: "course.name",
+  COURSE_NAME: "course.name"
 };

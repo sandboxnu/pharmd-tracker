@@ -1,5 +1,5 @@
 import { createMuiTheme } from "@material-ui/core/styles";
-import { STUDENT_STATUS } from '../constants/apiObjects';
+import { STUDENT_STATUS } from "../constants/apiObjects";
 
 const STYLE = getComputedStyle(document.body);
 function getValue(cssVariable) {
@@ -16,7 +16,7 @@ function createLigthTheme() {
         [STUDENT_STATUS.DROP_BACK]: getValue("--red"),
         [STUDENT_STATUS.LEAVE]: getValue("--orange"),
         [STUDENT_STATUS.GRADUATED]: getValue("--tertiary"),
-        ["NA"]: getValue("--gray-3")
+        NA: getValue("--gray-3")
       },
       primary: {
         main: getValue("--primary"),

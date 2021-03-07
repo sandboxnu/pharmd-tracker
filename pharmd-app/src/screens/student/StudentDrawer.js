@@ -1,21 +1,17 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 
 import DrawerMaterial from "@material-ui/core/Drawer";
 import tw, { styled } from "twin.macro";
-import StudentQuickView from "./StudentQuickView";
 import { useSelector } from "react-redux";
+import { Link as RouterLink } from "react-router-dom";
+import { useListController } from "react-admin";
+import StudentQuickView from "./StudentQuickView";
 import ExpansionPanel from "../../components/Basic/ExpansionPanel";
 import NavItemSecondary from "../../components/Nav/NavItemSecondary";
 import VerticalSplitIcon from "../../assets/icons/verticalSplit.svg";
 import FilterIcon from "../../assets/icons/filter.svg";
 import PersonIcon from "../../assets/icons/person.svg";
-import Icon from "../../components/Basic/Icon";
-import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
-import { Route, MemoryRouter } from "react-router";
-import { Link as RouterLink } from "react-router-dom";
-import { useListController } from "react-admin";
 import StudentDrawerFilter from "./StudentDrawerFilter";
-// const LinkRouter = props => <Link {...props} component={RouterLink} />;
 
 const DetailsButton = styled.button`
   cursor: pointer;
@@ -60,7 +56,7 @@ const StudentDrawer = ({ isOpenMatch, selected, handleClose, handleOpen, ...prop
   const isOpen = useSelector(state => state.studentSidebarOpen);
   const isDrawerOpen = isOpen || isOpenMatch;
 
-  //Avoid route errors
+  // Avoid route errors
   const quickview = () => {
     return isOpenMatch ? (
       <>
@@ -72,7 +68,7 @@ const StudentDrawer = ({ isOpenMatch, selected, handleClose, handleOpen, ...prop
         </ButtonSpan>
       </>
     ) : (
-      <div>{"No Student selected"}</div>
+      <div>No Student selected</div>
     );
   };
 
@@ -88,10 +84,10 @@ const StudentDrawer = ({ isOpenMatch, selected, handleClose, handleOpen, ...prop
       <ExpansionPanel
         SummaryChild={
           <NavItemSecondary
-            title={"Table Filters"}
+            title="Table Filters"
             iconSrc={FilterIcon}
             onClick={handleOpen}
-            isOpen={true}
+            isOpen
             isActive={false}
             sidebarIsOpen={isDrawerOpen}
           />
@@ -103,10 +99,10 @@ const StudentDrawer = ({ isOpenMatch, selected, handleClose, handleOpen, ...prop
         SummaryChild={
           <>
             <NavItemSecondary
-              title={"Student Quickview"}
+              title="Student Quickview"
               iconSrc={PersonIcon}
               onClick={handleOpen}
-              isOpen={true}
+              isOpen
               isActive={false}
               sidebarIsOpen={isDrawerOpen}
             />

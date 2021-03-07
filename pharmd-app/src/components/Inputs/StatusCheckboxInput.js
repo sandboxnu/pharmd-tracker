@@ -1,8 +1,8 @@
 import React from "react";
 import { useInput } from "react-admin";
-import CheckboxButtonGroup from "../Basic/Checkbox Controls/CheckboxButtonGroup";
 import FormControlLabel from "@material-ui/core/FormControlLabel";
-import { STUDENT_STATUS } from '../../constants/apiObjects';
+import CheckboxButtonGroup from "../Basic/Checkbox Controls/CheckboxButtonGroup";
+import { STUDENT_STATUS } from "../../constants/apiObjects";
 
 const StatusCheckboxInput = props => {
   const {
