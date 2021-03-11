@@ -40,6 +40,12 @@ module.exports = {
         background: "var(--color-background)",
         paper: "var(--color-white)"
       },
+      fontSize: {
+        "1.1": "1.1rem"
+      },
+      fontWeight: {
+        "650": "650"
+      },
       height: {
         "60px": "60px",
         "250px": "250px"

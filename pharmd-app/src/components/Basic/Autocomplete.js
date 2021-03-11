@@ -16,7 +16,7 @@ import CheckboxButton from "./Checkbox Controls/CheckboxButton";
 
 // -------------------------- COMPONENT --------------------------
 
-const Autocomplete = ({ className, label, onChange, options, placeholder, ...props }) => {
+const Autocomplete = ({ className, deleteIcon, inputClassName, label, onChange, options, placeholder, tagClassName, ...props }) => {
   // const classes = useStyles();
   const [inputValue, setInputValue] = useState("");
   const [value, setValue] = useState();
@@ -42,13 +42,19 @@ const Autocomplete = ({ className, label, onChange, options, placeholder, ...pro
       renderInput={params => (
         <TextField
           {...params}
+          className={inputClassName}
           value={inputValue}
-          variant="standard"
+          variant="outlined"
           label={label}
           placeholder={placeholder}
           fullWidth
         />
       )}
+      renderTags={(tagValue, getTagProps) => {
+        return tagValue.map((option, index) => (
+          <Chip {...getTagProps(index)} className={tagClassName} deleteIcon={deleteIcon} label={option.label} />
+        ));
+      }}
       // renderOption={(option, { selected }) => (
       //   <React.Fragment>
       //     <CheckboxButton
