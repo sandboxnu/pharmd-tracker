@@ -6,6 +6,7 @@ import { useInput } from "react-admin";
 
 // Component Imports
 import ClearIcon from '@material-ui/icons/Clear';
+import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import FormControlLabel from "@material-ui/core/FormControlLabel";
 
 // Style Imports
@@ -21,21 +22,63 @@ const styles = {
   // general formControl Styling
   root: {
     width: "100%",
-    // style the border
+    // // style the border
     "& fieldset": {
+      borderRadius: ".6rem",
       border: ".2rem solid #F0F4FF"
+    },
+    "&.Mui-focused fieldset": {
+      border: ".2rem solid " + blue[700] + " !important",
+    },
+    "&:hover fieldset": {
+      border: ".2rem solid " + blue[700] + " !important",
+    }
+  },
+
+  // container element of toggle popper icon and remove all options icon
+  endAdornment: {
+    paddingTop: "0 !important",
+    paddingBottom: "0 !important",
+    position: "static"
+  },
+
+  // container element of options
+  listbox: {
+    // border: ".2rem solid #F0F4FF",
+    border: ".2rem solid " + blue[700],
+    borderRadius: ".6rem",
+    marginTop: ".5rem",
+    padding: 0
+  },
+
+  // container element of paper
+  popper: {
+  },
+
+  // container element of listbox
+  paper: {
+    boxShadow: "unset"
+  },
+
+  option: {
+    "&:hover": {
+      backgroundColor: "#F0F4FF"
     }
   },
 
   input: {
-    borderWidth: 2
+    // This div is the container of the input and the endEndorsement
+    "& div": {
+      paddingRight: "9px !important"
+    }
   },
 
   tag: {
     backgroundColor: "#4573EE",
     color: "white",
-    borderRadius: "7px"
-  }
+    borderRadius: "7px",
+    marginRight: ".3rem"
+  },
 };
 
 // -------------------------- COMPONENT --------------------------
@@ -67,12 +110,14 @@ const CohortMultipleSelect = ({ classes, className, label, setFilter, ...props }
     <div tw="w-full">
       <h4 tw="font-650 mb-0 mt-8 text-black text-1.1">{label}</h4>
       <Autocomplete
+        classes={classes}
         className={classes.root}
         deleteIcon={<ClearIcon tw="text-white" />}
         inputClassName={classes.input}
         tagClassName={classes.tag}
         onChange={cohortMultiSelect}
         options={cohortList}
+        popupIcon={<ExpandMoreIcon fontSize="large" tw="text-black" />}
         placeholder="Add Item"
       />
       <MultipleSelect

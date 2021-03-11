@@ -8,6 +8,7 @@ import clsx from "clsx";
 import AutocompleteMaterial from "@material-ui/lab/Autocomplete";
 import Chip from "@material-ui/core/Chip";
 import TextField from "@material-ui/core/TextField";
+import OutlinedInput from '@material-ui/core/OutlinedInput';
 
 // Style Imports
 import { makeStyles, useTheme } from "@material-ui/core/styles";
@@ -16,7 +17,7 @@ import CheckboxButton from "./Checkbox Controls/CheckboxButton";
 
 // -------------------------- COMPONENT --------------------------
 
-const Autocomplete = ({ className, deleteIcon, inputClassName, label, onChange, options, placeholder, tagClassName, ...props }) => {
+const Autocomplete = ({ classes, className, deleteIcon, inputClassName, label, onChange, options, placeholder, popupIcon, tagClassName, ...props }) => {
   // const classes = useStyles();
   const [inputValue, setInputValue] = useState("");
   const [value, setValue] = useState();
@@ -34,11 +35,20 @@ const Autocomplete = ({ className, deleteIcon, inputClassName, label, onChange, 
       onInputChange={(event, newInputValue) => {
         setInputValue(newInputValue);
       }}
-      className={className}
+      // className={className}
+      classes={{
+        root: className,
+        endAdornment: classes.endAdornment,
+        option: classes.option,
+        popper: classes.popper,
+        listbox: classes.listbox,
+        paper: classes.paper
+      }}
       disableCloseOnSelect
       getOptionLabel={option => option.label}
       multiple
       options={options}
+      popupIcon={popupIcon}
       renderInput={params => (
         <TextField
           {...params}
@@ -55,17 +65,6 @@ const Autocomplete = ({ className, deleteIcon, inputClassName, label, onChange, 
           <Chip {...getTagProps(index)} className={tagClassName} deleteIcon={deleteIcon} label={option.label} />
         ));
       }}
-      // renderOption={(option, { selected }) => (
-      //   <React.Fragment>
-      //     <CheckboxButton
-      //       // icon={icon}
-      //       // checkedIcon={checkedIcon}
-      //       // style={{ marginRight: 8 }}
-      //       onChange={onChange}
-      //       checked={selected}/>
-      //     {option.title}
-      //   </React.Fragment>
-      // )}
     />
   );
 };
