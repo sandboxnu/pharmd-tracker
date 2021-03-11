@@ -8,6 +8,7 @@ import AppBar from "../../components/Nav/AppBar";
 import StudentDetailsSide from "./StudentDetailsSide";
 import {Loading, useGetOne, useShowController} from "react-admin";
 import StudentDetailsContentGrid from "./StudentDetailsContentGrid";
+import StudentNoteDrawer from "../student/StudentNoteDrawer";
 
 const MainContent = styled.div`
   ${tw`p-12 pt-2 `}
@@ -31,6 +32,7 @@ const StudentDetailsScreen = props => {
   //     return null;
   //   }
   const {data, loading, error} = useGetOne('students', props.match.params.id);
+  const {notesData, notesLoading, notesError} = useGetOne('notes', props.match.params.id);
   if (loading) {
       return <Loading/>;
   }
@@ -42,6 +44,7 @@ const StudentDetailsScreen = props => {
       <MainContent>
         <AppBar title={`Student Details ${props.match.params.id}`} />
         <StudentDetailsContentGrid source={data} />
+        <StudentNoteDrawer source={notesData} />
       </MainContent>
 
       <SideContent>
