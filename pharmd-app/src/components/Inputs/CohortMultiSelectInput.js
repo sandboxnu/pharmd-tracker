@@ -28,19 +28,19 @@ const styles = {
       border: ".2rem solid #F0F4FF"
     },
     "&.Mui-focused fieldset": {
-      border: ".2rem solid " + blue[700] + " !important",
+      border: ".2rem solid " + blue[700] + " !important"
     },
     "&:hover fieldset": {
-      border: ".2rem solid " + blue[700] + " !important",
+      border: ".2rem solid " + blue[700]
     }
   },
 
   // container element of toggle popper icon and remove all options icon
-  endAdornment: {
-    paddingTop: "0 !important",
-    paddingBottom: "0 !important",
-    position: "static"
-  },
+  // endAdornment: {
+  //   paddingTop: "0 !important",
+  //   paddingBottom: "0 !important",
+  //   // position: "static"
+  // },
 
   // container element of options
   listbox: {
@@ -60,7 +60,12 @@ const styles = {
     boxShadow: "unset"
   },
 
+  // styling for each option that a user can select within pop up
   option: {
+    // styling when an option has been selected
+    "&[aria-selected=true]": {
+      backgroundColor: "#F0F4FF"
+    },
     "&:hover": {
       backgroundColor: "#F0F4FF"
     }
@@ -68,8 +73,9 @@ const styles = {
 
   input: {
     // This div is the container of the input and the endEndorsement
+    // use this if position for endEndorsemenet is not absolute
     "& div": {
-      paddingRight: "9px !important"
+      // paddingRight: "9px !important"
     }
   },
 
@@ -106,6 +112,16 @@ const CohortMultipleSelect = ({ classes, className, label, setFilter, ...props }
     { label: "Cohort 25", value: "20/25" }
   ];
 
+  // determines if an option (dictionary) has been selected based on its value
+  const isCohortSelected = (option, value) => {
+    // checks if these two dictionaries have a "value" key
+    if (!("value" in option || "value" in value)) {
+      return false;
+    }
+
+    return option.label === value.label;
+  };
+
   return (
     <div tw="w-full">
       <h4 tw="font-650 mb-0 mt-8 text-black text-1.1">{label}</h4>
@@ -114,6 +130,7 @@ const CohortMultipleSelect = ({ classes, className, label, setFilter, ...props }
         className={classes.root}
         deleteIcon={<ClearIcon tw="text-white" />}
         inputClassName={classes.input}
+        isOptionSelected={isCohortSelected}
         tagClassName={classes.tag}
         onChange={cohortMultiSelect}
         options={cohortList}

@@ -17,12 +17,14 @@ import CheckboxButton from "./Checkbox Controls/CheckboxButton";
 
 // -------------------------- COMPONENT --------------------------
 
-const Autocomplete = ({ classes, className, deleteIcon, inputClassName, label, onChange, options, placeholder, popupIcon, tagClassName, ...props }) => {
+const Autocomplete = ({ classes, className, deleteIcon, inputClassName, isOptionSelected, label, onChange, options, placeholder, popupIcon, tagClassName, ...props }) => {
   // const classes = useStyles();
   const [inputValue, setInputValue] = useState("");
   const [value, setValue] = useState();
 
   const onChangeFunc = (event, newValue) => {
+    console.log('Autocomplete values');
+    console.log(newValue);
     setValue(newValue);
     onChange(event, newValue);
   };
@@ -46,6 +48,7 @@ const Autocomplete = ({ classes, className, deleteIcon, inputClassName, label, o
       }}
       disableCloseOnSelect
       getOptionLabel={option => option.label}
+      getOptionSelected={isOptionSelected}
       multiple
       options={options}
       popupIcon={popupIcon}
