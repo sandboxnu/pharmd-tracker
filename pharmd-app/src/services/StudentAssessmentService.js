@@ -75,9 +75,7 @@ class StudentAssessmentService {
                 firstName: ass.studentName.split(',')[1].replace(' ', '')
             }
         });
-        console.log("Sending exams...");
         const url = `${BackendRoutes.BACKEND_URL}${path}`;
-        console.log(url);
         return axios.post(url, formattedExams)
     };
 }

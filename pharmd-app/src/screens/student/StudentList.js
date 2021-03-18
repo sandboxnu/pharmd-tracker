@@ -1,18 +1,13 @@
 /**
 * Description: 
   This component contains a DataGrid that takes in field components for children. 
-  The componnet manages dispatching the data (resource) to each field and the source (data key). 
-* TODO:
-*       - Figure out if the headeerCell class can be moved to the TableRow component
-* Date: 04-27-2020
+  The componnet manages dispatching the data (resource) to each field and the source (data key).
 */
 
-//-------------------------- IMPORTS --------------------------
+// -------------------------- IMPORTS --------------------------
 
 // Function Imports
 import React from "react";
-// import { Datagrid as DatagridRA } from "react-admin";
-
 import { useDispatch } from "react-redux";
 import { setStudentSideBar } from "../../redux/actions";
 
@@ -29,21 +24,17 @@ const StudentList = ({ selectedRow, ...props }) => {
 
   const studentRowClick = (id, basePath, record) => {
     dispatch(setStudentSideBar({ isOpen: true }));
+    props.setStudentQuickViewExpanded(true);
     return record.editable ? "edit" : "show";
   };
 
   return (
-    <Table
-      rowClick={studentRowClick}
-      {...props}
-    >
+    <Table rowClick={studentRowClick} {...props}>
       <EmphasisField source={STUDENT.NEU_ID} label="NEU ID" />
       <TextField source={STUDENT.NAME} />
       <CohortField source={STUDENT.COHORT} label="Cohort" />
       <ChipField source={STUDENT.STATUS} />
       <TextField source={STUDENT.GPA} label="GPA" />
-      {/* <TextField source={STUDENT.TEST_AVG} label="Test Avg" /> */}
-      {/* <EditButton /> */}
     </Table>
   );
 };
