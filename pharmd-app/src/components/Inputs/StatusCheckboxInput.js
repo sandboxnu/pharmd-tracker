@@ -29,7 +29,11 @@ const styles = {
       fontWeight: 600
     }
   },
-  label: {}
+
+  // follow the uniformity: make the label 16px away from the filter
+  formGroup: {
+    paddingTop: "7px"
+  }
 };
 
 //-------------------------- COMPONENT --------------------------
@@ -48,6 +52,7 @@ const StatusCheckboxInput = ({ checkboxClassName, className, classes, color, lab
       checkboxCheckedClass={classes.checked}
       checkboxClassName={checkboxClassName}
       className={className}
+      formGroupClassName={classes.formGroup}
       color={color}
       error={error}
       label={label}

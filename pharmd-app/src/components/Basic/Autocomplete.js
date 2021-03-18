@@ -2,31 +2,31 @@
 
 // Function Imports
 import React, { useState } from "react";
-import clsx from "clsx";
 
 // Component Imports
 import AutocompleteMaterial from "@material-ui/lab/Autocomplete";
 import Chip from "@material-ui/core/Chip";
 import TextField from "@material-ui/core/TextField";
-import OutlinedInput from '@material-ui/core/OutlinedInput';
-
-// Style Imports
-import { makeStyles, useTheme } from "@material-ui/core/styles";
-import tw from "twin.macro";
-import CheckboxButton from "./Checkbox Controls/CheckboxButton";
 
 // -------------------------- COMPONENT --------------------------
 
-const Autocomplete = ({ classes, className, deleteIcon, inputClassName, isOptionSelected, label, onChange, options, placeholder, popupIcon, tagClassName, ...props }) => {
+const Autocomplete = ({ classes, deleteIcon, inputClassName, isOptionSelected, label, onChange, options, placeholder, popupIcon, tagClassName, ...props }) => {
   // const classes = useStyles();
   const [inputValue, setInputValue] = useState("");
   const [value, setValue] = useState();
 
+  // updates the list of tags that have been added
   const onChangeFunc = (event, newValue) => {
-    console.log('Autocomplete values');
-    console.log(newValue);
     setValue(newValue);
     onChange(event, newValue);
+  };
+
+  // display placeholder only if there are no lists added or if there is no text input
+  const placeholderOutput = () => {
+    if (value != null && value.length > 0) {
+      return undefined;
+    }
+    return placeholder;
   };
 
   return (
@@ -39,7 +39,7 @@ const Autocomplete = ({ classes, className, deleteIcon, inputClassName, isOption
       }}
       // className={className}
       classes={{
-        root: className,
+        root: classes.root,
         endAdornment: classes.endAdornment,
         option: classes.option,
         popper: classes.popper,
@@ -59,7 +59,7 @@ const Autocomplete = ({ classes, className, deleteIcon, inputClassName, isOption
           value={inputValue}
           variant="outlined"
           label={label}
-          placeholder={placeholder}
+          placeholder={placeholderOutput()}
           fullWidth
         />
       )}

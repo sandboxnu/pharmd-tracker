@@ -31,16 +31,14 @@ const styles = {
       border: ".2rem solid " + blue[700] + " !important"
     },
     "&:hover fieldset": {
-      border: ".2rem solid " + blue[700]
+      border: ".2rem solid " + blue[700] + " !important"
     }
   },
 
   // container element of toggle popper icon and remove all options icon
-  // endAdornment: {
-  //   paddingTop: "0 !important",
-  //   paddingBottom: "0 !important",
-  //   // position: "static"
-  // },
+  endAdornment: {
+    top: "9px"
+  },
 
   // container element of options
   listbox: {
@@ -49,10 +47,6 @@ const styles = {
     borderRadius: ".6rem",
     marginTop: ".5rem",
     padding: 0
-  },
-
-  // container element of paper
-  popper: {
   },
 
   // container element of listbox
@@ -71,20 +65,13 @@ const styles = {
     }
   },
 
-  input: {
-    // This div is the container of the input and the endEndorsement
-    // use this if position for endEndorsemenet is not absolute
-    "& div": {
-      // paddingRight: "9px !important"
-    }
-  },
-
   tag: {
     backgroundColor: "#4573EE",
     color: "white",
     borderRadius: "7px",
+    marginBottom: ".3rem",
     marginRight: ".3rem"
-  },
+  }
 };
 
 // -------------------------- COMPONENT --------------------------
@@ -104,14 +91,6 @@ const CohortMultipleSelect = ({ classes, className, label, setFilter, ...props }
     setFilter("cohort[current]", values);
   };
 
-  const cohortList = [
-    { label: "Cohort 20", value: "15/20" },
-    { label: "Cohort 22", value: "17/22" },
-    { label: "Cohort 23", value: "18/23" },
-    { label: "Cohort 24", value: "19/24" },
-    { label: "Cohort 25", value: "20/25" }
-  ];
-
   // determines if an option (dictionary) has been selected based on its value
   const isCohortSelected = (option, value) => {
     // checks if these two dictionaries have a "value" key
@@ -119,15 +98,31 @@ const CohortMultipleSelect = ({ classes, className, label, setFilter, ...props }
       return false;
     }
 
-    return option.label === value.label;
+    return option.value === value.value;
   };
+
+  const cohortList = [
+    { label: "Cohort 20", value: "15/20" },
+    { label: "Cohort 22", value: "17/22" },
+    { label: "Cohort 23", value: "18/23" },
+    { label: "Cohort 24", value: "19/24" },
+    { label: "Cohort 25", value: "20/25" },
+    { label: "Cohort 26", value: "20/26" },
+    { label: "Cohort 26", value: "20/27" },
+    { label: "Cohort 26", value: "20/28" },
+    { label: "Cohort 26", value: "20/29" },
+    { label: "Cohort 26", value: "20/31" },
+    { label: "Cohort 26", value: "20/32" },
+    { label: "Cohort 26", value: "20/33" },
+    { label: "Cohort 26", value: "20/34" },
+    { label: "Cohort 26", value: "20/35" }
+  ];
 
   return (
     <div tw="w-full">
-      <h4 tw="font-650 mb-0 mt-8 text-black text-1.1">{label}</h4>
+      <h4 tw="font-650 mb-0 mt-8 pb-4 text-black text-1.1">{label}</h4>
       <Autocomplete
         classes={classes}
-        className={classes.root}
         deleteIcon={<ClearIcon tw="text-white" />}
         inputClassName={classes.input}
         isOptionSelected={isCohortSelected}
