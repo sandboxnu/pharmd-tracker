@@ -2,19 +2,24 @@ import React from "react";
 import Table from "@material-ui/core/Table";
 import TableBody from "@material-ui/core/TableBody";
 import TableHead from "@material-ui/core/TableHead";
-import { TextField } from "react-admin";
+import TableRow from "../components/Table/TableRow";
+import TableCell from "@material-ui/core/TableCell";
+import { TextField, EmailField, DatagridHeaderCell } from "react-admin";
 import { withDesign } from "storybook-addon-designs";
 import { FieldTitle } from "ra-core";
-import TableRow from "../components/Table/TableRow";
+const data = require("../Mocks/students.json");
 
 import EmphasisField from "../components/Fields/EmphasisField";
+// import TextField from "../components/Fields/TextField";
 import ChipField from "../components/Fields/ChipField";
+import CohortField from "../components/Fields/CohortField";
 
 export default {
   title: "Table",
   decorators: [withDesign]
 };
 
+console.log("DATA", data.students[0]);
 const props = {
   id: 1,
   neu_id: 40029272,
@@ -34,11 +39,13 @@ export const Row = () => (
   <Table>
     <TableBody>
       <TableRow {...props}>
-        <EmphasisField record={props} source="neu_id" label="NEU ID" />
-        <TextField source="name" />
-        <ChipField record={{ status: "enrolled" }} source="status" />
+        <EmphasisField record={props} source="id" label="NUID" />
+        <TextField source="firstName" />
+        <TextField source="lastName" />
+         <CohortField source="gradDate" label="Cohort" />
+        <ChipField record={{ status: "ENROLLED" }} source="status" />
         <TextField source="gpa" label="GPA" />
-        <TextField source="test_avg" label="Test Avg" />
+        {/*<TextField source="test_avg" label="Test Avg" />*/}
       </TableRow>
     </TableBody>
   </Table>
@@ -48,12 +55,12 @@ export const RowHeader = () => (
   <Table>
     <TableHead>
       <TableRow {...props}>
-        <FieldTitle label="NEU ID" />
-        <FieldTitle label="Name" />
-        <FieldTitle label="Cohort" />
-        <FieldTitle label="Status" />
-        <FieldTitle label="GPA" />
-        <FieldTitle label="Test Avg" />
+        <FieldTitle label={"NEU ID"} />
+        <FieldTitle label={"Name"} />
+        <FieldTitle label={"Cohort"} />
+        <FieldTitle label={"Status"} />
+        <FieldTitle label={"GPA"} />
+        <FieldTitle label={"Test Avg"} />
       </TableRow>
     </TableHead>
   </Table>

@@ -1,13 +1,9 @@
-import React, {useState} from "react";
-import { useUpdate } from "react-admin";
+import React from "react";
 import tw, { styled } from "twin.macro";
 import AccessTimeIcon from "@material-ui/icons/AccessTimeOutlined";
 import EditIcon from "@material-ui/icons/EditOutlined";
-import CheckIcon from '@material-ui/icons/CheckOutlined';
 import NoteIcon from "../Basic/NoteIcon";
-import IconButton from "@material-ui/core/IconButton";
-import TextField from '@material-ui/core/TextField';
-
+import { NOTE } from '../../constants/apiObjects';
 
 const Info = styled.div`
   ${tw`fontStyle-6 text-black font-medium`}
@@ -38,7 +34,7 @@ const Title = styled.h3`
   height: auto;
 `;
 
-const Date = styled.h4`
+const DateLabel = styled.h4`
   font-weight: normal;
   font-size: .85em;
   margin: 0px 0px 0px .5em;
@@ -51,84 +47,30 @@ const Content = styled.div`
   overflow: hidden;
   margin-top: .4em;
   word-break: break-all;
-`;
+`
 
-const NoteInput = styled(TextField)`
-    margin: 2px;
-    width: 100%;
-`;
+const NoteField = ({ record, source }) => {
+  const title = record[NOTE.TITLE];
+  const body = record[NOTE.BODY];
+  const date = new Date(record[NOTE.DATE]).toLocaleString();
 
-const Loading = styled.p`
-    font-size: 120%;
-    color: gray;
-`;
+  return (
+    <Info>
+      <Heading>
+        <Title>{title}</Title>
+        <NoteIcon src={EditIcon} color="black" size="small" isPrimary={"primary"} />
+      </Heading>
+      <Time>
+        <NoteIcon src={AccessTimeIcon} color="grey" size="inherit" />
+        <DateLabel>{date}</DateLabel>
+      </Time>
+      {/* if the length of string is more than 2 lines - ask jose how to check for this*/}
+      <Content><p>{body}</p></Content>
+      {/*  add a contional where if 3 or more...  */}
+      {/* use QuickChipField for the chip component */}
 
-const NoteField = ({ text, title, lastEdit, created, id }) => {
-    const [editing, setEditing] = useState(false);
-    const [noteText, setNoteText] = useState(text);
-    const [updating, setUpdating] = useState(false);
-    const [errorMessage, setErrorMessage] = useState(false);
-
-    const [update, {loading, error}] = useUpdate('notes', id, noteText)
-    if (error) {
-        setErrorMessage(true);
-    }
-
-
-    function toggleEdit() {
-        if (editing) {
-            // Update note text
-            setUpdating(true);
-
-            // Make call to data provider--update this note
-            update();
-            setTimeout(() => setUpdating(false), 1000)
-            setEditing(false);
-        } else {
-            // Start editing
-            setEditing(true);
-        }
-    }
-
-    function handleChange(event) {
-        setNoteText(event.target.value)
-    }
-
-    return (
-        <React.Fragment>
-            <Info>
-                <Heading>
-                    <Title>{title}</Title>
-                    <IconButton onClick={toggleEdit} disabled={updating}>
-                        <NoteIcon src={editing ? CheckIcon : EditIcon} color="black" size="small"
-                                  isPrimary={"primary"}/>
-                    </IconButton>
-
-                </Heading>
-                <Time>
-                    <NoteIcon src={AccessTimeIcon} color="grey" size="inherit"/>
-                    <Date>Created: {created.toString()}</Date>
-                </Time>
-                {lastEdit && lastEdit.getTime() !== created.getTime() &&
-                    <Time>
-                        <NoteIcon src={AccessTimeIcon} color="grey" size="inherit"/>
-                        <Date>Last edit:: {lastEdit.toString()}</Date>
-                    </Time>
-                }
-
-                {
-                    updating ? <Loading>Updating...</Loading> :
-                    editing ?
-                        <NoteInput multiline defaultValue={noteText} label="Note Text..." onChange={handleChange}/>
-                        : <Content><p>{noteText}</p></Content>
-                }
-
-                {/*  add a contional where if 3 or more...  */}
-                {/* use QuickChipField for the chip component */}
-
-            </Info>
-        </React.Fragment>
-    );
+    </Info>
+  );
 };
 
 export default NoteField;

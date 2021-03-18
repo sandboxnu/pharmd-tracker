@@ -1,10 +1,11 @@
 import React from "react";
 import { useGetOne } from "react-admin";
-import List from "@material-ui/core/List";
+
 import ScoredListItem from "./ScoredListItem";
+import List from "@material-ui/core/List";
 
 const ScoredListField = ({ record = {}, source }) => {
-  const courses = record[source];
+  let courses = record[source];
   return (
     <List>
       {courses.map((course, index) => {

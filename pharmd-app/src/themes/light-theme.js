@@ -1,4 +1,5 @@
 import { createMuiTheme } from "@material-ui/core/styles";
+import { STUDENT_STATUS } from '../constants/apiObjects';
 
 const STYLE = getComputedStyle(document.body);
 function getValue(cssVariable) {
@@ -10,12 +11,12 @@ function createLigthTheme() {
     name: "Light Theme",
     palette: {
       pillColors: {
-        coop: getValue("--primary"),
-        enrolled: getValue("--green-2"),
-        dropback: getValue("--red"),
-        leave: getValue("--orange"),
-        graduated: getValue("--tertiary"),
-        na: getValue("--gray-3")
+        [STUDENT_STATUS.COOP]: getValue("--primary"),
+        [STUDENT_STATUS.ENROLLED]: getValue("--green-2"),
+        [STUDENT_STATUS.DROP_BACK]: getValue("--red"),
+        [STUDENT_STATUS.LEAVE]: getValue("--orange"),
+        [STUDENT_STATUS.GRADUATED]: getValue("--tertiary"),
+        ["NA"]: getValue("--gray-3")
       },
       primary: {
         main: getValue("--primary"),
