@@ -37,7 +37,6 @@ const Autocomplete = ({ classes, deleteIcon, inputClassName, isOptionSelected, l
       onInputChange={(event, newInputValue) => {
         setInputValue(newInputValue);
       }}
-      // className={className}
       classes={{
         root: classes.root,
         endAdornment: classes.endAdornment,

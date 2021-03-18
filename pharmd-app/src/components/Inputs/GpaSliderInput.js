@@ -6,6 +6,24 @@ import { useInput } from "react-admin";
 
 // Component Imports
 import RangeSlider from "../Basic/RangeSlider";
+import { withStyles } from "@material-ui/core/styles";
+
+// -------------------------- STYLE --------------------------
+
+const styles = {
+  rail: {
+    height: "5px"
+  },
+
+  thumb: {
+    height: "15px",
+    width: "15px"
+  },
+
+  track: {
+    height: "5px"
+  }
+};
 
 //-------------------------- COMPONENT --------------------------
 
@@ -13,7 +31,7 @@ function valuetext(value) {
   return `${value}`;
 }
 
-const GpaSliderInput = ({ className, setFilter, ...props }) => {
+const GpaSliderInput = ({ classes, className, setFilter, ...props }) => {
   const {
     meta: { error }
   } = useInput(props);
@@ -35,9 +53,10 @@ const GpaSliderInput = ({ className, setFilter, ...props }) => {
       max={4}
       min={0}
       setValueText={valuetext}
+      sliderClasses={classes}
       step={0.25}
     />
   );
 };
 
-export default GpaSliderInput;
+export default withStyles(styles)(GpaSliderInput);

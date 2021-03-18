@@ -17,7 +17,7 @@ function valuetext(value) {
    onChange after the user lift the mouse press up
 */
 const RangeSlider = props => {
-  const { onChange, setValueText, disabled, max, min, step, className } = props;
+  const { onChange, setValueText, disabled, max, min, step, className, sliderClasses } = props;
   const [value, setValue] = React.useState([min, max]);
 
   const handleChange = (event, newValue) => {
@@ -32,6 +32,12 @@ const RangeSlider = props => {
       </span>
 
       <Slider
+        classes={{
+          root: sliderClasses.root,
+          rail: sliderClasses.rail,
+          thumb: sliderClasses.thumb,
+          track: sliderClasses.track
+        }}
         value={value}
         onChange={handleChange}
         valueLabelDisplay="auto"
