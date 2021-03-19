@@ -19,6 +19,7 @@ import CheckboxFilterButtonGroup from "../Basic/Checkbox Controls/CheckboxFilter
 
 // Style Imports
 import { withStyles } from "@material-ui/core/styles";
+import { blue } from "@material-ui/core/colors";
 
 //-------------------------- STYLE --------------------------
 // Use styles to make the label change when the checkbox is checked
@@ -30,6 +31,11 @@ const styles = {
     }
   },
 
+  // checkbox styling
+  checkboxButton: {
+    color: blue[700]
+  },
+
   // follow the uniformity: make the label 16px away from the filter
   formGroup: {
     paddingTop: "7px"
@@ -38,11 +44,12 @@ const styles = {
 
 //-------------------------- COMPONENT --------------------------
 
-const StatusCheckboxInput = ({ checkboxClassName, className, classes, color, label, setFilter, ...props }) => {
+const StatusCheckboxInput = ({ className, classes, color, label, setFilter, ...props }) => {
   const {
     meta: { error }
   } = useInput(props);
 
+  // adds a status filter on student data
   const onChange = (event, array) => {
     setFilter("status", array);
   };
@@ -50,7 +57,7 @@ const StatusCheckboxInput = ({ checkboxClassName, className, classes, color, lab
   return (
     <CheckboxFilterButtonGroup
       checkboxCheckedClass={classes.checked}
-      checkboxClassName={checkboxClassName}
+      checkboxClassName={classes.checkboxButton}
       className={className}
       formGroupClassName={classes.formGroup}
       color={color}

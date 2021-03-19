@@ -35,8 +35,6 @@ const styles = {
     marginTop: "1rem"
   },
 
-  // style label component
-
   // unchecked style
   labelRoot: {
     border: ".2rem solid #F0F4FF",
@@ -105,7 +103,7 @@ const OriginCheckboxInput = props => {
   const removeOriginFilter = () => {
     deleteFilter("international");
   };
-  
+
   const onChange = (event, array) => {
     // change local checkedLabels
     setCheckedLabels(array);

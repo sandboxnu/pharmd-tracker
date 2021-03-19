@@ -10,10 +10,25 @@ import TextField from "@material-ui/core/TextField";
 
 // -------------------------- COMPONENT --------------------------
 
-const Autocomplete = ({ classes, deleteIcon, inputClassName, isOptionSelected, label, onChange, options, placeholder, popupIcon, tagClassName, ...props }) => {
-  // const classes = useStyles();
+const Autocomplete = props => {
+  const {
+    classes,
+    deleteIcon,
+    inputClassName,
+    isOptionSelected,
+    label,
+    onChange,
+    options,
+    placeholder,
+    popupIcon,
+    tagClassName
+  } = props;
+
+  // the state to keep track of text that is typed into the input text field
   const [inputValue, setInputValue] = useState("");
-  const [value, setValue] = useState();
+
+  // the state the keep track of the options that have been selected (this is an array object)
+  const [value, setValue] = useState([]);
 
   // updates the list of tags that have been added
   const onChangeFunc = (event, newValue) => {
@@ -64,7 +79,12 @@ const Autocomplete = ({ classes, deleteIcon, inputClassName, isOptionSelected, l
       )}
       renderTags={(tagValue, getTagProps) => {
         return tagValue.map((option, index) => (
-          <Chip {...getTagProps(index)} className={tagClassName} deleteIcon={deleteIcon} label={option.label} />
+          <Chip
+            {...getTagProps(index)}
+            className={tagClassName}
+            deleteIcon={deleteIcon}
+            label={option.label}
+          />
         ));
       }}
     />

@@ -63,6 +63,8 @@ const StudentDrawer = ({ isOpenMatch, selected, handleClose, handleOpen, ...prop
   const isOpen = useSelector(state => state.studentSidebarOpen);
   const isDrawerOpen = isOpen || isOpenMatch;
 
+  console.log("LIST CONTROLLER");
+  console.log(useListController(props));
   // Avoid route errors
   const quickview = () => {
     return isOpenMatch ? (

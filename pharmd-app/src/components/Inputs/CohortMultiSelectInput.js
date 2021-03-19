@@ -1,3 +1,11 @@
+/**
+ * Description:
+ * This Component creates a multi select drop down / text input to filter Student data based on GPA.
+ * This component also allows the user to type in the option they are looking for to filter the options.
+ *
+ * Date: 03-18-2021
+ */
+
 // -------------------------- IMPORTS --------------------------
 
 // Function Imports
@@ -7,49 +15,47 @@ import { useInput } from "react-admin";
 // Component Imports
 import ClearIcon from '@material-ui/icons/Clear';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
-import FormControlLabel from "@material-ui/core/FormControlLabel";
 
 // Style Imports
 import { blue } from "@material-ui/core/colors";
 import { withStyles } from "@material-ui/core/styles";
-import tw from "twin.macro";
 import Autocomplete from "../Basic/Autocomplete";
-import MultipleSelect from "../Basic/MultiSelect";
 
 // -------------------------- STYLE --------------------------
 
 const styles = {
-  // general formControl Styling
+  // style the general formControl Styling
   root: {
     width: "100%",
-    // // style the border
+    // style the default border color and size
     "& fieldset": {
       borderRadius: ".6rem",
       border: ".2rem solid #F0F4FF"
     },
+    // style the border color and size when user focuses (clicks on) the filter component
     "&.Mui-focused fieldset": {
       border: ".2rem solid " + blue[700] + " !important"
     },
+    // style the border color and size when user hovers over the filter component
     "&:hover fieldset": {
       border: ".2rem solid " + blue[700] + " !important"
     }
   },
 
-  // container element of toggle popper icon and remove all options icon
+  // style the container element of toggle popper icon and remove all options icon
   endAdornment: {
     top: "9px"
   },
 
-  // container element of options
+  // style the container element of options
   listbox: {
-    // border: ".2rem solid #F0F4FF",
     border: ".2rem solid " + blue[700],
     borderRadius: ".6rem",
     marginTop: ".5rem",
     padding: 0
   },
 
-  // container element of listbox
+  // style the container element of listbox (remove the shadow)
   paper: {
     boxShadow: "unset"
   },
@@ -60,11 +66,13 @@ const styles = {
     "&[aria-selected=true]": {
       backgroundColor: "#F0F4FF"
     },
+    // styling when an option is hovered on
     "&:hover": {
       backgroundColor: "#F0F4FF"
     }
   },
 
+  // style the tags (pills) or options that have been selected in the input field
   tag: {
     backgroundColor: "#4573EE",
     color: "white",
@@ -98,6 +106,8 @@ const CohortMultipleSelect = ({ classes, className, label, setFilter, ...props }
       return false;
     }
 
+    // checks if these two dictionaries have the same value (no two options should have the
+    //     same value
     return option.value === value.value;
   };
 
@@ -132,18 +142,6 @@ const CohortMultipleSelect = ({ classes, className, label, setFilter, ...props }
         popupIcon={<ExpandMoreIcon fontSize="large" tw="text-black" />}
         placeholder="Add Item"
       />
-      <MultipleSelect
-        onChange={cohortMultiSelect}
-        label={label}
-        error={error}
-        className={className}
-      >
-        <FormControlLabel value="15/20" label="Cohort 20" />
-        <FormControlLabel value="17/22" label="Cohort 22" />
-        <FormControlLabel value="18/23" label="Cohort 23" />
-        <FormControlLabel value="19/24" label="Cohort 24" />
-        <FormControlLabel value="20/25" label="Cohort 25" />
-      </MultipleSelect>
     </div>
   );
 };

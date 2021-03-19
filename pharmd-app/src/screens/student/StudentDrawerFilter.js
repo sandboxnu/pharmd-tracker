@@ -20,7 +20,6 @@ import CohortMultipleSelect from "../../components/Inputs/CohortMultiSelectInput
 import OriginCheckboxInput from "../../components/Inputs/OriginCheckboxInput";
 
 // Style Imports
-import { blue } from "@material-ui/core/colors";
 import { makeStyles } from "@material-ui/core/styles";
 import { styled } from "twin.macro";
 
@@ -38,35 +37,14 @@ const useStyles = makeStyles(theme => ({
       fontFamily:
         "Montserrat-SemiBold, Montserrat-Bold, Inter-Medium, Inter-SemiBold, Inter-Regular, Inter-Bold, sans-serif"
     }
-  },
-  // rangSlider styling
-  rangeSlider: {
-    margin: "2rem 0 0 0",
-    width: 300,
-    "& h4": {
-      margin: "0 0 1.33em 0",
-      color: "black",
-      fontWeight: "650",
-      fontSize: "1.1rem",
-      fontFamily:
-        "Montserrat-SemiBold, Montserrat-Bold, Inter-Medium, Inter-SemiBold, Inter-Regular, Inter-Bold, sans-serif",
-      "& span": {
-        color: blue[700],
-        fontSize: "1rem"
-      }
-    }
-  },
-  // checkbox styling
-  checkboxButton: {
-    color: blue[700]
   }
 }));
-
-//-------------------------- COMPONENT --------------------------
 
 const Filter = styled(FilterRA)`
   display: block;
 `;
+
+//-------------------------- COMPONENT --------------------------
 
 export const StudentDrawerFilter = ({ filterValues, setFilters, ...props }) => {
   const classes = useStyles();
@@ -85,7 +63,6 @@ export const StudentDrawerFilter = ({ filterValues, setFilters, ...props }) => {
     <Filter {...props}>
       <StatusCheckboxInput
         alwaysOn
-        checkboxClassName={classes.checkboxButton}
         className={classes.formControl}
         color="primary"
         deleteFilter={deleteFilter}
@@ -95,7 +72,6 @@ export const StudentDrawerFilter = ({ filterValues, setFilters, ...props }) => {
       />
       <GpaSliderInput
         alwaysOn
-        className={classes.rangeSlider}
         deleteFilter={deleteFilter}
         label="GPA"
         setFilter={setFilter}
@@ -112,7 +88,6 @@ export const StudentDrawerFilter = ({ filterValues, setFilters, ...props }) => {
       <OriginCheckboxInput
         alwaysOn
         className={classes.formControl}
-        checkboxClassName={classes.originCheckboxButton}
         deleteFilter={deleteFilter}
         label="Origin"
         setFilter={setFilter}
