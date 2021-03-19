@@ -1,10 +1,13 @@
 import React from "react";
 import tw, { styled } from "twin.macro";
+import TextField from "./TextField";
 
-const Field = styled.span`
+const StyledField = styled(TextField)`
   ${tw`fontStyle-6 text-secondary font-semibold`}
 `;
 
-const EmphasisField = ({ record = {}, source }) => <Field>{record[source]}</Field>;
+const EmphasisField = props => {
+  return <StyledField {...props} />;
+};
 
 export default EmphasisField;
