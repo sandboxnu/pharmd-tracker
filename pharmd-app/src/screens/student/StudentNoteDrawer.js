@@ -1,4 +1,4 @@
-import React from 'react'
+import React, {cloneElement} from 'react'
 import tw, { styled } from "twin.macro";
 import MuiGrid from "@material-ui/core/Grid";
 import HelpIcon from "@material-ui/icons/HelpOutline";
@@ -8,8 +8,12 @@ import {
     TopToolbar,
     CreateButton,
     ExportButton,
+    ListBase,
+    ListToolbar,
+    BulkActionsToolbar,
     Button,
     sanitizeListRestProps,
+    Pagination
 } from "react-admin";
 import StudentNoteBox from "./StudentNoteBox";
 import MuiPaper from "@material-ui/core/Paper";
@@ -67,14 +71,24 @@ const StudentNoteDrawer = ({ source, ...props }) => {
     return (
         <Paper>
             <NoteGrid container spacing={10} direction="row">
-                <List {...props}
-                      title="Notes"
-                      actions={<NotesActions />}
+                <ListBase {...props}
+                      basePath={`/students/${props.id}/details`}
                       resource="notes"
+                      actions={<NotesActions />}
                       bulkActionButtons={false}
                       >
-                    <StudentNoteBox />
-                </List>
+                    <h2>Notes</h2>
+                    <ListToolbar
+                        filters={props.filters}
+                        actions={props.actions}
+                    />
+                    <Paper>
+                        <BulkActionsToolbar>
+                            {props.bulkActionButtons}
+                        </BulkActionsToolbar>
+                        <StudentNoteBox props={source} {...props} />
+                    </Paper>
+                </ListBase>
                     {/*<StudentNoteBox id={2} title="Note 1" body="Cool text here!" date={new Date()} tags={["foo", "boo", "goo"]} />*/}
                     {/*<StudentNoteBox id={2} title="Note 1" body="Cool text here!" date={new Date()} />*/}
                     {/*<StudentNoteBox id={2} title="Note 1" body="Cool text here!" date={new Date()} />*/}
