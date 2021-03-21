@@ -73,6 +73,20 @@ const styles = {
     }
   },
 
+  // styling for the no options div that shows up when there are no options that match
+  //     the user's input
+  noOptions: {
+    border: ".2rem solid " + blue[700],
+    borderRadius: ".6rem",
+    marginTop: ".5rem",
+
+    // match the default padding on the options
+    paddingTop: "6px",
+    paddingLeft: "16px",
+    paddingRight: "16px",
+    paddingBottom: "6px"
+  },
+
   // style the tags (pills) or options that have been selected in the input field
   tag: {
     backgroundColor: "#4573EE",

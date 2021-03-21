@@ -55,10 +55,11 @@ const Autocomplete = props => {
       classes={{
         root: classes.root,
         endAdornment: classes.endAdornment,
-        option: classes.option,
-        popper: classes.popper,
         listbox: classes.listbox,
-        paper: classes.paper
+        noOptions: classes.noOptions,
+        option: classes.option,
+        paper: classes.paper,
+        popper: classes.popper,
       }}
       disableCloseOnSelect
       getOptionLabel={option => option.label}
