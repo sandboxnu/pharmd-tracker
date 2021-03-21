@@ -41,16 +41,13 @@ const CheckboxFilterButtonGroup = props => {
       if (filterIndex < 0) {
         // If the checkbox was checked and the value is not in our array of filter values then add the value to the array
         filters.push(filter);
-        console.log("Status Value added: ", filter);
       }
     } else if (filterIndex >= 0) {
       // If the checkbox was unchecked and the value is in our array of filter values then remove the value from the array
       filters.splice(filterIndex, 1);
-      console.log("Status Value removed: ", filter, " at index ", filterIndex);
     }
     // Finally, update the filter values and call the onChange function with the new list
     setFilters(filters);
-    console.log("Status Value: ", filters);
     onChange(event, filters);
   };
 

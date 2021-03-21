@@ -20,6 +20,7 @@ import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import { blue } from "@material-ui/core/colors";
 import { withStyles } from "@material-ui/core/styles";
 import Autocomplete from "../Basic/Autocomplete";
+import tw from "twin.macro";
 
 // -------------------------- STYLE --------------------------
 
@@ -117,15 +118,7 @@ const CohortMultipleSelect = ({ classes, className, label, setFilter, ...props }
     { label: "Cohort 23", value: "18/23" },
     { label: "Cohort 24", value: "19/24" },
     { label: "Cohort 25", value: "20/25" },
-    { label: "Cohort 26", value: "20/26" },
-    { label: "Cohort 26", value: "20/27" },
-    { label: "Cohort 26", value: "20/28" },
-    { label: "Cohort 26", value: "20/29" },
-    { label: "Cohort 26", value: "20/31" },
-    { label: "Cohort 26", value: "20/32" },
-    { label: "Cohort 26", value: "20/33" },
-    { label: "Cohort 26", value: "20/34" },
-    { label: "Cohort 26", value: "20/35" }
+    { label: "Cohort 26", value: "20/26" }
   ];
 
   return (
