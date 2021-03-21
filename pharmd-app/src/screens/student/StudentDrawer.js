@@ -17,7 +17,7 @@ import { useListController } from "react-admin";
 import StudentDrawerFilter from "./StudentDrawerFilter";
 // const LinkRouter = props => <Link {...props} component={RouterLink} />;
 
-const DeatilsButton = styled.button`
+const DetailsButton = styled.button`
   cursor: pointer;
   color: white;
   border: none;
@@ -70,7 +70,7 @@ const StudentDrawer = ({ isOpenMatch, selected, handleClose, handleOpen, ...prop
         <StudentQuickView id={selected} onCancel={handleClose} {...props} />
         <ButtonSpan>
           <RouterLink to={`/students/${props.id}/details`}>
-            <DeatilsButton>More Student Info</DeatilsButton>
+            <DetailsButton>More Student Info</DetailsButton>
           </RouterLink>
         </ButtonSpan>
       </>

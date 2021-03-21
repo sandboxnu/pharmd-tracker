@@ -21,10 +21,11 @@ const styles = theme => ({
 
 const PostPreviewView = ({ classes, ...props }) => (
   <SimpleShowLayout {...props}>
-    <TextField source="name" />
-    <TextField source="studentId" />
-    <TextField source="graduationYear" />
-    <TextField source="notes" />
+    <TextField source="firstName" />
+      <TextField source="lastName" />
+    <TextField source="id" />
+    <TextField source="gradDate" />
+    {/*<TextField source="notes" />*/}
   </SimpleShowLayout>
 );
 

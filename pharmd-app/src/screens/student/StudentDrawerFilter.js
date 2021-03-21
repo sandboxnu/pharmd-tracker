@@ -73,21 +73,20 @@ export const StudentDrawerFilter = props => {
     if (newValue) {
       let gpaMin = newValue[0];
       let gpaMax = newValue[1];
-      setFilter("gpa_gte", gpaMin);
-      setFilter("gpa_lte", gpaMax);
+      setFilter("gpa", [gpaMin, gpaMax]);
     }
   };
 
   const originRadio = (event, newValue) => {
     switch (newValue) {
       case "domestic":
-        setFilter("international", false);
+        setFilter("hasVisa", false);
         break;
       case "international":
-        setFilter("international", true);
+        setFilter("hasVisa", true);
         break;
       default:
-        deleteFilter("international");
+        deleteFilter("hasVisa");
         break;
     }
     console.log("Origin Filter:", newValue);
@@ -99,8 +98,8 @@ export const StudentDrawerFilter = props => {
   };
 
   const cohortMultiSelect = (event, array) => {
-    setFilter("cohort[current]", array);
-    console.log("Cohort Filter: ", array)
+    setFilter("gradDate", array);
+    console.log("Cohort Filter: ", array);
   };
 
   return (
@@ -119,21 +118,21 @@ export const StudentDrawerFilter = props => {
       />
       <GpaSliderInput
         label="GPA"
-        source={"gpa_gte"}
+        source={"gpa"}
         onChange={searchGpaRange}
         className={classes.rangeSlider}
         alwaysOn
       />
       <CohortMultipleSelect
         label="Cohort"
-        source={"cohort"}
+        source={"gradDate"}
         onChange={cohortMultiSelect}
         className={classes.formControl}
         alwaysOn
       />
       <OriginRadioInput
         label="Origin"
-        source={"international"}
+        source={"hasVisa"}
         onChange={originRadio}
         className={classes.formControl}
         alwaysOn
