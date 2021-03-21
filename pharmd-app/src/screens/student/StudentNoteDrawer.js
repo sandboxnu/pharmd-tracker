@@ -13,7 +13,10 @@ import {
     BulkActionsToolbar,
     Button,
     sanitizeListRestProps,
-    Pagination
+    Pagination,
+    useQuery,
+    Loading,
+    Error
 } from "react-admin";
 import StudentNoteBox from "./StudentNoteBox";
 import MuiPaper from "@material-ui/core/Paper";
@@ -65,12 +68,45 @@ const NoteGrid = styled(MuiGrid)`
 const Paper = styled(MuiPaper)`
   ${tw`rounded-xl shadow-cardLight`}
   padding: 30px;
+  margin: 20px;
  `
 
-const StudentNoteDrawer = ({ source, ...props }) => {
+const StudentNoteDrawer = ({record = {}, source }) => {
+    const { data, loading, error } = useQuery({
+        type: 'getManyReference',
+        resource: 'notes',
+        payload: {
+            target: 'student',
+            id: record[source],
+            pagination: {
+                page: 1,
+                perPage: 3
+            },
+            sort: {
+                field: '',
+                order: ''
+            }
+        }
+    })
+
+    if (loading) return <Loading />
+    if (error) return <Error error="Cannot load student's notes"/>
+    if (!data) return null
+
     return (
         <Paper>
-            <NoteGrid container spacing={10} direction="row">
+            <h2>Notes</h2>
+            {data.map(note => {
+                return <StudentNoteBox source='id' record={note} />
+            })}
+        </Paper>
+    )
+}
+
+const StudentNoteDrawer2 = ({ source, ...props }) => {
+    return (
+        <Paper>
+            {/*<NoteGrid container spacing={10} direction="row">*/}
                 <ListBase {...props}
                       basePath={`/students/${props.id}/details`}
                       resource="notes"
@@ -82,17 +118,12 @@ const StudentNoteDrawer = ({ source, ...props }) => {
                         filters={props.filters}
                         actions={props.actions}
                     />
-                    <Paper>
-                        <BulkActionsToolbar>
-                            {props.bulkActionButtons}
-                        </BulkActionsToolbar>
-                        <StudentNoteBox props={source} {...props} />
-                    </Paper>
+                    <BulkActionsToolbar>
+                        {props.bulkActionButtons}
+                    </BulkActionsToolbar>
+                    <StudentNoteBox props={source} {...props} />
                 </ListBase>
-                    {/*<StudentNoteBox id={2} title="Note 1" body="Cool text here!" date={new Date()} tags={["foo", "boo", "goo"]} />*/}
-                    {/*<StudentNoteBox id={2} title="Note 1" body="Cool text here!" date={new Date()} />*/}
-                    {/*<StudentNoteBox id={2} title="Note 1" body="Cool text here!" date={new Date()} />*/}
-            </NoteGrid>
+            {/*</NoteGrid>*/}
         </Paper>
     )
 }
