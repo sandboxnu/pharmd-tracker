@@ -5,8 +5,7 @@ export const STUDENT = {
   LAST_NAME: "lastName",
   COHORT: "gradDate",
   STATUS: "status",
-  GPA: "gpa",
-  TEST_AVG: "test_avg"
+  GPA: "gpa"
 };
 
 export const STUDENT_STATUS = {
@@ -39,4 +38,19 @@ export const STUDENT_COURSE = {
   COURSE_SUBJECT: "course.subject",
   COURSE_NUMBER: "course.number",
   COURSE_NAME: "course.name"
+};
+
+export const LETTER_GRADE = {
+  A: "A",
+  A_MINUS: "A-",
+  B_PLUS: "B+",
+  B: "B",
+  B_MINUS: "B-",
+  C_PLUS: "C+",
+  C: "C",
+  C_MINUS: "C-",
+  D_PLUS: "D+",
+  D: "D",
+  D_MINUS: "D-",
+  F: "F"
 };
