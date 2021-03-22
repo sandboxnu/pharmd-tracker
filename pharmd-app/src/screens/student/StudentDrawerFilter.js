@@ -22,6 +22,7 @@ import OriginCheckboxInput from "../../components/Inputs/OriginCheckboxInput";
 // Style Imports
 import { makeStyles } from "@material-ui/core/styles";
 import { styled } from "twin.macro";
+import StudentDisplayFilters from "./StudentDisplayFilters";
 
 //-------------------------- STYLE --------------------------
 
@@ -48,6 +49,8 @@ const Filter = styled(FilterRA)`
 
 export const StudentDrawerFilter = ({ filterValues, setFilters, ...props }) => {
   const classes = useStyles();
+  console.log("FILTER VALUES");
+  console.log(filterValues);
 
   // onChange functions to modify ReactAdmin filter values
   const setFilter = (key, val) => {
@@ -61,6 +64,7 @@ export const StudentDrawerFilter = ({ filterValues, setFilters, ...props }) => {
 
   return (
     <Filter {...props}>
+      <StudentDisplayFilters alwaysOn filterValues={filterValues} deleteFilter={deleteFilter} />
       <StatusCheckboxInput
         alwaysOn
         className={classes.formControl}
