@@ -3,7 +3,6 @@ import AvatarMaterial from "@material-ui/core/Avatar";
 import tw, { styled } from "twin.macro";
 import Icon from "./Icon";
 import Person from "../../assets/icons/person.svg";
-// import { styled } from '@material-ui/core/styles';
 
 const AvatarStyled = styled(AvatarMaterial)`
   ${tw`w-12 h-12`}

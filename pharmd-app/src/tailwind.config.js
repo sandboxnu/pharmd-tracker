@@ -25,7 +25,8 @@ module.exports = {
         primary: "var(--color-primary)"
       },
       borderRadius: {
-        xl: "1rem"
+        xl: "1rem",
+        "7px": "7px"
       },
       boxShadow: {
         cardLight:

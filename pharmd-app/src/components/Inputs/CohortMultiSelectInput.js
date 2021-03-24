@@ -13,7 +13,6 @@ import React from "react";
 import { useInput } from "react-admin";
 
 // Component Imports
-import ClearIcon from '@material-ui/icons/Clear';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 
 // Style Imports
@@ -90,8 +89,6 @@ const styles = {
   // style the tags (pills) or options that have been selected in the input field
   tag: {
     backgroundColor: "#4573EE",
-    color: "white",
-    borderRadius: "7px",
     marginBottom: ".3rem",
     marginRight: ".3rem"
   }
@@ -140,7 +137,6 @@ const CohortMultipleSelect = ({ classes, className, label, setFilter, ...props }
       <h4 tw="font-650 mb-0 mt-8 pb-4 text-black text-1.1">{label}</h4>
       <Autocomplete
         classes={classes}
-        deleteIcon={<ClearIcon tw="text-white" />}
         inputClassName={classes.input}
         isOptionSelected={isCohortSelected}
         tagClassName={classes.tag}

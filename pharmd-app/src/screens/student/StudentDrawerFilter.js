@@ -64,7 +64,12 @@ export const StudentDrawerFilter = ({ filterValues, setFilters, ...props }) => {
 
   return (
     <Filter {...props}>
-      <StudentDisplayFilters alwaysOn filterValues={filterValues} deleteFilter={deleteFilter} />
+      <StudentDisplayFilters
+          alwaysOn
+          deleteFilter={deleteFilter}
+          filterValues={filterValues}
+          setFilter={setFilter}
+      />
       <StatusCheckboxInput
         alwaysOn
         className={classes.formControl}

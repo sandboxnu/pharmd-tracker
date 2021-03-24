@@ -7,13 +7,13 @@ import React, { useState } from "react";
 import AutocompleteMaterial from "@material-ui/lab/Autocomplete";
 import Chip from "@material-ui/core/Chip";
 import TextField from "@material-ui/core/TextField";
+import FilterChip from "./FilterChip";
 
 // -------------------------- COMPONENT --------------------------
 
 const Autocomplete = props => {
   const {
     classes,
-    deleteIcon,
     inputClassName,
     isOptionSelected,
     label,
@@ -80,12 +80,11 @@ const Autocomplete = props => {
       )}
       renderTags={(tagValue, getTagProps) => {
         return tagValue.map((option, index) => (
-          <Chip
-            {...getTagProps(index)}
-            className={tagClassName}
-            deleteIcon={deleteIcon}
-            label={option.label}
-          />
+            <FilterChip
+                {...getTagProps(index)}
+                className={tagClassName}
+                label={option.label}
+            />
         ));
       }}
     />

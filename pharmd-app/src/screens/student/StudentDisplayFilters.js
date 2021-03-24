@@ -11,11 +11,25 @@
 import React from "react";
 
 // Component Imports
-import Chip from "@material-ui/core/Chip";
+import FilterChip from "../../components/Basic/FilterChip";
+
+// Style Imports
+import { withStyles } from "@material-ui/core/styles";
+import tw from "twin.macro";
+
+// -------------------------- STYLE --------------------------
+
+const Chip = withStyles({
+  root: {
+    backgroundColor: "#2B2B90",
+    marginRight: ".3rem",
+    marginBottom: ".3rem",
+  }
+})(FilterChip)
 
 // -------------------------- COMPONENT --------------------------
 
-const StudentDisplayFilters = ({ deleteFilter, filterValues, ...props }) => {
+const StudentDisplayFilters = ({ deleteFilter, filterValues, setFilter, ...props }) => {
   // cohort {current: [] }
   // gpa_gte: float
   // gpa_lte: float
@@ -42,36 +56,40 @@ const StudentDisplayFilters = ({ deleteFilter, filterValues, ...props }) => {
     numStatusFilters = filterValues["status"].length;
   }
 
-  console.log("internationalFilter");
-  console.log(internationalFilter);
   const displayInternationalFilter = () => {
     if (internationalFilter != null) {
+      let label = ""
       if (internationalFilter) {
         // filters for international
-        return <Chip
-          deleteIcon={deleteIcon}
-          label={International}
-          onDelete={}
-        />
+        label = "International"
       } else {
         // filters for domestic
-        return <Chip
-          deleteIcon={deleteIcon}
-          label={Domestic}
-          onDelete={}
-        />
+        label = "Domestic"
       }
+
+      return <Chip
+        label={label}
+        onDelete={() => {deleteFilter("international")}}
+      />
     }
   };
 
+  const resetGPAValues = () => {
+    setFilter("gpa_gte", 0);
+    setFilter("gpa_lte", 4);
+  }
+
   return (
-    <div>
-      <p>Status: {numStatusFilters}</p>
-      {hasGPAFilters && <p>GPA:</p>}
-      <p>Cohort: {numCohortFilters}</p>
-      {internationalFilter != null && <p> International Filter</p>}
+    <div tw="mt-8">
+      {numStatusFilters > 0
+        && <Chip label={`Status ${numStatusFilters}`} onDelete={() => {deleteFilter("status")}} />}
+      {hasGPAFilters
+        && <Chip label={`GPA`} onDelete={() => {resetGPAValues()}} />}
+      {numCohortFilters > 0
+        && <Chip label={`Cohort ${numCohortFilters}`} onDelete={() => {setFilter("cohort[current]", []);}} />}
+      {internationalFilter != null && displayInternationalFilter()}
     </div>
   );
 };
 
-export default StudentDisplayFilters;
+export default (StudentDisplayFilters);
