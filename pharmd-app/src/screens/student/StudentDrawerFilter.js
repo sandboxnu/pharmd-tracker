@@ -71,6 +71,9 @@ export const StudentDrawerFilter = ({ filterValues, setFilters, ...props }) => {
         deleteFilter={deleteFilter}
         filterValues={filterValues}
         setFilter={setFilter}
+
+        originCheckedLabels={originCheckedLabels}
+        setOriginCheckedLabels={setOriginCheckedLabels}
       />
       <StatusCheckboxInput
         alwaysOn

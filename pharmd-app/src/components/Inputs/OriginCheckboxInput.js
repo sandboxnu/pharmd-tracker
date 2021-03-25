@@ -104,11 +104,6 @@ const OriginCheckboxInput = props => {
     deleteFilter("international");
   };
 
-  const onChange = (event, array) => {
-    // change ReactAdmin filter values
-    array.length === 1 ? addOriginFilter(array[0]) : removeOriginFilter();
-  };
-
   // Return a function that accepts an event
   const createOnClick = item => {
     return e => {
@@ -121,6 +116,13 @@ const OriginCheckboxInput = props => {
         // remove the item
         newCheckedLabels.splice(index, 1);
       }
+
+      if (newCheckedLabels.length === 1) {
+        addOriginFilter(item);
+      } else {
+        removeOriginFilter();
+      }
+
       setCheckedLabels(newCheckedLabels);
     };
   };
@@ -133,7 +135,6 @@ const OriginCheckboxInput = props => {
       error={error}
       formGroupClassName={classes.formGroup}
       label={label}
-      onChange={onChange}
     >
       <FormControlLabel
         checked={checkedLabels.indexOf("domestic") >= 0}
