@@ -27,17 +27,6 @@ const MainContent = styled.div`
 
 // -------------------------- COMPONENT --------------------------
 const StudentScreen = props => {
-  // const history = useHistory();
-  // const dispatch = useDispatch();
-  //
-  // const handleClose = useCallback(() => {
-  //   history.push(STUDENTS_MAIN);
-  //   dispatch(setStudentSideBar({ isOpen: false }));
-  // }, [history]);
-  //
-  // const handleOpen = useCallback(() => {
-  //   dispatch(setStudentSideBar({ isOpen: true }));
-  // }, []);
 
   const [studentQuickViewExpanded, setStudentQuickViewExpanded] = useState(false);
   const [studentSidebar, setStudentSidebar] = useState(true);
@@ -62,8 +51,6 @@ const StudentScreen = props => {
             <StudenttDrawer
               isOpenMatch={isMatch}
               id={isMatch ? match.params.id : 0}
-              // handleClose={handleClose}
-              // handleOpen={handleOpen}
               studentQuickViewExpanded={studentQuickViewExpanded}
               setStudentQuickViewExpanded={setStudentQuickViewExpanded}
               studentSidebar={studentSidebar}
