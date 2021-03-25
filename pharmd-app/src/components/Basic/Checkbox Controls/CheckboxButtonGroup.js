@@ -56,6 +56,7 @@ const CheckboxButtonGroup = props => {
                   icon={child.props.icon || undefined}
                   checkedIcon={child.props.checkedIcon || undefined}
                   labelPlacement={child.props.checkedIcon || undefined}
+                  // accepts an onclick prop which represents an onClick function to use
                   onClick={child.props.onclick}
                 />
               )

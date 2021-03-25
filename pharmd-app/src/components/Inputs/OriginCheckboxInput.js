@@ -15,9 +15,9 @@ import { useInput } from "react-admin";
 
 // Component Imports
 import FormControlLabel from "@material-ui/core/FormControlLabel";
-import DirectionsCarOutlinedIcon from '@material-ui/icons/DirectionsCarOutlined';
-import DirectionsCarIcon from '@material-ui/icons/DirectionsCar';
-import FlightOutlinedIcon from '@material-ui/icons/FlightOutlined';
+import DirectionsCarOutlinedIcon from "@material-ui/icons/DirectionsCarOutlined";
+import DirectionsCarIcon from "@material-ui/icons/DirectionsCar";
+import FlightOutlinedIcon from "@material-ui/icons/FlightOutlined";
 
 // Style Imports
 import { blue } from "@material-ui/core/colors";
@@ -79,11 +79,11 @@ const OriginCheckboxInput = props => {
     meta: { error }
   } = useInput(props);
 
-  const { className, classes, deleteFilter, label, setFilter } = props;
+  const { checkedLabels, className, classes, deleteFilter, label, setCheckedLabels, setFilter } = props;
 
   // used to keep track of the international filter to change the style of the
   //     label to have a border when the checkbox is selected.
-  const [checkedLabels, setCheckedLabels] = useState([]);
+  // const [checkedLabels, setCheckedLabels] = useState([]);
 
   // If both filters are selected, then remove the filter
   const addOriginFilter = newValue => {
@@ -105,11 +105,24 @@ const OriginCheckboxInput = props => {
   };
 
   const onChange = (event, array) => {
-    // change local checkedLabels
-    setCheckedLabels(array);
-
     // change ReactAdmin filter values
     array.length === 1 ? addOriginFilter(array[0]) : removeOriginFilter();
+  };
+
+  // Return a function that accepts an event
+  const createOnClick = item => {
+    return e => {
+      const index = checkedLabels.indexOf(item);
+      const newCheckedLabels = [...checkedLabels];
+      if (index < 0) {
+        // add the item
+        newCheckedLabels.push(item);
+      } else {
+        // remove the item
+        newCheckedLabels.splice(index, 1);
+      }
+      setCheckedLabels(newCheckedLabels);
+    };
   };
 
   return (
@@ -123,11 +136,14 @@ const OriginCheckboxInput = props => {
       onChange={onChange}
     >
       <FormControlLabel
+        checked={checkedLabels.indexOf("domestic") >= 0}
         value="domestic"
         label="Domestic"
         icon={<DirectionsCarOutlinedIcon fontSize="large" />}
         checkedIcon={<DirectionsCarIcon fontSize="large" />}
         labelPlacement="bottom"
+        // adding onClick function to this FormControlLabel causes bugs where onClick is executed several times
+        onclick={createOnClick("domestic")}
         classes={
           // if this label has been checked, change styling
           checkedLabels.indexOf("domestic") > -1
@@ -142,11 +158,13 @@ const OriginCheckboxInput = props => {
         }
       />
       <FormControlLabel
+        checked={checkedLabels.indexOf("international") >= 0}
         value="international"
         label="International"
         icon={<FlightOutlinedIcon fontSize="large" />}
         checkedIcon={<FlightOutlinedIcon fontSize="large" />}
         labelPlacement="bottom"
+        onclick={createOnClick("international")}
         classes={
           // if this label has been checked, change styling
           checkedLabels.indexOf("international") > -1

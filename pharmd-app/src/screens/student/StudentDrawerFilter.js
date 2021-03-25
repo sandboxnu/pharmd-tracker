@@ -6,25 +6,25 @@
  * Date: 02-18-2021
  */
 
-//-------------------------- IMPORTS --------------------------
+// -------------------------- IMPORTS --------------------------
 
 // Function Imports
-import React from "react";
+import React, { useState } from "react";
 import { Filter as FilterRA } from "react-admin";
 import set from "lodash/set";
 
 // Component Imports
+import { makeStyles } from "@material-ui/core/styles";
+import { styled } from "twin.macro";
 import GpaSliderInput from "../../components/Inputs/GpaSliderInput";
 import StatusCheckboxInput from "../../components/Inputs/StatusCheckboxInput";
 import CohortMultipleSelect from "../../components/Inputs/CohortMultiSelectInput";
 import OriginCheckboxInput from "../../components/Inputs/OriginCheckboxInput";
 
 // Style Imports
-import { makeStyles } from "@material-ui/core/styles";
-import { styled } from "twin.macro";
 import StudentDisplayFilters from "./StudentDisplayFilters";
 
-//-------------------------- STYLE --------------------------
+// -------------------------- STYLE --------------------------
 
 // Use this to style components within a filter
 const useStyles = makeStyles(theme => ({
@@ -45,12 +45,10 @@ const Filter = styled(FilterRA)`
   display: block;
 `;
 
-//-------------------------- COMPONENT --------------------------
+// -------------------------- COMPONENT --------------------------
 
 export const StudentDrawerFilter = ({ filterValues, setFilters, ...props }) => {
   const classes = useStyles();
-  console.log("FILTER VALUES");
-  console.log(filterValues);
 
   // onChange functions to modify ReactAdmin filter values
   const setFilter = (key, val) => {
@@ -62,13 +60,17 @@ export const StudentDrawerFilter = ({ filterValues, setFilters, ...props }) => {
     setFilters(filterValues);
   };
 
+  // used to keep track of the international filter to change the style of the
+  //     label to have a border when the checkbox is selected.
+  const [originCheckedLabels, setOriginCheckedLabels] = useState([]);
+
   return (
     <Filter {...props}>
       <StudentDisplayFilters
-          alwaysOn
-          deleteFilter={deleteFilter}
-          filterValues={filterValues}
-          setFilter={setFilter}
+        alwaysOn
+        deleteFilter={deleteFilter}
+        filterValues={filterValues}
+        setFilter={setFilter}
       />
       <StatusCheckboxInput
         alwaysOn
@@ -96,9 +98,11 @@ export const StudentDrawerFilter = ({ filterValues, setFilters, ...props }) => {
       />
       <OriginCheckboxInput
         alwaysOn
+        checkedLabels={originCheckedLabels}
         className={classes.formControl}
         deleteFilter={deleteFilter}
         label="Origin"
+        setCheckedLabels={setOriginCheckedLabels}
         setFilter={setFilter}
         source="international"
       />
