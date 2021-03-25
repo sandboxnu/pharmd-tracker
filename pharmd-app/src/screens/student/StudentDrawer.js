@@ -91,7 +91,7 @@ const StudentDrawer = ({ isOpenMatch, selected, handleClose, handleOpen, ...prop
   console.log("student sidebar " + props.studentSidebar);
 
   // the drawer should be open if the drawer was manually opened or the user clicked on a student in the table
-  const isDrawerOpen = isOpen || isOpenMatch;
+  let isDrawerOpen = isOpen || isOpenMatch;
   const [filtersQuickViewExpanded, setFiltersQuickViewExpanded] = useState(false);
 
   // onChange functions for when the expansion panel is clicked on:
@@ -107,19 +107,8 @@ const StudentDrawer = ({ isOpenMatch, selected, handleClose, handleOpen, ...prop
       : props.setStudentQuickViewExpanded(true);
   };
 
-  const toggleSidebar = (isDrawerOpen) => {
-    console.log("sidebar prop: " + props.studentSidebar);
-
-    if (props.studentSidebar) {
-      console.log("sidebar prop: " + props.studentSidebar);
-      props.setStudentSidebar(false);
-      console.log("sidebar prop: " + props.studentSidebar);
-    } else {
-      console.log("sidebar prop: " + props.studentSidebar);
-      props.setStudentSidebar(true);
-      console.log("sidebar prop: " + props.studentSidebar);
-
-    }
+  const toggleSidebar = () => {
+    props.studentSidebar ? props.setStudentSidebar(false) : props.setStudentSidebar(true);
   };
 
   const closeSidebar = () => {
@@ -161,15 +150,15 @@ return (
         <NavItemSecondary
           title="Table Filters"
           iconSrc={FilterIcon}
-          // onClick={props.setStudentSidebar(true)}
+          onClick={toggleSidebar}
           isOpen
           isActive={false}
-          sidebarIsOpen={isDrawerOpen}
+          sidebarIsOpen={props.studentSidebar}
         />
       }
       DetailChild={<StudentDrawerFilter {...useListController(props)} />}
       defaultExpanded={isDrawerOpen}
-      expanded={isDrawerOpen && filtersQuickViewExpanded}
+      expanded={props.studentSidebar && filtersQuickViewExpanded}
       onChange={changeFiltersExpansionPanel}
     />
     <ExpansionPanel
@@ -178,7 +167,7 @@ return (
           <NavItemSecondary
             title="Student Quickview"
             iconSrc={PersonIcon}
-            // onClick={props.setStudentSidebar(false)}
+            onClick={toggleSidebar}
             isOpen
             isActive={false}
             sidebarIsOpen={props.studentSidebar}
@@ -187,7 +176,7 @@ return (
       }
       DetailChild={quickview()}
       defaultExpanded={isDrawerOpen}
-      expanded={isDrawerOpen && props.studentQuickViewExpanded}
+      expanded={props.studentSidebar || isOpenMatch && props.studentQuickViewExpanded}
       onChange={changeStudentExpansionPanel}
     />
   </Drawer>
