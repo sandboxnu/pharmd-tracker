@@ -18,7 +18,7 @@ import { STUDENT_QUICKVIEW, STUDENTS_MAIN } from "../../constants/routes";
 // Component Imports
 import AppBar from "../../components/Nav/AppBar";
 import StudentContentGrid from "./StudentContentGrid";
-import StudenttDrawer from "./StudentDrawer";
+import StudentDrawer from "./StudentDrawer";
 
 // Style Imports
 import tw, { styled } from "twin.macro";
@@ -62,7 +62,7 @@ const StudentScreen = props => {
               />
             </MainContent>
 
-            <StudenttDrawer
+            <StudentDrawer
               isOpenMatch={isMatch}
               id={isMatch ? match.params.id : 0}
               handleClose={handleClose}

@@ -28,7 +28,6 @@ const STUDENT_ID_QUERY = `${STUDENT.NEU_ID}_like`;
 //-------------------------- COMPONENT --------------------------
 
 export const StudentFilter = props => {
-  console.log("PROPS FILTER", props);
   // Adds given filter key and value to the redux state filters
   const setFilter = (key, val) => {
     props.setFilters(set(props.filterValues, key, val));
