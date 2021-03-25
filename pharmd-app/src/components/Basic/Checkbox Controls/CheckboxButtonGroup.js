@@ -53,9 +53,10 @@ const CheckboxButtonGroup = props => {
                     checked: checkboxCheckedClass
                   }}
                   className={checkboxClassName}
-                  icon={child.props.icon ? child.props.icon : undefined}
+                  icon={child.props.icon || undefined}
                   checkedIcon={child.props.checkedIcon || undefined}
                   labelPlacement={child.props.checkedIcon || undefined}
+                  onClick={child.props.onclick}
                 />
               )
             });
