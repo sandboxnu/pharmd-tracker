@@ -4,6 +4,12 @@
  * These chips have a close icon that when clicked will remove the respective filter and reset the respective filter
  *     component.
  *
+ * Format of filters:
+ * cohort {current: [] }
+ * gpa_gte: float
+ * gpa_lte: float
+ * international: bool
+ * status: []
  * Date: 03-25-2021
  */
 
@@ -46,11 +52,6 @@ const StudentDisplayFilters = ({
   setStatusCheckedLabels,
   ...props
 }) => {
-  // cohort {current: [] }
-  // gpa_gte: float
-  // gpa_lte: float
-  // international: bool
-  // status: []
   let numStatusFilters = 0;
   let hasGPAFilters = false;
   let numCohortFilters = 0;
