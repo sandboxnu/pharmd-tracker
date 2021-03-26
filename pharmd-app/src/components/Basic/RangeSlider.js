@@ -1,7 +1,23 @@
+/**
+ * Description:
+ * This Component creates a slider.
+ *
+ * Date: 03-25-2021
+ */
+
+// -------------------------- IMPORTS --------------------------
+
+// Function Imports
 import React from "react";
-import Slider from "@material-ui/core/Slider";
 import PropTypes from "prop-types";
+
+// Component Imports
+import Slider from "@material-ui/core/Slider";
+
+// Style Imports
 import { styled } from "twin.macro";
+
+// -------------------------- COMPONENT --------------------------
 
 const Label = styled.div``;
 

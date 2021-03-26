@@ -1,3 +1,11 @@
+/**
+ * Description:
+ * This Component creates a toggleable sidebar panel with Filters to filter student data and a Quick View containing
+ *     information of a student that the user clicked on in the data grid.
+ *
+ * Date: 03-25-2021
+ */
+
 // -------------------------- IMPORTS --------------------------
 
 // Function Imports
@@ -19,6 +27,8 @@ import StudentDrawerFilter from "./StudentDrawerFilter";
 
 // Style Imports
 import tw, { styled } from "twin.macro";
+
+// -------------------------- STYLE --------------------------
 
 const DeatilsButton = styled.button`
   cursor: pointer;
@@ -58,6 +68,8 @@ transition: ${props =>
     /* ${props => (props.open ? tw`w-28` : tw`w-18`)} */
   }
 `;
+
+// -------------------------- COMPONENT --------------------------
 
 const StudentDrawer = ({ isOpenMatch, selected, handleClose, handleOpen, ...props }) => {
   const isOpen = useSelector(state => state.studentSidebarOpen);

@@ -1,3 +1,10 @@
+/**
+ * Description:
+ * This Component creates a multi select drop down / text input to filter options in the drop down.
+ *
+ * Date: 03-25-2021
+ */
+
 // -------------------------- IMPORTS --------------------------
 
 // Function Imports
@@ -5,7 +12,6 @@ import React, { useState } from "react";
 
 // Component Imports
 import AutocompleteMaterial from "@material-ui/lab/Autocomplete";
-import Chip from "@material-ui/core/Chip";
 import TextField from "@material-ui/core/TextField";
 import FilterChip from "./FilterChip";
 

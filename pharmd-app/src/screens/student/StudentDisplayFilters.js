@@ -1,9 +1,10 @@
 /**
  * Description:
- * This Component creates a multi select drop down / text input to filter Student data based on GPA.
- * This component also allows the user to type in the option they are looking for to filter the options.
+ * This Component creates a list of chips to display which student filter is in use.
+ * These chips have a close icon that when clicked will remove the respective filter and reset the respective filter
+ *     component.
  *
- * Date: 03-18-2021
+ * Date: 03-25-2021
  */
 
 // -------------------------- IMPORTS --------------------------
@@ -11,11 +12,11 @@
 import React from "react";
 
 // Component Imports
+import FilterChip from "../../components/Basic/FilterChip";
 
 // Style Imports
 import { withStyles } from "@material-ui/core/styles";
 import tw from "twin.macro";
-import FilterChip from "../../components/Basic/FilterChip";
 
 // -------------------------- STYLE --------------------------
 
