@@ -23,8 +23,13 @@ import tw from "twin.macro";
 const Chip = withStyles({
   root: {
     backgroundColor: "#2B2B90",
+    fontSize: "1rem",
     marginRight: ".3rem",
-    marginBottom: ".3rem"
+    marginBottom: ".3rem",
+    // when clicked or hovered on nothing changes
+    "&:hover, &:focus, &:active": {
+      backgroundColor: "#2B2B90"
+    }
   }
 })(FilterChip);
 
