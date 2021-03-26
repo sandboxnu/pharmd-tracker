@@ -62,7 +62,7 @@ function valuetext(value) {
   return `${value}`;
 }
 
-const GpaSliderInput = ({ classes, setFilter, ...props }) => {
+const GpaSliderInput = ({ classes, setFilter, value, setValue, ...props }) => {
   const {
     meta: { error }
   } = useInput(props);
@@ -87,6 +87,8 @@ const GpaSliderInput = ({ classes, setFilter, ...props }) => {
       setValueText={valuetext}
       sliderClasses={classes}
       step={0.25}
+      value={value}
+      setValue={setValue}
     />
   );
 };

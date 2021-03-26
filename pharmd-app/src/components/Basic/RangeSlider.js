@@ -3,9 +3,7 @@ import Slider from "@material-ui/core/Slider";
 import PropTypes from "prop-types";
 import { styled } from "twin.macro";
 
-const Label = styled.div`
-  
-`;
+const Label = styled.div``;
 
 function valuetext(value) {
   return `${value}`;
@@ -17,18 +15,42 @@ function valuetext(value) {
    onChange after the user lift the mouse press up
 */
 const RangeSlider = props => {
-  const { onChange, setValueText, disabled, max, min, step, className, sliderClasses } = props;
-  const [value, setValue] = React.useState([min, max]);
+  const {
+    onChange,
+    setValueText,
+    disabled,
+    max,
+    min,
+    step,
+    className,
+    sliderClasses,
+    value,
+    setValue
+  } = props;
+
+  let rangeValue;
+  let setRangeValue;
+
+  if (value == null || setValue == null) {
+    // Values were not given
+    [rangeValue, setRangeValue] = React.useState([min, max]);
+  } else {
+    // use the variables givens
+    rangeValue = value;
+    setRangeValue = setValue;
+  }
 
   const handleChange = (event, newValue) => {
-    setValue(newValue);
+    setRangeValue(newValue);
     onChange(event, newValue);
   };
 
   return (
     <div className={className}>
       <span>
-        <h4>{`GPA Range `} <span>{`(${value[0]} - ${value[1]})`}</span></h4>
+        <h4>
+          GPA Range <span>{`(${rangeValue[0]} - ${rangeValue[1]})`}</span>
+        </h4>
       </span>
 
       <Slider
@@ -38,7 +60,7 @@ const RangeSlider = props => {
           thumb: sliderClasses.thumb,
           track: sliderClasses.track
         }}
-        value={value}
+        value={rangeValue}
         onChange={handleChange}
         valueLabelDisplay="auto"
         aria-labelledby="range-slider"
@@ -54,13 +76,13 @@ const RangeSlider = props => {
 
 RangeSlider.propTypes = {
   // Typecheck for function with two arguments
-  onChange: function(props, propName, componentName) {
-    var fn = props[propName];
+  onChange(props, propName, componentName) {
+    const fn = props[propName];
     if (
       !fn.prototype ||
       (typeof fn.prototype.constructor !== "function" && fn.prototype.constructor.length !== 2)
     ) {
-      return new Error(propName + "must be a function with 2 args");
+      return new Error(`${propName}must be a function with 2 args`);
     }
   },
   setValueText: PropTypes.func,

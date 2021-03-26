@@ -34,6 +34,8 @@ const StudentDisplayFilters = ({
   filterValues,
   setFilter,
   setOriginCheckedLabels,
+  rangeValue,
+  setRangeValue,
   ...props
 }) => {
   // cohort {current: [] }
@@ -88,6 +90,7 @@ const StudentDisplayFilters = ({
   const resetGPAValues = () => {
     setFilter("gpa_gte", 0);
     setFilter("gpa_lte", 4);
+    setRangeValue([0, 4]);
   };
 
   return (

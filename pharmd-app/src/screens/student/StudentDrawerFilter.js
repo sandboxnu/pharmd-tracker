@@ -64,6 +64,9 @@ export const StudentDrawerFilter = ({ filterValues, setFilters, ...props }) => {
   //     label to have a border when the checkbox is selected.
   const [originCheckedLabels, setOriginCheckedLabels] = useState([]);
 
+  // used to keep track of the GPA range values
+  const [rangeValue, setRangeValue] = React.useState([0, 4]);
+
   return (
     <Filter {...props}>
       <StudentDisplayFilters
@@ -74,6 +77,8 @@ export const StudentDrawerFilter = ({ filterValues, setFilters, ...props }) => {
 
         originCheckedLabels={originCheckedLabels}
         setOriginCheckedLabels={setOriginCheckedLabels}
+        rangeValue={rangeValue}
+        setRangeValue={setRangeValue}
       />
       <StatusCheckboxInput
         alwaysOn
@@ -90,6 +95,8 @@ export const StudentDrawerFilter = ({ filterValues, setFilters, ...props }) => {
         label="GPA"
         setFilter={setFilter}
         source="gpa_gte"
+        value={rangeValue}
+        setValue={setRangeValue}
       />
       <CohortMultipleSelect
         alwaysOn
