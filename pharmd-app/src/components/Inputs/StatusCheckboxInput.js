@@ -44,14 +44,46 @@ const styles = {
 
 //-------------------------- COMPONENT --------------------------
 
-const StatusCheckboxInput = ({ className, classes, color, label, setFilter, ...props }) => {
+const StatusCheckboxInput = ({ checkedBoxes, className, classes, color, label, setCheckedBoxes, setFilter,  ...props }) => {
   const {
     meta: { error }
   } = useInput(props);
 
-  // adds a status filter on student data
-  const onChange = (event, array) => {
-    setFilter("status", array);
+  let statusCheckedBoxes;
+  let setStatusCheckedBoxes;
+
+  if (checkedBoxes == null || setCheckedBoxes == null) {
+    // Values were not given
+    [statusCheckedBoxes, setStatusCheckedBoxes] = React.useState([min, max]);
+  } else {
+    // use the variables givens
+    statusCheckedBoxes = checkedBoxes;
+    setStatusCheckedBoxes = setCheckedBoxes;
+  }
+
+  // Return a function that accepts an event
+  const createOnClick = item => {
+    return e => {
+      const index = statusCheckedBoxes.indexOf(item);
+      const newCheckedBoxes = [...statusCheckedBoxes];
+      if (index < 0) {
+        // item is not in the list
+        newCheckedBoxes.push(item);
+      } else {
+        // item is already in the list - remove it
+        newCheckedBoxes.splice(index, 1);
+      }
+
+      // after getting the updated list add / remove filters
+      if (newCheckedBoxes.length === 5) {
+        // all of the checkboxes are checked
+        setFilter("status", []);
+      } else {
+        setFilter("status", newCheckedBoxes);
+      }
+
+      setStatusCheckedBoxes(newCheckedBoxes);
+    };
   };
 
   return (
@@ -63,13 +95,43 @@ const StatusCheckboxInput = ({ className, classes, color, label, setFilter, ...p
       color={color}
       error={error}
       label={label}
-      onChange={onChange}
+      // onChange={onChange}
     >
-      <FormControlLabel value="enrolled" label="Enrolled" classes={{ label: classes.label }} />
-      <FormControlLabel value="coop" label="Coop" classes={{ label: classes.label }} />
-      <FormControlLabel value="graduated" label="Graduated" classes={{ label: classes.label }} />
-      <FormControlLabel value="leave" label="Leave" classes={{ label: classes.label }} />
-      <FormControlLabel value="dropback" label="Drop Back" classes={{ label: classes.label }} />
+      <FormControlLabel
+        checked={statusCheckedBoxes.indexOf("enrolled") >= 0}
+        value="enrolled"
+        label="Enrolled"
+        onclick={createOnClick("enrolled")}
+        classes={{ label: classes.label }}
+      />
+      <FormControlLabel
+        checked={statusCheckedBoxes.indexOf("coop") >= 0}
+        value="coop"
+        label="Coop"
+        onclick={createOnClick("coop")}
+        classes={{ label: classes.label }}
+      />
+      <FormControlLabel
+        checked={statusCheckedBoxes.indexOf("graduated") >= 0}
+        value="graduated"
+        label="Graduated"
+        onclick={createOnClick("graduated")}
+        classes={{ label: classes.label }}
+      />
+      <FormControlLabel
+        checked={statusCheckedBoxes.indexOf("leave") >= 0}
+        value="leave"
+        label="Leave"
+        onclick={createOnClick("leave")}
+        classes={{ label: classes.label }}
+      />
+      <FormControlLabel
+        checked={statusCheckedBoxes.indexOf("dropback") >= 0}
+        value="dropback"
+        label="Drop Back"
+        onclick={createOnClick("dropback")}
+        classes={{ label: classes.label }}
+      />
     </CheckboxFilterButtonGroup>
   );
 };

@@ -32,10 +32,12 @@ const Chip = withStyles({
 const StudentDisplayFilters = ({
   deleteFilter,
   filterValues,
+  setAutocompleteInputValue,
+  setAutocompleteValue,
   setFilter,
   setOriginCheckedLabels,
-  rangeValue,
   setRangeValue,
+  setStatusCheckedLabels,
   ...props
 }) => {
   // cohort {current: [] }
@@ -64,6 +66,36 @@ const StudentDisplayFilters = ({
     numStatusFilters = filterValues.status.length;
   }
 
+  // reset filter and filter component functions
+
+  const resetStatusValues = () => {
+    deleteFilter("status");
+    // this state variable is linked to the status filter component
+    setStatusCheckedLabels([]);
+  };
+
+  const resetGPAValues = () => {
+    setFilter("gpa_gte", 0);
+    setFilter("gpa_lte", 4);
+    // this state variable is linked to the GPA filter component
+    setRangeValue([0, 4]);
+  };
+
+  const resetCohortValue = () => {
+    setFilter("cohort[current]", []);
+    // these state variable are linked to the cohort filter component
+    setAutocompleteInputValue("");
+    setAutocompleteValue([]);
+  };
+
+  const resetInternationalValues = () => {
+    // this state variable is linked to the international filter component
+    deleteFilter("international");
+    setOriginCheckedLabels([]);
+  };
+
+  // Create International filter chip
+  // Displays which filter is on: Domestic or International
   const displayInternationalFilter = () => {
     if (internationalFilter != null) {
       let label = "";
@@ -79,18 +111,11 @@ const StudentDisplayFilters = ({
         <Chip
           label={label}
           onDelete={() => {
-            deleteFilter("international");
-            setOriginCheckedLabels([]);
+            resetInternationalValues();
           }}
         />
       );
     }
-  };
-
-  const resetGPAValues = () => {
-    setFilter("gpa_gte", 0);
-    setFilter("gpa_lte", 4);
-    setRangeValue([0, 4]);
   };
 
   return (
@@ -99,7 +124,7 @@ const StudentDisplayFilters = ({
         <Chip
           label={`Status ${numStatusFilters}`}
           onDelete={() => {
-            deleteFilter("status");
+            resetStatusValues();
           }}
         />
       )}
@@ -115,7 +140,7 @@ const StudentDisplayFilters = ({
         <Chip
           label={`Cohort ${numCohortFilters}`}
           onDelete={() => {
-            setFilter("cohort[current]", []);
+            resetCohortValue();
           }}
         />
       )}

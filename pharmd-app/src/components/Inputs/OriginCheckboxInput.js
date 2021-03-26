@@ -79,11 +79,21 @@ const OriginCheckboxInput = props => {
     meta: { error }
   } = useInput(props);
 
-  const { checkedLabels, className, classes, deleteFilter, label, setCheckedLabels, setFilter } = props;
+  const { checkedBoxes, className, classes, deleteFilter, label, setCheckedBoxes, setFilter } = props;
 
   // used to keep track of the international filter to change the style of the
   //     label to have a border when the checkbox is selected.
-  // const [checkedLabels, setCheckedLabels] = useState([]);
+  let originCheckedBoxes;
+  let setOriginCheckedBoxes;
+
+  if (checkedBoxes == null || setCheckedBoxes == null) {
+    // Values were not given
+    [originCheckedBoxes, setOriginCheckedBoxes] = React.useState([min, max]);
+  } else {
+    // use the variables givens
+    originCheckedBoxes = checkedBoxes;
+    setOriginCheckedBoxes = setCheckedBoxes;
+  }
 
   // If both filters are selected, then remove the filter
   const addOriginFilter = newValue => {
@@ -100,30 +110,29 @@ const OriginCheckboxInput = props => {
     }
   };
 
-  const removeOriginFilter = () => {
-    deleteFilter("international");
-  };
-
   // Return a function that accepts an event
   const createOnClick = item => {
     return e => {
-      const index = checkedLabels.indexOf(item);
-      const newCheckedLabels = [...checkedLabels];
+      const index = originCheckedBoxes.indexOf(item);
+      const newCheckedBoxes = [...originCheckedBoxes];
       if (index < 0) {
         // add the item
-        newCheckedLabels.push(item);
+        newCheckedBoxes.push(item);
       } else {
         // remove the item
-        newCheckedLabels.splice(index, 1);
+        newCheckedBoxes.splice(index, 1);
       }
 
-      if (newCheckedLabels.length === 1) {
-        addOriginFilter(item);
+      // after getting the updated list add / remove filters
+      if (newCheckedBoxes.length === 1) {
+        // if there is only one item in the list create a filter for it
+        addOriginFilter(newCheckedBoxes[0]);
       } else {
-        removeOriginFilter();
+        // remove all filters
+        deleteFilter("international");
       }
 
-      setCheckedLabels(newCheckedLabels);
+      setOriginCheckedBoxes(newCheckedBoxes);
     };
   };
 
@@ -137,7 +146,7 @@ const OriginCheckboxInput = props => {
       label={label}
     >
       <FormControlLabel
-        checked={checkedLabels.indexOf("domestic") >= 0}
+        checked={originCheckedBoxes.indexOf("domestic") >= 0}
         value="domestic"
         label="Domestic"
         icon={<DirectionsCarOutlinedIcon fontSize="large" />}
@@ -147,7 +156,7 @@ const OriginCheckboxInput = props => {
         onclick={createOnClick("domestic")}
         classes={
           // if this label has been checked, change styling
-          checkedLabels.indexOf("domestic") > -1
+          originCheckedBoxes.indexOf("domestic") > -1
             ? {
                 root: classes.labelRootChecked,
                 label: classes.label
@@ -159,16 +168,17 @@ const OriginCheckboxInput = props => {
         }
       />
       <FormControlLabel
-        checked={checkedLabels.indexOf("international") >= 0}
+        checked={originCheckedBoxes.indexOf("international") >= 0}
         value="international"
         label="International"
         icon={<FlightOutlinedIcon fontSize="large" />}
         checkedIcon={<FlightOutlinedIcon fontSize="large" />}
         labelPlacement="bottom"
+        // this is not onClick on purpose. onClick will use this function
         onclick={createOnClick("international")}
         classes={
           // if this label has been checked, change styling
-          checkedLabels.indexOf("international") > -1
+          originCheckedBoxes.indexOf("international") > -1
             ? {
                 root: classes.labelRootChecked,
                 label: classes.label

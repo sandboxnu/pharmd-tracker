@@ -62,10 +62,20 @@ export const StudentDrawerFilter = ({ filterValues, setFilters, ...props }) => {
 
   // used to keep track of the international filter to change the style of the
   //     label to have a border when the checkbox is selected.
-  const [originCheckedLabels, setOriginCheckedLabels] = useState([]);
+  const [statusCheckedLabels, setStatusCheckedLabels] = useState([]);
 
   // used to keep track of the GPA range values
   const [rangeValue, setRangeValue] = React.useState([0, 4]);
+
+  // Autocomplete state values
+  // the state to keep track of text that is typed into the input text field
+  const [autocompleteInputValue, setAutocompleteInputValue] = useState("");
+  // the state the keep track of the options that have been selected (this is an array object)
+  const [autocompleteValue, setAutocompleteValue] = useState([]);
+
+  // used to keep track of the international filter to change the style of the
+  //     label to have a border when the checkbox is selected.
+  const [originCheckedLabels, setOriginCheckedLabels] = useState([]);
 
   return (
     <Filter {...props}>
@@ -73,19 +83,23 @@ export const StudentDrawerFilter = ({ filterValues, setFilters, ...props }) => {
         alwaysOn
         deleteFilter={deleteFilter}
         filterValues={filterValues}
-        setFilter={setFilter}
-
         originCheckedLabels={originCheckedLabels}
-        setOriginCheckedLabels={setOriginCheckedLabels}
         rangeValue={rangeValue}
+        setAutocompleteInputValue={setAutocompleteInputValue}
+        setAutocompleteValue={setAutocompleteValue}
+        setFilter={setFilter}
+        setOriginCheckedLabels={setOriginCheckedLabels}
         setRangeValue={setRangeValue}
+        setStatusCheckedLabels={setStatusCheckedLabels}
       />
       <StatusCheckboxInput
         alwaysOn
+        checkedBoxes={statusCheckedLabels}
         className={classes.formControl}
         color="primary"
         deleteFilter={deleteFilter}
         label="Status"
+        setCheckedBoxes={setStatusCheckedLabels}
         setFilter={setFilter}
         source="status"
       />
@@ -102,17 +116,21 @@ export const StudentDrawerFilter = ({ filterValues, setFilters, ...props }) => {
         alwaysOn
         className={classes.formControl}
         deleteFilter={deleteFilter}
+        inputValue={autocompleteInputValue}
         label="Cohort"
         setFilter={setFilter}
+        setInputValue={setAutocompleteInputValue}
+        setValue={setAutocompleteValue}
         source="cohort"
+        value={autocompleteValue}
       />
       <OriginCheckboxInput
         alwaysOn
-        checkedLabels={originCheckedLabels}
+        checkedBoxes={originCheckedLabels}
         className={classes.formControl}
         deleteFilter={deleteFilter}
         label="Origin"
-        setCheckedLabels={setOriginCheckedLabels}
+        setCheckedBoxes={setOriginCheckedLabels}
         setFilter={setFilter}
         source="international"
       />

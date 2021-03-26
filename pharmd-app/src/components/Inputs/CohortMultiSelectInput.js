@@ -96,7 +96,7 @@ const styles = {
 
 // -------------------------- COMPONENT --------------------------
 
-const CohortMultipleSelect = ({ classes, className, label, setFilter, ...props }) => {
+const CohortMultipleSelect = ({ classes, className, inputValue, label, setFilter, setInputValue, setValue, value, ...props }) => {
   const {
     meta: { error }
   } = useInput(props);
@@ -138,12 +138,16 @@ const CohortMultipleSelect = ({ classes, className, label, setFilter, ...props }
       <Autocomplete
         classes={classes}
         inputClassName={classes.input}
+        inputValue={inputValue}
         isOptionSelected={isCohortSelected}
         tagClassName={classes.tag}
         onChange={cohortMultiSelect}
         options={cohortList}
-        popupIcon={<ExpandMoreIcon fontSize="large" tw="text-black" />}
         placeholder="Add Item"
+        popupIcon={<ExpandMoreIcon fontSize="large" tw="text-black" />}
+        setInputValue={setInputValue}
+        setValue={setValue}
+        value={value}
       />
     </div>
   );

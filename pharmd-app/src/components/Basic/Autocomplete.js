@@ -15,30 +15,54 @@ const Autocomplete = props => {
   const {
     classes,
     inputClassName,
+    inputValue,
     isOptionSelected,
     label,
     onChange,
     options,
     placeholder,
     popupIcon,
-    tagClassName
+    setInputValue,
+    setValue,
+    tagClassName,
+    value
   } = props;
 
   // the state to keep track of text that is typed into the input text field
-  const [inputValue, setInputValue] = useState("");
+  let autocompleteInputValue;
+  let setAutocompleteInputValue;
+
+  if (inputValue == null || setInputValue == null) {
+    // Values were not given
+    [autocompleteInputValue, setAutocompleteInputValue] = useState("");
+  } else {
+    // use the variables givens
+    autocompleteInputValue = inputValue;
+    setAutocompleteInputValue = setInputValue;
+  }
 
   // the state the keep track of the options that have been selected (this is an array object)
-  const [value, setValue] = useState([]);
+  let autocompleteValue;
+  let setAutocompleteValue;
+
+  if (value == null || setValue == null) {
+    // Values were not given
+    [autocompleteValue, setAutocompleteValue] = useState([]);
+  } else {
+    // use the variables givens
+    autocompleteValue = value;
+    setAutocompleteValue = setValue;
+  }
 
   // updates the list of tags that have been added
   const onChangeFunc = (event, newValue) => {
-    setValue(newValue);
+    setAutocompleteValue(newValue);
     onChange(event, newValue);
   };
 
   // display placeholder only if there are no lists added or if there is no text input
   const placeholderOutput = () => {
-    if (value != null && value.length > 0) {
+    if (autocompleteValue != null && autocompleteValue.length > 0) {
       return undefined;
     }
     return placeholder;
@@ -46,11 +70,11 @@ const Autocomplete = props => {
 
   return (
     <AutocompleteMaterial
-      value={value}
+      value={autocompleteValue}
       onChange={onChangeFunc}
-      inputValue={inputValue}
+      inputValue={autocompleteInputValue}
       onInputChange={(event, newInputValue) => {
-        setInputValue(newInputValue);
+        setAutocompleteInputValue(newInputValue);
       }}
       classes={{
         root: classes.root,
@@ -59,7 +83,7 @@ const Autocomplete = props => {
         noOptions: classes.noOptions,
         option: classes.option,
         paper: classes.paper,
-        popper: classes.popper,
+        popper: classes.popper
       }}
       disableCloseOnSelect
       getOptionLabel={option => option.label}
@@ -71,7 +95,7 @@ const Autocomplete = props => {
         <TextField
           {...params}
           className={inputClassName}
-          value={inputValue}
+          value={autocompleteInputValue}
           variant="outlined"
           label={label}
           placeholder={placeholderOutput()}
@@ -80,11 +104,7 @@ const Autocomplete = props => {
       )}
       renderTags={(tagValue, getTagProps) => {
         return tagValue.map((option, index) => (
-            <FilterChip
-                {...getTagProps(index)}
-                className={tagClassName}
-                label={option.label}
-            />
+          <FilterChip {...getTagProps(index)} className={tagClassName} label={option.label} />
         ));
       }}
     />
