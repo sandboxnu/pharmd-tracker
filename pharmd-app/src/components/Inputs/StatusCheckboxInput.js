@@ -7,7 +7,7 @@
  * Date: 02-18-2021
  */
 
-//-------------------------- IMPORTS --------------------------
+// -------------------------- IMPORTS --------------------------
 
 // Function Imports
 import React from "react";
@@ -15,13 +15,13 @@ import { useInput } from "react-admin";
 
 // Component Imports
 import FormControlLabel from "@material-ui/core/FormControlLabel";
-import CheckboxFilterButtonGroup from "../Basic/Checkbox Controls/CheckboxFilterButtonGroup";
 
 // Style Imports
 import { withStyles } from "@material-ui/core/styles";
 import { blue } from "@material-ui/core/colors";
+import CheckboxFilterButtonGroup from "../Basic/Checkbox Controls/CheckboxFilterButtonGroup";
 
-//-------------------------- STYLE --------------------------
+// -------------------------- STYLE --------------------------
 // Use styles to make the label change when the checkbox is checked
 const styles = {
   checked: {
@@ -42,15 +42,34 @@ const styles = {
   }
 };
 
-//-------------------------- COMPONENT --------------------------
+// -------------------------- COMPONENT --------------------------
 
-const StatusCheckboxInput = ({ checkedBoxes, className, classes, color, label, setCheckedBoxes, setFilter,  ...props }) => {
+const StatusCheckboxInput = ({
+  checkedBoxes,
+  className,
+  classes,
+  color,
+  label,
+  setCheckedBoxes,
+  setFilter,
+  ...props
+}) => {
   const {
     meta: { error }
   } = useInput(props);
 
   let statusCheckedBoxes;
   let setStatusCheckedBoxes;
+
+  // Contains a list of tuples: (String: value, String: label)
+  const formControlLabels = [
+    ["enrolled", "Enrolled"],
+    ["coop", "Co Op"],
+    ["graduated", "Graduated"],
+    ["leave", "Leave"],
+    ["dropback", "Drop Back"]
+  ];
+  console.log(`Form control labels: ${formControlLabels}`);
 
   if (checkedBoxes == null || setCheckedBoxes == null) {
     // Values were not given
@@ -95,43 +114,18 @@ const StatusCheckboxInput = ({ checkedBoxes, className, classes, color, label, s
       color={color}
       error={error}
       label={label}
-      // onChange={onChange}
     >
-      <FormControlLabel
-        checked={statusCheckedBoxes.indexOf("enrolled") >= 0}
-        value="enrolled"
-        label="Enrolled"
-        onclick={createOnClick("enrolled")}
-        classes={{ label: classes.label }}
-      />
-      <FormControlLabel
-        checked={statusCheckedBoxes.indexOf("coop") >= 0}
-        value="coop"
-        label="Coop"
-        onclick={createOnClick("coop")}
-        classes={{ label: classes.label }}
-      />
-      <FormControlLabel
-        checked={statusCheckedBoxes.indexOf("graduated") >= 0}
-        value="graduated"
-        label="Graduated"
-        onclick={createOnClick("graduated")}
-        classes={{ label: classes.label }}
-      />
-      <FormControlLabel
-        checked={statusCheckedBoxes.indexOf("leave") >= 0}
-        value="leave"
-        label="Leave"
-        onclick={createOnClick("leave")}
-        classes={{ label: classes.label }}
-      />
-      <FormControlLabel
-        checked={statusCheckedBoxes.indexOf("dropback") >= 0}
-        value="dropback"
-        label="Drop Back"
-        onclick={createOnClick("dropback")}
-        classes={{ label: classes.label }}
-      />
+      {formControlLabels.map(([formControlValue, formControlLabel]) => {
+        return (
+          <FormControlLabel
+            checked={statusCheckedBoxes.indexOf(formControlValue) >= 0}
+            value={formControlValue}
+            label={formControlLabel}
+            onclick={createOnClick(formControlValue)}
+            classes={{ label: classes.label }}
+          />
+        );
+      })}
     </CheckboxFilterButtonGroup>
   );
 };
