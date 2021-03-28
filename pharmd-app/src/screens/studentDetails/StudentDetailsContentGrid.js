@@ -12,6 +12,7 @@ import { useSelector } from "react-redux";
 import { Show, Tab, TabbedShowLayout } from "react-admin";
 
 import StudentCourseList from "./StudentCourseList";
+import StudentExamList from "./StudentExamList";
 
 const MainGrid = styled(Grid)`
   ${tw`pt-12 `}
@@ -38,6 +39,9 @@ const StudentDetailsContentGrid = ({ record }) => {
           <TabbedShowLayout>
             <Tab label="Courses">
               <StudentCourseList />
+            </Tab>
+            <Tab label="Exams" path="exams">
+              <StudentExamList />
             </Tab>
           </TabbedShowLayout>
         </Show>

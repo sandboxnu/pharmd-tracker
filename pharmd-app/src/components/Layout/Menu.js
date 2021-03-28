@@ -10,7 +10,8 @@ import NavIndicator from "../Nav/NavIndicator";
 const Menu = ({ onMenuClick, logout, ...props }) => {
   const location = props.location.pathname;
   const { permissions } = usePermissions();
-  let resources = useSelector(getResources);
+  const hiddenResources = ["studentCourses", "studentExams"];
+  let resources = useSelector(getResources).filter(val => !hiddenResources.includes(val.name));
   if (permissions === "user") {
     resources = resources.filter(val => val.name !== "upload");
   }
@@ -18,8 +19,8 @@ const Menu = ({ onMenuClick, logout, ...props }) => {
 
   const getCurrentIndex = () => {
     // TEMPORARY SOLUTION WILL FIND A BETTER ONE THAT RELOADS ONLY IF NEEDE
-    const curentIndex = flat.indexOf(location.split("/")[1]);
-    return curentIndex;
+    const currentIndex = flat.indexOf(location.split("/")[1]);
+    return currentIndex;
   };
 
   return (
