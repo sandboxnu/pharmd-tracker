@@ -1,17 +1,19 @@
 import React from 'react'
-import GridCard from "../../components/Basic/GridCard";
+import GridCard from "../Basic/GridCard";
 import tw, { styled } from "twin.macro";
 import PropTypes from 'prop-types';
 import MuiPaper from "@material-ui/core/Paper";
 import Grid from "@material-ui/core/Grid";
-import ChipField from "../../components/Fields/ChipField";
-import NoteIcon from "../../components/Basic/NoteIcon";
+import ChipField from "./ChipField";
+import NoteIcon from "../Basic/NoteIcon";
 import EditIcon from "@material-ui/icons/EditOutlined";
 import Button from '@material-ui/core/Button';
 import IconButton from '@material-ui/core/IconButton';
+import {NOTE} from "../../constants/apiObjects";
 
 const CardRoot = styled.div`
     flex-grow: 1;
+    margin: 15px;
 `
 
 const Paper = styled(MuiPaper)`
@@ -50,7 +52,13 @@ const NoteEdit = styled.span`
     top: 5
 `
 
-const StudentNoteBox = ({id, date, title, body, tags}) => {
+const NoteBoxField = ({ record, source }) => {
+    const id = record[NOTE.ID];
+    const title = record[NOTE.TITLE];
+    const body = record[NOTE.BODY];
+    const tags = record[NOTE.TAGS];
+    const date = new Date(record[NOTE.DATE]).toLocaleDateString();
+
     return (
         <CardRoot>
             <Paper>
@@ -69,7 +77,7 @@ const StudentNoteBox = ({id, date, title, body, tags}) => {
                     </Grid>
                     {/*Date*/}
                     <Grid item>
-                        <NoteDate>{date.toDateString()}</NoteDate>
+                        <NoteDate>{date}</NoteDate>
                     </Grid>
                     {/*Tags*/}
                     <Grid item xs>
@@ -87,30 +95,7 @@ const StudentNoteBox = ({id, date, title, body, tags}) => {
                 </Grid>
             </Paper>
         </CardRoot>
-
-
-        // <Paper isShrunk={false}>
-        //     <NoteTitle>{title}</NoteTitle>
-        //     <NoteDate>{date.toDateString()}</NoteDate>
-        //     <NoteContent>{body}</NoteContent>
-        // </Paper>
     )
 }
 
-StudentNoteBox.propTypes = {
-    id: PropTypes.string,
-    date: PropTypes.instanceOf(Date),
-    title: PropTypes.string,
-    body: PropTypes.string,
-    tags: PropTypes.arrayOf(PropTypes.string)
-}
-
-StudentNoteBox.defaultProps = {
-    id: "",
-    date: new Date(),
-    title: "",
-    body: "",
-    tags: []
-}
-
-export default StudentNoteBox;
+export default NoteBoxField;
