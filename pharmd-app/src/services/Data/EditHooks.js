@@ -9,16 +9,14 @@
  * @return {{edit: (function(*=, *=): *)}}
  */
 export default (httpClient, BACKEND_URL) => ({
-    edit: (resource, params) => {
-        console.log("editing...", resource, params)
-        return httpClient(`${BACKEND_URL}/${resource}`, {
-            method: "PUT",
-            body: JSON.stringify(params.data)
-        }).then(({json}) => {
-            console.log(json)
-            return ({
-                data: {...params.data, id: json.id}
-            });
-        });
-    },
-})
+  edit: (resource, params) => {
+    return httpClient(`${BACKEND_URL}/${resource}`, {
+      method: "PUT",
+      body: JSON.stringify(params.data)
+    }).then(({ json }) => {
+      return {
+        data: { ...params.data, id: json.id }
+      };
+    });
+  }
+});

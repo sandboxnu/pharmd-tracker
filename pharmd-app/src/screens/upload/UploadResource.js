@@ -1,4 +1,4 @@
-import React, { useCallback, Fragment } from "react";
+import React from "react";
 
 import tw, { styled } from "twin.macro";
 
@@ -12,12 +12,12 @@ const MainContent = styled.div`
 
 const UploadScreen = props => {
   return (
-    <Fragment>
+    <>
       <MainContent>
         <AppBar title="Upload" />
         <SpreadsheetUploader />
       </MainContent>
-    </Fragment>
+    </>
   );
 };
 

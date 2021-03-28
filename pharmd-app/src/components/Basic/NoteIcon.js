@@ -1,6 +1,6 @@
 import React from "react";
 import SvgIcon from "@material-ui/core/SvgIcon";
-import { styled, css } from "twin.macro";
+import { css, styled } from "twin.macro";
 
 const SVG = styled(SvgIcon)`
     vertical-align: middle;
@@ -16,22 +16,22 @@ const SVG = styled(SvgIcon)`
       color: black;
     `}
     
-    ${props => props.primary && css`
-    margin-left: auto;
-    `}
+    ${props =>
+      props.primary &&
+      css`
+        margin-left: auto;
+      `}
 `;
 
 const NoteIcon = ({ src, color = "inherit", size, htmlColor, isPrimary }) => {
-    // Conditional logic to determine props to pass down
+  const inputProps = {
+    component: src,
+    htmlColor: htmlColor || undefined,
+    color: htmlColor ? undefined : color
+  };
 
-    var inputProps = {
-        component: src,
-        htmlColor: htmlColor ? htmlColor : undefined,
-        color: htmlColor ? undefined : color
-    };
-
-    // spread declaration to add props
-    return <SVG primary={isPrimary} component={src} fontSize={size} {...inputProps}></SVG>;
+  // spread declaration to add props
+  return <SVG primary={isPrimary} component={src} fontSize={size} {...inputProps} />;
 };
 
 export default NoteIcon;

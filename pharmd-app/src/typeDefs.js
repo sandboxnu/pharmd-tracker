@@ -7,7 +7,7 @@
  *     studentName: string
  *     courseTerm: string | null
  * }}
- **/
+ * */
 export class BasicStudentAssessment {}
 
 /**

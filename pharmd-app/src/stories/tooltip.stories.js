@@ -1,7 +1,6 @@
 import React from "react";
-import { withKnobs, select, text } from "@storybook/addon-knobs";
+import { select, text, withKnobs } from "@storybook/addon-knobs";
 import Tooltip from "../components/Basic/Tooltip";
-import tw from "twin.macro";
 
 export default {
   title: "Tooltip",
@@ -18,7 +17,6 @@ const options = {
 };
 const defaultValue = "right";
 const groupId = "GROUP-ID1";
-const value = select(label, options, defaultValue, groupId);
 
 const labelText = "Title(Label)";
 const defaultValueText = "Title";

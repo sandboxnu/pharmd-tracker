@@ -5,11 +5,11 @@
 
 import React from "react";
 
-import tw, {styled} from "twin.macro";
+import tw, { styled } from "twin.macro";
 import Paper from "@material-ui/core/Paper";
 import Grid from "@material-ui/core/Grid";
-import {useSelector} from "react-redux";
-import {Show, Tab, TabbedShowLayout} from "react-admin";
+import { useSelector } from "react-redux";
+import { Show, Tab, TabbedShowLayout } from "react-admin";
 
 import StudentCourseList from "./StudentCourseList";
 
@@ -34,14 +34,10 @@ const StudentDetailsContentGrid = ({ record }) => {
         </Grid>
       </Grid>
       <Grid item xs={12}>
-        <Show
-          resource={'students'}
-          basePath={`/students/${record.id}/details`}
-          id={record.id}
-        >
+        <Show resource="students" basePath={`/students/${record.id}/details`} id={record.id}>
           <TabbedShowLayout>
-            <Tab label={'Courses'}>
-              <StudentCourseList/>
+            <Tab label="Courses">
+              <StudentCourseList />
             </Tab>
           </TabbedShowLayout>
         </Show>

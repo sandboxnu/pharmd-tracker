@@ -1,5 +1,5 @@
 // Add authorization token to each request
-import {fetchUtils} from "react-admin";
+import { fetchUtils } from "react-admin";
 
 /**
  * Wrapper for React Admin HTTP JSON fetcher, adding headers and token to each request
@@ -8,10 +8,10 @@ import {fetchUtils} from "react-admin";
  * @return {Promise}
  */
 export default (url, options = {}) => {
-    if (!options.headers) {
-        options.headers = new Headers({ Accept: "application/json" });
-    }
-    const token = localStorage.getItem("token");
-    options.headers.set("Authorization", `Bearer ${token}`);
-    return fetchUtils.fetchJson(url, options);
+  if (!options.headers) {
+    options.headers = new Headers({ Accept: "application/json" });
+  }
+  const token = localStorage.getItem("token");
+  options.headers.set("Authorization", `Bearer ${token}`);
+  return fetchUtils.fetchJson(url, options);
 };

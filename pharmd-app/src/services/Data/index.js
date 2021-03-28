@@ -12,9 +12,9 @@ import CreateHooks from "./CreateHooks";
 // const BACKEND_URL = FAKE_API;
 
 export default {
-    ...GetHooks(httpClient, BACKEND_URL),
-    ...CreateHooks(httpClient, BACKEND_URL),
-    ...EditHooks(httpClient, BACKEND_URL),
-    ...UpdateHooks(httpClient, BACKEND_URL),
-    ...DeleteHooks(httpClient, BACKEND_URL)
+  ...GetHooks(httpClient, BACKEND_URL),
+  ...CreateHooks(httpClient, BACKEND_URL),
+  ...EditHooks(httpClient, BACKEND_URL),
+  ...UpdateHooks(httpClient, BACKEND_URL),
+  ...DeleteHooks(httpClient, BACKEND_URL)
 };

@@ -15,7 +15,7 @@ const ScoredListItemSkeleton = ({ variant = "primary", ...rest }) => {
   return (
     <ListItem {...rest}>
       <ListItemIcon>
-        <Skeleton variant="circle" width={"24px"} height={"24px"} />
+        <Skeleton variant="circle" width="24px" height="24px" />
       </ListItemIcon>
       <ListItemText
         primary={<Skeleton variant="text" width="75%" />}

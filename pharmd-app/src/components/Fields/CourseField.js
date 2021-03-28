@@ -1,17 +1,18 @@
 import React from "react";
-import tw, { styled, css } from "twin.macro";
+import tw, { css, styled } from "twin.macro";
 
 const Info = styled.div`
   ${tw`fontStyle-6 text-black font-medium inline-flex`}
   width: 100%;
   margin-top: 10px;
   padding-bottom: 10px;
-  border-bottom: 1px solid #DCDCDC;
-  font-size: .89em;
-  
-  ${props => props.primary && css`
-    border-bottom: 0px;
-  `}
+  border-bottom: 1px solid #dcdcdc;
+  font-size: 0.89em;
+  ${props =>
+    props.primary &&
+    css`
+      border-bottom: 0px;
+    `}
 `;
 
 const Name = styled.div`
@@ -35,14 +36,13 @@ const Circle = styled.span`
 `;
 
 const CourseField = ({ name, grade, isLine }) => {
-
-    return (
-        <Info primary={isLine}>
-          <Circle />
-          <Name>{name}</Name>
-          <Grade>{grade + '%'}</Grade>
-        </Info>
-    );
+  return (
+    <Info primary={isLine}>
+      <Circle />
+      <Name>{name}</Name>
+      <Grade>{`${grade}%`}</Grade>
+    </Info>
+  );
 };
 
 export default CourseField;

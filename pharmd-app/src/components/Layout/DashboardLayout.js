@@ -1,31 +1,13 @@
-/**
- * Description:
- * TODO:
- * Date: 04-26-2020
- */
-
-//-------------------------- IMPORTS --------------------------
+// -------------------------- IMPORTS --------------------------
 
 // Function Imports
-// in src/MyLayout.js
-import React, { useEffect, useRef } from "react";
-import PropTypes from "prop-types";
-import { useSelector, useDispatch } from "react-redux";
+import React from "react";
 
 // Style Imports
-import tw, { theme, css } from "twin.macro";
+import tw from "twin.macro";
 import { makeStyles } from "@material-ui/core/styles";
-// import { ThemeProvider } from "@material-ui/styles";
-import {
-  //   Menu,
-  Notification,
-  Sidebar,
-  setSidebarVisibility,
-  ComponentPropType,
-  Layout
-} from "react-admin";
+import { Layout, Notification, Sidebar } from "react-admin";
 import Menu from "./Menu";
-import AppBar from "../Nav/AppBar";
 
 const MyAppBar = props => <></>;
 
@@ -63,7 +45,6 @@ const MySidebar = props => {
 };
 
 const DashboardLayout = props => {
-  console.log("Notification", Notification);
   return (
     <Layout
       {...props}

@@ -1,58 +1,58 @@
 import React from "react";
-import { Filter as FilterRA, NumberInput } from "react-admin";
-import GpaSliderInput from "../../components/Inputs/GpaSliderInput";
+import { Filter as FilterRA } from "react-admin";
 import set from "lodash/set";
+import { blue } from "@material-ui/core/colors";
+import { makeStyles } from "@material-ui/core/styles";
+import { styled } from "twin.macro";
+import GpaSliderInput from "../../components/Inputs/GpaSliderInput";
 import OriginRadioInput from "../../components/Inputs/OriginRadioInput";
 import StatusCheckboxInput from "../../components/Inputs/StatusCheckboxInput";
-import MultipleSelect from "../../components/Basic/MultiSelect";
 import CohortMultipleSelect from "../../components/Inputs/CohortMultiSelectInput";
-import CheckboxButton from "../../components/Basic/Checkbox Controls/CheckboxButton";
-import { blue } from '@material-ui/core/colors';
-import { makeStyles, withStyles } from '@material-ui/core/styles'
-import { styled } from "twin.macro";
 
 // Use this to style components within a filter
 
-const useStyles = makeStyles((theme) => ({
+const useStyles = makeStyles(theme => ({
   // general formControl Styling
   formControl: {
-    margin: '2rem 0 0 0',
-    '& legend': {
-      color: 'black',
-      fontWeight: '650',
-      fontSize: '1.1rem',
-      fontFamily: 'Montserrat-SemiBold, Montserrat-Bold, Inter-Medium, Inter-SemiBold, Inter-Regular, Inter-Bold, sans-serif',
-    },
+    margin: "2rem 0 0 0",
+    "& legend": {
+      color: "black",
+      fontWeight: "650",
+      fontSize: "1.1rem",
+      fontFamily:
+        "Montserrat-SemiBold, Montserrat-Bold, Inter-Medium, Inter-SemiBold, Inter-Regular, Inter-Bold, sans-serif"
+    }
   },
   // rangSlider styling
   rangeSlider: {
-    margin: '2rem 0 0 0',
+    margin: "2rem 0 0 0",
     width: 300,
-    '& h4': {
-      margin: '0 0 1.33em 0',
-      color: 'black',
-      fontWeight: '650',
-      fontSize: '1.1rem',
-      fontFamily: 'Montserrat-SemiBold, Montserrat-Bold, Inter-Medium, Inter-SemiBold, Inter-Regular, Inter-Bold, sans-serif',
-      '& span': {
+    "& h4": {
+      margin: "0 0 1.33em 0",
+      color: "black",
+      fontWeight: "650",
+      fontSize: "1.1rem",
+      fontFamily:
+        "Montserrat-SemiBold, Montserrat-Bold, Inter-Medium, Inter-SemiBold, Inter-Regular, Inter-Bold, sans-serif",
+      "& span": {
         color: blue[700],
-        fontSize: '1rem',
+        fontSize: "1rem"
       }
-    },
+    }
   },
   // checkbox styling
   checkboxButton: {
     color: blue[700],
-    '&$checked': {
-      color: blue[700],
-    },
-  },
+    "&$checked": {
+      color: blue[700]
+    }
+  }
 }));
 // Checkbox styling
 
 const Filter = styled(FilterRA)`
   display: block;
-` ;
+`;
 
 export const StudentDrawerFilter = props => {
   console.log("FILTER DRAWER PROPS", props.filterValues);
@@ -71,8 +71,8 @@ export const StudentDrawerFilter = props => {
 
   const searchGpaRange = (event, newValue) => {
     if (newValue) {
-      let gpaMin = newValue[0];
-      let gpaMax = newValue[1];
+      const gpaMin = newValue[0];
+      const gpaMax = newValue[1];
       setFilter("gpa", [gpaMin, gpaMax]);
     }
   };
@@ -109,7 +109,7 @@ export const StudentDrawerFilter = props => {
 
       <StatusCheckboxInput
         label="Status"
-        source={"status"}
+        source="status"
         onChange={statusCheckbox}
         color="primary"
         className={classes.formControl}
@@ -118,21 +118,21 @@ export const StudentDrawerFilter = props => {
       />
       <GpaSliderInput
         label="GPA"
-        source={"gpa"}
+        source="gpa"
         onChange={searchGpaRange}
         className={classes.rangeSlider}
         alwaysOn
       />
       <CohortMultipleSelect
         label="Cohort"
-        source={"gradDate"}
+        source="gradDate"
         onChange={cohortMultiSelect}
         className={classes.formControl}
         alwaysOn
       />
       <OriginRadioInput
         label="Origin"
-        source={"hasVisa"}
+        source="hasVisa"
         onChange={originRadio}
         className={classes.formControl}
         alwaysOn
