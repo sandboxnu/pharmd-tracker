@@ -29,23 +29,6 @@ class UploadDataFieldChooser extends Component {
     this.handleConfirm = this.handleConfirm.bind(this);
   }
 
-  // initializeState(props) {
-  //   console.log(props)
-  //   const stateMap = new Map();
-  //   for (let header of props.headers) {
-  //     stateMap.set(header, FileUploadService.gradeInputTypes.UNUSED)
-  //   }
-  //   for (let header of props.headers) {
-  //     if (header.includes("Student"))
-  //       stateMap.set(header, FileUploadService.gradeInputTypes.STUDENT_NAME)
-  //
-  //     if (header.includes("Exam"))
-  //       stateMap.set(header, FileUploadService.gradeInputTypes.EXAM)
-  //   }
-  //   console.log(stateMap)
-  //   return stateMap;
-  // }
-
   /**
    * Handles the selecting of an element from a dropdown menu
    * @param value {Array}

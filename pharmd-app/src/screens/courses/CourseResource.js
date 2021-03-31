@@ -1,4 +1,4 @@
-import React, { useCallback, Fragment } from "react";
+import React from "react";
 
 import tw, { styled } from "twin.macro";
 
@@ -11,11 +11,11 @@ const MainContent = styled.div`
 
 const CourseResource = props => {
   return (
-    <Fragment>
+    <>
       <MainContent>
         <AppBar title="Courses" />
       </MainContent>
-    </Fragment>
+    </>
   );
 };
 

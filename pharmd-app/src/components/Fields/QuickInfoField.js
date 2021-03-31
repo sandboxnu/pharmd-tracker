@@ -30,7 +30,7 @@ const QuickInfoField = ({ record = {}, source }) => {
     return <Loading />;
   }
   if (error) {
-    return  <p>Error, id: {id} is not found</p>;
+    return <p>Error, id: {id} is not found</p>;
   }
   return (
     <Info>

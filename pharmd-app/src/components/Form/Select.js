@@ -9,8 +9,8 @@ const StyledFormControl = styled(FormControl)`
 `;
 
 /**
- * @class CustomSelect a component for creating an easy select menu
- */
+* @class CustomSelect a component for creating an easy select menu
+*/
 class CustomSelect extends React.Component {
     static propTypes = {
         title: PropTypes.string,
@@ -35,9 +35,6 @@ class CustomSelect extends React.Component {
         this.handleOnChange = this.handleOnChange.bind(this);
     }
 
-    /**
-     * Responds to changes of the currently selected item
-     */
     handleOnChange($event) {
         const newVal = $event.target.value;
         this.setState({

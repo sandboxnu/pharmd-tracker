@@ -1,6 +1,5 @@
 import React from "react";
 import tw, { styled } from "twin.macro";
-import { useGetOne } from "react-admin";
 import NoteField from "./NoteField";
 
 const Label = styled.h1`
@@ -14,17 +13,14 @@ const Notes = styled.div`
   margin-top: 12px;
 `;
 
-
-const NoteListField = ({ record = {}, source }) => {
-    let notes = record[source];
-
-    return (
-        <Notes>
-            <Label>Recent Notes</Label>
-            <NoteField />
-            <NoteField />
-        </Notes>
-    );
+const NoteListField = () => {
+  return (
+    <Notes>
+      <Label>Recent Notes</Label>
+      <NoteField />
+      <NoteField />
+    </Notes>
+  );
 };
 
 export default NoteListField;

@@ -5,7 +5,7 @@
  * Date: 04-23-2020
  */
 
-//-------------------------- IMPORTS --------------------------
+// -------------------------- IMPORTS --------------------------
 
 // Function Imports
 import React from "react";
@@ -13,9 +13,10 @@ import React from "react";
 // Component Imports
 import Checkbox from '@material-ui/core/Checkbox';
 
-//-------------------------- COMPONENT --------------------------
+// -------------------------- COMPONENT --------------------------
 const CheckboxButton = props => {
   return <Checkbox disableRipple color="default" {...props} />;
 };
 
 export default CheckboxButton;
+

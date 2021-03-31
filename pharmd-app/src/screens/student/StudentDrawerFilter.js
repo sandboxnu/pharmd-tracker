@@ -14,15 +14,15 @@ import { Filter as FilterRA } from "react-admin";
 import set from "lodash/set";
 
 // Component Imports
-import { makeStyles } from "@material-ui/core/styles";
-import { styled } from "twin.macro";
-import GpaSliderInput from "../../components/Inputs/GpaSliderInput";
-import StatusCheckboxInput from "../../components/Inputs/StatusCheckboxInput";
 import CohortMultipleSelect from "../../components/Inputs/CohortMultiSelectInput";
+import GpaSliderInput from "../../components/Inputs/GpaSliderInput";
 import OriginCheckboxInput from "../../components/Inputs/OriginCheckboxInput";
+import StatusCheckboxInput from "../../components/Inputs/StatusCheckboxInput";
+import StudentDisplayFilters from "./StudentDisplayFilters";
 
 // Style Imports
-import StudentDisplayFilters from "./StudentDisplayFilters";
+import { makeStyles } from "@material-ui/core/styles";
+import { styled } from "twin.macro";
 
 // -------------------------- STYLE --------------------------
 

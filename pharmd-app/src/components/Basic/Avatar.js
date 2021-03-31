@@ -17,18 +17,22 @@ const PictureStyled = styled(AvatarMaterial)`
   width: 120px;
   margin-left: auto;
   margin-right: auto;
-`
+`;
 
 const Avatar = ({ firstName, lastName, imgUrl }) => {
   if (imgUrl) {
-    let fullName = firstName + " " + lastName;
-    return <PictureStyled alt={fullName} src={imgUrl}/>;
-  } else if (firstName) {
-    let initials = firstName.charAt(0) + `${lastName ? lastName.charAt(0) : ""}`;
-    return <AvatarStyled>{initials}</AvatarStyled>;
-  } else {
-    return <AvatarStyled><Icon src={Person} /></AvatarStyled>;
+    const fullName = `${firstName} ${lastName}`;
+    return <PictureStyled alt={fullName} src={imgUrl} />;
   }
+  if (firstName) {
+    const initials = `${firstName.charAt(0)}${lastName ? lastName.charAt(0) : ""}`;
+    return <AvatarStyled>{initials}</AvatarStyled>;
+  }
+  return (
+    <AvatarStyled>
+      <Icon src={Person} />
+    </AvatarStyled>
+  );
 };
 
 export default Avatar;

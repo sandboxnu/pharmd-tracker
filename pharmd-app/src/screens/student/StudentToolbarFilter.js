@@ -25,7 +25,7 @@ import { STUDENT } from "../../constants/apiObjects";
 const STUDENT_NAME_QUERY = `${STUDENT.NAME}_like`;
 const STUDENT_ID_QUERY = `${STUDENT.NEU_ID}_like`;
 
-//-------------------------- COMPONENT --------------------------
+// -------------------------- COMPONENT --------------------------
 
 export const StudentFilter = props => {
   // Adds given filter key and value to the redux state filters
@@ -35,7 +35,7 @@ export const StudentFilter = props => {
 
   // Fuunction that manages how a student is searched based on input event
   const searchStudent = event => {
-    let val = event.target.value;
+    const val = event.target.value;
     if (val === "") {
       delete props.filterValues[STUDENT_NAME_QUERY];
       delete props.filterValues[STUDENT_ID_QUERY];
@@ -53,7 +53,7 @@ export const StudentFilter = props => {
       <StudentSearchInput
         label="Search Student"
         source={STUDENT_NAME_QUERY}
-        parse={inputValue => `^${inputValue}`} //Regex parameter for start with
+        parse={inputValue => `^${inputValue}`} // Regex parameter for start with
         onChange={searchStudent}
         alwaysOn
       />

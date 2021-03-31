@@ -6,6 +6,6 @@
  * @return {Promise<never>|Promise<void>}
  */
 export default () => {
-    const role = localStorage.getItem("permissions");
-    return role ? Promise.resolve(role) : Promise.reject();
-}
+  const role = localStorage.getItem("permissions");
+  return role ? Promise.resolve(role) : Promise.reject();
+};
