@@ -18,6 +18,7 @@ import TextField from "../../components/Fields/TextField";
 import ChipField from "../../components/Fields/ChipField";
 import GradeField from "../../components/Fields/GradeField";
 import { STUDENT } from "../../constants/apiObjects";
+import CohortField from "../../components/Fields/CohortField";
 
 const StudentList = ({ selectedRow, ...props }) => {
   const dispatch = useDispatch();
@@ -33,7 +34,7 @@ const StudentList = ({ selectedRow, ...props }) => {
       <EmphasisField source={STUDENT.NEU_ID} label="NUID" />
       <TextField source={STUDENT.FIRST_NAME} label="First Name" />
       <TextField source={STUDENT.LAST_NAME} label="Last Name" />
-      <TextField source={STUDENT.COHORT} label="Cohort" />
+      <CohortField label="Cohort" />
       <ChipField source={STUDENT.STATUS} />
       <GradeField source={STUDENT.GPA} label="GPA" />
     </Table>

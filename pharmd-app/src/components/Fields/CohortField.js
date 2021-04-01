@@ -1,27 +1,16 @@
 import React from "react";
 import tw, { styled } from "twin.macro";
-import InfoIcon from "../Basic/IconInfo";
-import ErrorIcon from "../../assets/icons/errorFilled.svg";
+import { STUDENT } from "../../constants/apiObjects";
 
 const Field = styled.span`
   ${tw`fontStyle-6 text-gray-700 font-medium inline-flex`}
 `;
 
-const Offset = styled.span`
-  ${tw`ml-3`}
-`;
+const CohortField = ({ record = {} }) => {
+  const entryDate = record[STUDENT.ENTRY_DATE];
+  const gradDate = record[STUDENT.GRAD_DATE];
+  const cohort = `${entryDate.slice(-2)}/${gradDate.slice(-2)}`;
 
-const CohortField = ({ record = {}, source }) => {
-  const cohort = record[source];
-  return (
-    <Field>
-      {cohort.current}
-      {cohort.moved && (
-        <Offset>
-          <InfoIcon src={ErrorIcon} text={`Original: ${cohort.original}`} />
-        </Offset>
-      )}
-    </Field>
-  );
+  return <Field>{cohort}</Field>;
 };
 export default CohortField;
