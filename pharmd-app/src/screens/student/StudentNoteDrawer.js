@@ -67,8 +67,9 @@ const notesExporter = (records, fetchRelatedRecords) => {
 const NoteGrid = styled(MuiGrid)`
     display: flex;
     flex-direction: row;
-    overflow-x: auto;
     flex-wrap: nowrap;
+    justify-content: space-around;
+    
 `
 
 const Paper = styled(MuiPaper)`

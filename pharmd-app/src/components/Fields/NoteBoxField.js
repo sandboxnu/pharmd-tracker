@@ -17,10 +17,10 @@ const CardRoot = styled.div`
 `
 
 const Paper = styled(MuiPaper)`
-  ${tw`rounded-xl h-64 w-64 shadow-cardLight`}
+  ${tw`rounded-xl h-48 w-48 shadow-cardLight`}
   padding: 20px;
   margin: auto;
-  max-width: 500
+  max-width: 400
 `;
 
 const NoteTitle = styled.h3`
@@ -59,6 +59,10 @@ const NoteBoxField = ({ record, source }) => {
     const tags = record[NOTE.TAGS];
     const date = new Date(record[NOTE.DATE]).toLocaleDateString();
 
+    function edit() {
+        console.log(`Editing note with ID: ${id}`)
+    }
+
     return (
         <CardRoot>
             <Paper>
@@ -69,7 +73,7 @@ const NoteBoxField = ({ record, source }) => {
                         </Grid>
                         <Grid item xs={1}>
                             <NoteEdit>
-                                <IconButton aria-label="edit">
+                                <IconButton aria-label="edit" onClick={edit}>
                                     <NoteIcon src={EditIcon} color="black" size="small" isPrimary={"primary"}/>
                                 </IconButton>
                             </NoteEdit>
