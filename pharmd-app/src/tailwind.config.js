@@ -1,5 +1,3 @@
-const plugin = require("./plugins/type-system");
-
 module.exports = {
   theme: {
     fontFamily: {

@@ -1,8 +1,8 @@
 import React from "react";
-import { withKnobs, select, text } from "@storybook/addon-knobs";
+import { withKnobs, text } from "@storybook/addon-knobs";
+import { withDesign } from "storybook-addon-designs";
 import Avatar from "../components/Basic/Avatar";
 import imgProfile from "../assets/images/mountains.jpg";
-import { withDesign } from "storybook-addon-designs";
 
 export default {
   title: "Avatar",
@@ -35,4 +35,4 @@ Default.story = {
   }
 };
 
-export const Image = () => <Avatar alt={"Jose Saravia"} imgUrl={imgProfile} />;
+export const Image = () => <Avatar alt="Jose Saravia" imgUrl={imgProfile} />;

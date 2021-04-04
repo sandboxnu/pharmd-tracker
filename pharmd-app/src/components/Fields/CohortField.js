@@ -12,7 +12,7 @@ const Offset = styled.span`
 `;
 
 const CohortField = ({ record = {}, source }) => {
-  let cohort = record[source];
+  const cohort = record[source];
   return (
     <Field>
       {cohort.current}

@@ -15,6 +15,10 @@ import { Route, MemoryRouter } from "react-router";
 import { Link as RouterLink } from "react-router-dom";
 import { useListController } from "react-admin";
 import StudentDrawerFilter from "./StudentDrawerFilter";
+import PharmDModal from "../../components/Layout/PharmDModal";
+import NoteCreate from "../../components/Layout/NoteCreate";
+import { useDispatch } from "react-redux";
+import {setNotesModal} from "../../redux/actions";
 // const LinkRouter = props => <Link {...props} component={RouterLink} />;
 
 const DetailsButton = styled.button`
@@ -32,10 +36,7 @@ const ButtonSpan = styled.span`
   width: 100%;
 `;
 
-const Drawer = styled(DrawerMaterial)` 
-  *::-webkit-scrollbar {
-    display:none;
-  }
+const Drawer = styled(DrawerMaterial)`
 
 transition: ${props =>
   props.open
@@ -62,6 +63,7 @@ transition: ${props =>
 const StudentDrawer = ({ isOpenMatch, selected, handleClose, handleOpen, ...props }) => {
   const isOpen = useSelector(state => state.studentSidebarOpen);
   const isDrawerOpen = isOpen || isOpenMatch;
+  const dispatch = useDispatch();
 
   //Avoid route errors
   const quickview = () => {
@@ -118,6 +120,9 @@ const StudentDrawer = ({ isOpenMatch, selected, handleClose, handleOpen, ...prop
         DetailChild={quickview()}
         expand={isDrawerOpen}
       />
+        <PharmDModal open={isNotesModalOpen} title="Add Note" onClose={() => dispatch(setNotesModal({ isOpen: false }))}>
+            <NoteCreate {...props} onSuccess={() => dispatch(setNotesModal({ isOpen: false }))} />
+        </PharmDModal>
     </Drawer>
   );
 };

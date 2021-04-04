@@ -1,7 +1,6 @@
 import { createMuiTheme } from "@material-ui/core/styles";
 import { STUDENT_STATUS } from '../constants/apiObjects';
 
-// Helper Function used to retrieve css variable values
 const STYLE = getComputedStyle(document.body);
 function getValue(cssVariable) {
   return STYLE.getPropertyValue(cssVariable).trim();
