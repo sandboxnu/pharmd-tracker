@@ -61,6 +61,7 @@ const NoteBoxField = ({ record, source }) => {
 
     function edit() {
         console.log(`Editing note with ID: ${id}`)
+        console.log(`This note also has tags: ${tags}`)
     }
 
     return (
@@ -85,7 +86,7 @@ const NoteBoxField = ({ record, source }) => {
                     </Grid>
                     {/*Tags*/}
                     <Grid item xs>
-                        {tags.map(tag => <ChipField pillSize="small"/>)}
+                        {tags.map((tag, ind) => <ChipField key={ind} pillSize="small"/>)}
                     </Grid>
                     {/*Content*/}
                     <Grid container xs>
