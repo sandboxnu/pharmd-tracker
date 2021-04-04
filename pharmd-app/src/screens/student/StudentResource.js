@@ -44,6 +44,9 @@ const StudentScreen = props => {
                 selected={isMatch && parseInt(match.params.id, 10)}
                 studentQuickViewExpanded={studentQuickViewExpanded}
                 setStudentQuickViewExpanded={setStudentQuickViewExpanded}
+                studentSidebar={studentSidebar}
+                setStudentSidebar={setStudentSidebar}
+
                 {...props}
               />
             </MainContent>

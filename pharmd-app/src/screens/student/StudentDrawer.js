@@ -86,102 +86,109 @@ const Drawer = styled(DrawerMaterial)`
  * @constructor
  */
 const StudentDrawer = ({ isOpenMatch, selected, handleClose, handleOpen, ...props }) => {
-  // the state of the sidebar retrieved from redux
-  let isOpen = props.studentSidebar; //useSelector(state => state.studentSidebarOpen);
-  console.log("student sidebar " + props.studentSidebar);
 
-  // the drawer should be open if the drawer was manually opened or the user clicked on a student in the table
-  let isDrawerOpen = isOpen || isOpenMatch;
-  const [filtersQuickViewExpanded, setFiltersQuickViewExpanded] = useState(false);
+    let isDrawerOpen = props.studentSidebar;
 
-  // onChange functions for when the expansion panel is clicked on:
-  const changeFiltersExpansionPanel = () => {
-    isOpen
-      ? setFiltersQuickViewExpanded(!filtersQuickViewExpanded)
-      : setFiltersQuickViewExpanded(true);
-  };
+    const [filtersQuickViewExpanded, setFiltersQuickViewExpanded] = useState(false);
 
-  const changeStudentExpansionPanel = () => {
-    isOpen
-      ? props.setStudentQuickViewExpanded(!props.studentQuickViewExpanded)
-      : props.setStudentQuickViewExpanded(true);
-  };
+    // onChange functions for when the expansion panel is clicked on:
+    // The toggles only toggle when the sidebar is open, otheriwse they close
+    const toggleFiltersExpansionPanel = () => {
+      if(isDrawerOpen){
+        setFiltersQuickViewExpanded(!filtersQuickViewExpanded)
+      }
+      else{
+        setFiltersQuickViewExpanded(true);
+        openSidebar();
+      }
 
-  const toggleSidebar = () => {
-    props.studentSidebar ? props.setStudentSidebar(false) : props.setStudentSidebar(true);
-  };
+    };
 
-  const closeSidebar = () => {
 
-    console.log("closeSidebar: sidebar prop: " + props.studentSidebar);
-    props.setStudentSidebar(false);
-    console.log("closeSidebar sidebar prop: " + props.studentSidebar);
+    const toggleStudentExpansionPanel = () => {
+      if(isDrawerOpen){
+        props.setStudentQuickViewExpanded(!props.studentQuickViewExpanded)
+      }
+      else{
+        props.setStudentQuickViewExpanded(true);
+        openSidebar();
+      }
+    };
 
-  }
+    const closeSidebar = () => {
+      props.setStudentSidebar(false);
+    }
+
+    const openSidebar = () => {
+      props.setStudentSidebar(true);
+    }
+
+
+    const toggleStudentSidebar = () => {
+      props.setStudentSidebar(!props.studentSidebar);
+    }
+
+
 
 // Avoid route errors
-const quickview = () => {
-  return isOpenMatch ? (
-    <>
-      <StudentQuickView id={selected}  {...props} />
-      <ButtonSpan>
-        <RouterLink to={`/students/${props.id}/details`}>
-          <DeatilsButton>More Student Info</DeatilsButton>
-        </RouterLink>
-      </ButtonSpan>
-    </>
-  ) : (
-    <div>No Student selected</div>
-  );
-};
-
-return (
-
-  <Drawer variant="permanent" open={props.studentSidebar} anchor="right" onClose={closeSidebar}>
-    <NavItemSecondary
-      title={isDrawerOpen ? "Close" : "Open"}
-      iconSrc={VerticalSplitIcon}
-      onClick={toggleSidebar}
-      isOpen={isDrawerOpen}
-      isActive={isDrawerOpen}
-    />
-    <ExpansionPanel
-      SummaryChild={
-        <NavItemSecondary
-          title="Table Filters"
-          iconSrc={FilterIcon}
-          onClick={toggleSidebar}
-          isOpen
-          isActive={false}
-          sidebarIsOpen={props.studentSidebar}
-        />
-      }
-      DetailChild={<StudentDrawerFilter {...useListController(props)} />}
-      defaultExpanded={isDrawerOpen}
-      expanded={props.studentSidebar && filtersQuickViewExpanded}
-      onChange={changeFiltersExpansionPanel}
-    />
-    <ExpansionPanel
-      SummaryChild={
+    const quickview = () => {
+      return isOpenMatch ? (
         <>
-          <NavItemSecondary
-            title="Student Quickview"
-            iconSrc={PersonIcon}
-            onClick={toggleSidebar}
-            isOpen
-            isActive={false}
-            sidebarIsOpen={props.studentSidebar}
-          />
+          <StudentQuickView id={selected}  {...props} />
+          <ButtonSpan>
+            <RouterLink to={`/students/${props.id}/details`}>
+              <DeatilsButton>More Student Info</DeatilsButton>
+            </RouterLink>
+          </ButtonSpan>
         </>
-      }
-      DetailChild={quickview()}
-      defaultExpanded={isDrawerOpen}
-      expanded={props.studentSidebar || isOpenMatch && props.studentQuickViewExpanded}
-      onChange={changeStudentExpansionPanel}
-    />
-  </Drawer>
-);
-}
+      ) : (
+        <div>No Student selected</div>
+      );
+    };
+
+    return (
+
+      <Drawer variant="permanent" open={props.studentSidebar} anchor="right" onClose={closeSidebar}>
+        <NavItemSecondary
+          title={isDrawerOpen ? "Close" : "Open"}
+          iconSrc={VerticalSplitIcon}
+          onClick={toggleStudentSidebar}
+          isOpen={isDrawerOpen}
+          isActive={isDrawerOpen}
+        />
+        <ExpansionPanel
+          SummaryChild={
+            <NavItemSecondary
+              title="Table Filters"
+              iconSrc={FilterIcon}
+              onClick={toggleFiltersExpansionPanel}
+              sidebarIsOpen={props.studentSidebar}
+            />
+          }
+          DetailChild={<StudentDrawerFilter {...useListController(props)} />}
+          defaultExpanded={false}
+          expanded={props.studentSidebar && filtersQuickViewExpanded}
+          onChange={toggleFiltersExpansionPanel}
+        />
+        <ExpansionPanel
+          SummaryChild={
+            <>
+              <NavItemSecondary
+                title="Student Quickview"
+                iconSrc={PersonIcon}
+                onClick={toggleStudentExpansionPanel}
+                sidebarIsOpen={props.studentSidebar}
+              />
+            </>
+          }
+          DetailChild={quickview()}
+          defaultExpanded={false}
+          expanded={props.studentSidebar && props.studentQuickViewExpanded}
+          onChange={toggleStudentExpansionPanel}
+        />
+      </Drawer>
+    );
+  }
 ;
 
 export default StudentDrawer;
