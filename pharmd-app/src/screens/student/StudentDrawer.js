@@ -9,21 +9,18 @@
 // -------------------------- IMPORTS --------------------------
 
 // Function Imports
-import React, { useState, useEffect } from "react";
-import { Route, MemoryRouter } from "react-router";
+import React, { useState } from "react";
 import { Link as RouterLink } from "react-router-dom";
 import { useListController } from "react-admin";
 import { useSelector } from "react-redux";
 
 // Component Imports
 import DrawerMaterial from "@material-ui/core/Drawer";
-import StudentQuickView from "./StudentQuickView";
 import ExpansionPanel from "../../components/Basic/ExpansionPanel";
 import FilterIcon from "../../assets/icons/filter.svg";
 import NavItemSecondary from "../../components/Nav/NavItemSecondary";
 import PersonIcon from "../../assets/icons/person.svg";
 import StudentDrawerFilter from "./StudentDrawerFilter";
-
 import StudentQuickView from "./StudentQuickView";
 import VerticalSplitIcon from "../../assets/icons/verticalSplit.svg";
 
