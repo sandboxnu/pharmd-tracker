@@ -1,7 +1,6 @@
-import React, { useCallback, Fragment } from "react";
+import React from "react";
 
-import styled from "styled-components/macro";
-import tw from "tailwind.macro";
+import tw, { styled } from "twin.macro";
 
 import AppBar from "../../components/Nav/AppBar";
 
@@ -12,11 +11,11 @@ const MainContent = styled.div`
 
 const CourseResource = props => {
   return (
-    <Fragment>
+    <>
       <MainContent>
         <AppBar title="Courses" />
       </MainContent>
-    </Fragment>
+    </>
   );
 };
 

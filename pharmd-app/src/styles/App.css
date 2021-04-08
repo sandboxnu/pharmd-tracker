@@ -1,27 +1,24 @@
-/* // The Diez web compiler creates shared styles for Sass and CSS. The styles
-// imported here can be found at `build/diez-dashboard-web/static/styles.scss`,
-// relative to the project root. */
-@import "~diez-pharmd-design/static/styles.css";
+/* Material UI CSS Variables */
 
 :root {
-  --color-bg-primary: var(--palette-background);
-  --color-bg-card: var(--palette-card-background);
-  --color-bg-tooltip: var(--palette-tooltip-background);
-  --color-primary: var(--palette-primary-color);
-  --color-secondary: var(--palette-secondary-color);
-  --color-tertiary: var(--palette-tertiary-color);
+  --color-bg-primary: var(--background);
+  --color-bg-card: var(--white);
+  --color-bg-tooltip: var(--gray-3);
+  --color-primary: var(--primary);
+  --color-secondary: var(--secondary);
+  --color-tertiary: var(--tertiary);
 
-  --color-text-primary: var(--palette-text-primary);
-  --color-text-secondary: var(--palette-text-secondary);
-  --color-text-tertiary: var(--palette-text-tertiary);
-  --color-text-emphasis-high: var(--palette-text-high-emphasis);
-  --color-text-emphasis-low: var(--palette-text-low-emphasis);
-  --color-text-inverse: var(--palette-text-dark-contrast);
+  --color-text-primary: var(--gray-1);
+  --color-text-secondary: var(--gray-3);
+  --color-text-tertiary: var(--gray-4);
+  --color-text-emphasis-high: var(--primary);
+  --color-text-emphasis-low: var(--secondary);
+  --color-text-inverse: var(--white);
 
-  --color-red: var(--palette-red-color);
-  --color-orange: var(--palette-orange-color);
-  --color-yellow: var(--palette-yellow-color);
-  --color-green: var(--palette-green-color);
+  --color-red: var(--red);
+  --color-orange: var(--orange);
+  --color-yellow: var(--yellow);
+  --color-green: var(--green);
 }
 
 /*! purgecss start ignore */

@@ -1,10 +1,7 @@
 import React from "react";
-import styled from "styled-components/macro";
-import tw from "tailwind.macro";
-import Skeleton from "@material-ui/lab/Skeleton";
+import tw, { styled } from "twin.macro";
 import ListItem from "@material-ui/core/ListItem";
 import ListItemIcon from "@material-ui/core/ListItemIcon";
-import Divider from "@material-ui/core/Divider";
 import ListItemTextMaterial from "@material-ui/core/ListItemText";
 import PropTypes from "prop-types";
 import ListItemSecondaryActionMaterial from "@material-ui/core/ListItemSecondaryAction";
@@ -31,7 +28,7 @@ const ScoredListItemError = ({ errorText, ...rest }) => {
         <StatusBullet color="neutral" size="md" />
       </ListItemIcon>
       <ListItemText primary={errorText} />
-      <ListItemSecondaryAction>{"000"}</ListItemSecondaryAction>
+      <ListItemSecondaryAction>000</ListItemSecondaryAction>
     </ListItem>
   );
 };

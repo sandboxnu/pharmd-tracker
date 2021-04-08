@@ -1,13 +1,9 @@
-import React, { useCallback, Fragment } from "react";
-
-import styled from "styled-components/macro";
-import tw from "tailwind.macro";
+import React from "react";
+import tw, { styled } from "twin.macro";
 import Paper from "@material-ui/core/Paper";
-
+import { Loading, useGetOne } from "react-admin";
 import AppBar from "../../components/Nav/AppBar";
-
 import StudentDetailsSide from "./StudentDetailsSide";
-import {Loading, useGetOne, useShowController} from "react-admin";
 import StudentDetailsContentGrid from "./StudentDetailsContentGrid";
 
 const MainContent = styled.div`
@@ -26,20 +22,15 @@ const SideContent = styled(Paper)`
 `;
 
 const StudentDetailsScreen = props => {
-  console.log("PROPS", props.match.params.id);
-  //   const controllerProps = useShowController(props);
-  //   if (!controllerProps.record) {
-  //     return null;
-  //   }
-  const {data, loading, error} = useGetOne('students', props.match.params.id);
+  const { data, loading, error } = useGetOne("students", props.match.params.id);
   if (loading) {
-      return <Loading/>;
+    return <Loading />;
   }
   if (error) {
-      return <p>Error, id: {id} is not found</p>;
+    return <p>Error, id:{id} is not found</p>;
   }
   return (
-    <Fragment>
+    <>
       <MainContent>
         <AppBar title={`Student Details ${props.match.params.id}`} />
         <StudentDetailsContentGrid source={data} />
@@ -48,7 +39,7 @@ const StudentDetailsScreen = props => {
       <SideContent>
         <StudentDetailsSide source={data} {...props} />
       </SideContent>
-    </Fragment>
+    </>
   );
 };
 

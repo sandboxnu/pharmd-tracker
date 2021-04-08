@@ -1,19 +1,13 @@
-// in src/MyLayout.js
-import React, { useEffect, useRef } from "react";
-import PropTypes from "prop-types";
-import { useSelector, useDispatch } from "react-redux";
+// -------------------------- IMPORTS --------------------------
+
+// Function Imports
+import React from "react";
+
+// Style Imports
+import tw from "twin.macro";
 import { makeStyles } from "@material-ui/core/styles";
-// import { ThemeProvider } from "@material-ui/styles";
-import {
-  //   Menu,
-  Notification,
-  Sidebar,
-  setSidebarVisibility,
-  ComponentPropType,
-  Layout
-} from "react-admin";
+import { Notification, Sidebar, Layout } from "react-admin";
 import Menu from "./Menu";
-import AppBar from "../Nav/AppBar";
 
 const MyAppBar = props => <></>;
 
@@ -47,11 +41,10 @@ const useLayoutStyles = makeStyles({
 
 const MySidebar = props => {
   const classes = useSidebarStyles();
-  return <Sidebar style={{ width: "96px", zIndex: "99999" }} classes={classes} {...props} />;
+  return <Sidebar tw="w-96px z-max" classes={classes} {...props} />;
 };
 
 const DashboardLayout = props => {
-  console.log("Notification", Notification);
   return (
     <Layout
       {...props}

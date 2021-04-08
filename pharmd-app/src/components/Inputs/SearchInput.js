@@ -7,28 +7,26 @@
  * Date: 04-24-2020
  */
 
-//-------------------------- IMPORTS --------------------------
+// -------------------------- IMPORTS --------------------------
 
 // Function Imports
 import React from "react";
 import PropTypes from "prop-types";
 import clsx from "clsx";
 
+// Style Imports
+import { styled } from "twin.macro";
+
 // Component Imports
 import MuiInput from "@material-ui/core/Input";
 import MuiPaper from "@material-ui/core/Paper";
 import MuiSearchIcon from "@material-ui/icons/Search";
 
-// Style Imports
-import styled from "styled-components/macro";
-import tw from "tailwind.macro";
-
-//-------------------------- STYLE --------------------------
-
+// -------------------------- STYLE --------------------------
 const Paper = styled(MuiPaper)`
   border-radius: 4px;
   align-items: center;
-  padding: ${props => props.theme.spacing(1) + "px"};
+  padding: ${props => `${props.theme.spacing(1)}px`};
   display: flex;
   flex-basis: 420;
 `;
@@ -41,12 +39,11 @@ const Input = styled(MuiInput)`
 `;
 
 const SearchIcon = styled(MuiSearchIcon)`
-  margin-right: ${props => props.theme.spacing(1) + "px"};
+  margin-right: ${props => `${props.theme.spacing(1)}px`};
   color: ${props => props.theme.palette.text.secondary};
 `;
 
 //-------------------------- COMPONENT --------------------------
-
 const SearchInput = props => {
   const { className, onChange, style, ...rest } = props;
 

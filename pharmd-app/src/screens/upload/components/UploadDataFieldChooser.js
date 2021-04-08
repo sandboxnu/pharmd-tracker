@@ -4,6 +4,9 @@ import FileUploadService from "../../../services/FileUploadService";
 import { Select } from '../../../components/Form'
 import Button from '@material-ui/core/Button'
 
+// Style Imports
+import tw, { styled } from "twin.macro";
+
 class UploadDataFieldChooser extends Component {
   static propTypes = {
     headers: PropTypes.arrayOf(PropTypes.string),
@@ -25,23 +28,6 @@ class UploadDataFieldChooser extends Component {
     this.handleChange = this.handleChange.bind(this);
     this.handleConfirm = this.handleConfirm.bind(this);
   }
-
-  // initializeState(props) {
-  //   console.log(props)
-  //   const stateMap = new Map();
-  //   for (let header of props.headers) {
-  //     stateMap.set(header, FileUploadService.gradeInputTypes.UNUSED)
-  //   }
-  //   for (let header of props.headers) {
-  //     if (header.includes("Student"))
-  //       stateMap.set(header, FileUploadService.gradeInputTypes.STUDENT_NAME)
-  //
-  //     if (header.includes("Exam"))
-  //       stateMap.set(header, FileUploadService.gradeInputTypes.EXAM)
-  //   }
-  //   console.log(stateMap)
-  //   return stateMap;
-  // }
 
   /**
    * Handles the selecting of an element from a dropdown menu
@@ -122,7 +108,7 @@ class UploadDataFieldChooser extends Component {
   render() {
     return (
       <div>
-        <Button color="primary" variant="contained" style={{position: 'fixed', right: 10, top: '3rem', zIndex: 10}} onClick={this.handleConfirm}>Confirm Data</Button>
+        <Button color="primary" variant="contained" tw="fixed right-10px top-12 z-10" onClick={this.handleConfirm}>Confirm Data</Button>
         <table>
           <thead>
             <tr>
@@ -144,7 +130,7 @@ class UploadDataFieldChooser extends Component {
             </tr>
             <tr>
               {this.props.subHeaders.map((subHeader, index) => (
-                  <th style={{fontSize: '80%'}} key={index}>
+                  <th tw="text-80%" key={index}>
                     {this.props.headers[index] === FileUploadService.EMPTY_CELL_VAL || subHeader === FileUploadService.EMPTY_CELL_VAL ? "" : subHeader}
                   </th>
               ))}
@@ -155,7 +141,7 @@ class UploadDataFieldChooser extends Component {
               return (
                   <tr key={index}>
                     {this.props.headers.map((field, index) => {
-                      return <td style={{textAlign: 'center'}} key={index}>{student[field]}</td>;
+                      return <td tw="text-center" key={index}>{student[field]}</td>;
                     })}
                   </tr>
               );

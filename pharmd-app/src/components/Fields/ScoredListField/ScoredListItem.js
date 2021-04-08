@@ -1,29 +1,28 @@
 import React from "react";
-import styled from "styled-components/macro";
-import tw from "tailwind.macro";
-import Skeleton from "@material-ui/lab/Skeleton";
-import ScoredListItemSkeleton from "./ScoredListItemSkeleton";
+import tw, { styled } from "twin.macro";
 import PropTypes from "prop-types";
-import ScoredListItemError from "./ScoredListItemError";
 import ListItem from "@material-ui/core/ListItem";
 import ListItemIcon from "@material-ui/core/ListItemIcon";
-import Divider from "@material-ui/core/Divider";
 import ListItemTextMaterial from "@material-ui/core/ListItemText";
 import ListItemSecondaryActionMaterial from "@material-ui/core/ListItemSecondaryAction";
+import ScoredListItemError from "./ScoredListItemError";
+import ScoredListItemSkeleton from "./ScoredListItemSkeleton";
 import StatusBullet from "../../Basic/StatusBullet";
 
 function statusMapping(value) {
   if (value >= 90) {
     return "success";
-  } else if (value >= 80) {
-    return "good";
-  } else if (value >= 70) {
-    return "warning";
-  } else if (value >= 0) {
-    return "danger";
-  } else {
-    return "neutral";
   }
+  if (value >= 80) {
+    return "good";
+  }
+  if (value >= 70) {
+    return "warning";
+  }
+  if (value >= 0) {
+    return "danger";
+  }
+  return "neutral";
 }
 
 const ListItemText = styled(ListItemTextMaterial)`
@@ -46,7 +45,7 @@ export const ScoredItem = ({ primaryText, secondaryText, value, ...rest }) => {
       <ListItemIcon>
         <StatusBullet color={statusMapping(value)} size="md" />
       </ListItemIcon>
-      <ListItemText primary={primaryText} secondary={secondaryText} className={"good"} />
+      <ListItemText primary={primaryText} secondary={secondaryText} className="good" />
       <ListItemSecondaryAction>
         <span>{value}</span>
       </ListItemSecondaryAction>
@@ -66,7 +65,6 @@ const ScoredListItem = ({
   errorText,
   ...rest
 }) => {
-  console.log("PROPS", rest, ListItem.muiName);
   if (loading) {
     return <ScoredListItemSkeleton variant={variant} {...rest} />;
   }

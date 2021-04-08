@@ -6,23 +6,20 @@
  *      -- Use Basic TextField Instead
  * Date: 04-24-2020
  */
-
-//-------------------------- IMPORTS --------------------------
+// -------------------------- IMPORTS --------------------------
 
 // Function Imports
 import React from "react";
 import { useInput } from "react-admin";
 import PropTypes from "prop-types";
 
+// Style Imports
+import tw, { styled } from "twin.macro";
+
 // Component Imports
 import SearchInput from "./SearchInput";
 
-// Style Imports
-import styled from "styled-components/macro";
-import tw from "tailwind.macro";
-
-//-------------------------- STYLE --------------------------
-
+// -------------------------- STYLE --------------------------
 const SearchBox = styled(SearchInput)`
   ${tw`rounded-xl shadow-none p-2 bg-background`}
   input {
@@ -30,10 +27,8 @@ const SearchBox = styled(SearchInput)`
   }
 `;
 
-//-------------------------- COMPONENT --------------------------
-
+// -------------------------- COMPONENT --------------------------
 const StudentSearchInput = props => {
-  // React Final Form hook to access parameters
   const {
     input: { name, onChange },
     meta: { touched, error },
@@ -45,7 +40,7 @@ const StudentSearchInput = props => {
       name={name}
       placeholder={props.label}
       onChange={onChange}
-      error={!!(touched && error)}
+      error={touched && error}
       required={isRequired}
     />
   );

@@ -1,15 +1,15 @@
 import React from "react";
 import ToolTipMaterial from "@material-ui/core/Tooltip";
-import styled, { css } from "styled-components/macro";
-import tw from "tailwind.macro";
+import tw, { styled } from "twin.macro";
 import Zoom from "@material-ui/core/Zoom";
 
 /*
-NOTE: Uses Portals to style component. 
-The Portal provides a first-class way to render children 
-into a DOM node that exists outside the DOM hierarchy of 
+NOTE: Uses Portals to style component.
+The Portal provides a first-class way to render children
+into a DOM node that exists outside the DOM hierarchy of
 the parent component
 */
+
 const TooltipStyled = styled(({ className, ...props }) => (
   <ToolTipMaterial {...props} classes={{ tooltip: className }} />
 ))`

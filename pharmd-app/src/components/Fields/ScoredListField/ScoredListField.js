@@ -1,14 +1,10 @@
 import React from "react";
-import styled from "styled-components/macro";
-import tw from "tailwind.macro";
 import { useGetOne } from "react-admin";
-
-import ScoredListItem from "./ScoredListItem";
 import List from "@material-ui/core/List";
+import ScoredListItem from "./ScoredListItem";
 
 const ScoredListField = ({ record = {}, source }) => {
-  let courses = record[source];
-  console.log("COURSES", courses);
+  const courses = record[source];
   return (
     <List>
       {courses.map((course, index) => {

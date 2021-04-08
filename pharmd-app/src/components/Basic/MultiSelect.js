@@ -1,14 +1,12 @@
 import React from "react";
-import clsx from "clsx";
-import { makeStyles, useTheme } from "@material-ui/core/styles";
+import { makeStyles } from "@material-ui/core/styles";
 import Input from "@material-ui/core/Input";
 import InputLabel from "@material-ui/core/InputLabel";
 import MenuItem from "@material-ui/core/MenuItem";
 import FormControl from "@material-ui/core/FormControl";
-import ListItemText from "@material-ui/core/ListItemText";
 import Select from "@material-ui/core/Select";
-import Checkbox from "@material-ui/core/Checkbox";
 import Chip from "@material-ui/core/Chip";
+import tw from "twin.macro";
 
 const useStyles = makeStyles(theme => ({
   formControl: {
@@ -39,45 +37,30 @@ const MenuProps = {
   }
 };
 
-function getStyles(name, personName, theme) {
-  return {
-    fontWeight:
-      personName.indexOf(name) === -1
-        ? theme.typography.fontWeightRegular
-        : theme.typography.fontWeightMedium
-  };
-}
-
 const MultipleSelect = props => {
-  const { onChange, label, showLabel, error, children, className } = props;
+  const { onChange, label, error, children, className } = props;
 
   const classes = useStyles();
-  const theme = useTheme();
   const [value, setValue] = React.useState([]);
 
   const handleDelete = valueToDelete => {
     value.filter(val => val !== valueToDelete);
     setValue(value);
     onChange(value);
-    console.log("Cohort Value: ", value);
   };
 
   const handleChange = event => {
     setValue(event.target.value);
     onChange(event, event.target.value);
-    console.log("Cohort Value: ", event.target.value);
   };
-
-  console.log("Cohort Children: ", { children });
 
   return (
     <FormControl
       component="fieldset"
       error={error}
       className={(classes.formControl, className)}
-      style={{ width: "100%" }}
+      tw="w-full"
     >
-      {/* {showLabel && <FormLabel component="legend">{label}</FormLabel>} */}
       <InputLabel id="demo-mutiple-chip-label">{label}</InputLabel>
       <Select
         labelId="demo-mutiple-chip-label"
@@ -88,13 +71,12 @@ const MultipleSelect = props => {
         input={<Input id="select-multiple-chip" />}
         variant="outlined"
         renderValue={selected => {
-          console.log("SELECTED", selected);
           return (
             <li className={classes.chips}>
               {selected.map(value => (
                 <Chip
                   key={value}
-                  label={"Cohort " + value.substring(3)}
+                  label={`Cohort ${value.substring(3)}`}
                   className={classes.chip}
                   color="primary"
                   size="small"
@@ -107,7 +89,11 @@ const MultipleSelect = props => {
         MenuProps={MenuProps}
       >
         {children.map((child, index) => (
-          <MenuItem key={index} value={child.props.value} style={getStyles(name, value, theme)}>
+          <MenuItem
+            key={index}
+            value={child.props.value}
+            css={[value.indexOf(child.props.value) !== -1 && tw`font-bold`]}
+          >
             {child.props.label}
           </MenuItem>
         ))}

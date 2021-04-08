@@ -1,5 +1,6 @@
 import React from "react";
 import { withKnobs, select, text } from "@storybook/addon-knobs";
+import tw from "twin.macro";
 import Tooltip from "../components/Basic/Tooltip";
 
 export default {
@@ -17,38 +18,18 @@ const options = {
 };
 const defaultValue = "right";
 const groupId = "GROUP-ID1";
-const value = select(label, options, defaultValue, groupId);
 
 const labelText = "Title(Label)";
 const defaultValueText = "Title";
 
 export const Default = () => (
-  <div
-    style={{
-      width: "100%",
-      height: "250px",
-      display: "flex",
-      justifyContent: "center",
-      alignItems: "center"
-    }}
-  >
+  <div tw="h-250px w-full flex justify-center items-center">
     <Tooltip
       title={text(labelText, defaultValueText, groupId)}
       placement={select(label, options, defaultValue, groupId)}
       open
     >
-      <div
-        style={{
-          height: "60px",
-          width: "60px",
-          background: "var(--color-primary)",
-          color: "var(--color-text-inverse)",
-          textAlign: "center",
-          lineHeight: "60px"
-        }}
-      >
-        Child
-      </div>
+      <div tw="h-60px w-60px bg-primary text-inverse leading-60px text-center">Child</div>
     </Tooltip>
   </div>
 );

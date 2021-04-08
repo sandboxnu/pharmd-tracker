@@ -1,6 +1,5 @@
 import React from "react";
-import styled from "styled-components/macro";
-import tw from "tailwind.macro";
+import tw, { styled } from "twin.macro";
 import InfoIcon from "../Basic/IconInfo";
 import ErrorIcon from "../../assets/icons/errorFilled.svg";
 
@@ -13,7 +12,7 @@ const Offset = styled.span`
 `;
 
 const CohortField = ({ record = {}, source }) => {
-  let cohort = record[source];
+  const cohort = record[source];
   return (
     <Field>
       {cohort.current}

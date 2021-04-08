@@ -5,10 +5,10 @@ const custom = require("../webpack.config");
 
 module.exports = {
   webpackFinal: config => {
-    config.plugins.push(custom.plugins[2]);
+    config.plugins.push(custom().plugins[2]);
     return {
       ...config,
-      module: { ...config.module, rules: custom.module.rules }
+      module: { ...config.module, rules: custom().module.rules }
     };
   },
   addons: ['@storybook/addon-actions/register']

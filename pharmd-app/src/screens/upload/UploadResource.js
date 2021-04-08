@@ -1,7 +1,6 @@
-import React, { useCallback, Fragment } from "react";
+import React from "react";
 
-import styled from "styled-components/macro";
-import tw from "tailwind.macro";
+import tw, { styled } from "twin.macro";
 
 import AppBar from "../../components/Nav/AppBar";
 import SpreadsheetUploader from "./components/SpreadsheetUploader";
@@ -13,12 +12,12 @@ const MainContent = styled.div`
 
 const UploadScreen = props => {
   return (
-    <Fragment>
+    <>
       <MainContent>
         <AppBar title="Upload" />
         <SpreadsheetUploader />
       </MainContent>
-    </Fragment>
+    </>
   );
 };
 
