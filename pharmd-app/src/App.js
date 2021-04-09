@@ -10,7 +10,7 @@ import Dashboard from "./Dashboard";
 import { AuthProvider, DataProvider } from "./services";
 import createLigthTheme from "./themes/light-theme";
 import DashboardLayout from "./components/Layout/DashboardLayout";
-import studentSideBarReducer from "./redux/reducers/studentSideBarReducer";
+// import studentSideBarReducer from "./redux/reducers/studentSideBarReducer";
 import customRoutes from "./config/customRoutes";
 
 const App = () => {
@@ -24,7 +24,7 @@ const App = () => {
             authProvider={AuthProvider}
             dashboard={Dashboard}
             theme={theme}
-            customReducers={{ studentSidebarOpen: studentSideBarReducer }}
+            // customReducers={{ studentSidebarOpen: studentSideBarReducer }}
             customRoutes={customRoutes}
           >
             <Resource name="users" {...profile} />

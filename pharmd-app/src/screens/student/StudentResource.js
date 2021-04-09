@@ -27,6 +27,7 @@ const MainContent = styled.div`
 // -------------------------- COMPONENT --------------------------
 const StudentScreen = props => {
 
+  const [studentSidebar, setStudentSidebar] = useState(true);
   const [studentQuickViewExpanded, setStudentQuickViewExpanded] = useState(false);
 
   return (
