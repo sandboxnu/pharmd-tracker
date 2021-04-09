@@ -2,8 +2,10 @@
  * Description:
  * This Component creates a group of checkbox buttons.
  * There is one checkbox created for each children.
- * This function also accepts an onChange function that will be exected every time
+ * This function also accepts an onChange function that will be executed every time
  * a check box is unchecked.
+ *
+ * Date: 04-23-2020
  */
 
 // -------------------------- IMPORTS --------------------------
@@ -18,53 +20,48 @@ import FormLabel from "@material-ui/core/FormLabel";
 import CheckboxButton from "./CheckboxButton";
 
 // -------------------------- COMPONENT --------------------------
+
 const CheckboxButtonGroup = props => {
   const {
-    onChange,
-    label,
-    showLabel,
-    error,
+    checkboxCheckedClass,
+    checkboxClassName,
     children,
-    color,
     className,
-    checkboxClassName
+    color,
+    error,
+    formGroupClassName,
+    label,
+    onChange,
+    showLabel,
   } = props;
-  const [value, setValue] = React.useState({
-    values: []
-  });
-
-  const handleChange = event => {
-    const eventVal = event.target.value;
-    const newVal = value.values;
-    const index = newVal.indexOf(eventVal);
-    if (event.target.checked) {
-      if (index < 0) {
-        newVal.push(eventVal);
-      }
-    } else if (index >= 0) {
-      newVal.splice(index, 1);
-    }
-    setValue({ values: newVal });
-    onChange(event, newVal);
-  };
 
   return (
     <FormControl component="fieldset" error={error} className={className}>
       {showLabel && <FormLabel component="legend">{label}</FormLabel>}
-      <FormGroup aria-label={label}>
+      <FormGroup aria-label={label} className={formGroupClassName}>
         {children &&
-          children.map((child, index) =>
-            cloneElement(child, {
+          children.map((child, index) => {
+            // the child is expected to be a Material UI - FormControlLabel
+            // this allows for the component to handle create a checkbox group of any size
+            return cloneElement(child, {
               key: index,
               control: (
                 <CheckboxButton
-                  onChange={handleChange}
+                  onChange={onChange}
                   color={color}
+                  classes={{
+                    checked: checkboxCheckedClass
+                  }}
                   className={checkboxClassName}
+                  icon={child.props.icon || undefined}
+                  checkedIcon={child.props.checkedIcon || undefined}
+                  labelPlacement={child.props.checkedIcon || undefined}
+                  // accepts an onclick prop which represents an onClick function to use
+                  onClick={child.props.onclick}
                 />
               )
-            })
-          )}
+            });
+          })}
       </FormGroup>
     </FormControl>
   );
