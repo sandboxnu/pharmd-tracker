@@ -74,11 +74,11 @@ const StudentDetailsContentGrid = props => {
           component={StyledCard}
         >
           <StyledTabLayout syncWithLocation={false} tabs={<StyledTabs {...props} />}>
-            <StyledTab label="Exams">
-              <StudentExamList />
-            </StyledTab>
             <StyledTab label="Courses">
               <StudentCourseList />
+            </StyledTab>
+            <StyledTab label="Exams">
+              <StudentExamList />
             </StyledTab>
           </StyledTabLayout>
         </Show>
