@@ -1,34 +1,31 @@
-/**
- * Description:
- * This component contains the content within the side panel (filters and student preview)
- *     and the side panel itself.
- * TODO:
- *   - Clicking on a student from the student list no longer opens the side bar and no longer opens the student preview expansion panel within the sidebar.
- * Date: 02-06-2021
- */
-
-// -------------------------- IMPORTS --------------------------
-
 // Function Imports
-import React, { useState, useEffect } from "react";
-import { useListController } from "react-admin";
-import { useSelector } from "react-redux";
-import { Route, MemoryRouter } from "react-router";
+import React, { useState } from "react";
 import { Link as RouterLink } from "react-router-dom";
+import { useListController } from "react-admin";
 
 // Component Imports
 import DrawerMaterial from "@material-ui/core/Drawer";
 import tw, { styled } from "twin.macro";
+import { useSelector } from "react-redux";
 import ExpansionPanel from "../../components/Basic/ExpansionPanel";
-import FilterIcon from "../../assets/icons/filter.svg";
 import NavItemSecondary from "../../components/Nav/NavItemSecondary";
+import VerticalSplitIcon from "../../assets/icons/verticalSplit.svg";
+import FilterIcon from "../../assets/icons/filter.svg";
 import PersonIcon from "../../assets/icons/person.svg";
 import StudentDrawerFilter from "./StudentDrawerFilter";
-
 import StudentQuickView from "./StudentQuickView";
-import VerticalSplitIcon from "../../assets/icons/verticalSplit.svg";
 
 // Style Imports
+
+/**
+ * Description:
+ * This Component creates a toggleable sidebar panel with Filters to filter student data and a Quick View containing
+ *     information of a student that the user clicked on in the data grid.
+ *
+ * Date: 03-25-2021
+ */
+
+// -------------------------- IMPORTS --------------------------
 
 // -------------------------- STYLE --------------------------
 
@@ -36,7 +33,7 @@ const ButtonSpan = styled.span`
   width: 100%;
 `;
 
-const DeatilsButton = styled.button`
+const DetailsButton = styled.button`
   background-color: #4573ee;
   border: none;
   border-radius: 8px;
@@ -48,6 +45,7 @@ const DeatilsButton = styled.button`
 `;
 
 const Drawer = styled(DrawerMaterial)`
+
   transition: ${props =>
           props.open
                   ? props.theme.transitions.create("width", {
@@ -59,6 +57,7 @@ const Drawer = styled(DrawerMaterial)`
                     duration: props.theme.transitions.duration.leavingScreen
                   })};
 
+
   &.MuiDrawer-root {
     ${props => (props.open ? tw`w-99` : tw`w-18`)}
   }
@@ -66,10 +65,9 @@ const Drawer = styled(DrawerMaterial)`
   .MuiDrawer-paper {
     width: inherit;
     align-items: flex-end;
+    /* ${props => (props.open ? tw`w-28` : tw`w-18`)} */
   }
 `;
-
-// -------------------------- COMPONENT --------------------------
 
 /**
  * Returns a Drawer that contains both filters and student expansion panels.
@@ -85,6 +83,7 @@ const Drawer = styled(DrawerMaterial)`
  * @returns <Drawer> Component with Expansion Panels
  * @constructor
  */
+
 const StudentDrawer = ({ isOpenMatch, selected, handleClose, handleOpen, ...props }) => {
 
     let isDrawerOpen = props.studentSidebar;
@@ -158,12 +157,14 @@ const StudentDrawer = ({ isOpenMatch, selected, handleClose, handleOpen, ...prop
         />
         <ExpansionPanel
           SummaryChild={
+
             <NavItemSecondary
               title="Table Filters"
               iconSrc={FilterIcon}
               onClick={toggleFiltersExpansionPanel}
               sidebarIsOpen={props.studentSidebar}
             />
+
           }
           DetailChild={<StudentDrawerFilter {...useListController(props)} />}
           defaultExpanded={false}
@@ -190,5 +191,6 @@ const StudentDrawer = ({ isOpenMatch, selected, handleClose, handleOpen, ...prop
     );
   }
 ;
+
 
 export default StudentDrawer;

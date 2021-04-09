@@ -1,10 +1,13 @@
 import React from "react";
 import tw, { styled } from "twin.macro";
+import { TextField as RATextField } from "react-admin";
 
-const Field = styled.span`
+const StyledTextField = styled(RATextField)`
   ${tw`fontStyle-6 text-gray-700 font-medium`}
 `;
 
-const TextField = ({ record = {}, source }) => <Field>{record[source]}</Field>;
+const TextField = props => {
+  return <StyledTextField {...props} />;
+};
 
 export default TextField;

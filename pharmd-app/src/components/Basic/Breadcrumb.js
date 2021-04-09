@@ -9,21 +9,19 @@
 import React from "react";
 import { Route } from "react-router";
 import PropTypes from "prop-types";
-
 // Component Imports
 import { Link as RouterLink } from "react-router-dom";
 import MuiLink from "@material-ui/core/Link";
 import MuiBreadcrumbs from "@material-ui/core/Breadcrumbs";
-
 // Style Imports
 import tw, { styled } from "twin.macro";
 import { MAP_BREADCRUMB_NAME } from "../../constants/mappers";
 import {
+  HOME_TITLE,
   STUDENT_DETAILS_TITLE,
-  STUDENT_QUICKVIEW_TITLE,
-  HOME_TITLE
+  STUDENT_QUICKVIEW_TITLE
 } from "../../constants/text";
-import { STUDENTS_MAIN, HOME_MAIN } from "../../constants/routes";
+import { HOME_MAIN, STUDENTS_MAIN } from "../../constants/routes";
 
 // -------------------------- STYLE --------------------------
 
@@ -35,7 +33,7 @@ const CurrentLink = styled.p`
   ${tw`fontStyle-3 m-0 text-gray-500`}
 `;
 
-// -------------------------- FUNCTIONS --------------------------
+// -------------------------- FUNCTIONS --------------------------\
 
 const getName = (to, value) => {
   if (!isNaN(value) && to.includes(`${STUDENTS_MAIN}/${value}`)) {

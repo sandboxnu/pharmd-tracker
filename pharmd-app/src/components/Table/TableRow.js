@@ -2,10 +2,8 @@
 
 // Function Imports
 import React, { cloneElement } from "react";
-
 // Style Imports
 import tw, { styled } from "twin.macro";
-
 // Component Imports
 import TableCell from "@material-ui/core/TableCell";
 import MuiTableRow from "@material-ui/core/TableRow";

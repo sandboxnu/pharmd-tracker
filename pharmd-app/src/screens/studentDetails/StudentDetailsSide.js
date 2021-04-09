@@ -1,4 +1,5 @@
 import React from "react";
+
 import { styled } from "twin.macro";
 import QuickProfileField from "../../components/Fields/QuickProfileField";
 import QuickInfoField from "../../components/Fields/QuickInfoField";
@@ -13,7 +14,7 @@ const StudentDetailsSide = ({ source }) => {
     <Details>
       <QuickProfileField source="id" record={source} />
       <QuickInfoField source="id" record={source} />
-      <NoteListField source="courses" record={source} />
+      <NoteListField source="id" record={source} />
     </Details>
   );
 };

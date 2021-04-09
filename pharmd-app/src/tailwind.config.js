@@ -23,7 +23,8 @@ module.exports = {
         primary: "var(--color-primary)"
       },
       borderRadius: {
-        xl: "1rem"
+        xl: "1rem",
+        "7px": "7px"
       },
       boxShadow: {
         cardLight:
@@ -37,6 +38,12 @@ module.exports = {
         tertiary: "var(--color-tertiary)",
         background: "var(--color-background)",
         paper: "var(--color-white)"
+      },
+      fontSize: {
+        "1.1": "1.1rem"
+      },
+      fontWeight: {
+        "650": "650"
       },
       height: {
         "60px": "60px",

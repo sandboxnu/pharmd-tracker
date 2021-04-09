@@ -13,7 +13,6 @@
 // Function Imports
 import React from "react";
 import set from "lodash/set";
-
 // Component Imports
 import { Filter } from "react-admin";
 import StudentSearchInput from "../../components/Inputs/StudentSearchInput";
@@ -23,7 +22,9 @@ const STUDENT_NAME_QUERY = `${STUDENT.NAME}_like`;
 const STUDENT_ID_QUERY = `${STUDENT.NEU_ID}_like`;
 
 // -------------------------- COMPONENT --------------------------
+
 export const StudentFilter = props => {
+  // Adds given filter key and value to the redux state filters
   const setFilter = (key, val) => {
     props.setFilters(set(props.filterValues, key, val));
   };

@@ -1,7 +1,7 @@
 import React from "react";
-import { Select, InputLabel, MenuItem, FormControl } from '@material-ui/core';
+import {FormControl, InputLabel, MenuItem, Select} from '@material-ui/core';
 import PropTypes from 'prop-types';
-import tw, { styled } from "twin.macro";
+import tw, {styled} from "twin.macro";
 
 const StyledFormControl = styled(FormControl)`
     ${tw`m-4`};

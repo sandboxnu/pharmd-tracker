@@ -1,8 +1,11 @@
 import React from "react";
+
 import tw, { styled } from "twin.macro";
 import Paper from "@material-ui/core/Paper";
+
 import { Loading, useGetOne } from "react-admin";
 import AppBar from "../../components/Nav/AppBar";
+
 import StudentDetailsSide from "./StudentDetailsSide";
 import StudentDetailsContentGrid from "./StudentDetailsContentGrid";
 
@@ -32,8 +35,8 @@ const StudentDetailsScreen = props => {
   return (
     <>
       <MainContent>
-        <AppBar title={`Student Details ${props.match.params.id}`} />
-        <StudentDetailsContentGrid source={data} />
+        <AppBar title={`${data.lastName}, ${data.firstName}`} />
+        <StudentDetailsContentGrid record={data} />
       </MainContent>
 
       <SideContent>

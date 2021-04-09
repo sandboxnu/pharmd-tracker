@@ -1,5 +1,5 @@
 import React from "react";
-import { withKnobs, text } from "@storybook/addon-knobs";
+import { text, withKnobs } from "@storybook/addon-knobs";
 
 import { Filter } from "react-admin";
 import StudentSearchInput from "../components/Inputs/StudentSearchInput";
@@ -19,7 +19,7 @@ export const Default = () => (
   <Filter>
     <StudentSearchInput
       label={text(label, defaultLabel, groupId)}
-      source={"name_like"}
+      source="name_like"
       parse={inputValue => `^${inputValue}`}
       onChange={() => Console.log()}
       alwaysOn

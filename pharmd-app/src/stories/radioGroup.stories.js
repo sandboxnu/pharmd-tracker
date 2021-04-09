@@ -1,5 +1,4 @@
 import React from "react";
-import tw from "twin.macro";
 
 import FormControlLabel from "@material-ui/core/FormControlLabel";
 import RadioButtonsGroup from "../components/Basic/Radio Controls/RadioButtonGroup";

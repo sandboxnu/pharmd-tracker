@@ -3,6 +3,7 @@ import tw, { styled } from "twin.macro";
 import AccessTimeIcon from "@material-ui/icons/AccessTimeOutlined";
 import EditIcon from "@material-ui/icons/EditOutlined";
 import NoteIcon from "../Basic/NoteIcon";
+import { NOTE } from "../../constants/apiObjects";
 
 const Info = styled.div`
   ${tw`fontStyle-6 text-black font-medium`}
@@ -32,7 +33,7 @@ const Title = styled.h3`
   height: auto;
 `;
 
-const Date = styled.h4`
+const DateLabel = styled.h4`
   font-weight: normal;
   font-size: 0.85em;
   margin: 0px 0px 0px 0.5em;
@@ -47,23 +48,27 @@ const Content = styled.div`
   word-break: break-all;
 `;
 
-const NoteField = () => {
+const NoteField = ({ record, source }) => {
+  const title = record[NOTE.TITLE];
+  const body = record[NOTE.BODY];
+  const date = new Date(record[NOTE.DATE]).toLocaleString();
+
   return (
     <Info>
       <Heading>
-        <Title>Note Title</Title>
+        <Title>{title}</Title>
         <NoteIcon src={EditIcon} color="black" size="small" isPrimary="primary" />
       </Heading>
       <Time>
         <NoteIcon src={AccessTimeIcon} color="grey" size="inherit" />
-        <Date>Date</Date>
+        <DateLabel>{date}</DateLabel>
       </Time>
       {/* if the length of string is more than 2 lines - ask jose how to check for this */}
       <Content>
-        <p>
-          1234567890llllllllll123123456dddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd7890llllllllll1231234567890llllllllll123
-        </p>
+        <p>{body}</p>
       </Content>
+      {/*  add a contional where if 3 or more...  */}
+      {/* use QuickChipField for the chip component */}
     </Info>
   );
 };
