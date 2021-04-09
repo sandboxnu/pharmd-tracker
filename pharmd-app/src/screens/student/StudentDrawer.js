@@ -1,34 +1,31 @@
 /**
  * Description:
- * This component contains the content within the side panel (filters and student preview)
- *     and the side panel itself.
- * TODO:
- *   - Clicking on a student from the student list no longer opens the side bar and no longer opens the student preview expansion panel within the sidebar.
- * Date: 02-06-2021
+ * This Component creates a toggleable sidebar panel with Filters to filter student data and a Quick View containing
+ *     information of a student that the user clicked on in the data grid.
+ *
+ * Date: 03-25-2021
  */
 
 // -------------------------- IMPORTS --------------------------
 
 // Function Imports
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
+import { Link as RouterLink } from "react-router-dom";
 import { useListController } from "react-admin";
 import { useSelector } from "react-redux";
-import { Route, MemoryRouter } from "react-router";
-import { Link as RouterLink } from "react-router-dom";
 
 // Component Imports
 import DrawerMaterial from "@material-ui/core/Drawer";
-import tw, { styled } from "twin.macro";
 import ExpansionPanel from "../../components/Basic/ExpansionPanel";
 import FilterIcon from "../../assets/icons/filter.svg";
 import NavItemSecondary from "../../components/Nav/NavItemSecondary";
 import PersonIcon from "../../assets/icons/person.svg";
 import StudentDrawerFilter from "./StudentDrawerFilter";
-
 import StudentQuickView from "./StudentQuickView";
 import VerticalSplitIcon from "../../assets/icons/verticalSplit.svg";
 
 // Style Imports
+import tw, { styled } from "twin.macro";
 
 // -------------------------- STYLE --------------------------
 
@@ -85,6 +82,7 @@ const Drawer = styled(DrawerMaterial)`
  * @returns <Drawer> Component with Expansion Panels
  * @constructor
  */
+
 const StudentDrawer = ({ isOpenMatch, selected, handleClose, handleOpen, ...props }) => {
   // the state of the sidebar retrieved from redux
   const isOpen = useSelector(state => state.studentSidebarOpen);
