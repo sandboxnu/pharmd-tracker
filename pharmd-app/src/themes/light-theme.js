@@ -71,8 +71,7 @@ function createLightTheme() {
       }
     }
   };
-  const theme = createMuiTheme(overrides);
-  return theme;
+  return createMuiTheme(overrides);
 }
 
 export default createLightTheme;

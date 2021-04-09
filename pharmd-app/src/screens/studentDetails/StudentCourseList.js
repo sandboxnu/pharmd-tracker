@@ -20,8 +20,8 @@ const StudentCourseList = ({ resource, basePath, record }) => {
         <EmphasisField source={STUDENT_COURSE.COURSE_NAME} label="Name" />
         <TextField source={STUDENT_COURSE.COURSE_SUBJECT} label="Subject" />
         <TextField source={STUDENT_COURSE.COURSE_NUMBER} label="Number" />
-        <GradeField source={STUDENT_COURSE.PERCENTAGE} label="Percentage" />
-        <GradeField source={STUDENT_COURSE.LETTER_GRADE} label="Letter Grade" />
+        <GradeField source={STUDENT_COURSE.PERCENTAGE} label="Score" />
+        <GradeField source={STUDENT_COURSE.LETTER_GRADE} label="" />
       </Table>
     </ReferenceManyField>
   );
