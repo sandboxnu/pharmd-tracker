@@ -27,7 +27,7 @@ const ExpansionPanel = ({ SummaryChild, DetailChild, defaultExpanded, expanded, 
     <ExpansionPanelC
       tw="w-full"
       defaultExpanded={defaultExpanded}
-      square
+      square={true}
       elevation={0}
       expanded={expanded}
       onChange={onChange}
