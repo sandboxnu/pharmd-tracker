@@ -1,6 +1,29 @@
+/**
+ * Description:
+ * This Component creates a slider.
+ *
+ * Date: 03-25-2021
+ */
+
+// -------------------------- IMPORTS --------------------------
+
+// Function Imports
 import React from "react";
-import Slider from "@material-ui/core/Slider";
 import PropTypes from "prop-types";
+
+// Component Imports
+import Slider from "@material-ui/core/Slider";
+
+// Style Imports
+import { styled } from "twin.macro";
+
+// -------------------------- COMPONENT --------------------------
+
+const Label = styled.div``;
+
+function valuetext(value) {
+  return `${value}`;
+}
 
 /*
    TODO: Might change onCHnage to onCHnageCommited 
@@ -8,11 +31,33 @@ import PropTypes from "prop-types";
    onChange after the user lift the mouse press up
 */
 const RangeSlider = props => {
-  const { onChange, setValueText, disabled, max, min, step, className } = props;
-  const [value, setValue] = React.useState([min, max]);
+  const {
+    onChange,
+    setValueText,
+    disabled,
+    max,
+    min,
+    step,
+    className,
+    sliderClasses,
+    value,
+    setValue
+  } = props;
+
+  let rangeValue;
+  let setRangeValue;
+
+  if (value == null || setValue == null) {
+    // Values were not given
+    [rangeValue, setRangeValue] = React.useState([min, max]);
+  } else {
+    // use the variables givens
+    rangeValue = value;
+    setRangeValue = setValue;
+  }
 
   const handleChange = (event, newValue) => {
-    setValue(newValue);
+    setRangeValue(newValue);
     onChange(event, newValue);
   };
 
@@ -20,12 +65,18 @@ const RangeSlider = props => {
     <div className={className}>
       <span>
         <h4>
-          GPA Range <span>{`(${value[0]} - ${value[1]})`}</span>
+          GPA Range <span>{`(${rangeValue[0]} - ${rangeValue[1]})`}</span>
         </h4>
       </span>
 
       <Slider
-        value={value}
+        classes={{
+          root: sliderClasses.root,
+          rail: sliderClasses.rail,
+          thumb: sliderClasses.thumb,
+          track: sliderClasses.track
+        }}
+        value={rangeValue}
         onChange={handleChange}
         valueLabelDisplay="auto"
         aria-labelledby="range-slider"
@@ -40,7 +91,8 @@ const RangeSlider = props => {
 };
 
 RangeSlider.propTypes = {
-  onChange(props, propName) {
+  // Typecheck for function with two arguments
+  onChange(props, propName, componentName) {
     const fn = props[propName];
     if (
       !fn.prototype ||

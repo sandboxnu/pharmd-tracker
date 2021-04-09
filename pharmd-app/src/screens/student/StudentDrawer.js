@@ -1,17 +1,33 @@
+// Function Imports
 import React, { useState } from "react";
+import { Link as RouterLink } from "react-router-dom";
+import { useListController } from "react-admin";
 
+// Component Imports
 import DrawerMaterial from "@material-ui/core/Drawer";
 import tw, { styled } from "twin.macro";
 import { useSelector } from "react-redux";
-import { Link as RouterLink } from "react-router-dom";
-import { useListController } from "react-admin";
-import StudentQuickView from "./StudentQuickView";
 import ExpansionPanel from "../../components/Basic/ExpansionPanel";
 import NavItemSecondary from "../../components/Nav/NavItemSecondary";
 import VerticalSplitIcon from "../../assets/icons/verticalSplit.svg";
 import FilterIcon from "../../assets/icons/filter.svg";
 import PersonIcon from "../../assets/icons/person.svg";
 import StudentDrawerFilter from "./StudentDrawerFilter";
+import StudentQuickView from "./StudentQuickView";
+
+// Style Imports
+
+/**
+ * Description:
+ * This Component creates a toggleable sidebar panel with Filters to filter student data and a Quick View containing
+ *     information of a student that the user clicked on in the data grid.
+ *
+ * Date: 03-25-2021
+ */
+
+// -------------------------- IMPORTS --------------------------
+
+// -------------------------- STYLE --------------------------
 
 const ButtonSpan = styled.span`
   width: 100%;
@@ -66,6 +82,7 @@ transition: ${props =>
  * @returns <Drawer> Component with Expansion Panels
  * @constructor
  */
+
 const StudentDrawer = ({
   isOpenMatch,
   selected,
