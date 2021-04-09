@@ -1,6 +1,8 @@
 /**
  * Description:
  * This Component creates a single checkbox button.
+ * TODO:
+ * Date: 04-23-2020
  */
 
 // -------------------------- IMPORTS --------------------------

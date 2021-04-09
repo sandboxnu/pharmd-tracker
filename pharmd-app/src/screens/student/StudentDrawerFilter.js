@@ -1,13 +1,30 @@
-import React from "react";
+/**
+ * Description:
+ * This Component contains filter components that filter student data.
+ * This Component will be located in a drawer.
+ *
+ * Date: 02-18-2021
+ */
+
+// -------------------------- IMPORTS --------------------------
+
+// Function Imports
+import React, { useState } from "react";
 import { Filter as FilterRA } from "react-admin";
 import set from "lodash/set";
-import { blue } from "@material-ui/core/colors";
+
+// Component Imports
+import CohortMultipleSelect from "../../components/Inputs/CohortMultiSelectInput";
+import GpaSliderInput from "../../components/Inputs/GpaSliderInput";
+import OriginCheckboxInput from "../../components/Inputs/OriginCheckboxInput";
+import StatusCheckboxInput from "../../components/Inputs/StatusCheckboxInput";
+import StudentDisplayFilters from "./StudentDisplayFilters";
+
+// Style Imports
 import { makeStyles } from "@material-ui/core/styles";
 import { styled } from "twin.macro";
-import GpaSliderInput from "../../components/Inputs/GpaSliderInput";
-import OriginRadioInput from "../../components/Inputs/OriginRadioInput";
-import StatusCheckboxInput from "../../components/Inputs/StatusCheckboxInput";
-import CohortMultipleSelect from "../../components/Inputs/CohortMultiSelectInput";
+
+// -------------------------- STYLE --------------------------
 
 // Use this to style components within a filter
 
@@ -22,30 +39,6 @@ const useStyles = makeStyles(theme => ({
       fontFamily:
         "Montserrat-SemiBold, Montserrat-Bold, Inter-Medium, Inter-SemiBold, Inter-Regular, Inter-Bold, sans-serif"
     }
-  },
-  // rangSlider styling
-  rangeSlider: {
-    margin: "2rem 0 0 0",
-    width: 300,
-    "& h4": {
-      margin: "0 0 1.33em 0",
-      color: "black",
-      fontWeight: "650",
-      fontSize: "1.1rem",
-      fontFamily:
-        "Montserrat-SemiBold, Montserrat-Bold, Inter-Medium, Inter-SemiBold, Inter-Regular, Inter-Bold, sans-serif",
-      "& span": {
-        color: blue[700],
-        fontSize: "1rem"
-      }
-    }
-  },
-  // checkbox styling
-  checkboxButton: {
-    color: blue[700],
-    "&$checked": {
-      color: blue[700]
-    }
   }
 }));
 // Checkbox styling
@@ -53,89 +46,94 @@ const useStyles = makeStyles(theme => ({
 const Filter = styled(FilterRA)`
   display: block;
 `;
+// -------------------------- COMPONENT --------------------------
 
-export const StudentDrawerFilter = props => {
-  console.log("FILTER DRAWER PROPS", props.filterValues);
-
+export const StudentDrawerFilter = ({ filterValues, setFilters, ...props }) => {
   const classes = useStyles();
 
-  // onChange functions
+  // onChange functions to modify ReactAdmin filter values
   const setFilter = (key, val) => {
-    props.setFilters(set(props.filterValues, key, val));
+    setFilters(set(filterValues, key, val));
   };
 
   const deleteFilter = key => {
-    delete props.filterValues[key];
-    props.setFilters(props.filterValues);
+    delete filterValues[key];
+    setFilters(filterValues);
   };
 
-  const searchGpaRange = (event, newValue) => {
-    if (newValue) {
-      const gpaMin = newValue[0];
-      const gpaMax = newValue[1];
-      setFilter("gpa", [gpaMin, gpaMax]);
-    }
-  };
+  // used to keep track of the international filter to change the style of the
+  //     label to have a border when the checkbox is selected.
+  const [statusCheckedLabels, setStatusCheckedLabels] = useState([]);
 
-  const originRadio = (event, newValue) => {
-    switch (newValue) {
-      case "domestic":
-        setFilter("hasVisa", false);
-        break;
-      case "international":
-        setFilter("hasVisa", true);
-        break;
-      default:
-        deleteFilter("hasVisa");
-        break;
-    }
-    console.log("Origin Filter:", newValue);
-  };
+  // used to keep track of the GPA range values
+  const [rangeValue, setRangeValue] = React.useState([0, 4]);
 
-  const statusCheckbox = (event, array) => {
-    setFilter("status", array);
-    console.log("Status Filter:", array);
-  };
+  // Autocomplete state values
+  // the state to keep track of text that is typed into the input text field
+  const [autocompleteInputValue, setAutocompleteInputValue] = useState("");
+  // the state the keep track of the options that have been selected (this is an array object)
+  const [autocompleteValue, setAutocompleteValue] = useState([]);
 
-  const cohortMultiSelect = (event, array) => {
-    setFilter("gradDate", array);
-    console.log("Cohort Filter: ", array);
-  };
+  // used to keep track of the international filter to change the style of the
+  //     label to have a border when the checkbox is selected.
+  const [originCheckedLabels, setOriginCheckedLabels] = useState([]);
 
   return (
     <Filter {...props}>
-      {/* <NumberInput label="Min GPA" source={"gpa_gte"} alwaysOn /> */}
-      {/* <NumberInput label="Max GPA" source={"gpa_lte"} alwaysOn /> */}
-
-      <StatusCheckboxInput
-        label="Status"
-        source="status"
-        onChange={statusCheckbox}
-        color="primary"
-        className={classes.formControl}
-        checkboxClassName={classes.checkboxButton}
+      <StudentDisplayFilters
         alwaysOn
+        deleteFilter={deleteFilter}
+        filterValues={filterValues}
+        originCheckedLabels={originCheckedLabels}
+        rangeValue={rangeValue}
+        setAutocompleteInputValue={setAutocompleteInputValue}
+        setAutocompleteValue={setAutocompleteValue}
+        setFilter={setFilter}
+        setOriginCheckedLabels={setOriginCheckedLabels}
+        setRangeValue={setRangeValue}
+        setStatusCheckedLabels={setStatusCheckedLabels}
+      />
+      <StatusCheckboxInput
+        alwaysOn
+        checkedBoxes={statusCheckedLabels}
+        className={classes.formControl}
+        color="primary"
+        deleteFilter={deleteFilter}
+        label="Status"
+        setCheckedBoxes={setStatusCheckedLabels}
+        setFilter={setFilter}
+        source="status"
       />
       <GpaSliderInput
-        label="GPA"
-        source="gpa"
-        onChange={searchGpaRange}
-        className={classes.rangeSlider}
         alwaysOn
+        deleteFilter={deleteFilter}
+        label="GPA"
+        setFilter={setFilter}
+        source="gpa"
+        value={rangeValue}
+        setValue={setRangeValue}
       />
       <CohortMultipleSelect
+        alwaysOn
+        className={classes.formControl}
+        deleteFilter={deleteFilter}
+        inputValue={autocompleteInputValue}
         label="Cohort"
+        setFilter={setFilter}
+        setInputValue={setAutocompleteInputValue}
+        setValue={setAutocompleteValue}
         source="gradDate"
-        onChange={cohortMultiSelect}
-        className={classes.formControl}
-        alwaysOn
+        value={autocompleteValue}
       />
-      <OriginRadioInput
-        label="Origin"
-        source="hasVisa"
-        onChange={originRadio}
-        className={classes.formControl}
+      <OriginCheckboxInput
         alwaysOn
+        checkedBoxes={originCheckedLabels}
+        className={classes.formControl}
+        deleteFilter={deleteFilter}
+        label="Origin"
+        setCheckedBoxes={setOriginCheckedLabels}
+        setFilter={setFilter}
+        source="hasVisa"
       />
     </Filter>
   );
