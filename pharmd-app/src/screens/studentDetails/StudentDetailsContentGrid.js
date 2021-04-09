@@ -6,7 +6,7 @@ import { List as ListRA } from "react-admin";
 import tw, { styled } from "twin.macro";
 import Paper from "@material-ui/core/Paper";
 import Grid from "@material-ui/core/Grid";
-import { useSelector } from "react-redux";
+// import { useSelector } from "react-redux";
 
 import StudentDetailsList from "./StudentDetailsList";
 
@@ -26,7 +26,7 @@ const MainGrid = styled(Grid)`
 `;
 
 const StudentDetailsContentGrid = ({ source, ...props }) => {
-  const isOpen = useSelector(state => state.studentSidebarOpen);
+  const isOpen = true;
   return (
     <MainGrid container spacing={6}>
       <Grid container item xs={12} spacing={6}>

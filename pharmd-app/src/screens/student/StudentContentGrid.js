@@ -39,7 +39,7 @@ const MainGrid = styled(MuiGrid)`
 
 // -------------------------- COMPONENT --------------------------
 const StudentContentGrid = ({ selected, ...props }) => {
-  const isOpen = useSelector(state => state.studentSidebarOpen);
+  const isOpen = props.setStudentSidebar;
 
   return (
     <MainGrid container spacing={6}>
