@@ -4,14 +4,13 @@ import { ChipField as RAChipField } from "react-admin";
 import { getFieldBackgroundColor, getFieldColor } from "../../themes/field-colors";
 
 const Pill = styled(RAChipField)`
-	
-   ${tw`rounded-lg capitalize w-28 fontStyle-4 font-bold tracking-wider`}
-   color: ${props => props.color};
-   background-color: ${props => props.backgroundColor};
-	
+  ${tw`rounded-lg capitalize w-24 fontStyle-4 font-bold tracking-wider`}
+  font-size: .9em;
+  color: ${props => props.color};
+  background-color: ${props => props.backgroundColor};
 `;
 
-const ChipField = props => {
+const QuickChipField = props => {
   return (
     <Pill
       color={getFieldColor(props)}
@@ -21,4 +20,4 @@ const ChipField = props => {
   );
 };
 
-export default ChipField;
+export default QuickChipField;

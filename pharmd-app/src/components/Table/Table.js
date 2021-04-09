@@ -2,10 +2,8 @@
 
 // Function Imports
 import React from "react";
-
 // Style Imports
 import tw, { styled } from "twin.macro";
-
 // Component Imports
 import { Datagrid as DatagridRA } from "react-admin";
 

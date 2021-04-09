@@ -1,5 +1,4 @@
 import React from "react";
-import tw from "twin.macro";
 import RangeSlider from "../components/Basic/RangeSlider";
 
 export default {

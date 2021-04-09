@@ -1,6 +1,6 @@
 // Learn more here: https://marmelab.com/react-admin/DataProviders.html
 
-import { FAKE_API } from "../../config/backendRoutes";
+import { BACKEND_URL } from "../../config/backendRoutes";
 import DeleteHooks from "./DeleteHooks";
 import GetHooks from "./GetHooks";
 import httpClient from "./httpClient";
@@ -9,7 +9,7 @@ import UpdateHooks from "./UpdateHooks";
 import CreateHooks from "./CreateHooks";
 
 // import real BACKEND_URL to use pharmD backend data
-const BACKEND_URL = FAKE_API;
+// const BACKEND_URL = FAKE_API;
 
 export default {
   ...GetHooks(httpClient, BACKEND_URL),

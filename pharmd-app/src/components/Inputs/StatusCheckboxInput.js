@@ -20,6 +20,7 @@ import CheckboxButtonGroup from "../Basic/Checkbox Controls/CheckboxButtonGroup"
 // Style Imports
 import { withStyles } from "@material-ui/core/styles";
 import { blue } from "@material-ui/core/colors";
+import { STUDENT_STATUS } from "../../constants/apiObjects";
 import CheckboxFilterButtonGroup from "../Basic/Checkbox Controls/CheckboxFilterButtonGroup";
 
 // -------------------------- STYLE --------------------------
@@ -64,11 +65,11 @@ const StatusCheckboxInput = ({
 
   // Contains a list of tuples: (String: value, String: label)
   const formControlLabels = [
-    ["enrolled", "Enrolled"],
-    ["coop", "Co Op"],
-    ["graduated", "Graduated"],
-    ["leave", "Leave"],
-    ["dropback", "Drop Back"]
+    [STUDENT_STATUS.ENROLLED, "Enrolled"],
+    [STUDENT_STATUS.COOP, "Co-op"],
+    [STUDENT_STATUS.GRADUATED, "Graduated"],
+    [STUDENT_STATUS.LEAVE, "Leave"],
+    [STUDENT_STATUS.DROP_BACK, "Drop Back"]
   ];
   console.log(`Form control labels: ${formControlLabels}`);
 

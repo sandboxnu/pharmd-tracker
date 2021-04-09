@@ -1,9 +1,9 @@
 import React from "react";
-import { TextField, useGetOne, Loading } from "react-admin";
+import { Loading, TextField, useGetOne } from "react-admin";
 
 import tw, { styled } from "twin.macro";
 import AvatarField from "./AvatarField";
-import ChipField from "./ChipField";
+import QuickChipField from "./QuickChipField";
 
 const Profile = styled.section`
   display: block;
@@ -48,11 +48,12 @@ const QuickProfileField = ({ record = {}, source }) => {
   return (
     <Profile>
       <StatusField>
-        <ChipField record={data} source="status" pillSize="small" />
+        <QuickChipField record={data} source="status" />
       </StatusField>
       <PictureField record={data} source="avatar" />
-      <NameField record={data} source="name" />
-      <IdField record={data} source="neu_id" label="Northeastern ID" />
+      <NameField record={data} source="firstName" />
+      <NameField record={data} source="lastName" />
+      <IdField record={data} source="id" label="Northeastern ID" />
     </Profile>
   );
 };

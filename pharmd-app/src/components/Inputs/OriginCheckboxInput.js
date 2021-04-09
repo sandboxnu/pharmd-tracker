@@ -99,13 +99,13 @@ const OriginCheckboxInput = props => {
   const addOriginFilter = newValue => {
     switch (newValue) {
       case "domestic":
-        setFilter("international", false);
+        setFilter("hasVisa", false);
         break;
       case "international":
-        setFilter("international", true);
+        setFilter("hasVisa", true);
         break;
       default:
-        deleteFilter("international");
+        deleteFilter("hasVisa");
         break;
     }
   };
@@ -129,7 +129,7 @@ const OriginCheckboxInput = props => {
         addOriginFilter(newCheckedBoxes[0]);
       } else {
         // remove all filters
-        deleteFilter("international");
+        deleteFilter("hasVisa");
       }
 
       setOriginCheckedBoxes(newCheckedBoxes);

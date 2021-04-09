@@ -27,6 +27,7 @@ import { styled } from "twin.macro";
 // -------------------------- STYLE --------------------------
 
 // Use this to style components within a filter
+
 const useStyles = makeStyles(theme => ({
   // general formControl Styling
   formControl: {
@@ -40,11 +41,11 @@ const useStyles = makeStyles(theme => ({
     }
   }
 }));
+// Checkbox styling
 
 const Filter = styled(FilterRA)`
   display: block;
 `;
-
 // -------------------------- COMPONENT --------------------------
 
 export const StudentDrawerFilter = ({ filterValues, setFilters, ...props }) => {
@@ -108,7 +109,7 @@ export const StudentDrawerFilter = ({ filterValues, setFilters, ...props }) => {
         deleteFilter={deleteFilter}
         label="GPA"
         setFilter={setFilter}
-        source="gpa_gte"
+        source="gpa"
         value={rangeValue}
         setValue={setRangeValue}
       />
@@ -121,7 +122,7 @@ export const StudentDrawerFilter = ({ filterValues, setFilters, ...props }) => {
         setFilter={setFilter}
         setInputValue={setAutocompleteInputValue}
         setValue={setAutocompleteValue}
-        source="cohort"
+        source="gradDate"
         value={autocompleteValue}
       />
       <OriginCheckboxInput
@@ -132,7 +133,7 @@ export const StudentDrawerFilter = ({ filterValues, setFilters, ...props }) => {
         label="Origin"
         setCheckedBoxes={setOriginCheckedLabels}
         setFilter={setFilter}
-        source="international"
+        source="hasVisa"
       />
     </Filter>
   );

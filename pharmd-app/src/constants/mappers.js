@@ -1,5 +1,5 @@
-import { STUDENT_TITLE, COURSES_TITLE, UPLOAD_TITLE } from "./text";
-import { STUDENTS_MAIN, COURSES_MAIN, UPLOAD_MAIN } from "./routes";
+import { COURSES_TITLE, STUDENT_TITLE, UPLOAD_TITLE } from "./text";
+import { COURSES_MAIN, STUDENTS_MAIN, UPLOAD_MAIN } from "./routes";
 
 export const MAP_BREADCRUMB_NAME = {
   [STUDENTS_MAIN]: STUDENT_TITLE,

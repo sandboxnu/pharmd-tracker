@@ -1,11 +1,10 @@
-import React, { Component } from "react";
+import React, {Component} from "react";
 import PropTypes from "prop-types";
 import FileUploadService from "../../../services/FileUploadService";
-import { Select } from '../../../components/Form'
+import {Select} from '../../../components/Form'
 import Button from '@material-ui/core/Button'
 
 // Style Imports
-import tw, { styled } from "twin.macro";
 
 class UploadDataFieldChooser extends Component {
   static propTypes = {

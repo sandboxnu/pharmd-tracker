@@ -61,12 +61,12 @@ const StudentDisplayFilters = ({
     numCohortFilters = filterValues.cohort.current.length;
   }
 
-  if ("gpa_gte" in filterValues || "gpa_lte" in filterValues) {
-    hasGPAFilters = filterValues.gpa_gte > 0 || filterValues.gpa_lte < 4;
+  if ("gpa" in filterValues) {
+    hasGPAFilters = filterValues.gpa[0] > 0 || filterValues.gpa[1] < 4;
   }
 
-  if ("international" in filterValues) {
-    internationalFilter = filterValues.international;
+  if ("hasVisa" in filterValues) {
+    internationalFilter = filterValues.hasVisa;
   }
 
   if ("status" in filterValues) {
@@ -82,8 +82,7 @@ const StudentDisplayFilters = ({
   };
 
   const resetGPAValues = () => {
-    setFilter("gpa_gte", 0);
-    setFilter("gpa_lte", 4);
+    setFilter("gpa", [0, 4]);
     // this state variable is linked to the GPA filter component
     setRangeValue([0, 4]);
   };
@@ -97,7 +96,7 @@ const StudentDisplayFilters = ({
 
   const resetInternationalValues = () => {
     // this state variable is linked to the international filter component
-    deleteFilter("international");
+    deleteFilter("hasVisa");
     setOriginCheckedLabels([]);
   };
 

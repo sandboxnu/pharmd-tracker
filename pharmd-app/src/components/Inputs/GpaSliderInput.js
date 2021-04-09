@@ -72,8 +72,7 @@ const GpaSliderInput = ({ classes, setFilter, value, setValue, ...props }) => {
     if (newValue) {
       const gpaMin = newValue[0];
       const gpaMax = newValue[1];
-      setFilter("gpa_gte", gpaMin);
-      setFilter("gpa_lte", gpaMax);
+      setFilter("gpa", [gpaMin, gpaMax]);
     }
   };
 

@@ -1,16 +1,16 @@
-//-------------------------- IMPORTS --------------------------
+// -------------------------- IMPORTS --------------------------
 
 // Function Imports
 import React from "react";
-import { useGetOne, Loading } from "react-admin";
+import { Loading, useGetOne } from "react-admin";
 
 // Component Imports
+import { styled } from "twin.macro";
 import QuickInfo from "../Basic/QuickInfo";
 
 // Style Imports
-import { styled } from "twin.macro";
 
-//-------------------------- STYLE --------------------------
+// -------------------------- STYLE --------------------------
 
 const Info = styled.div`
   display: inline-block;
@@ -21,7 +21,7 @@ const Info = styled.div`
   width: 100%;
 `;
 
-//-------------------------- COMPONENT --------------------------
+// -------------------------- COMPONENT --------------------------
 
 const QuickInfoField = ({ record = {}, source }) => {
   const id = record[source];
@@ -30,13 +30,16 @@ const QuickInfoField = ({ record = {}, source }) => {
     return <Loading />;
   }
   if (error) {
-    return <p>Error, id: {id} is not found</p>;
+    return <p>
+Error, id:{id}
+{' '}
+is not found
+</p>;
   }
   return (
     <Info>
       <QuickInfo info={data.gpa} label="GPA" />
-      <QuickInfo info={data.cohort.current} label="Cohort" />
-      <QuickInfo info={`${data.test_avg}%`} label="Test Avg" />
+      <QuickInfo info={data.gradDate} label="Cohort" />
     </Info>
   );
 };

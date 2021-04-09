@@ -5,17 +5,30 @@ function getValue(cssVariable) {
   return STYLE.getPropertyValue(cssVariable).trim();
 }
 
-function createLigthTheme() {
-  const overridings = {
+export const FIELD_COLOR_NAMES = {
+  PRIMARY: "PRIMARY",
+  GREEN: "GREEN",
+  RED: "RED",
+  ORANGE: "ORANGE",
+  TERTIARY: "TERTIARY",
+  DEFAULT: "DEFAULT"
+};
+
+export const FIELD_COLOR_VALUES = {
+  [FIELD_COLOR_NAMES.PRIMARY]: getValue("--primary"),
+  [FIELD_COLOR_NAMES.GREEN]: getValue("--green-2"),
+  [FIELD_COLOR_NAMES.RED]: getValue("--red"),
+  [FIELD_COLOR_NAMES.ORANGE]: getValue("--orange"),
+  [FIELD_COLOR_NAMES.TERTIARY]: getValue("--tertiary"),
+  [FIELD_COLOR_NAMES.DEFAULT]: getValue("--gray-3")
+};
+
+function createLightTheme() {
+  const overrides = {
     name: "Light Theme",
     palette: {
-      pillColors: {
-        coop: getValue("--primary"),
-        enrolled: getValue("--green-2"),
-        dropback: getValue("--red"),
-        leave: getValue("--orange"),
-        graduated: getValue("--tertiary"),
-        na: getValue("--gray-3")
+      fieldColors: {
+        ...FIELD_COLOR_VALUES
       },
       primary: {
         main: getValue("--primary"),
@@ -58,7 +71,8 @@ function createLigthTheme() {
       }
     }
   };
-  return createMuiTheme(overridings);
+  const theme = createMuiTheme(overrides);
+  return theme;
 }
 
-export default createLigthTheme;
+export default createLightTheme;

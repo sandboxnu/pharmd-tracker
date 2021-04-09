@@ -1,3 +1,22 @@
+// Function Imports
+import React, { useState } from "react";
+import { Link as RouterLink } from "react-router-dom";
+import { useListController } from "react-admin";
+
+// Component Imports
+import DrawerMaterial from "@material-ui/core/Drawer";
+import tw, { styled } from "twin.macro";
+import { useSelector } from "react-redux";
+import ExpansionPanel from "../../components/Basic/ExpansionPanel";
+import NavItemSecondary from "../../components/Nav/NavItemSecondary";
+import VerticalSplitIcon from "../../assets/icons/verticalSplit.svg";
+import FilterIcon from "../../assets/icons/filter.svg";
+import PersonIcon from "../../assets/icons/person.svg";
+import StudentDrawerFilter from "./StudentDrawerFilter";
+import StudentQuickView from "./StudentQuickView";
+
+// Style Imports
+
 /**
  * Description:
  * This Component creates a toggleable sidebar panel with Filters to filter student data and a Quick View containing
@@ -8,32 +27,13 @@
 
 // -------------------------- IMPORTS --------------------------
 
-// Function Imports
-import React, { useState } from "react";
-import { Link as RouterLink } from "react-router-dom";
-import { useListController } from "react-admin";
-import { useSelector } from "react-redux";
-
-// Component Imports
-import DrawerMaterial from "@material-ui/core/Drawer";
-import ExpansionPanel from "../../components/Basic/ExpansionPanel";
-import FilterIcon from "../../assets/icons/filter.svg";
-import NavItemSecondary from "../../components/Nav/NavItemSecondary";
-import PersonIcon from "../../assets/icons/person.svg";
-import StudentDrawerFilter from "./StudentDrawerFilter";
-import StudentQuickView from "./StudentQuickView";
-import VerticalSplitIcon from "../../assets/icons/verticalSplit.svg";
-
-// Style Imports
-import tw, { styled } from "twin.macro";
-
 // -------------------------- STYLE --------------------------
 
 const ButtonSpan = styled.span`
   width: 100%;
 `;
 
-const DeatilsButton = styled.button`
+const DetailsButton = styled.button`
   background-color: #4573ee;
   border: none;
   border-radius: 8px;
@@ -45,16 +45,17 @@ const DeatilsButton = styled.button`
 `;
 
 const Drawer = styled(DrawerMaterial)`
-  transition: ${props =>
-    props.open
-      ? props.theme.transitions.create("width", {
-          easing: props.theme.transitions.easing.sharp,
-          duration: props.theme.transitions.duration.enteringScreen
-        })
-      : props.theme.transitions.create("width", {
-          easing: props.theme.transitions.easing.sharp,
-          duration: props.theme.transitions.duration.leavingScreen
-        })};
+
+transition: ${props =>
+  props.open
+    ? props.theme.transitions.create("width", {
+        easing: props.theme.transitions.easing.sharp,
+        duration: props.theme.transitions.duration.enteringScreen
+      })
+    : props.theme.transitions.create("width", {
+        easing: props.theme.transitions.easing.sharp,
+        duration: props.theme.transitions.duration.leavingScreen
+      })};
 
   &.MuiDrawer-root {
     ${props => (props.open ? tw`w-99` : tw`w-18`)}
@@ -63,10 +64,9 @@ const Drawer = styled(DrawerMaterial)`
   .MuiDrawer-paper {
     width: inherit;
     align-items: flex-end;
+    /* ${props => (props.open ? tw`w-28` : tw`w-18`)} */
   }
 `;
-
-// -------------------------- COMPONENT --------------------------
 
 /**
  * Returns a Drawer that contains both filters and student expansion panels.
@@ -83,13 +83,22 @@ const Drawer = styled(DrawerMaterial)`
  * @constructor
  */
 
-const StudentDrawer = ({ isOpenMatch, selected, handleClose, handleOpen, ...props }) => {
+const StudentDrawer = ({
+  isOpenMatch,
+  selected,
+  handleClose,
+  handleOpen,
+  studentQuickViewExpanded,
+  setStudentQuickViewExpanded,
+  ...props
+}) => {
   // the state of the sidebar retrieved from redux
   const isOpen = useSelector(state => state.studentSidebarOpen);
 
   // the drawer should be open if the drawer was manually opened or the user clicked on a student in the table
   const isDrawerOpen = isOpen || isOpenMatch;
   const [filtersQuickViewExpanded, setFiltersQuickViewExpanded] = useState(false);
+  // const [studentQuickViewExpanded, setStudentQuickViewExpanded] = useState(false);
 
   // onChange functions for when the expansion panel is clicked on:
   const changeFiltersExpansionPanel = () => {
@@ -100,8 +109,8 @@ const StudentDrawer = ({ isOpenMatch, selected, handleClose, handleOpen, ...prop
 
   const changeStudentExpansionPanel = () => {
     isOpen
-      ? props.setStudentQuickViewExpanded(!props.studentQuickViewExpanded)
-      : props.setStudentQuickViewExpanded(true);
+      ? setStudentQuickViewExpanded(!studentQuickViewExpanded)
+      : setStudentQuickViewExpanded(true);
   };
 
   // Avoid route errors
@@ -111,7 +120,7 @@ const StudentDrawer = ({ isOpenMatch, selected, handleClose, handleOpen, ...prop
         <StudentQuickView id={selected} onCancel={handleClose} {...props} />
         <ButtonSpan>
           <RouterLink to={`/students/${props.id}/details`}>
-            <DeatilsButton>More Student Info</DeatilsButton>
+            <DetailsButton>More Student Info</DetailsButton>
           </RouterLink>
         </ButtonSpan>
       </>
@@ -160,7 +169,7 @@ const StudentDrawer = ({ isOpenMatch, selected, handleClose, handleOpen, ...prop
         }
         DetailChild={quickview()}
         defaultExpanded={isDrawerOpen}
-        expanded={isDrawerOpen && props.studentQuickViewExpanded}
+        expanded={isDrawerOpen && studentQuickViewExpanded}
         onChange={changeStudentExpansionPanel}
       />
     </Drawer>
