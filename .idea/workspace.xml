@@ -4,7 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="6e73bd9e-c496-46d9-a507-73c7a0a55fd7" name="Default Changelist" comment="Sidebar and expansion panels are synced now. Need to get the sidebar to open when a Student is selected. Also need to clean up boolean logic and remove unnecessary props." />
+    <list default="true" id="6e73bd9e-c496-46d9-a507-73c7a0a55fd7" name="Default Changelist" comment="Sidebar and expansion panels are synced now. Need to get the sidebar to open when a Student is selected. Also need to clean up boolean logic and remove unnecessary props.">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pharmd-app/src/components/Fields/CourseListField.js" beforeDir="false" afterPath="$PROJECT_DIR$/pharmd-app/src/components/Fields/CourseListField.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pharmd-app/src/screens/student/StudentQuickView.js" beforeDir="false" afterPath="$PROJECT_DIR$/pharmd-app/src/screens/student/StudentQuickView.js" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -51,6 +55,7 @@
     <setting file="file://$PROJECT_DIR$/pharmd-app/node_modules/eslint-plugin-react/lib/util/props.js" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/pharmd-app/src/screens/student/StudentQuickView.js" root0="SKIP_INSPECTION" />
     <setting file="file://$PROJECT_DIR$/pharmd-app/src/screens/student/StudentResource.js" root0="SKIP_INSPECTION" />
+    <setting file="file://$PROJECT_DIR$/pharmd-app/src/screens/student/StudentList.js" root0="SKIP_INSPECTION" />
     <setting file="file://$PROJECT_DIR$/pharmd-app/src/screens/student/StudentDrawer.js" root0="SKIP_INSPECTION" />
   </component>
   <component name="ProjectId" id="1pRS5XFhWe6hXV9sCyxmnfUG36i" />
@@ -65,7 +70,7 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="js.linters.configure.manually.selectedeslint" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/pharmd-app" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.standard" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
@@ -100,7 +105,7 @@
     <configuration name="start" type="js.build_tools.npm" nameIsGenerated="true">
       <package-json value="$PROJECT_DIR$/pharmd-app/package.json" />
       <command value="start" />
-      <node-interpreter value="wsl://Ubuntu-20.04@/home/venkat/.nvm/versions/node/v14.4.0/bin/node" />
+      <node-interpreter value="wsl://Ubuntu-20.04@/usr/local/bin/node" />
       <envs />
       <method v="2" />
     </configuration>
@@ -122,7 +127,9 @@
       <workItem from="1615745219713" duration="689000" />
       <workItem from="1616343881569" duration="6987000" />
       <workItem from="1616714642586" duration="2946000" />
-      <workItem from="1617551277853" duration="7891000" />
+      <workItem from="1617551277853" duration="11445000" />
+      <workItem from="1617929347807" duration="1355000" />
+      <workItem from="1617934169551" duration="242000" />
     </task>
     <task id="LOCAL-00001" summary="Merged the purge into my branch">
       <created>1615148251891</created>
