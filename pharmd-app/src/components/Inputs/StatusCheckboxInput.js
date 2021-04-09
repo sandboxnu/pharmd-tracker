@@ -15,6 +15,7 @@ import { useInput } from "react-admin";
 
 // Component Imports
 import FormControlLabel from "@material-ui/core/FormControlLabel";
+import CheckboxButtonGroup from "../Basic/Checkbox Controls/CheckboxButtonGroup";
 
 // Style Imports
 import { withStyles } from "@material-ui/core/styles";

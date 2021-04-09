@@ -6,6 +6,8 @@
  * a check box is unchecked.
  *
  * Date: 04-23-2020
+ * This function also accepts an onChange function that will be exected every time
+ * a check box is unchecked.
  */
 
 // -------------------------- IMPORTS --------------------------
