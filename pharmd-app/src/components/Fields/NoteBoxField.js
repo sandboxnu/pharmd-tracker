@@ -1,15 +1,15 @@
 import React from 'react'
-import GridCard from "../Basic/GridCard";
 import tw, { styled } from "twin.macro";
-import PropTypes from 'prop-types';
 import MuiPaper from "@material-ui/core/Paper";
-import Grid from "@material-ui/core/Grid";
-import ChipField from "./ChipField";
-import NoteIcon from "../Basic/NoteIcon";
 import EditIcon from "@material-ui/icons/EditOutlined";
+import DeleteIcon from '@material-ui/icons/DeleteOutlined';
 import Button from '@material-ui/core/Button';
 import IconButton from '@material-ui/core/IconButton';
 import {NOTE} from "../../constants/apiObjects";
+import CardHeader from "@material-ui/core/CardHeader";
+import CardContent from "@material-ui/core/CardContent";
+import BasicTag from "../Basic/BasicTag";
+import NoteIcon from "../Basic/NoteIcon";
 
 const CardRoot = styled.div`
     flex-grow: 1;
@@ -17,39 +17,17 @@ const CardRoot = styled.div`
 `
 
 const Paper = styled(MuiPaper)`
-  ${tw`rounded-xl h-48 w-48 shadow-cardLight`}
-  padding: 20px;
+  ${tw`rounded-xl h-56 w-56 shadow-cardLight`}
+  padding: 7px;
   margin: auto;
-  max-width: 400
+  
 `;
 
-const NoteTitle = styled.h3`
-    color: ${props => props.theme.palette.secondary.main};
-`
-
-const NoteDate = styled.p`
-  font-size: .85em;
-  color: ${props => props.theme.palette.tertiary.main};
-`;
-
-const NoteContent = styled.div`
-  height: 3em;
-  line-height: 1em;
-  overflow: hidden;
-  margin-top: .4em;
-  word-break: break-all;
-`
-
-const NoteMore = styled(Button)`
-    position: absolute;
-    bottom: 5;
-    right: 5;
-`
-
-const NoteEdit = styled.span`
-    position: absolute;
-    right: 5;
-    top: 5
+const Tags = styled.div`
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: space-around;
 `
 
 const NoteBoxField = ({ record, source }) => {
@@ -64,40 +42,45 @@ const NoteBoxField = ({ record, source }) => {
         console.log(`This note also has tags: ${tags}`)
     }
 
+    function deleteNote() {
+        console.log("deleting note with iD" + id)
+    }
+
     return (
         <CardRoot>
             <Paper>
-                <Grid container spacing={2} direction="column">
-                    <Grid container xs>
-                        <Grid item xs={11}>
-                            <NoteTitle>{title}</NoteTitle>
-                        </Grid>
-                        <Grid item xs={1}>
-                            <NoteEdit>
-                                <IconButton aria-label="edit" onClick={edit}>
-                                    <NoteIcon src={EditIcon} color="black" size="small" isPrimary={"primary"}/>
+
+                    <CardHeader
+                        action={
+                            <div>
+                                <IconButton aria-label="settings" onClick={edit}>
+                                    <NoteIcon src={EditIcon} color="black" />
                                 </IconButton>
-                            </NoteEdit>
-                        </Grid>
-                    </Grid>
-                    {/*Date*/}
-                    <Grid item>
-                        <NoteDate>{date}</NoteDate>
-                    </Grid>
-                    {/*Tags*/}
-                    <Grid item xs>
-                        {tags.map((tag, ind) => <ChipField key={ind} pillSize="small"/>)}
-                    </Grid>
-                    {/*Content*/}
-                    <Grid container xs>
-                        <Grid item xs={10} zeroMinWidth>
-                            <NoteContent>{body}</NoteContent>
-                        </Grid>
-                        <Grid item xs={2}>
-                            <NoteMore>More</NoteMore>
-                        </Grid>
-                    </Grid>
-                </Grid>
+                                <IconButton aria-label="settings" onClick={deleteNote}>
+                                    <NoteIcon src={DeleteIcon} color="red" />
+                                </IconButton>
+                            </div>
+                        }
+                        title={title}
+                        subheader={date}
+                    />
+                    <CardContent>
+                        <p>
+                            {body}
+                        </p>
+                        <Tags>
+                            {tags.map((tag, ind) => {
+                                if (ind < 2) {
+                                    return <BasicTag text={tag}/>;
+                                } else {
+                                    const more = `${tags.length - 2} more`
+                                    return <BasicTag text={more} />
+                                }
+
+                            })}
+                        </Tags>
+
+                    </CardContent>
             </Paper>
         </CardRoot>
     )

@@ -8,6 +8,7 @@ const ModalFrame = styled(Modal)`
     margin-bottom: 10%;
     margin-left: 15%;
     margin-right: 15%;
+    
 `
 
 const InnerModal = styled.div`

@@ -1,9 +1,11 @@
 import React, {cloneElement, useState} from 'react'
 import tw, { styled } from "twin.macro";
+import { useDispatch } from "react-redux";
 import MuiGrid from "@material-ui/core/Grid";
 import HelpIcon from "@material-ui/icons/HelpOutline";
 import LeftIcon from '@material-ui/icons/ChevronLeftOutlined';
 import RightIcon from '@material-ui/icons/ChevronRightOutlined';
+import AddIcon from '@material-ui/icons/AddCircleOutlineOutlined';
 import {
     List,
     useListContext,
@@ -24,7 +26,7 @@ import NoteBoxField from "../../components/Fields/NoteBoxField";
 import MuiPaper from "@material-ui/core/Paper";
 import IconButton from '@material-ui/core/IconButton';
 import NoteIcon from "../../components/Basic/NoteIcon";
-import EditIcon from "@material-ui/icons/EditOutlined";
+import {setNotesModal} from "../../redux/actions";
 
 const NotesActions = (props) => {
     const {
@@ -94,6 +96,7 @@ const NotesHeader = styled.div`
 
 const StudentNoteDrawer = ({record = {}, source }) => {
     const [page, setPage] = useState(0);
+    const dispatch = useDispatch();
 
     const { data, loading, error } = useQuery({
         type: 'getManyReference',
@@ -129,6 +132,10 @@ const StudentNoteDrawer = ({record = {}, source }) => {
         isIncrement ? setPage(page + 1) : setPage(page - 1);
     }
 
+    function addNote() {
+        dispatch(setNotesModal({ isOpen: true }))
+    }
+
     if (loading) return <Loading />
     if (error) return <Error error="Cannot load student's notes"/>
     if (!data) return null
@@ -138,6 +145,9 @@ const StudentNoteDrawer = ({record = {}, source }) => {
             <NotesHeader>
                 <NotesTitle>Notes</NotesTitle>
                 <div>
+                    <IconButton aria-label="add" onClick={addNote}>
+                        <NoteIcon src={AddIcon} color="black" size="large" isPrimary="isPrimary" />
+                    </IconButton>
                     <IconButton aria-label="left" onClick={() => flipPage(false)} disabled={onFirstPage()}>
                         <NoteIcon src={LeftIcon} color={onFirstPage() ? "gray" : "black"} size="large" isPrimary={"primary"}/>
                     </IconButton>

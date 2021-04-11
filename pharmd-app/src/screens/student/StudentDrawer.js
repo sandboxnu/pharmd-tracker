@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 
 import DrawerMaterial from "@material-ui/core/Drawer";
 import tw, { styled } from "twin.macro";
@@ -9,16 +9,9 @@ import NavItemSecondary from "../../components/Nav/NavItemSecondary";
 import VerticalSplitIcon from "../../assets/icons/verticalSplit.svg";
 import FilterIcon from "../../assets/icons/filter.svg";
 import PersonIcon from "../../assets/icons/person.svg";
-import Icon from "../../components/Basic/Icon";
-import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
-import { Route, MemoryRouter } from "react-router";
 import { Link as RouterLink } from "react-router-dom";
 import { useListController } from "react-admin";
 import StudentDrawerFilter from "./StudentDrawerFilter";
-import PharmDModal from "../../components/Layout/PharmDModal";
-import NoteCreate from "../../components/Layout/NoteCreate";
-import { useDispatch } from "react-redux";
-import {setNotesModal} from "../../redux/actions";
 // const LinkRouter = props => <Link {...props} component={RouterLink} />;
 
 const DetailsButton = styled.button`
@@ -63,7 +56,6 @@ transition: ${props =>
 const StudentDrawer = ({ isOpenMatch, selected, handleClose, handleOpen, ...props }) => {
   const isOpen = useSelector(state => state.studentSidebarOpen);
   const isDrawerOpen = isOpen || isOpenMatch;
-  const dispatch = useDispatch();
 
   //Avoid route errors
   const quickview = () => {
@@ -120,9 +112,6 @@ const StudentDrawer = ({ isOpenMatch, selected, handleClose, handleOpen, ...prop
         DetailChild={quickview()}
         expand={isDrawerOpen}
       />
-        <PharmDModal open={isNotesModalOpen} title="Add Note" onClose={() => dispatch(setNotesModal({ isOpen: false }))}>
-            <NoteCreate {...props} onSuccess={() => dispatch(setNotesModal({ isOpen: false }))} />
-        </PharmDModal>
     </Drawer>
   );
 };
