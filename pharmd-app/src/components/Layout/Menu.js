@@ -10,7 +10,8 @@ import NavIndicator from "../Nav/NavIndicator";
 const Menu = ({ onMenuClick, logout, ...props }) => {
   const location = props.location.pathname;
   const { permissions } = usePermissions();
-  let resources = useSelector(getResources);
+  const hiddenResources = ["studentCourses"];
+  let resources = useSelector(getResources).filter(val => !hiddenResources.includes(val.name));
   if (permissions === "user") {
     resources = resources.filter(val => val.name !== "upload");
   }
