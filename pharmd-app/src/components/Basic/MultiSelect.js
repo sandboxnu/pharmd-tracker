@@ -76,7 +76,7 @@ const MultipleSelect = props => {
               {selected.map(value => (
                 <Chip
                   key={value}
-                  label={`Cohort ${value.substring(3)}`}
+                  label={`Cohort ${value.substring(2)}`}
                   className={classes.chip}
                   color="primary"
                   size="small"
