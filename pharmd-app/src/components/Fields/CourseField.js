@@ -1,5 +1,5 @@
 import React from "react";
-import tw, { styled, css } from "twin.macro";
+import tw, { css, styled } from "twin.macro";
 
 const Info = styled.div`
   ${tw`fontStyle-6 text-black font-medium inline-flex`}

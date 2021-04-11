@@ -1,7 +1,7 @@
 import React from "react";
 import "./styles/App.css";
 import { Admin, Resource } from "react-admin";
-import { ThemeProvider, ThemeConsumer } from "styled-components";
+import { ThemeConsumer, ThemeProvider } from "styled-components";
 import students from "./screens/student/index.js";
 import upload from "./screens/upload/index.js";
 import profile from "./screens/profile/index.js";
@@ -29,9 +29,10 @@ const App = () => {
             customRoutes={customRoutes}
           >
             <Resource name="users" {...profile} />
-            <Resource name="students" {...students}/>
+            <Resource name="students" {...students} />
             <Resource name="courses" {...courses} />
-            <Resource name={"studentCourses"}/>
+            <Resource name="studentCourses" />
+            <Resource name="studentExams" />
             <Resource name="upload" {...upload} />
           </Admin>
         )}

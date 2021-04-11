@@ -1,5 +1,5 @@
 import React from "react";
-import { withKnobs, select } from "@storybook/addon-knobs";
+import { select, withKnobs } from "@storybook/addon-knobs";
 import Icon from "../components/Basic/Icon";
 import IconButtonI from "../components/Basic/IconButton";
 import TestIcon from "../assets/icons/student.svg";

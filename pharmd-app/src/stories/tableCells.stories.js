@@ -1,7 +1,6 @@
 import React from "react";
-import { withKnobs, select, text } from "@storybook/addon-knobs";
+import { select, text, withKnobs } from "@storybook/addon-knobs";
 import { withDesign } from "storybook-addon-designs";
-import tw from "twin.macro";
 import EmphasisField from "../components/Fields/EmphasisField";
 import ChipField from "../components/Fields/ChipField";
 

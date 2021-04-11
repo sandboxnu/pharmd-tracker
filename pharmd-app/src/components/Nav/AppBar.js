@@ -10,10 +10,8 @@
 // Function Imports
 import React from "react";
 import PropTypes from "prop-types";
-
 // Style Imports
 import tw, { styled } from "twin.macro";
-
 // Component Imports
 import MuiAppBar from "@material-ui/core/AppBar";
 import MuiToolbar from "@material-ui/core/Toolbar";
