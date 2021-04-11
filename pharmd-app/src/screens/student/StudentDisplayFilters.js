@@ -57,8 +57,8 @@ const StudentDisplayFilters = ({
   let numCohortFilters = 0;
   let internationalFilter = null;
 
-  if ("cohort" in filterValues) {
-    numCohortFilters = filterValues.cohort.current.length;
+  if ("gradDate" in filterValues) {
+    numCohortFilters = filterValues.gradDate.length;
   }
 
   if ("gpa" in filterValues) {
