@@ -12,6 +12,12 @@ const Pill = styled(RAChipField)`
 `;
 
 const ChipField = props => {
+  props.record[props.source] = props.record[props.source]
+    .replace("_", " ")
+    .split(" ")
+    .map(s => s.charAt(0) + s.slice(1).toLowerCase())
+    .join(" ");
+
   return (
     <Pill
       color={getFieldColor(props)}
