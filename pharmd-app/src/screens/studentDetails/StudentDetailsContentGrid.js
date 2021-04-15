@@ -1,6 +1,10 @@
 /**
  *
  * This component determines the main layout of the StudentDetails Screen
+ *
+ * TODO:
+ * The {isOpen ? 4 : 3} is outdated, and should just be locked at 4.
+ * Entire implementation needs slight refactoring, contact Jose
  */
 
 import React from "react";
