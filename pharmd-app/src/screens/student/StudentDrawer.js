@@ -136,7 +136,7 @@ const StudentDrawer = ({ isOpenMatch, selected, handleClose, handleOpen, ...prop
           <StudentQuickView id={selected}  {...props} />
           <ButtonSpan>
             <RouterLink to={`/students/${props.id}/details`}>
-              <DeatilsButton>More Student Info</DeatilsButton>
+              <DetailsButton>More Student Info</DetailsButton>
             </RouterLink>
           </ButtonSpan>
         </>
