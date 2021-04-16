@@ -3,6 +3,7 @@
 // Function Imports
 import React from "react";
 import { Loading, useGetOne } from "react-admin";
+import { formatDecimal } from "../../services/Utility";
 
 // Component Imports
 import { styled } from "twin.macro";
@@ -34,7 +35,7 @@ const QuickInfoField = ({ record = {}, source }) => {
   }
   return (
     <Info>
-      <QuickInfo info={data.gpa} label="GPA" />
+      <QuickInfo info={formatDecimal(data.gpa)} label="GPA" />
       <QuickInfo info={data.gradDate} label="Cohort" />
     </Info>
   );
