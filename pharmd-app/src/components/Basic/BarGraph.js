@@ -11,7 +11,6 @@ const Bar = ({ max, min, height, threshold }) => {
   const heightStr = `${height.toString()}px`;
 
   // this bar covers (from threshold[0] to threshold[1])
-  console.log(`Threshold: ${threshold}`);
   let secondHeight;
 
   if (min > threshold[1] || max < threshold[0]) {
@@ -25,10 +24,10 @@ const Bar = ({ max, min, height, threshold }) => {
     <div tw="flex-1" css={{ height: heightStr, "margin-right": ".1rem" }}>
       <div tw="bg-primary h-full opacity-25 rounded-t-lg" />
       <div
-        tw="bg-white relative rounded-t-lg w-full"
-        css={{ height: secondHeightStr, top: `-${secondHeightStr}` }}
+        // tw="bg-white relative rounded-t-lg w-full"
+        tw="animate-grow bg-primary opacity-75 relative rounded-t-lg w-full"
+        css={{ top: `-${secondHeightStr}` }}
       >
-        <div tw="bg-primary h-full opacity-75 rounded-t-lg w-full" />
       </div>
     </div>
   );
