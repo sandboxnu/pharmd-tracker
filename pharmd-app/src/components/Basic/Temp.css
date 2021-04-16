@@ -1,0 +1,27 @@
+.bar {
+    background-color: green;
+    animation: grow 1s linear;
+}
+
+.car {
+    background-color: red;
+    animation: grow 1s linear reverse;
+}
+
+@keyframes grow {
+    0% {
+        height: 0%;
+    }
+    100% {
+        height: 100%;
+    }
+}
+
+@keyframes shrink {
+    100% {
+        height: 100%;
+    }
+    0% {
+        height: 0%;
+    }
+}
