@@ -10,9 +10,9 @@
 // Function Imports
 import React, { useCallback, useState } from "react";
 import { Route, useHistory } from "react-router-dom";
-import { useDispatch } from "react-redux";
+// import { useDispatch } from "react-redux";
 import tw, { styled } from "twin.macro";
-import { setStudentSideBar } from "../../redux/actions";
+// import { setStudentSideBar } from "../../redux/actions";
 import { STUDENT_QUICKVIEW, STUDENTS_MAIN } from "../../constants/routes";
 // Component Imports
 import AppBar from "../../components/Nav/AppBar";
@@ -26,24 +26,14 @@ const MainContent = styled.div`
 
 // -------------------------- COMPONENT --------------------------
 const StudentScreen = props => {
-  const history = useHistory();
-  const dispatch = useDispatch();
 
-  const handleClose = useCallback(() => {
-    history.push(STUDENTS_MAIN);
-    dispatch(setStudentSideBar({ isOpen: false }));
-  }, [history]);
-
-  const handleOpen = useCallback(() => {
-    dispatch(setStudentSideBar({ isOpen: true }));
-  }, []);
-
+  const [studentSidebar, setStudentSidebar] = useState(true);
   const [studentQuickViewExpanded, setStudentQuickViewExpanded] = useState(false);
 
   return (
     <Route path={STUDENT_QUICKVIEW}>
       {({ match }) => {
-        const isMatch = match && match.params && match.params.id !== "create";
+        const isMatch = match && match.params && match.params.id !== "create"; // has the user selected a new student
 
         return (
           <>
@@ -53,6 +43,9 @@ const StudentScreen = props => {
                 selected={isMatch && parseInt(match.params.id, 10)}
                 studentQuickViewExpanded={studentQuickViewExpanded}
                 setStudentQuickViewExpanded={setStudentQuickViewExpanded}
+                studentSidebar={studentSidebar}
+                setStudentSidebar={setStudentSidebar}
+
                 {...props}
               />
             </MainContent>
@@ -60,10 +53,10 @@ const StudentScreen = props => {
             <StudentDrawer
               isOpenMatch={isMatch}
               id={isMatch ? match.params.id : 0}
-              handleClose={handleClose}
-              handleOpen={handleOpen}
               studentQuickViewExpanded={studentQuickViewExpanded}
               setStudentQuickViewExpanded={setStudentQuickViewExpanded}
+              studentSidebar={studentSidebar}
+              setStudentSidebar={setStudentSidebar}
               {...props}
             />
           </>
