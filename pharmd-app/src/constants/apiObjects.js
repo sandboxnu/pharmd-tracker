@@ -40,17 +40,28 @@ export const STUDENT_COURSE = {
   COURSE_NAME: "course.name"
 };
 
+export const STUDENT_EXAM = {
+  SEMESTER: "semester",
+  YEAR: "year",
+  PERCENTAGE: "percentage",
+  LETTER_GRADE: "letterGrade",
+  EXAM_NAME: "exam.name",
+  COURSE_SUBJECT: "exam.course.subject",
+  COURSE_NUMBER: "exam.course.number",
+  COURSE_NAME: "exam.course.name"
+};
+
 export const LETTER_GRADE = {
-  A:'A',
-  A_MINUS: 'A-',
-  B_PLUS : 'B+',
-  B : 'B',
-  B_MINUS : 'B-',
-  C_PLUS : 'C+',
-  C : 'C',
-  C_MINUS : 'C-',
-  D_PLUS : 'D+',
-  D : 'D',
-  D_MINUS : 'D-',
-  F : 'F'
+  A: "A",
+  A_MINUS: "A-",
+  B_PLUS: "B+",
+  B: "B",
+  B_MINUS: "B-",
+  C_PLUS: "C+",
+  C: "C",
+  C_MINUS: "C-",
+  D_PLUS: "D+",
+  D: "D",
+  D_MINUS: "D-",
+  F: "F"
 };
