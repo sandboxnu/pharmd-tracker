@@ -1,16 +1,13 @@
 import React from "react";
+import { FunctionField as RAFunctionField } from "react-admin";
 import tw, { styled } from "twin.macro";
 import { STUDENT } from "../../constants/apiObjects";
 
-const Field = styled.span`
+const FunctionField = styled(RAFunctionField)`
   ${tw`fontStyle-6 text-gray-700 font-medium inline-flex`}
 `;
 
 const CohortField = ({ record = {} }) => {
-  const entryDate = record[STUDENT.ENTRY_DATE];
-  const gradDate = record[STUDENT.GRAD_DATE];
-  const cohort = `${entryDate.slice(-2)}/${gradDate.slice(-2)}`;
-
-  return <Field>{cohort}</Field>;
+  return <FunctionField record={record} render={rec => `${rec[STUDENT.ENTRY_DATE].slice(-2)}/${rec[STUDENT.GRAD_DATE].slice(-2)}`} />;
 };
 export default CohortField;
