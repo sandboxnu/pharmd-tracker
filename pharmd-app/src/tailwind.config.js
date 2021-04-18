@@ -20,7 +20,8 @@ module.exports = {
     },
     extend: {
       animation: {
-        grow: "grow 2s linear"
+        grow: "grow 2s linear",
+        shrink: "grow 3s linear reverse"
       },
       backgroundColor: {
         primary: "var(--color-primary)"

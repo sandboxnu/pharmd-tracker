@@ -71,7 +71,6 @@ const StatusCheckboxInput = ({
     [STUDENT_STATUS.LEAVE, "Leave"],
     [STUDENT_STATUS.DROP_BACK, "Drop Back"]
   ];
-  console.log(`Form control labels: ${formControlLabels}`);
 
   if (checkedBoxes == null || setCheckedBoxes == null) {
     // Values were not given

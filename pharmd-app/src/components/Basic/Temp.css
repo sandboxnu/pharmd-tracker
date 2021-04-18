@@ -1,10 +1,8 @@
 .bar {
-    background-color: green;
     animation: grow 1s linear;
 }
 
 .car {
-    background-color: red;
     animation: grow 1s linear reverse;
 }
 
