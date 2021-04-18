@@ -1,15 +1,11 @@
 import React from 'react'
 import tw, { styled } from "twin.macro";
 import MuiPaper from "@material-ui/core/Paper";
-import EditIcon from "@material-ui/icons/EditOutlined";
-import DeleteIcon from '@material-ui/icons/DeleteOutlined';
-import Button from '@material-ui/core/Button';
-import IconButton from '@material-ui/core/IconButton';
 import {NOTE} from "../../constants/apiObjects";
 import CardHeader from "@material-ui/core/CardHeader";
 import CardContent from "@material-ui/core/CardContent";
 import BasicTag from "../Basic/BasicTag";
-import NoteIcon from "../Basic/NoteIcon";
+import {DeleteButton} from 'react-admin';
 
 const CardRoot = styled.div`
     flex-grow: 1;
@@ -30,20 +26,18 @@ const Tags = styled.div`
     justify-content: space-around;
 `
 
-const NoteBoxField = ({ record, source }) => {
+const MAX_TITLE_LENGTH = 15;
+const MAX_BODY_LENGTH = 30;
+
+const NoteBoxField = ({ record, studentId }) => {
     const id = record[NOTE.ID];
     const title = record[NOTE.TITLE];
     const body = record[NOTE.BODY];
     const tags = record[NOTE.TAGS];
     const date = new Date(record[NOTE.DATE]).toLocaleDateString();
 
-    function edit() {
-        console.log(`Editing note with ID: ${id}`)
-        console.log(`This note also has tags: ${tags}`)
-    }
-
-    function deleteNote() {
-        console.log("deleting note with iD" + id)
+    function truncate(str, n){
+        return (str.length > n) ? str.substr(0, n-1) + '…' : str;
     }
 
     return (
@@ -53,20 +47,15 @@ const NoteBoxField = ({ record, source }) => {
                     <CardHeader
                         action={
                             <div>
-                                <IconButton aria-label="settings" onClick={edit}>
-                                    <NoteIcon src={EditIcon} color="black" />
-                                </IconButton>
-                                <IconButton aria-label="settings" onClick={deleteNote}>
-                                    <NoteIcon src={DeleteIcon} color="red" />
-                                </IconButton>
+                                <DeleteButton basePath={`/students/${studentId}/details`} record={record} resource="notes">DELETE</DeleteButton>
                             </div>
                         }
-                        title={title}
+                        title={truncate(title, MAX_TITLE_LENGTH)}
                         subheader={date}
                     />
                     <CardContent>
                         <p>
-                            {body}
+                            {truncate(body, MAX_BODY_LENGTH)}
                         </p>
                         <Tags>
                             {tags.map((tag, ind) => {

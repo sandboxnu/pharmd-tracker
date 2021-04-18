@@ -94,6 +94,10 @@ const NotesHeader = styled.div`
     justify-content: space-between;
 `
 
+const NoNotes = styled.h3`
+    text-align: center
+`
+
 const StudentNoteDrawer = ({record = {}, source }) => {
     const [page, setPage] = useState(0);
     const dispatch = useDispatch();
@@ -119,13 +123,13 @@ const StudentNoteDrawer = ({record = {}, source }) => {
         const cursor = page*3;
         return data.slice(cursor, cursor + 3);
     }
-
+    const noNotes = () => data.length === 0;
     const totalPages = () => Math.ceil(data.length / 3)
     const onLastPage = () => page === totalPages() - 1;
     const onFirstPage = () => page === 0;
 
     function pagesDisplay() {
-        return `${page + 1} / ${totalPages()}`
+        return data.length > 0 ? `${page + 1} / ${totalPages()}` : '0 / 0'
     }
 
     function flipPage(isIncrement) {
@@ -142,27 +146,31 @@ const StudentNoteDrawer = ({record = {}, source }) => {
 
     return (
         <NoteDrawerContainer>
-            <NotesHeader>
-                <NotesTitle>Notes</NotesTitle>
-                <div>
-                    <IconButton aria-label="add" onClick={addNote}>
-                        <NoteIcon src={AddIcon} color="black" size="large" isPrimary="isPrimary" />
-                    </IconButton>
-                    <IconButton aria-label="left" onClick={() => flipPage(false)} disabled={onFirstPage()}>
-                        <NoteIcon src={LeftIcon} color={onFirstPage() ? "gray" : "black"} size="large" isPrimary={"primary"}/>
-                    </IconButton>
-                    <IconButton aria-label="right" onClick={() => flipPage(true)} disabled={onLastPage()}>
-                        <NoteIcon src={RightIcon} color={onLastPage() ? "gray" : "black"} size="large" isPrimary={"primary"}/>
-                    </IconButton>
-                    {pagesDisplay()}
-                </div>
-            </NotesHeader>
-
-            <NoteGrid container spacing={2} direction="row">
-                {getDataPage(data).map(note => {
-                    return <NoteBoxField source='id' record={note} />
-                })}
-            </NoteGrid>
+                    <NotesHeader>
+                        <NotesTitle>Notes</NotesTitle>
+                        <div>
+                            <IconButton aria-label="add" onClick={addNote}>
+                                <NoteIcon src={AddIcon} color="black" size="large" isPrimary="isPrimary" />
+                            </IconButton>
+                            <IconButton aria-label="left" onClick={() => flipPage(false)} disabled={onFirstPage() || noNotes()}>
+                                <NoteIcon src={LeftIcon} color={(onFirstPage() || noNotes()) ? "gray" : "black"}
+                                          size="large" isPrimary={"primary"}/>
+                            </IconButton>
+                            <IconButton aria-label="right" onClick={() => flipPage(true)} disabled={onLastPage() || noNotes()}>
+                                <NoteIcon src={RightIcon} color={(onLastPage() || noNotes()) ? "gray" : "black"}
+                                          size="large" isPrimary={"primary"}/>
+                            </IconButton>
+                            {pagesDisplay()}
+                        </div>
+                    </NotesHeader>
+            {data.length > 0 ?
+                <NoteGrid container spacing={2} direction="row">
+                    {getDataPage(data).map((note, ind) => {
+                        return <NoteBoxField record={note} key={ind} studentId={record[source]}/>
+                    })}
+                </NoteGrid>
+                : <NoNotes>No notes to show!</NoNotes>
+            }
         </NoteDrawerContainer>
     )
 }

@@ -44,7 +44,7 @@ const StudentDetailsScreen = props => {
             <MainContent>
                 <AppBar title={`${data.lastName}, ${data.firstName}`}/>
                 <StudentDetailsContentGrid record={data}/>
-                <StudentNoteDrawer source={data}/>
+                <StudentNoteDrawer record={data} source="id"/>
             </MainContent>
 
             <SideContent>

@@ -53,8 +53,8 @@ const NoteListField = ({ record = {}, source }) => {
       <IconButton onClick={addNote}>
         <NoteIcon src={AddCircleOutlineOutlinedIcon} size="small" isPrimary="primary" />
       </IconButton>
-      {data.map((note) => {
-        return <NoteField source='id' record={note}/>
+      {data.map((note, ind) => {
+        return <NoteField source='id' record={note} key={ind}/>
       })
       }
     </Notes>

@@ -10,7 +10,7 @@ const NoteCreate = props => {
 
     return (
         <Create {...props} resource="notes" onSuccess={props.onSuccess} basePath="notes">
-            <SimpleForm initialValues={ {studentId: props.id} }>
+            <SimpleForm initialValues={ {student: props.match.params.id} }>
                 <TextInput label="Note Title" source="title" validate={required()} />
                 <TextInput label="Note Content" source="body" validate={required()} />
                 <TextInput label="Tags" source="tags" validate={required()} format={formatInput} parse={parseInput} />
