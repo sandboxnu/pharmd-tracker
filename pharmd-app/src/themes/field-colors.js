@@ -78,15 +78,15 @@ const getPercentageColor = ({ record }) => {
 
 const getStudentStatusColor = ({ record }) => {
   switch (record[STUDENT.STATUS]) {
-    case "Coop":
+    case STUDENT_STATUS.COOP:
       return FIELD_COLOR_NAMES.PRIMARY;
-    case "Enrolled":
+    case STUDENT_STATUS.ENROLLED:
       return FIELD_COLOR_NAMES.GREEN;
-    case "Drop Back":
+    case STUDENT_STATUS.DROP_BACK:
       return FIELD_COLOR_NAMES.RED;
-    case "Leave":
+    case STUDENT_STATUS.LEAVE:
       return FIELD_COLOR_NAMES.ORANGE;
-    case "Graduated":
+    case STUDENT_STATUS.GRADUATED:
       return FIELD_COLOR_NAMES.TERTIARY;
     default:
       return FIELD_COLOR_NAMES.DEFAULT;
