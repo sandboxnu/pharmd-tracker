@@ -108,7 +108,7 @@ const CohortMultipleSelect = ({ classes, className, inputValue, label, setFilter
     array.forEach(dict => {
       values.push(dict.value);
     });
-    setFilter("cohort[current]", values);
+    setFilter("gradDate", values);
   };
 
   // determines if an option (dictionary) has been selected based on its value
@@ -124,12 +124,13 @@ const CohortMultipleSelect = ({ classes, className, inputValue, label, setFilter
   };
 
   const cohortList = [
-    { label: "Cohort 20", value: "15/20" },
-    { label: "Cohort 22", value: "17/22" },
-    { label: "Cohort 23", value: "18/23" },
-    { label: "Cohort 24", value: "19/24" },
-    { label: "Cohort 25", value: "20/25" },
-    { label: "Cohort 26", value: "20/26" }
+    { label: "Cohort 20", value: "2020" },
+    { label: "Cohort 21", value: "2021" },
+    { label: "Cohort 22", value: "2022" },
+    { label: "Cohort 23", value: "2023" },
+    { label: "Cohort 24", value: "2024" },
+    { label: "Cohort 25", value: "2025" },
+    { label: "Cohort 26", value: "2026" }
   ];
 
   return (
@@ -143,7 +144,7 @@ const CohortMultipleSelect = ({ classes, className, inputValue, label, setFilter
         tagClassName={classes.tag}
         onChange={cohortMultiSelect}
         options={cohortList}
-        placeholder="Add Item"
+        placeholder="Add Cohort"
         popupIcon={<ExpandMoreIcon fontSize="large" tw="text-black" />}
         setInputValue={setInputValue}
         setValue={setValue}

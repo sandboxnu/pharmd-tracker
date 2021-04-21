@@ -7,6 +7,7 @@ import { Loading, useGetOne } from "react-admin";
 // Component Imports
 import { styled } from "twin.macro";
 import QuickInfo from "../Basic/QuickInfo";
+import {STUDENT} from "../../constants/apiObjects";
 
 // Style Imports
 
@@ -26,6 +27,10 @@ const Info = styled.div`
 const QuickInfoField = ({ record = {}, source }) => {
   const id = record[source];
   const { data, loading, error } = useGetOne("students", id);
+  const entryDate = record[STUDENT.ENTRY_DATE];
+  const gradDate = record[STUDENT.GRAD_DATE];
+  const cohort = `${entryDate.slice(-2)}/${gradDate.slice(-2)}`;
+
   if (loading) {
     return <Loading />;
   }
@@ -39,7 +44,7 @@ is not found
   return (
     <Info>
       <QuickInfo info={data.gpa} label="GPA" />
-      <QuickInfo info={data.gradDate} label="Cohort" />
+      <QuickInfo info={cohort} label="Cohort" />
     </Info>
   );
 };

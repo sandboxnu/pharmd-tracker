@@ -1,27 +1,13 @@
 import React from "react";
+import { FunctionField as RAFunctionField } from "react-admin";
 import tw, { styled } from "twin.macro";
-import InfoIcon from "../Basic/IconInfo";
-import ErrorIcon from "../../assets/icons/errorFilled.svg";
+import { STUDENT } from "../../constants/apiObjects";
 
-const Field = styled.span`
+const FunctionField = styled(RAFunctionField)`
   ${tw`fontStyle-6 text-gray-700 font-medium inline-flex`}
 `;
 
-const Offset = styled.span`
-  ${tw`ml-3`}
-`;
-
-const CohortField = ({ record = {}, source }) => {
-  const cohort = record[source];
-  return (
-    <Field>
-      {cohort.current}
-      {cohort.moved && (
-        <Offset>
-          <InfoIcon src={ErrorIcon} text={`Original: ${cohort.original}`} />
-        </Offset>
-      )}
-    </Field>
-  );
+const CohortField = ({ record = {} }) => {
+  return <FunctionField record={record} render={rec => `${rec[STUDENT.ENTRY_DATE].slice(-2)}/${rec[STUDENT.GRAD_DATE].slice(-2)}`} />;
 };
 export default CohortField;

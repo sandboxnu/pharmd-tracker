@@ -3,7 +3,8 @@ export const STUDENT = {
   NAME: "name",
   FIRST_NAME: "firstName",
   LAST_NAME: "lastName",
-  COHORT: "gradDate",
+  GRAD_DATE: "gradDate",
+  ENTRY_DATE: "entryDate",
   STATUS: "status",
   GPA: "gpa"
 };
