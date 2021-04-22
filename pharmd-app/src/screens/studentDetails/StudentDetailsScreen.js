@@ -32,7 +32,7 @@ const SideContent = styled(Paper)`
 const StudentDetailsScreen = props => {
     const {data, loading, error} = useGetOne('students', props.match.params.id);
     const dispatch = useDispatch();
-    const isNotesModalOpen = useSelector(state => state.notesModalOpen)
+    const [isNotesModalOpen, onNotesClose] = useSelector(state => state.notesModalOpen)
     if (loading) {
         return <Loading/>;
     }
@@ -52,7 +52,10 @@ const StudentDetailsScreen = props => {
             </SideContent>
             <PharmDModal open={isNotesModalOpen} title="Add Note"
                          onClose={() => dispatch(setNotesModal({isOpen: false}))}>
-                <NoteCreate {...props} onSuccess={() => dispatch(setNotesModal({isOpen: false}))}/>
+                <NoteCreate {...props} onSuccess={() => {
+                    onNotesClose();
+                    return dispatch(setNotesModal({isOpen: false}));
+                }}/>
             </PharmDModal>
         </Fragment>
     );

@@ -136,8 +136,12 @@ const StudentNoteDrawer = ({record = {}, source }) => {
         isIncrement ? setPage(page + 1) : setPage(page - 1);
     }
 
+    function updateNotes() {
+        // TODO how is this done???
+    }
+
     function addNote() {
-        dispatch(setNotesModal({ isOpen: true }))
+        dispatch(setNotesModal({ isOpen: true, onClose: updateNotes }))
     }
 
     if (loading) return <Loading />
@@ -166,7 +170,7 @@ const StudentNoteDrawer = ({record = {}, source }) => {
             {data.length > 0 ?
                 <NoteGrid container spacing={2} direction="row">
                     {getDataPage(data).map((note, ind) => {
-                        return <NoteBoxField record={note} key={ind} studentId={record[source]}/>
+                        return <NoteBoxField record={note} key={ind} studentId={record[source]} onDelete={updateNotes}/>
                     })}
                 </NoteGrid>
                 : <NoNotes>No notes to show!</NoNotes>

@@ -13,7 +13,7 @@ const CardRoot = styled.div`
 `
 
 const Paper = styled(MuiPaper)`
-  ${tw`rounded-xl h-56 w-56 shadow-cardLight`}
+  ${tw`rounded-xl h-64 w-56 shadow-cardLight`}
   padding: 7px;
   margin: auto;
   
@@ -29,7 +29,7 @@ const Tags = styled.div`
 const MAX_TITLE_LENGTH = 15;
 const MAX_BODY_LENGTH = 30;
 
-const NoteBoxField = ({ record, studentId }) => {
+const NoteBoxField = ({ record, studentId, onDelete }) => {
     const id = record[NOTE.ID];
     const title = record[NOTE.TITLE];
     const body = record[NOTE.BODY];
@@ -47,7 +47,7 @@ const NoteBoxField = ({ record, studentId }) => {
                     <CardHeader
                         action={
                             <div>
-                                <DeleteButton basePath={`/students/${studentId}/details`} record={record} resource="notes">DELETE</DeleteButton>
+                                <DeleteButton label="" onClick={onDelete} basePath={`/students/${studentId}/details`} record={record} resource="notes" />
                             </div>
                         }
                         title={truncate(title, MAX_TITLE_LENGTH)}
