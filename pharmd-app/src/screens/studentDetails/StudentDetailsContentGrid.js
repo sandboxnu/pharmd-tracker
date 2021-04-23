@@ -50,7 +50,7 @@ const StyledTab = styled(Tab)`
 `;
 
 const StudentDetailsContentGrid = props => {
-  const isOpen = useSelector(state => state.studentSidebarOpen);
+  const isOpen = true;
   const { record } = props;
 
   return (

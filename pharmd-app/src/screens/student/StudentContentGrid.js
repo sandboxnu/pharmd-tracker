@@ -20,6 +20,7 @@ import tw, { styled } from "twin.macro";
 import { StudentFilter } from "./StudentToolbarFilter";
 import StudentList from "./StudentList";
 import GridCard from "../../components/Basic/GridCard";
+import StudenttDrawer from "./StudentDrawer";
 
 // -------------------------- STYLE --------------------------
 const List = styled(RaList)`
@@ -36,7 +37,7 @@ const MainGrid = styled(MuiGrid)`
 
 // -------------------------- COMPONENT --------------------------
 const StudentContentGrid = ({ selected, ...props }) => {
-  const isOpen = useSelector(state => state.studentSidebarOpen);
+  const isOpen = props.StudentSidebar;
 
   return (
     <MainGrid container spacing={6}>
@@ -58,6 +59,8 @@ const StudentContentGrid = ({ selected, ...props }) => {
             selectedRow={selected}
             setStudentQuickViewExpanded={props.setStudentQuickViewExpanded}
             studentQuickViewExpanded={props.studentQuickViewExpanded}
+            studentSidebar={props.studentSidebar}
+            setStudentSidebar={props.setStudentSidebar}
           />
         </List>
       </MuiGrid>

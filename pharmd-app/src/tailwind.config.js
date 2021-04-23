@@ -19,6 +19,10 @@ module.exports = {
       "80%": "80%"
     },
     extend: {
+      animation: {
+        grow: "grow 2s linear",
+        shrink: "grow 3s linear reverse"
+      },
       backgroundColor: {
         primary: "var(--color-primary)"
       },
@@ -56,6 +60,12 @@ module.exports = {
         "4": "1rem",
         "12": "3rem",
         "10px": "10px"
+      },
+      keyframes: {
+        grow: {
+          "0%": { height: "0%" },
+          "100%": { height: "100%" }
+        }
       },
       lineHeight: {
         "60px": "60px"

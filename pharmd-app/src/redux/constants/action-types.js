@@ -1,3 +1,1 @@
-export const UI_STUDENT_SIDEBAR = "UI_STUDENT_SIDEBAR";
-
 export const UI_NOTES_MODAL = "UI_MODAL";

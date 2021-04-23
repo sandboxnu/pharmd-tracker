@@ -9,8 +9,7 @@
 // Function Imports
 import React from "react";
 
-import { useDispatch } from "react-redux";
-import { setStudentSideBar } from "../../redux/actions";
+
 // Component Imports
 import Table from "../../components/Table/Table";
 import EmphasisField from "../../components/Fields/EmphasisField";
@@ -20,11 +19,10 @@ import GradeField from "../../components/Fields/GradeField";
 import { STUDENT } from "../../constants/apiObjects";
 
 const StudentList = ({ selectedRow, ...props }) => {
-  const dispatch = useDispatch();
 
   const studentRowClick = (id, basePath, record) => {
+    props.setStudentSidebar(true);
     props.setStudentQuickViewExpanded(true);
-    dispatch(setStudentSideBar({ isOpen: true }));
     return record.editable ? "edit" : "show";
   };
 

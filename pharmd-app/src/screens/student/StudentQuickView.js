@@ -6,6 +6,11 @@ import { styled } from "twin.macro";
 import QuickProfileField from "../../components/Fields/QuickProfileField";
 import QuickInfoField from "../../components/Fields/QuickInfoField";
 
+import NoteListField from "../../components/Fields/NoteListField";
+/*
+TODO: Material Skeleton for loading
+ */
+
 const SimpleShowLayout = styled(SimpleShowLayoutRA)`
   &.MuiCard-root {
     box-shadow: none;

@@ -10,7 +10,6 @@ import Dashboard from "./Dashboard";
 import { AuthProvider, DataProvider } from "./services";
 import createLigthTheme from "./themes/light-theme";
 import DashboardLayout from "./components/Layout/DashboardLayout";
-import studentSideBarReducer from "./redux/reducers/studentSideBarReducer";
 import customRoutes from "./config/customRoutes";
 import customReducers from './redux/reducers';
 
