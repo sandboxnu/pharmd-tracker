@@ -64,7 +64,7 @@ module.exports = {
       keyframes: {
         grow: {
           "0%": { height: "0%" },
-          "100%": { height: "50%" }
+          "100%": { height: "100%" }
         }
       },
       lineHeight: {

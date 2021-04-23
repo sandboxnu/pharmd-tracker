@@ -6,84 +6,41 @@ import React, { useState } from "react";
 // Style Imports
 import { blue } from "@material-ui/core/colors";
 import tw, { styled, css } from "twin.macro";
+import "./Temp.css";
+
+// -------------------------- COMPONENT --------------------------
 
 const Bar = ({ max, min, height, threshold }) => {
   const heightStr = `${height.toString()}px`;
   // this bar covers (from threshold[0] to threshold[1])
   let secondHeight;
   const withinThreshold = min < threshold[1] && max > threshold[0];
+  let animate;
 
   if (withinThreshold) {
-    console.log(`within thresh `);
-    secondHeight = height;
-  } else {
-    console.log("not within");
+    // the bar is within the range
     secondHeight = 0;
+    animate = "";
+  } else {
+    secondHeight = height;
+    animate = "bar";
   }
 
   const secondHeightStr = `${secondHeight.toString()}px`;
   const topStr = `-${height.toString()}px`;
-  // return (
-  //   <div tw="flex-1" css={{ height: heightStr, "margin-right": ".1rem" }}>
-  //     <div tw="bg-primary h-full opacity-75 rounded-t-lg" />
-  //     <div
-  //       tw="bg-white relative rounded-t-lg w-full"
-  //       css={{ height: secondHeightStr, top: topStr }}
-  //       className={animate}
-  //     >
-  //       <div tw="bg-primary h-full opacity-25 rounded-t-lg w-full" />
-  //     </div>
-  //   </div>
-  // );
-
-  //try switching the two ^^^ so top is opacity-75 and bottom is opacity-25
-
-  // animations is run ONLY when className goes from an empty String to a non-empty String
   return (
     <div tw="flex-1" css={{ height: heightStr, "margin-right": ".1rem" }}>
-      <div tw="bg-primary h-full opacity-25 rounded-t-lg" />
-      {withinThreshold ? (
-        <div
-          tw="animate-grow bg-primary opacity-75 relative rounded-t-lg w-full"
-          css={{ height: secondHeightStr, top: topStr }}
-        />
-      ) : (
-        <div
-          tw="bg-primary opacity-75 relative rounded-t-lg w-full"
-          css={{ height: secondHeightStr, top: topStr }}
-        />
-      )}
+      <div tw="bg-primary h-full opacity-75 rounded-t-lg" />
+      <div
+        tw="bg-white relative rounded-t-lg w-full"
+        css={{ height: secondHeightStr, top: topStr }}
+        className={animate}
+      >
+        <div tw="bg-primary h-full opacity-25 rounded-t-lg w-full" />
+      </div>
     </div>
   );
 };
-// let animate = "";
-// let animate2 = "";
-//
-// if (min >= threshold[1] || max <= threshold[0]) {
-//   // console.log(`bar `);
-//   secondHeight = height;
-//   animate = "bar ";
-// } else {
-//   // console.log("car");
-//   secondHeight = 0;
-//   animate2 = "car";
-// }
-//
-// const secondHeightStr = `${secondHeight.toString()}px`;
-// const topStr = `-${height.toString()}px`;
-// return (
-//     <div tw="flex-1" css={{ height: heightStr, "margin-right": ".1rem" }}>
-//       <div tw="bg-primary h-full opacity-75 rounded-t-lg" />
-//       <div
-//           tw="bg-white h-full relative rounded-t-lg w-full"
-//           className={animate}
-//           css={{ height: secondHeightStr, top: topStr }}
-//       >
-//         <div tw="bg-primary h-full opacity-25 rounded-t-lg w-full" css={{ height: secondHeightStr }} className={animate2}/>
-//       </div>
-//     </div>
-// );
-// -------------------------- COMPONENT --------------------------
 
 const BarGraph = ({ value, barGraphData, css, ...props }) => {
   // bar graph data is an array, where each element is a bar

@@ -1,9 +1,9 @@
 .bar {
-    animation: grow 1s linear;
+    animation: grow .25s cubic-bezier(0.42, 0, 1, 1);
 }
 
 .car {
-    animation: grow 1s linear reverse;
+    animation: grow .25s linear reverse;
 }
 
 @keyframes grow {
