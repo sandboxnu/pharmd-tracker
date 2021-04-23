@@ -17,6 +17,12 @@ const SVG = styled(SvgIcon)`
     `}
     
     ${props =>
+    props.color === "red" &&
+    css`
+      color: red;
+    `}
+    
+    ${props =>
       props.primary &&
       css`
         margin-left: auto;

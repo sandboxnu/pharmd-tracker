@@ -1,0 +1,1 @@
+export const UI_NOTES_MODAL = "UI_MODAL";

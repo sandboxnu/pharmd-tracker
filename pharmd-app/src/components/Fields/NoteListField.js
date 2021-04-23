@@ -1,7 +1,12 @@
 import React from "react";
-import { Error, Loading, useQuery } from "react-admin";
+import { useDispatch } from "react-redux";
+import { setNotesModal } from "../../redux/actions";
+import { useQuery, Loading, Error } from "react-admin";
 import tw, { styled } from "twin.macro";
 import NoteField from "./NoteField";
+import IconButton from "@material-ui/core/IconButton";
+import AddCircleOutlineOutlinedIcon from '@material-ui/icons/AddCircleOutlineOutlined';
+import NoteIcon from "../Basic/NoteIcon";
 
 const Label = styled.h1`
   ${tw`fontStyle-6 font-medium inline-flex`}
@@ -32,6 +37,12 @@ const NoteListField = ({ record = {}, source }) => {
     }
   });
 
+  const dispatch = useDispatch();
+
+  function addNote() {
+    dispatch(setNotesModal({ isOpen: true }))
+  }
+
   if (loading) return <Loading />;
   if (error) return <Error />;
   if (!data) return null;
@@ -39,9 +50,13 @@ const NoteListField = ({ record = {}, source }) => {
   return (
     <Notes>
       <Label>Recent Notes</Label>
-      {data.map(note => {
-        return <NoteField source="id" record={note} />;
-      })}
+      <IconButton onClick={addNote}>
+        <NoteIcon src={AddCircleOutlineOutlinedIcon} size="small" isPrimary="primary" />
+      </IconButton>
+      {data.map((note, ind) => {
+        return <NoteField source='id' record={note} key={ind}/>
+      })
+      }
     </Notes>
   );
 };

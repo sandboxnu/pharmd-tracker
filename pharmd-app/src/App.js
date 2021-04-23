@@ -11,6 +11,7 @@ import { AuthProvider, DataProvider } from "./services";
 import createLigthTheme from "./themes/light-theme";
 import DashboardLayout from "./components/Layout/DashboardLayout";
 import customRoutes from "./config/customRoutes";
+import customReducers from './redux/reducers';
 
 const App = () => {
   return (
@@ -23,6 +24,7 @@ const App = () => {
             authProvider={AuthProvider}
             dashboard={Dashboard}
             theme={theme}
+            customReducers={customReducers}
             customRoutes={customRoutes}
           >
             <Resource name="users" {...profile} />
