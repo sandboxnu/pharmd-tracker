@@ -26,7 +26,7 @@ const Tags = styled.div`
     justify-content: space-around;
 `
 
-const MAX_TITLE_LENGTH = 15;
+const MAX_TITLE_LENGTH = 25;
 const MAX_BODY_LENGTH = 30;
 
 const NoteBoxField = ({ record, studentId, onDelete }) => {
