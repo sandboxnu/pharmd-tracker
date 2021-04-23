@@ -4,7 +4,7 @@ export const { AUTH_URL } = process.env;
 export const FAKE_AUTH = "https://student-db-remote.herokuapp.com/login";
 
 export const BACKEND_STUDENTS = `${BACKEND_URL}students/`;
-export const BACKEND_STUDENTASSESSMENTS = `${BACKEND_URL}students-assessments/`;
+export const BACKEND_STUDENTASSESSMENTS = `${BACKEND_URL}studentsExams/`;
 export const BACKEND_SESSIONS = `${BACKEND_URL}sessions/`;
 export const BACKEND_ASSESSMENTS = `${BACKEND_URL}assessments/`;
 export const BACKEND_COURSES = `${BACKEND_URL}courses/`;

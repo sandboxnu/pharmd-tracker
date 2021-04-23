@@ -6,7 +6,7 @@ import axios from "axios";
  */
 
 class StudentAssessmentService {
-    static apiPrefix = 'student-assessments/';
+    static apiPrefix = 'studentExams/';
 
     // GET Methods
 
