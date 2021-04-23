@@ -17,6 +17,8 @@ import { withStyles } from "@material-ui/core/styles";
 
 // Style Imports
 import { blue } from "@material-ui/core/colors";
+import BarGraph from "../Basic/BarGraph";
+import Slider from "@material-ui/core/Slider";
 
 // -------------------------- STYLE --------------------------
 
@@ -76,19 +78,37 @@ const GpaSliderInput = ({ classes, setFilter, value, setValue, ...props }) => {
     }
   };
 
+  // compute height difference between bar graph and slider
+  // slider to top - (bar graph to top + height of bar graph)
+  const top = 14;
+  const topStr = top.toString() + "px";
+  const css = { top: topStr };
+
+  // TODO: Remove temporary data and add real data from back end
+  const frequencies = [1, 2, 2.25, 2.5, 1.75, 2.75, 2.25, 2, 2.5, 1.5];
+
   return (
-    <RangeSlider
-      className={classes.rangeSlider}
-      disabled={error}
-      onChange={searchGpaRange}
-      max={4}
-      min={0}
-      setValueText={valuetext}
-      sliderClasses={classes}
-      step={0.25}
-      value={value}
-      setValue={setValue}
-    />
+    <div className={classes.rangeSlider}>
+      <h4>
+        GPA Range <span>{`(${value[0]} - ${value[1]})`}</span>
+      </h4>
+      <BarGraph
+        css={css}
+        value={value}
+        barGraphData={frequencies}
+      />
+      <RangeSlider
+        disabled={error}
+        onChange={searchGpaRange}
+        max={4}
+        min={0}
+        setValueText={valuetext}
+        sliderClasses={classes}
+        step={0.25}
+        value={value}
+        setValue={setValue}
+      />
+    </div>
   );
 };
 

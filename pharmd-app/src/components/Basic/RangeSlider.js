@@ -38,7 +38,6 @@ const RangeSlider = props => {
     max,
     min,
     step,
-    className,
     sliderClasses,
     value,
     setValue
@@ -62,31 +61,23 @@ const RangeSlider = props => {
   };
 
   return (
-    <div className={className}>
-      <span>
-        <h4>
-          GPA Range <span>{`(${rangeValue[0]} - ${rangeValue[1]})`}</span>
-        </h4>
-      </span>
-
-      <Slider
-        classes={{
-          root: sliderClasses.root,
-          rail: sliderClasses.rail,
-          thumb: sliderClasses.thumb,
-          track: sliderClasses.track
-        }}
-        value={rangeValue}
-        onChange={handleChange}
-        valueLabelDisplay="auto"
-        aria-labelledby="range-slider"
-        getAriaValueText={setValueText}
-        disabled={disabled}
-        min={min}
-        max={max}
-        step={step}
-      />
-    </div>
+    <Slider
+      classes={{
+        root: sliderClasses.root,
+        rail: sliderClasses.rail,
+        thumb: sliderClasses.thumb,
+        track: sliderClasses.track
+      }}
+      value={rangeValue}
+      onChange={handleChange}
+      valueLabelDisplay="auto"
+      aria-labelledby="range-slider"
+      getAriaValueText={setValueText}
+      disabled={disabled}
+      min={min}
+      max={max}
+      step={step}
+    />
   );
 };
 
