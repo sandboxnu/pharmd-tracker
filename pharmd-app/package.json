@@ -21,7 +21,7 @@
     "react-scripts": "3.3.0",
     "styled-components": "^5.0.1",
     "twin.macro": "^1.11.0",
-    "xlsx": "^0.15.5"
+    "xlsx": "^0.17.0"
   },
   "scripts": {
     "start": "webpack-dev-server",
